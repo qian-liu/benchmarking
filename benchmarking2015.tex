@@ -72,17 +72,19 @@
 %\def\articleType{Research Article}
 %\def\keyFont{\fontsize{8}{11}\helveticabold }
 \def\firstAuthorLast{Qian Liu {et~al.}} %use et al only if is more than 1 author
-\def\Authors{Qian Liu, Garibaldi Pinedagarcia,Evangelos Stromatias, and Steve Furber}
-%\def\Authors{Qian Liu\,$^{1,*}$, Garibaldi Pinedagarcia\,$^{1}$ ,Evangelos Stromatias\,$^{1}$, and Steve Furber\,$^{1}$}
+%\def\Authors{Qian Liu, Garibaldi Pineda Garcia, Evangelos Stromatias, Teresa Gotarredona, and Steve Furber}
+\def\Authors{Qian~Liu\,$^{1,*}$, Garibaldi~Pinedagarcia\,$^{1}$ ,Evangelos~Stromatias\,$^{1}$, Teresa~Gotarredona\,$^{2}$, and Steve~Furber\,$^{1}$}
 % Affiliations should be keyed to the author's name with superscript numbers and be listed as follows: Laboratory, Institute, Department, Organization, City, State abbreviation (USA, Canada, Australia), and Country (without detailed address information such as city zip codes or street names).
 % If one of the authors has a change of address, list the new address below the correspondence details using a superscript symbol and use the same symbol to indicate the author in the author list.
-\def\Address{SpiNNaker, Advanced Processor Technologies Research Group, School of Computer Science, University of Manchester, Manchester, United Kingdom}
-%\def\Address{$^{1}$SpiNNaker, Advanced Processor Technologies Research Group, School of Computer Science, University of Manchester, Manchester, United Kingdom}
+%\def\Address{SpiNNaker, Advanced Processor Technologies Research Group, School of Computer Science, University of Manchester, Manchester, United Kingdom}
+\def\Address{$^{1}$SpiNNaker, Advanced Processor Technologies Research Group, School of Computer Science, University of Manchester, Manchester, United Kingdom\\
+$^{2}$Instituto de Microelectrónica de Sevilla (IMSE-
+CNM-CSIC), Sevilla, Spain }
 %% The Corresponding Author should be marked with an asterisk
 %% Provide the exact contact address (this time including street name and city zip code) and email of the corresponding author
-%\def\corrAuthor{Qian Liu}
-%\def\corrAddress{SpiNNaker, Advanced Processor Technologies Research Group, School of Computer Science, The University of Manchester, Oxford Road, Manchester, M13 9PL, United Kingdom}
-%\def\corrEmail{qianl.liu-3@manchester.ac.uk}
+\def\corrAuthor{Qian Liu}
+\def\corrAddress{SpiNNaker, Advanced Processor Technologies Research Group, School of Computer Science, The University of Manchester, Oxford Road, Manchester, M13 9PL, United Kingdom}
+\def\corrEmail{qianl.liu-3@manchester.ac.uk}
 %
 %% \color{FrontiersColor} Is the color used in the Journal name, in the title, and the names of the sections
 %
@@ -90,7 +92,7 @@
 \begin{document}
 \firstpage{1}
 
-\title[Benchmarking the Spike-Based Visual Classifications]{Benchmarking the Spike-Based Visual Classifications}
+\title[Benchmarking Spike-Based Visual Recognition: a Dataset and Evaluation]{Benchmarking  Spike-Based Visual Recognition:\\ a Dataset and Evaluation}
 \author[\firstAuthorLast ]{\Authors}
 \address{\Address}
 %\correspondance{}
@@ -101,31 +103,24 @@
 
 \maketitle
 \begin{abstract}
-%The introduction of spiking neural networks (SNN) has changed the way we think the brain works. New neuromorphic hardware has been developed in order to fit the particularities of SNN simulations. One key aspect is that these types of neural networks require spike trains as inputs but most datasets are stored using incompatible formats. In this work we propose a standard set of spike trains which are obtained by applying different transformation techniques to elements of standard image databases. We validate our dataset by applying these inputs to reported algorithms.
+To gain a better understanding of the brain and build biologically-inspired computers, increasing attention is being paid to research into spike-based neural computation.
+Within the field, the visual pathway and its hierarchical organisation have been extensively studied within the primate brain.
+Spiking Neural Networks (SNNs) inspired by our understanding of observed biological structure and functions have been successfully applied to visual recognition/classification tasks.
+A new series of vision benchmarks for spike-based neural processing are now needed to quantitatively measure progress within this rapidly advancing field.
+We propose that a large dataset of spike-based visual stimuli is needed to provide a baseline for comparisons.
+Furthermore a complementary evaluation methodology is also crucial to assess the accuracy and efficiency of an algorithm.
 
-To have a better understanding of the brain and to build biologically-inspired computers, there is an increasing attention to the research on spike-based neural computation.
-In terms of the vision field, the visual pathway and its hierarchical organisation have been studied the most within the prime brain.
-Spiking neural networks (SNNs) which are inspired by its biological structure and functions have been successfully applied to visual recognition/classification tasks.
-New series of vision benchmarks in the spike-based neural processing are required to quantitatively measure the research progress of this field.
-Thus a large dataset of spike-based visual stimuli is needed to provide the comparison baseline and a corresponding evaluation methodology is also crucial to assess the accuracy and efficiency of an algorithm.
+First of all, an initial dataset of input stimuli based on standard computer vision benchmarks consisting of facial images (FERET database) and digits (MNIST database) is presented according to the current research on spike-based image recognition.
+Within this dataset, all images are centre aligned and with similar scale.
+We describe how we intend to expand this dataset to fulfil the needs of upcoming research problems.
+For instance, the data should provide cases to measure position-, scale-, and viewing-angle invariance.
+The data will be in Address-Event Representation (AER) format which is well-applied in neuromorphic engineering field unlike conventional images.
+These spike trains are produced by various techniques: rate-based Poisson spike generation, rank order encoding and recorded output from a silicon retina with both flashing and oscillating input stimuli.
+An evaluation methodology is also presented which describes how to consistently assess the accuracy, speed, efficiency and cost of an algorithm working with the dataset.
+Finally, we provide a baseline for comparison based on a proposed SNN's performance on the dataset.
+The network is trained on-line using the Spike Timing Dependent Plasticity (STDP) learning rule on a massive-parallel neuromorphic simulator, e.g. SpiNNaker.
 
-First of all, according to the current research on spike-based image recognition the input stimuli consist of facial images and digits.
-All the original images are centre aligned and with similar scale.
-The database will expand with research development, e.g. moving objects for position-invariant recognition.
-The output of the data is in Address-Event Representation (AER) format which is well-applied in neuromorphic engineering field.
-The spike trains of one same image is recorded by different techniques: rate-based Poison spike generator, one spike per pixel and output of a silicon retina with both flashing and jitter input image.
-Secondly, the evaluation methodology is presented to discuss how to assess the accuracy, speed, efficiency and cost of an algorithm.
-Finally, a proposed recognition algorithm is tested on the dataset to provide a baseline for comparison.
-
-% need to reword
-The benchmark is presented to 1) allow a direct comparison between different algorithms, 2) identify the most promising approaches, 3) assess the state of the art in spike-based visual recognition, 4) identify future directions of research and 5) advance the state of the art.
-%Thanks to the development of neuromorphic engineering, even real-time large-scale neural networks can be simulated on massive-parallel hardware platforms with the input spikes generated by a Dynamic Vision Sensor (DVS).
-%A DVS silicon retina is able to provide micro-second latency response with low output data rates, however 
-
-
- 
-
-
+With this benchmark we hope to (1) promote meaningful comparison among algorithms in the field of neural computation, (2) allow comparison with conventional image recognition methods, (3) provide an assessment of the state of the art in spike-based visual recognition, and (4) help researchers identify future directions and advance the field.
 
 \tiny
 \section{Keywords:} Benchmarking, Neuromorphic Engineering, Real-Time, Spiking Neural Networks, Vision
@@ -134,9 +129,15 @@ The benchmark is presented to 1) allow a direct comparison between different alg
 
 %\section{Introduction}
 %\label{sec:intro}
-%\input{1_Introduction.tex}
+\input{1_Introduction.tex}
+\input{2_Guide.tex}
+\input{3_Database.tex}
+\input{4_Evaluate.tex}
+\input{5_Test.tex}
+\input{6_Conclusion.tex}
 \section*{Acknowledgments}
-%The work presented in this paper is largely based on experiments that were carried out at the 2013 Workshops on Neuromorphic Cognition Engineering in Telluride and CapoCaccia. The authors would like to thank the organizers, the sponsors, and particularly Steve Temple, Luis Plana, Francesco Galluppi, Danny Neil, and Tobi Delbruck for their help in this work.
+The work presented in this paper is largely inspired on discussions carried out at the 2015 Workshops on Neuromorphic Cognition Engineering in CapoCaccia.
+The authors would like to thank the organisers and the sponsors.
 The SpiNNaker project is supported by the Engineering and Physical Science Research Council (EPSRC), grant EP/4015740/1, and also by ARM and Silistix. The authors thank the support of these sponsors and industrial partners.
 \bibliographystyle{frontiersinSCNS&ENG} % for Science and Engineering articles
 %\bibliographystyle{frontiersinMED} % for Medicine articles
