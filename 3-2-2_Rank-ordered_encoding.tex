@@ -3,11 +3,14 @@ keep just the order in which they were fired and disregard the exact timing. One
 can see this as a compromise between the complexity of time-based encoding and 
 the small capacity to store information of rate-based codes. Rank-ordered spike 
 trains have been used in vision tasks under a biological plausibility 
-constraint~\cite{van-rullen-rate-coding,basab-model}.
+constraint [\cite{van-rullen-rate-coding,basab-model}], making them a viable
+way of image encoding for neural applications.
 
 Rank-ordered encoding is done using an algorithm that models the foveal pit 
-\cite{basab-model}. As a first step four 2D discrete \emph{convolutions} are 
-performed. Each convolution simulates a ganglion cell type and all cells are modelled using Differences of Gaussians (DoG, Eq.~\ref{eq-dog}). \begin{equation}
+as reported by \cite{basab-model}. As a first step four 2D discrete 
+\emph{convolutions} are performed. Each convolution simulates a ganglion cell 
+type and all cells are modelled using Differences of Gaussians (DoG, 
+Eq.~\ref{eq-dog}). \begin{equation}
 \label{eq-dog}
 DoG_w(x,y) = \pm\frac{1}{2\pi\sigma_{w,c}^2}e^{\frac{-(x^2 + y^2)}{2\sigma_{w,c}^2}}
 \mp\frac{1}{2\pi\sigma_{w,s}^2}e^{\frac{-(x^2 + y^2)}{2\sigma_{w,s}^2}}
