@@ -89,15 +89,15 @@ convolution kernels (Alg. \ref{code-focal}).
   \caption{~~Redundancy Correction}
   \label{code-focal}
   \begin{algorithmic}
-    \Procedure{FoCal$_2$}{coefficients $C$, correlations $K$}
+    \Procedure{FoCal$_2$}{coefficients $C$, correlations $Q$}
       \State $N \leftarrow \emptyset$ \Comment{Corrected coefficients}
       \Repeat
-        \State $m \leftarrow max(C)$
-        \State $M \leftarrow M \cup m$
-        \State $C \leftarrow C \setminus m$
-        \ForAll{$ c \in C$} \Comment{Adjust all remaining c}
-          \If{$K(m, c) \neq 0$} \Comment{Adjust only near}
-            \State $c \leftarrow c - m \times K(m, c)$
+        \State $m \leftarrow max(C)$ \Comment{Obtain maximum from $C$}
+        \State $M \leftarrow M \cup m$ \Comment{Add maximum to $M$}
+        \State $C \leftarrow C \setminus \{m\}$ \Comment{Remove maximum}
+        \ForAll{$ c \in C$} \Comment{Adjust all remaining $c$}
+          \If{$Q(m, c) \neq 0$} \Comment{Adjust only near}
+            \State $c \leftarrow c - m \times Q(m, c)$
           \EndIf
         \EndFor
       \Until{$C = \emptyset$}
@@ -106,3 +106,7 @@ convolution kernels (Alg. \ref{code-focal}).
   \end{algorithmic}
 \end{algorithm}
 
+We provide two resolutions for the rank-order encoded database, the first is 
+the original $28\times28$ one. We additionally up-scale the resolution to 
+$128\times128$ using bi-cubic interpolation, this is to match the DVS native 
+resolution.
