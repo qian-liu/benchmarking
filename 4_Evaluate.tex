@@ -1,14 +1,17 @@
 \section{Performance Evaluation}
 \label{sec:eval}
 \subsection{Hardware-Independent}
-Accuracy (correct, incorrect, ambiguous.) \\
-Training data used (how many times each image is presented.)\\
-Training done with rate-based\\
-Network topology (complexity.)\\
-Supervised or not.\\
-Number of classes obtained for unsupervised.\\
-Was there any preprocessing done?\\
-Measure used to decide classes\\
+Most classification papers report a percentage of accuracy that just leaves the reader with a measure of the correct classifications. Should we report also incorrect or ambiguous? Could some ``correct'' be masking ambiguous? Were the ambiguous due to noise? Was the noise added on purpose? Was there any preprocessing done?\\
+
+Another aspect of training using spiking neural networks is the exact exposure of the training data used (how many times each image is presented.)\\
+
+Traditionally, neural network training has been done using rate-based encoding. As new theories emerge, an important distinction to make is the nature of the  training procedure.\\
+
+A brief description of the \emph{network topology} is highly desirable, we feel like different topologies will have a deep impact on the overall performance. Furthermore, sharing this designs can inspire fellow scientists to create new ones. \\
+
+Learning procedures can be classified into two major branches. The main distinction is whether it was done using \emph{supervised} or not. The label of the data helps to establish categories and connection weights in supervised learning. 
+
+Unsupervised learning has less constraints but might be tougher to get right. A number of different classes are expected, this quantity might give an insight onto the network topology and dynamics. What measure did the researchers used to decide classes?\\
 
 
 
