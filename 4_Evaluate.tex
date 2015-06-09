@@ -1,22 +1,23 @@
 \section{Performance Evaluation}
 \label{sec:eval}
 
-When we come to the stage where we have to report results of our research, we often face the question, \emph{How much should I include in my report?} This is an extremely important question, and we would like to help with the following considerations.
+When we come to the stage where we have to report results of our research, we often face questions like, \emph{How much should I include in my report? How do I compare my work to others?} This are extremely important questions, and we would like to assist the readers with the following considerations.
 
 \subsection{Hardware-Independent}
-Most classification papers report a percentage of accuracy that gives the reader a measure of the correct classifications. Some times it might be desirable  Should we report also incorrect or ambiguous? Could some ``correct'' be masking ambiguous? Were the ambiguous due to noise? Was the noise added on purpose? Was there any preprocessing done?\\
+A brief description of the \emph{network topology} is most welcome, we believe different topologies will have a deep impact on the overall performance. Furthermore, sharing this designs can inspire fellow scientists to create new structures that can help us see our own from an alternative point of view, generating a positive feedback loop where everybody wins.
 
-Another aspect of training using spiking neural networks is the exact exposure of the training data used (how many times each image is presented.)\\
+Most classification papers report a percentage of accuracy that gives the reader a measure of the correct classifications~[\cite{dietterich1998approximate}]. Some times it might be desirable, for a better understanding of the paper, that a distinction between ambiguous, outliers and incorrect classes is made~[\cite{liu2002performance}]. A very useful piece of information is clear citation of the base-line source, which is almost always there but lost in a sea of references.
 
-Traditionally, neural network training has been done using rate-based encoding. As new theories emerge, an important distinction to make is the nature of the  training procedure.\\
+%Should we report also incorrect or ambiguous? Could some ``correct'' be masking ambiguous? Were the ambiguous due to noise? Was the noise added on purpose? 
 
-A brief description of the \emph{network topology} is highly desirable, we feel like different topologies will have a deep impact on the overall performance. Furthermore, sharing this designs can inspire fellow scientists to create new ones. \\
+As we are proposing spike based data-sets, it's desirable that the users specify if there was any preprocessing applied before actually feeding the spike trains into their networks~[\cite{best-practice-nn-img}]. For example, if we want to use a particular set to test noisy inputs, it would be extremely useful to have a notion of the type of noise added.
 
-Learning procedures can be classified into two major branches. The main distinction is whether it was done using \emph{supervised} or not. The label of the data helps to establish categories and connection weights in supervised learning. 
+Traditionally, neural network training has been done using rate-based encoding. As new theories emerge, an important distinction to make is the nature of the  training procedure. One of them could be the way training data was exposed to the network (e.g. How many times each image is presented? How much time is a single example shown?. [\cite{unsup_leraning_diehl}]) Details on the learning rules STDP, BCM, 
 
-Unsupervised learning has less constraints but might be tougher to get right. A number of different classes are expected, this quantity might give an insight onto the network topology and dynamics. What measure did the researchers used to decide classes?\\
+One the biggest distinctions on learning procedures is whether they were done using some \emph{supervision} or not; making this distinction clear is vastly appreciated. On supervised learning, the label of the data influences to establish categories and connection weights. Unsupervised learning has less constraints when it comes to class creation but might be tougher to get right. 
 
-Reference to state-of-the-art base-line comparison source
+A number of different classes are expected, this quantity might give an insight onto the network topology and dynamics. A description of the methods used to generate and populate the classes is very helpful for the reader. (e.g. Did we use a statistical measure? Was it a combination of NN with some other algorithms?)
+
 
 \subsection{Hardware-Specific}
 	\subsubsection{Training Time}
