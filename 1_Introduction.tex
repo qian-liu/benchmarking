@@ -55,7 +55,39 @@ Why ImageNet?
 The ImageNet project is inspired by a growing sentiment in the image and vision research field – the need for more data. Ever since the birth of the digital era and the availability of web-scale data exchanges, researchers in these fields have been working hard to design more and more sophisticated algorithms to index, retrieve, organize and annotate multimedia data. But good research needs good resource. To tackle these problem in large-scale (think of your growing personal collection of digital images, or videos, or a commercial web search engine’s database), it would be tremendously helpful to researchers if there exists a large-scale image database. This is the motivation for us to put together ImageNet. We hope it will become a useful resource to our research community, as well as anyone whose research and education would benefit from using a large image database. 
 %Current http://www.image-net.org/
 Currently there are 14,197,122 images, 21841 synsets indexed in the dataset. 
-
+\subsubsection{Microsoft COCO~[\cite{lin_microsoft_2014}]}
+We introduce a new large-scale dataset that addresses
+three core research problems in scene understanding: de-
+tecting non-iconic views (or non-canonical perspectives
+[12]) of objects, contextual reasoning between objects
+and the precise 2D localization of objects. For many
+categories of objects, there exists an iconic view. For
+example, when performing a web-based image search
+for the object category “bike,” the top-ranked retrieved
+examples appear in profile, unobstructed near the cen-
+ter of a neatly composed photo. We posit that current
+recognition systems perform fairly well on iconic views,
+but struggle to recognize objects otherwise – in th
+background, partially occluded, amid clutter [13] – re-
+flecting the composition of actual everyday scenes. We
+verify this experimentally; when evaluated on everyday
+scenes, models trained on our data perform better than
+those trained with prior datasets. A challenge is finding
+natural images that contain multiple objects. The identity
+of many objects can only be resolved using context, due
+to small size or ambiguous appearance in the image. To
+push research in contextual reasoning, images depicting
+scenes [3] rather than objects in isolation are necessary.
+Finally, we argue that detailed spatial understanding of
+object layout will be a core component of scene analysis.
+An object’s spatial location can be defined coarsely using
+a bounding box [2] or with a precise pixel-level segmen-
+tation [14], [15], [16]. As we demonstrate, to measure
+either kind of localization performance it is essential
+for the dataset to have every instance of every object2
+category labeled and fully segmented. Our dataset is
+unique in its annotation of instance-level segmentation
+masks.
 \subsubsection{YouTube Action Dataset~[\cite{liu_recognizing_2009}]}
 In this paper, we present a systematic framework for recognizing realistic actions from videos “in the wild”. Such unconstrained videos are abundant in personal collections as well as on the Web. Recognizing action from such videos has not been addressed extensively, primarily due to the tremendous variations that result from camera motion, background clutter, changes in object appearance, and scale, etc. The main challenge is how to extract reliable and informative features from the unconstrained videos. We extract both motion and static features from the videos. Since the raw features of both types are dense yet noisy, we propose strategies to prune these features. We use motion statistics to acquire stable motion features and clean static features. Furthermore, PageRank is used to mine the most informative static features. In order to further construct compact yet discriminative visual vocabularies, a divisive information-theoretic algorithm is employed to group semantically related features. Finally, AdaBoost is chosen to integrate all the heterogeneous yet complementary features for recognition. We have tested the framework on the KTH dataset and our own dataset consisting of 11 categories of actions collected from YouTube and personal videos, and have obtained impressive results for action recognition and action localization.
 

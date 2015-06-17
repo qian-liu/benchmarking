@@ -15,6 +15,18 @@
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \usepackage[colorlinks]{hyperref} % in order to operate correctly, hyperref must be the last package declared
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{mathptmx}
+\usepackage{amsmath}
+%define some own functions
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}} 
+\def\D{\mathrm{d}}
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+\pagestyle{empty}
+
+
 \hypersetup{
   hypertexnames=true, 
   linkcolor=blue,anchorcolor=black,citecolor=blue,urlcolor=blue
