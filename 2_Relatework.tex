@@ -84,77 +84,77 @@ sidered in the Olympic-Games benchmark of [23].
 what are the problems the current database aim for.
 Current methods/algorithms existing.
 
-
-The FERET tests are administered using a testing proto-
-col, which states the mechanics of the tests and the manner
-in which the test will be scored. In face recognition, for
-example, the protocol states the number of images of each
-person in the test, how the output from the algorithm is
-recorded, and how the performance results are reported.
-There is a direct connection among the problem being
-evaluated, the images in the database, and the testing pro-
-tocol. The testing protocol and the images define the pro-
-blem to be evaluated. The characteristics and quality of the
-images are major factors in determining the difficulty of the
-problem. For example, if the faces are in a predetermined
-position in the images, the problem is different from that for
-images in which the faces can be located anywhere in the
-image. In the FERET database, variability was introduced
-by the inclusion of images taken at different dates and loca-
-tions (see Section 4.2). This resulted in changes in lighting,
-scale, and background.
-The goals for the FERET evaluation process were to assess
-the state of the art, advance the state of the art, and point to
-future directions of research. Accomplishing all three goals
-was a delicate process, and the keys to success were the
-database and the tests. If algorithms existed that could easily
-solve the problem, then the evaluation process would be
-reduced to ‘tuning’ existing algorithms. On the other hand,
-if the images defined a problem that was beyond current
-algorithmic techniques, then the results would have been
-poor and would have not allowed an accurate assessment of
-current algorithmic capabilities. The key was to find the right
-balance, so that if the problem formulated could not be solved
-satisfactorily by existing methods, it would be possible to
-develop algorithms that could solve it.
-The collection of the FERET database was initiated in
-September 1993, and the first FERET test was administered
-in August 1994. A standard database of facial images was
-established in the first year and made available to research-
-ers; this database provided the images for the Aug94
-FERET test. (Throughout this article, date-based names
-such as Aug94 are used to refer to the same FERET test,
-even when the tests were administered on other dates.) The
-Aug94 FERET test established a performance baseline for
-fully automatic face-recognition
-algorithms. A fully auto-
-matic algorithm does not require the location of the face in
-the image as input: the algorithm locates and identifies the
-face in the image.
-The Aug94 FERET test was designed to measure the
-performance of algorithms that could automatically locate,
-normalize, and identify faces from a database. The test
-consisted of three subsets: the large gallery, false alarm,
-and rotation tests. The first tested the ability of algorithms
-to recognize faces from a set of 317 known individuals
-(referred to as the gallery; an image of an unknown face
-presented to the algorithm is a probe, and the collection of
-probes is called the probe set). The second subtest, the false-
-alarm test, measured how well an algorithm rejects faces not
-in the gallery. The third baselined the effects of pose
-changes (rotations) on performance. On the basis of the
-Aug94 FERET test, it was concluded that algorithms needed
-to be evaluated on (1) larger galleries and (2) a substantially
-increased number of duplicate probes. (A duplicate is
-defined as an image of a person whose corresponding
-gallery image was taken on a different date.)
-A second FERET test, first administered in March 1995
-(and referred to as the Mar95 FERET test), was designed
-based on the conclusions from the Aug94 FERET test. The
-Mar95 FERET test evaluated algorithms on larger galleries
-and probe sets with a greater number of duplicates. This
-required that additional images be collected, with an emphasis
-on images of the same people taken months or years apart.
+%
+%The FERET tests are administered using a testing proto-
+%col, which states the mechanics of the tests and the manner
+%in which the test will be scored. In face recognition, for
+%example, the protocol states the number of images of each
+%person in the test, how the output from the algorithm is
+%recorded, and how the performance results are reported.
+%There is a direct connection among the problem being
+%evaluated, the images in the database, and the testing pro-
+%tocol. The testing protocol and the images define the pro-
+%blem to be evaluated. The characteristics and quality of the
+%images are major factors in determining the difficulty of the
+%problem. For example, if the faces are in a predetermined
+%position in the images, the problem is different from that for
+%images in which the faces can be located anywhere in the
+%image. In the FERET database, variability was introduced
+%by the inclusion of images taken at different dates and loca-
+%tions (see Section 4.2). This resulted in changes in lighting,
+%scale, and background.
+%The goals for the FERET evaluation process were to assess
+%the state of the art, advance the state of the art, and point to
+%future directions of research. Accomplishing all three goals
+%was a delicate process, and the keys to success were the
+%database and the tests. If algorithms existed that could easily
+%solve the problem, then the evaluation process would be
+%reduced to ‘tuning’ existing algorithms. On the other hand,
+%if the images defined a problem that was beyond current
+%algorithmic techniques, then the results would have been
+%poor and would have not allowed an accurate assessment of
+%current algorithmic capabilities. The key was to find the right
+%balance, so that if the problem formulated could not be solved
+%satisfactorily by existing methods, it would be possible to
+%develop algorithms that could solve it.
+%The collection of the FERET database was initiated in
+%September 1993, and the first FERET test was administered
+%in August 1994. A standard database of facial images was
+%established in the first year and made available to research-
+%ers; this database provided the images for the Aug94
+%FERET test. (Throughout this article, date-based names
+%such as Aug94 are used to refer to the same FERET test,
+%even when the tests were administered on other dates.) The
+%Aug94 FERET test established a performance baseline for
+%fully automatic face-recognition
+%algorithms. A fully auto-
+%matic algorithm does not require the location of the face in
+%the image as input: the algorithm locates and identifies the
+%face in the image.
+%The Aug94 FERET test was designed to measure the
+%performance of algorithms that could automatically locate,
+%normalize, and identify faces from a database. The test
+%consisted of three subsets: the large gallery, false alarm,
+%and rotation tests. The first tested the ability of algorithms
+%to recognize faces from a set of 317 known individuals
+%(referred to as the gallery; an image of an unknown face
+%presented to the algorithm is a probe, and the collection of
+%probes is called the probe set). The second subtest, the false-
+%alarm test, measured how well an algorithm rejects faces not
+%in the gallery. The third baselined the effects of pose
+%changes (rotations) on performance. On the basis of the
+%Aug94 FERET test, it was concluded that algorithms needed
+%to be evaluated on (1) larger galleries and (2) a substantially
+%increased number of duplicate probes. (A duplicate is
+%defined as an image of a person whose corresponding
+%gallery image was taken on a different date.)
+%A second FERET test, first administered in March 1995
+%(and referred to as the Mar95 FERET test), was designed
+%based on the conclusions from the Aug94 FERET test. The
+%Mar95 FERET test evaluated algorithms on larger galleries
+%and probe sets with a greater number of duplicates. This
+%required that additional images be collected, with an emphasis
+%on images of the same people taken months or years apart.
 
 \subsubsection{Converting from MPL to SNN}
 It remains a challenge to transform traditional artificial neural networks into spiking ones.

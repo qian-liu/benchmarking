@@ -2,73 +2,73 @@
 \label{sec:intro}
 \subsection{What Is the Problem}
 In the last few years, vision based spiking neural networks(SNNs) has become an active area of computer vision.
-The interest has been fuelled by potential applications and by the simultaneous development of algorithmic techniques and inexpensive computers with the computational power to run these algorithms.
-These developments yielded a large number of papers on SNNs based recognition, with a majority reporting outstanding recognition results (usually $>$ 95\% correct recognition) on limited-size databases (usually $<$ 50 individuals).
-%Reported results:
-%Hand Gestures, Qian Liu
-Inspired by the behaviours of the primary visual cortex, Convolutional Neural Networks (CNNs) are modelled using
-both linear perceptrons and spiking Leaky Integrate-and-Fire (LIF) neurons. In this study's largest configuration using these
-approaches, a network of 74,210 neurons and 15,216,512 synapses is created and operated in real-time using 290 SpiNNaker
-processor cores in parallel and with 93.0% accuracy. A smaller network using only 1/10th of the resources is also created,
-again operating in real-time, and it is able to recognize the postures with an accuracy of around 86.4% - only 6.6% lower than
-the much larger system. The recognition rate of the smaller network developed on this neuromorphic system is sufficient for a
-successful hand posture recognition system, and demonstrates a much improved cost to performance trade-off in its approach.
-%Hand Gestures, Lee
-The motion trajectories of moving hands are detected by spatiotemporally correlating the stereoscopically verged asynchronous events from the DVSs by using leaky integrate-and-fire (LIF) neurons. Adaptive thresholds of the LIF neurons achieve the segmentation of trajectories, which are then translated into discrete and finite feature vectors. The feature vectors are classified with hidden Markov models, using a separate Gaussian mixture model for spotting irrelevant transition gestures. The disparity information from stereovision is used to adapt LIF neuron parameters to achieve recognition invariant of the distance of the user to the sensor, and also helps to filter out movements in the background of the user. Exploiting the high dynamic range of DVSs, furthermore, allows gesture recognition over a 60-dB range of scene illuminance. The system achieves recognition rates well over 90\% under a variety of variable conditions with static and dynamic backgrounds with naïve users.
-%MNSIT Emre Neftci
-%The recurrent activity of the network replaces the discrete steps of the CD algorithm, while Spike Time Dependent Plasticity (STDP) carries out the weight updates in an online, asynchronous fashion. We demonstrate our approach by training an RBM composed of leaky I&F neurons with STDP synapses to learn a generative model of the MNIST hand-written digit dataset, and by testing it in recognition, generation and cue integration tasks. Our results contribute to a machine learning-driven approach for synthesizing networks of spiking neurons capable of carrying out practical, high-level functionality.
-%MNIST Evangelos Stromatias
-In  this  context  we  in-
-troduce  a  realization  of  a  spike-based  variation  of  previously
-trained  DBNs  on  the  biologically-inspired  parallel  SpiNNaker
-platform. The DBN on SpiNNaker runs in real-time and achieves
-a classification performance of 95% on the MNIST handwritten
-digit  dataset,  which  is  only  0.06%  less  than  that  of  a  pure
-software implementation. Importantly, using a neurally-inspired
-architecture yields additional benefits: during network run-time
-on this task, the platform consumes only 0.3 W with classification
-latencies in the order of tens of milliseconds, making it suitable
-for  implementing  such  networks  on  a  mobile  platform.  The
-results in this paper also show how the power dissipation of the
-SpiNNaker platform and the classification latency of a network
-scales with the number of neurons and layers in the network and
-the overall spike activity rate.
-
-
-Few of these algorithms reported results on images from a common database; fewer met the desirable goal of being evaluated against a standard testing protocol that includes separate training and testing sets.
-As a consequence, there was no way to make a quantitative assessment of the algorithms' relative strengths and weaknesses.
-Unfortunately, this is not an isolated case, but an endemic problem in computer vision research.
+%The interest has been fuelled by potential applications and by the simultaneous development of algorithmic techniques and inexpensive computers with the computational power to run these algorithms.
+%These developments yielded a large number of papers on SNNs based recognition, with a majority reporting outstanding recognition results (usually $>$ 95\% correct recognition) on limited-size databases (usually $<$ 50 individuals).
+%%Reported results:
+%%Hand Gestures, Qian Liu
+%Inspired by the behaviours of the primary visual cortex, Convolutional Neural Networks (CNNs) are modelled using
+%both linear perceptrons and spiking Leaky Integrate-and-Fire (LIF) neurons. In this study's largest configuration using these
+%approaches, a network of 74,210 neurons and 15,216,512 synapses is created and operated in real-time using 290 SpiNNaker
+%processor cores in parallel and with 93.0% accuracy. A smaller network using only 1/10th of the resources is also created,
+%again operating in real-time, and it is able to recognize the postures with an accuracy of around 86.4% - only 6.6% lower than
+%the much larger system. The recognition rate of the smaller network developed on this neuromorphic system is sufficient for a
+%successful hand posture recognition system, and demonstrates a much improved cost to performance trade-off in its approach.
+%%Hand Gestures, Lee
+%The motion trajectories of moving hands are detected by spatiotemporally correlating the stereoscopically verged asynchronous events from the DVSs by using leaky integrate-and-fire (LIF) neurons. Adaptive thresholds of the LIF neurons achieve the segmentation of trajectories, which are then translated into discrete and finite feature vectors. The feature vectors are classified with hidden Markov models, using a separate Gaussian mixture model for spotting irrelevant transition gestures. The disparity information from stereovision is used to adapt LIF neuron parameters to achieve recognition invariant of the distance of the user to the sensor, and also helps to filter out movements in the background of the user. Exploiting the high dynamic range of DVSs, furthermore, allows gesture recognition over a 60-dB range of scene illuminance. The system achieves recognition rates well over 90\% under a variety of variable conditions with static and dynamic backgrounds with naïve users.
+%%MNSIT Emre Neftci
+%%The recurrent activity of the network replaces the discrete steps of the CD algorithm, while Spike Time Dependent Plasticity (STDP) carries out the weight updates in an online, asynchronous fashion. We demonstrate our approach by training an RBM composed of leaky I&F neurons with STDP synapses to learn a generative model of the MNIST hand-written digit dataset, and by testing it in recognition, generation and cue integration tasks. Our results contribute to a machine learning-driven approach for synthesizing networks of spiking neurons capable of carrying out practical, high-level functionality.
+%%MNIST Evangelos Stromatias
+%In  this  context  we  in-
+%troduce  a  realization  of  a  spike-based  variation  of  previously
+%trained  DBNs  on  the  biologically-inspired  parallel  SpiNNaker
+%platform. The DBN on SpiNNaker runs in real-time and achieves
+%a classification performance of 95% on the MNIST handwritten
+%digit  dataset,  which  is  only  0.06%  less  than  that  of  a  pure
+%software implementation. Importantly, using a neurally-inspired
+%architecture yields additional benefits: during network run-time
+%on this task, the platform consumes only 0.3 W with classification
+%latencies in the order of tens of milliseconds, making it suitable
+%for  implementing  such  networks  on  a  mobile  platform.  The
+%results in this paper also show how the power dissipation of the
+%SpiNNaker platform and the classification latency of a network
+%scales with the number of neurons and layers in the network and
+%the overall spike activity rate.
+%
+%
+%Few of these algorithms reported results on images from a common database; fewer met the desirable goal of being evaluated against a standard testing protocol that includes separate training and testing sets.
+%As a consequence, there was no way to make a quantitative assessment of the algorithms' relative strengths and weaknesses.
+%Unfortunately, this is not an isolated case, but an endemic problem in computer vision research.
 
 
 
 \subsection{The Proposal: Advantages}
-In this paper we present a comprehensive method of eval-
-uating face-recognition
-algorithms, developed as part of the
-Face Recognition Technology (FERET) program [ 10,111.
-The FERET evaluation methodology consists of an inte-
-grated data collection effort and testing program. These
-two parts are integrated through the FERET database of
-facial images; the database is divided into a development
-portion, which is provided to researchers, and a sequestered
-portion for testing. The partition of the database enables
-algorithms to be trained and tested on different, but related,
-sets of images. The FERET evaluation procedure is a set of
-standard testing protocols: the FERET tests are indepen-
-dently administered
-and each test is completed within
-three days. The use of a standard testing protocol allows
-for the direct comparison of algorithms developed by dif-
-ferent groups, as well as for measuring improvements made
-by any single group over time.
-
-First of all, an initial dataset of input stimuli based on standard computer vision benchmarks consisting of %facial images (FERET database) and 
-digits (MNIST database) is presented according to the current research on spike-based image recognition.
-Within this dataset, all images are centre aligned and with similar scale.
-We describe how we intend to expand this dataset to fulfil the needs of upcoming research problems.
-For instance, the data should provide cases to measure position-, scale-, and viewing-angle invariance.
-The data will be in Address-Event Representation (AER) format which is well-applied in neuromorphic engineering field unlike conventional images.
-These spike trains are produced by various techniques: rate-based Poisson spike generation, rank order encoding and recorded output from a silicon retina with both flashing and oscillating input stimuli.
-An evaluation methodology is also presented which describes how to consistently assess the accuracy, speed, efficiency and cost of an algorithm working with the dataset.
-Finally, we provide a baseline for comparison based on a proposed SNN's performance on the dataset.
-The network is trained on-line using the Spike Timing Dependent Plasticity (STDP) learning rule on a massive-parallel neuromorphic simulator, e.g. SpiNNaker.
+%In this paper we present a comprehensive method of eval-
+%uating face-recognition
+%algorithms, developed as part of the
+%Face Recognition Technology (FERET) program [ 10,111.
+%The FERET evaluation methodology consists of an inte-
+%grated data collection effort and testing program. These
+%two parts are integrated through the FERET database of
+%facial images; the database is divided into a development
+%portion, which is provided to researchers, and a sequestered
+%portion for testing. The partition of the database enables
+%algorithms to be trained and tested on different, but related,
+%sets of images. The FERET evaluation procedure is a set of
+%standard testing protocols: the FERET tests are indepen-
+%dently administered
+%and each test is completed within
+%three days. The use of a standard testing protocol allows
+%for the direct comparison of algorithms developed by dif-
+%ferent groups, as well as for measuring improvements made
+%by any single group over time.
+%
+%First of all, an initial dataset of input stimuli based on standard computer vision benchmarks consisting of %facial images (FERET database) and 
+%digits (MNIST database) is presented according to the current research on spike-based image recognition.
+%Within this dataset, all images are centre aligned and with similar scale.
+%We describe how we intend to expand this dataset to fulfil the needs of upcoming research problems.
+%For instance, the data should provide cases to measure position-, scale-, and viewing-angle invariance.
+%The data will be in Address-Event Representation (AER) format which is well-applied in neuromorphic engineering field unlike conventional images.
+%These spike trains are produced by various techniques: rate-based Poisson spike generation, rank order encoding and recorded output from a silicon retina with both flashing and oscillating input stimuli.
+%An evaluation methodology is also presented which describes how to consistently assess the accuracy, speed, efficiency and cost of an algorithm working with the dataset.
+%Finally, we provide a baseline for comparison based on a proposed SNN's performance on the dataset.
+%The network is trained on-line using the Spike Timing Dependent Plasticity (STDP) learning rule on a massive-parallel neuromorphic simulator, e.g. SpiNNaker.
