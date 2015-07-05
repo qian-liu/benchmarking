@@ -1,84 +1,50 @@
 \section{Related Work}
 \label{sec:Related}
-\subsection{Vision Literature: Related Work}
-\subsubsection{MNIST~[\cite{lecun_gradient-based_1998}]}
-The MNIST database was constructed from NIST's Special Database 3 and Special Database 1 which contain binary images of handwritten digits. NIST originally designated SD-3 as their training set and SD-1 as their test set. However, SD-3 is much cleaner and easier to recognize than SD-1. The reason for this can be found on the fact that SD-3 was collected among Census Bureau employees, while SD-1 was collected among high-school students. Drawing sensible conclusions from learning experiments requires that the result be independent of the choice of training set and test among the complete set of samples. Therefore it was necessary to build a new database by mixing NIST's datasets.
+In computer vision, there are a few datasets playing import roles in different time and aiming at various targets.
+\subsection{MNIST~[\cite{lecun_gradient-based_1998}]}
+The MNIST is a subset of NIST hand written digits dataset. 
+Both of the training and testing sets are selected half from SD-3 and the other half from SD-1. 
+The training set contains 60,000 patterns collected from approximately 250 writers.
+And the testing set is composed of 10,000 patterns written by disjoint individuals.
+All the digits in the dataset are of similar scale centring in a 28$ \times $28 image.
+Due to its straightforward target of classifying real-world images, the plain format of binary data and 
+the simple patterns, MNIST is one of the most popular datasets in computer vision over 20 years.
 
-The MNIST training set is composed of 30,000 patterns from SD-3 and 30,000 patterns from SD-1. Our test set was composed of 5,000 patterns from SD-3 and 5,000 patterns from SD-1. The 60,000 pattern training set contained examples from approximately 250 writers. We made sure that the sets of writers of the training set and test set were disjoint.
+Many methods have been verified on this dataset: K-means, SVM, ConvNets and etc.
+The descending recognition error rate makes it nearly a solved problem, however some modifications, such as position shifts, scaling and noise, bring new challenges.
+Certainly, a spiking version of the dataset will be an interesting artificial distortion and draw attention to new methods and algorithms on the challenge. 
 
-SD-1 contains 58,527 digit images written by 500 different writers. In contrast to SD-3, where blocks of data from each writer appeared in sequence, the data in SD-1 is scrambled. Writer identities for SD-1 is available and we used this information to unscramble the writers. We then split SD-1 in two: characters written by the first 250 writers went into our new training set. The remaining 250 writers were placed in our test set. Thus we had two sets with nearly 30,000 examples each. The new training set was completed with enough examples from SD-3, starting at pattern 0, to make a full set of 60,000 training patterns. Similarly, the new test set was completed with SD-3 examples starting at pattern 35,000 to make a full set with 60,000 test patterns. Only a subset of 10,000 test images (5,000 from SD-1 and 5,000 from SD-3) is available on this site. The full 60,000 sample training set is available.
+\subsection{ImageNet~[\cite{deng_imagenet:_2009}]}
+Since the new era of the 4th generation ANN, Deep Neural Network, a flow of successful applications have been reported.
+Meanwhile, training the deeper network triggers a huge demand for more data.
+This is the purpose of putting forward ImageNet to provide researchers a large-scale image database.
+Currently there are 14,197,122 images and 21841 synsets indexed in the dataset.
+Synsets are meaningful concepts described with a few words or phrases, and they are organised in hierarchy in WordNet.
+The final goal of ImageNet is to provide about 1000 images per synset in the total of 100,000 of them.
+In another word, there will be tens of millions images tidily structured, accurately labelled and human annotated.
+The dataset is a well-recognised benchmark test for the deep learning community, and many attempts have been made to improve the performance, for example~\cite{krizhevsky2012imagenet}.
 
-Many methods have been tested with this training set and test set. Here are a few examples. Details about the methods are given in an upcoming paper. Some of those experiments used a version of the database where the input images where deskewed (by computing the principal axis of the shape that is closest to the vertical, and shifting the lines so as to make it vertical). In some other experiments, the training set was augmented with artificially distorted versions of the original training samples. The distortions are random combinations of shifts, scaling, skewing, and compression. 
+\subsection{Microsoft COCO~[\cite{lin_microsoft_2014}]}
+As a good example of database catching up with state-of-the-art technologies, Microsoft COCO aims to solve three problems in scene understanding by providing a large-scale datasets.
+First is to categorise objects in their non-iconic views, such as being small, ambiguous or partially occluded.
+Secondly, understanding the context (contextual reasoning) of multiple objects in an image is necessary.
+At last, spatial labelling the objects is a core analysis in scene understanding.
+Up to date, the dataset contains 300,000+ images, 2 Million instances and 5 captions per image.
 
-\subsubsection{ImageNet~[\cite{deng_imagenet:_2009}]}
- What is ImageNet?
-ImageNet is an image dataset organized according to the WordNet hierarchy. Each meaningful concept in WordNet, possibly described by multiple words or word phrases, is called a "synonym set" or "synset". There are more than 100,000 synsets in WordNet, majority of them are nouns (80,000+). In ImageNet, we aim to provide on average 1000 images to illustrate each synset. Images of each concept are quality-controlled and human-annotated. In its completion, we hope ImageNet will offer tens of millions of cleanly sorted images for most of the concepts in the WordNet hierarchy.
-Why ImageNet?
-The ImageNet project is inspired by a growing sentiment in the image and vision research field – the need for more data. Ever since the birth of the digital era and the availability of web-scale data exchanges, researchers in these fields have been working hard to design more and more sophisticated algorithms to index, retrieve, organize and annotate multimedia data. But good research needs good resource. To tackle these problem in large-scale (think of your growing personal collection of digital images, or videos, or a commercial web search engine’s database), it would be tremendously helpful to researchers if there exists a large-scale image database. This is the motivation for us to put together ImageNet. We hope it will become a useful resource to our research community, as well as anyone whose research and education would benefit from using a large image database. 
-%Current http://www.image-net.org/
-Currently there are 14,197,122 images, 21841 synsets indexed in the dataset. 
-\subsubsection{Microsoft COCO~[\cite{lin_microsoft_2014}]}
-We introduce a new large-scale dataset that addresses
-three core research problems in scene understanding: de-
-tecting non-iconic views (or non-canonical perspectives
-[12]) of objects, contextual reasoning between objects
-and the precise 2D localization of objects. For many
-categories of objects, there exists an iconic view. For
-example, when performing a web-based image search
-for the object category “bike,” the top-ranked retrieved
-examples appear in profile, unobstructed near the cen-
-ter of a neatly composed photo. We posit that current
-recognition systems perform fairly well on iconic views,
-but struggle to recognize objects otherwise – in th
-background, partially occluded, amid clutter [13] – re-
-flecting the composition of actual everyday scenes. We
-verify this experimentally; when evaluated on everyday
-scenes, models trained on our data perform better than
-those trained with prior datasets. A challenge is finding
-natural images that contain multiple objects. The identity
-of many objects can only be resolved using context, due
-to small size or ambiguous appearance in the image. To
-push research in contextual reasoning, images depicting
-scenes [3] rather than objects in isolation are necessary.
-Finally, we argue that detailed spatial understanding of
-object layout will be a core component of scene analysis.
-An object’s spatial location can be defined coarsely using
-a bounding box [2] or with a precise pixel-level segmen-
-tation [14], [15], [16]. As we demonstrate, to measure
-either kind of localization performance it is essential
-for the dataset to have every instance of every object2
-category labeled and fully segmented. Our dataset is
-unique in its annotation of instance-level segmentation
-masks.
-\subsubsection{YouTube Action Dataset~[\cite{liu_recognizing_2009}]}
-In this paper, we present a systematic framework for recognizing realistic actions from videos “in the wild”. Such unconstrained videos are abundant in personal collections as well as on the Web. Recognizing action from such videos has not been addressed extensively, primarily due to the tremendous variations that result from camera motion, background clutter, changes in object appearance, and scale, etc. The main challenge is how to extract reliable and informative features from the unconstrained videos. We extract both motion and static features from the videos. Since the raw features of both types are dense yet noisy, we propose strategies to prune these features. We use motion statistics to acquire stable motion features and clean static features. Furthermore, PageRank is used to mine the most informative static features. In order to further construct compact yet discriminative visual vocabularies, a divisive information-theoretic algorithm is employed to group semantically related features. Finally, AdaBoost is chosen to integrate all the heterogeneous yet complementary features for recognition. We have tested the framework on the KTH dataset and our own dataset consisting of 11 categories of actions collected from YouTube and personal videos, and have obtained impressive results for action recognition and action localization.
+\subsection{Action Dataset}
+Similar example could be found in video datasets.
+Two early benchmarks, the KTH ~\cite{schuldt2004recognizing} and Weizmann~\cite{blank2005actions}, have been tested on extensively in the past decade. 
+These videos were produced with scripted behaviours under controlled environment ("in the lab") .
+And the single atomic actions were simple and neat: walking, running, sitting and etc.
 
-Two early benchmarks are the KTH [32] and Weiz-
-mann [1] sets, both used extensively over the years. These
-sets provide low resolution videos of a few, “atomic” action
-categories, such as walking, jogging, and running. These
-videos were produced “in the lab”, and present actors that
-perform scripted behavior. The videos they provide were
-acquired under controlled conditions, with static cameras
-and static, un-clutered backgrounds. In addition, actors ap-
-pear without occlusions, thus allowing action recognition to
-be performed by considering silhouettes alone [1].
-
-In an effort to increase the diversity of appearances and
-viewing conditions, benchmark designers have turned to
-TV, sports broadcasts and motion pictures as sources for
-challenging videos of human actions. These benchmarks
-no longer represent controlled conditions; viewpoints, illu-
-minations, occlusions are all arbitrary, thereby significantly
-raising the bar for action recognition systems.
-One early example is the UIUC2 benchmark [36], which
-provided unconstrained sports videos of badminton matches
-downloaded from YouTube. To our knowledge, this is the
-first benchmark to provide such unconstrained data. An-
-other early, popular example is the UCF-Sports bench-
-mark [28] with its 200 videos of nine different sports events,
-collected from TV broadcasts. Sports videos were also con-
-sidered in the Olympic-Games benchmark of [23].
+Taking the advantages of continuous spiking trains instead of frames of videos, spiking version of such action datasets will be provided in our future work.
+A DVS simulation may be needed to convert frames of images into spikes.
+ 
+YouTube Action Dataset~\cite{liu_recognizing_2009} targets of recognising realistic actions from videos “in the wild”.
+Thanks to the digit era, unconstrained videos are abundant on the Internet, e.g. YouTube.
+This YouTube Action dataset is composed of 1,168 videos of 11 categories.
+The main challenge relies on the massive variations due to the moving camera, background clutter, viewing angles, illuminations and so on.
+It also aims to detect complex action (non-atomic), e.g. long jump, which is consisted with several continuous atomic actions.
 
 %\subsection{Current Status}
 %what are the problems the current database aim for.
