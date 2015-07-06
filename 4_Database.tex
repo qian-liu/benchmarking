@@ -1,9 +1,9 @@
-\section{The Database: MNIST-NM15}
+\section{The Dataset: NE15-MNIST}
 \label{sec:data}
 %Experiment setup/ collection method/ properties of each class/ etc.
+The name of the first proposed dataset in the benchmarking system is NE15-MNIST which stands for Neuromorphic Engineering 2015 on MNIST.
 The original MNIST dataset is downloaded from the website\footnote{http://yann.lecun.com/exdb/mnist/} of THE MNIST DATABASE of handwritten digits~\cite{lecun_gradient-based_1998}.
-The name of the proposed dataset is MNIST-NM15 which stands for MNIST Neuromorphic 2015.
-It consists of four subsets which were generated for different purposes.
+The NE15-MNIST is converted spiking version of the original dataset consisting of four subsets which were generated for different purposes.
 \subsection{File~Formats}
 
 Two file formats are supported in the dataset: jAER format~\cite{delbruck2008frame} (.dat or .aedat), and binary file in NumPy .npy format.
@@ -14,14 +14,43 @@ Fig~\ref{Fig:jaer} is a snapshot of the software displaying an .aedat file which
 The resolution of the DVS recorded data is 128$\times$128, while the original MNIST data is of 28$\times$28.
 The other format of spikes is used as a list of spike source arrays in PyNN~\cite{davison2008pynn}, a description language for building spiking neuronal network models.
 Python code of converting the file format to and from the other is also provided.
-\begin{figure}[hbt!]
-	\centering
-	\includegraphics[width=0.2\textwidth]{images/dvs-128.pdf}
-	\caption{A snapshot of jAER playing a DVS recorded digit '0'.}
-	\label{Fig:jaer}
-\end{figure}  
-
-
+%\begin{figure}[hbt!]
+%	\centering
+%	\includegraphics[width=0.2\textwidth]{images/dvs-128.pdf}
+%	\caption{A snapshot of jAER playing a DVS recorded digit '0'.}
+%	\label{Fig:jaer}
+%\end{figure}  
+%	\begin{figure}[hbt!]
+%		\centering
+%		\includegraphics[width=0.2\textwidth]{images/zero-28.pdf}
+%		\caption{A snapshot of jAER playing Poissonian spike trains of the same digit~'0' shown in Fig~\ref{Fig:jaer}.}
+%		\label{Fig:poisson}
+%	\end{figure}  
+%	
+%	\begin{figure}[hbt!]
+%		\centering
+%		\includegraphics[width=0.48\textwidth]{images/zero.pdf}
+%		\caption{The raster plot of the Poissonian spike trains of the same digit~'0' shown in Fig~\ref{Fig:jaer}.}
+%		\label{Fig:raster}
+%	\end{figure}  
+\begin{figure}[hbt]
+  \centering
+  \subfloat[A snapshot of jAER playing the DVS recorded spikes.]{
+    \label{Fig:jaer}
+    \includegraphics[width=0.22\textwidth]{images/dvs-128.pdf}
+  }
+  \subfloat[A snapshot of jAER playing Poissonian spike trains.]{
+    \label{Fig:poisson}
+    \includegraphics[width=0.22\textwidth]{images/zero-28-2.pdf}
+  }\\
+  \subfloat[The raster plot of the Poissonian spike trains.]{
+    \label{Fig:raster}
+    \includegraphics[width=0.48\textwidth]{images/zero.pdf}
+  }
+  
+  \caption{Snapshots and raster plot of both the DVS recorded spikes and the Poissonian spike trains.}
+  \label{fig:zero}
+\end{figure}
 
 \subsection{Data Description}	
 	\subsubsection{Poissonian}
@@ -40,19 +69,19 @@ Python code of converting the file format to and from the other is also provided
 	The same digit displayed in Fig~\ref{Fig:jaer} is converted to Poissonian spike trains, see Fig~\ref{Fig:poisson}.
 	The raster plot can be found in Fig~\ref{Fig:raster}, indicating the intensities of the pixels.
 	
-	\begin{figure}[hbt!]
-		\centering
-		\includegraphics[width=0.2\textwidth]{images/zero-28.pdf}
-		\caption{A snapshot of jAER playing Poissonian spike trains of the same digit~'0' shown in Fig~\ref{Fig:jaer}.}
-		\label{Fig:poisson}
-	\end{figure}  
-	
-	\begin{figure}[hbt!]
-		\centering
-		\includegraphics[width=0.48\textwidth]{images/zero.pdf}
-		\caption{The raster plot of the Poissonian spike trains of the same digit~'0' shown in Fig~\ref{Fig:jaer}.}
-		\label{Fig:raster}
-	\end{figure}  
+%	\begin{figure}[hbt!]
+%		\centering
+%		\includegraphics[width=0.2\textwidth]{images/zero-28.pdf}
+%		\caption{A snapshot of jAER playing Poissonian spike trains of the same digit~'0' shown in Fig~\ref{Fig:jaer}.}
+%		\label{Fig:poisson}
+%	\end{figure}  
+%	
+%	\begin{figure}[hbt!]
+%		\centering
+%		\includegraphics[width=0.48\textwidth]{images/zero.pdf}
+%		\caption{The raster plot of the Poissonian spike trains of the same digit~'0' shown in Fig~\ref{Fig:jaer}.}
+%		\label{Fig:raster}
+%	\end{figure}  
 	
 	\subsubsection{Rank-Order-Encoding}
   \input{4-2-2_Rank-ordered_encoding}
