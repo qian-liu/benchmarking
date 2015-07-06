@@ -14,25 +14,7 @@ Fig~\ref{Fig:jaer} is a snapshot of the software displaying an .aedat file which
 The resolution of the DVS recorded data is 128$\times$128, while the original MNIST data is of 28$\times$28.
 The other format of spikes is used as a list of spike source arrays in PyNN~\cite{davison2008pynn}, a description language for building spiking neuronal network models.
 Python code of converting the file format to and from the other is also provided.
-%\begin{figure}[hbt!]
-%	\centering
-%	\includegraphics[width=0.2\textwidth]{images/dvs-128.pdf}
-%	\caption{A snapshot of jAER playing a DVS recorded digit '0'.}
-%	\label{Fig:jaer}
-%\end{figure}  
-%	\begin{figure}[hbt!]
-%		\centering
-%		\includegraphics[width=0.2\textwidth]{images/zero-28.pdf}
-%		\caption{A snapshot of jAER playing Poissonian spike trains of the same digit~'0' shown in Fig~\ref{Fig:jaer}.}
-%		\label{Fig:poisson}
-%	\end{figure}  
-%	
-%	\begin{figure}[hbt!]
-%		\centering
-%		\includegraphics[width=0.48\textwidth]{images/zero.pdf}
-%		\caption{The raster plot of the Poissonian spike trains of the same digit~'0' shown in Fig~\ref{Fig:jaer}.}
-%		\label{Fig:raster}
-%	\end{figure}  
+
 \begin{figure}[hbt]
   \centering
   \subfloat[A snapshot of jAER playing the DVS recorded spikes.]{
@@ -68,20 +50,7 @@ Python code of converting the file format to and from the other is also provided
 	Thus, it is easy to visualise the digits and also to build spiking neural networks.
 	The same digit displayed in Fig~\ref{Fig:jaer} is converted to Poissonian spike trains, see Fig~\ref{Fig:poisson}.
 	The raster plot can be found in Fig~\ref{Fig:raster}, indicating the intensities of the pixels.
-	
-%	\begin{figure}[hbt!]
-%		\centering
-%		\includegraphics[width=0.2\textwidth]{images/zero-28.pdf}
-%		\caption{A snapshot of jAER playing Poissonian spike trains of the same digit~'0' shown in Fig~\ref{Fig:jaer}.}
-%		\label{Fig:poisson}
-%	\end{figure}  
-%	
-%	\begin{figure}[hbt!]
-%		\centering
-%		\includegraphics[width=0.48\textwidth]{images/zero.pdf}
-%		\caption{The raster plot of the Poissonian spike trains of the same digit~'0' shown in Fig~\ref{Fig:jaer}.}
-%		\label{Fig:raster}
-%	\end{figure}  
+
 	
 	\subsubsection{Rank-Order-Encoding}
   \input{4-2-2_Rank-ordered_encoding}
