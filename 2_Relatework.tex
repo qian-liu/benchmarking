@@ -1,0 +1,110 @@
+\section{Related Work}
+\label{sec:Related}
+In computer vision, there are a few datasets playing import roles in different time and aiming at various targets.
+\subsection{MNIST~[\cite{lecun_gradient-based_1998}]}
+The MNIST is a subset of NIST hand written digits dataset. 
+Both of the training and testing sets are selected half from SD-3 and the other half from SD-1. 
+The training set contains 60,000 patterns collected from approximately 250 writers.
+And the testing set is composed of 10,000 patterns written by disjoint individuals.
+All the digits in the dataset are of similar scale centring in a 28$ \times $28 image.
+Due to its straightforward target of classifying real-world images, the plain format of binary data and 
+the simple patterns, MNIST is one of the most popular datasets in computer vision over 20 years.
+
+Many methods have been verified on this dataset: K-means, SVM, ConvNets and etc.
+The descending recognition error rate makes it nearly a solved problem, however some modifications, such as position shifts, scaling and noise, bring new challenges.
+Certainly, a spiking version of the dataset will be an interesting artificial distortion and draw attention to new methods and algorithms on the challenge. 
+
+\subsection{ImageNet~[\cite{deng_imagenet:_2009}]}
+Since the new era of the 4th generation ANN, Deep Neural Network, a flow of successful applications have been reported.
+Meanwhile, training the deeper network triggers a huge demand for more data.
+This is the purpose of putting forward ImageNet to provide researchers a large-scale image database.
+Currently there are 14,197,122 images and 21841 synsets indexed in the dataset.
+Synsets are meaningful concepts described with a few words or phrases, and they are organised in hierarchy in WordNet.
+The final goal of ImageNet is to provide about 1000 images per synset in the total of 100,000 of them.
+In another word, there will be tens of millions images tidily structured, accurately labelled and human annotated.
+The dataset is a well-recognised benchmark test for the deep learning community, and many attempts have been made to improve the performance, for example~\cite{krizhevsky2012imagenet}.
+
+\subsection{Microsoft COCO~[\cite{lin_microsoft_2014}]}
+As a good example of database catching up with state-of-the-art technologies, Microsoft COCO aims to solve three problems in scene understanding by providing a large-scale datasets.
+First is to categorise objects in their non-iconic views, such as being small, ambiguous or partially occluded.
+Secondly, understanding the context (contextual reasoning) of multiple objects in an image is necessary.
+At last, spatial labelling the objects is a core analysis in scene understanding.
+Up to date, the dataset contains 300,000+ images, 2 Million instances and 5 captions per image.
+
+\subsection{Action Datasets}
+Similar examples could be found in video datasets.
+Two early benchmarks, the KTH ~\cite{schuldt2004recognizing} and Weizmann~\cite{blank2005actions}, have been tested on extensively in the past decade. 
+These videos were produced with scripted behaviours under controlled environment (``in the lab'') .
+And the single atomic actions were simple and neat: walking, running, sitting and etc.
+
+Taking the advantages of continuous spiking trains instead of frames of videos, spiking version of such action datasets will be provided in our future work.
+A DVS simulation may be needed to convert frames of images into spikes.
+ 
+YouTube Action Dataset~\cite{liu_recognizing_2009} targets of recognising realistic actions from videos ``in the wild''.
+Thanks to the digit era, unconstrained videos are abundant on the Internet, e.g. YouTube.
+This YouTube Action dataset is composed of 1,168 videos of 11 categories.
+The main challenge relies on the massive variations due to the moving camera, background clutter, viewing angles, illuminations and so on.
+It also aims to detect complex action (non-atomic), e.g. long jump, which is consisted with several continuous atomic actions.
+
+%\subsection{Current Status}
+%\subsubsection{Converting from MPL to SNN}
+%It remains a challenge to transform traditional artificial neural networks into spiking ones.
+%There are attempts~\cite{la2008response}~\cite{burkitt2006review} to estimate the output firing rate of the LIF neurons (Equation~\ref{equ:lif}) under certain conditions. 
+%%For the model illustrated above, there are two types of synaptic connection: one-to-one connections in the retina layer and N-to-one connections in all the convolutional layers (the pooling layer is also included). 
+%%For the retina layer, 1) the problem is: what is the connection weight between two single LIF neurons to make a post-synaptic neuron fire whenever the pre-synaptic neuron generates a spike? 
+%%While for the convolutional neurons, 2) given the input spike rates, LIF neuron parameters and the output spiking rate, what are the corresponding weights between the two layers?
+%\begin{equation}
+%\frac{\D \: V(t)}{\D\:  t}=-\frac{V(t)-V_\mathit{rest}}{\tau_m}+\frac{I(t)}{C_m}
+%\label{equ:lif}
+%\end{equation}
+%The membrane potential $V$ changes in response to input current $I$, starting at the resting membrane potential  $V_{rest}$, where the membrane time constant is $\tau_m = R_mC_m$, $R_m$ is the membrane resistance and $C_m$ is the membrane capacitance.
+%
+%Given a constant current injection $I$, the response function, i.e. firing rate, of the LIF neuron is
+%\begin{equation}
+%\lambda_\mathit{out}=
+%\left [ t_\mathit{ref}-\tau_m\ln \left ( 1-\frac{V_{th}-V_\mathit{rest}}{IR_m}  \right )\right ]^{-1}
+%\label{equ:consI}
+%\end{equation}
+%when $IR_m>V_{th}-V_{rest}$, otherwise the membrane potential cannot reach the threshold $V_{th}$ and the output firing rate is zero. 
+%The absolute refractory period $t_\mathit{ref}$ is included, where all input during this period is invalid.
+%In a more realistic scenario, the post-synaptic potentials (PSPs) are triggered by the spikes generated from the neuron's pre-synaptic neurons other than a constant current.
+%Assume that the synaptic inputs are Poisson spike trains, the membrane potential of the LIF neuron is considered as a diffusion process. Equation~\ref{equ:lif} can be modelled as a stochastic differential equation referring to Ornstein-Uhlenbeck process,
+%\begin{equation}
+%\tau_m\frac{\D\:V(t)}{\D\:  t}=-\left[V(t)-V_\mathit{rest}\right] + \mu + \sigma\sqrt{2\tau_m}\xi (t)
+%\label{equ:sde}
+%\end{equation}
+%where
+%\begin{equation}
+%\begin{array}{l}
+%\mu=\tau_m(\mathbf{w_E\cdot\lambda_E}-\mathbf{w_I\cdot\lambda_I})
+%\\
+%\\
+%\sigma ^{2} = \frac{\tau_m}{2}\left(\mathbf{w_E^{2}\cdot\lambda_E}+\mathbf{w_I^{2}\cdot\lambda_I}\right)
+%\end{array}
+%\label{equ:ou}
+%\end{equation}
+%are the conditional mean and variance of the membrane potential.
+%The delta-correlated process $\xi(t)$ is Gaussian white noise with zero mean, $\mathbf{w_E}$ and $\mathbf{w_I}$ stand for the weight vectors of the excitatory and the inhibitory synapses, and $\mathbf{\lambda}$ represents the vector of the input firing rate.
+%The response function of the LIF neuron with Poisson input spike trains is given by the Siegert function~\cite{siegert1951first}, 
+%%\begin{equation}
+%%%\lambda_\mathit{out}=\left(\tau_\mathit{ref} + \frac{\tau_Q}{\sigma_Q}\sqrt{\frac{\pi}{2}} \int_{V_\mathit{rest}}^{V_\mathit{th}}du \:\exp \left(\frac{u-\mu_Q}{\sqrt2\sigma_Q} \right )^{2}\left[1+erf \left(\frac{u-\mu_Q}{\sqrt2\sigma_Q} \right ) \right ]\right)^{-1}
+%%\begin{split}
+%%\lambda_\mathit{out}=\left(\tau_\mathit{ref} + \frac{\tau_Q}{\sigma_Q}\sqrt{\frac{\pi}{2}} \int_{V_\mathit{rest}}^{V_\mathit{th}}\D u \:\exp \left(\frac{u-\mu_Q}{\sqrt2\sigma_Q} \right )^{2}\left[1+\mathrm{erf} \left(\frac{u-\mu_Q}{\sqrt2\sigma_Q} \right ) \right ]\right)^{-1}
+%%\end{split}
+%%\label{equ:sgt}
+%%\end{equation}
+%\begin{align}
+%\lambda_\mathit{out} &=\left(\tau_\mathit{ref} + \frac{\tau_Q}{\sigma_Q}\sqrt{\frac{\pi}{2}} \int_{V_\mathit{rest}}^{V_\mathit{th}}\D\,u \:\exp \left(\frac{u-\mu_Q}{\sqrt2\sigma_Q} \right )^{2} \right. \nonumber \\
+%&\qquad \left. \vphantom{\int_t} \cdot  \left[1+\mathrm{erf} \left(\frac{u-\mu_Q}{\sqrt2\sigma_Q} \right ) \right ]\right)^{-1}
+%\label{equ:sgt}
+%\end{align}
+%where $\tau_Q, \mu_Q, \sigma_Q$ are identical to $\tau_m, \mu, \sigma$ in Equation~\ref{equ:ou}, and erf is the error function.
+%
+%Still there are some limitations on the response function. 
+%For the diffusion process, only small amplitude (weight) of the PostSynaptic Potentials (PSPs) generated by a large amount of input spikes (high spiking rate) work under this circumstance; 
+%plus, the delta function is required, i.e. the synaptic time constant is considered to be zero. Thus only a rough approximation of the output spike rate has been determined.
+%Secondly, given different input spike rate to each pre-synaptic neurons, the parameters of the LIF neuron and the output spiking rate, how to tune every single corresponding synaptic weight remains a difficult task.
+%
+%\subsubsection{Rank-Order-Coding}
+%
+%\subsubsection{Liquid State Machine/Reservoir Encoding}
