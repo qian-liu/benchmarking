@@ -22,17 +22,22 @@ A number of different classes are expected, this quantity might give an insight 
 
 
 \subsection{Hardware-Specific}
-Specifying hardware is of utmost importance when comparing times
-Different platforms have special benefits
+In order to fairly compare algorithms, hardware specifications are of utmost importance, specially when comparing times. If we are working on robotics applications, power consumption is a critical aspect, it is desirable to report metrics on the subject.
+
+%for example, a server farm may be used for other multiple types of computing, though it might cost too much in terms of both money and energy. GPUs generally provide amazing parallel capabilities but at the cost of high power consumption. Neuromorphic hardware tends to be energy-efficient but, mainly, under development.
+
 GPU, neuromorphic, server farm
 
   \subsubsection{Training Time}
+    Sometimes it's easy to get confused by timing figures and what they mean. 
+    Simulation time vs. real time
     From fast experimentation to commercial products
     Impact on power consumption
   \subsubsection{Latency}
     Real-time applications
     Data analysis
   \subsubsection{Power Consumption}
+    Easier to experiment if not consuming a small city's power
     Performance per watt?
     Requirement for mobile platforms/robotics
     
