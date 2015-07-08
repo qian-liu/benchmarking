@@ -2,17 +2,17 @@
 \label{sec:data}
 %Experiment setup/ collection method/ properties of each class/ etc.
 The name of the first proposed dataset in the benchmarking system is NE15-MNIST which stands for Neuromorphic Engineering 2015 on MNIST.
-The original MNIST dataset is downloaded from the website\footnote{http://yann.lecun.com/exdb/mnist/} of THE MNIST DATABASE of handwritten digits~\cite{lecun_gradient-based_1998}.
+The original MNIST dataset is downloaded from the website\footnote{http://yann.lecun.com/exdb/mnist/} of THE MNIST DATABASE of handwritten digits~[\cite{lecun_gradient-based_1998}].
 The NE15-MNIST is converted spiking version of the original dataset consisting of four subsets which were generated for different purposes.
 \subsection{File~Formats}
 
-Two file formats are supported in the dataset: jAER format~\cite{delbruck2008frame} (.dat or .aedat), and binary file in NumPy .npy format.
+Two file formats are supported in the dataset: jAER format~[\cite{delbruck2008frame}] (.dat or .aedat), and binary file in NumPy .npy format.
 The  address event representation (AER) interface has been widely used in neuromorphic systems, especially for vision sensors.
 The spikes are encoded as time events with corresponding addresses to convey information.
 The spikes in jAER format both recorded from a DVS retina and artificially generated can be displayed in jAER software.
-Fig~\ref{Fig:jaer} is a snapshot of the software displaying an .aedat file which is recorded by a DVS retina~\cite{serrano-gotarredona_128_2013}.
+Fig~\ref{Fig:jaer} is a snapshot of the software displaying an .aedat file which is recorded by a DVS retina~[\cite{serrano-gotarredona_128_2013}].
 The resolution of the DVS recorded data is 128$\times$128, while the original MNIST data is of 28$\times$28.
-The other format of spikes is used as a list of spike source arrays in PyNN~\cite{davison2008pynn}, a description language for building spiking neuronal network models.
+The other format of spikes is used as a list of spike source arrays in PyNN~[\cite{davison2008pynn}], a description language for building spiking neuronal network models.
 Python code of converting the file format to and from the other is also provided.
 
 \begin{figure}[hbt]
@@ -37,7 +37,7 @@ Python code of converting the file format to and from the other is also provided
 \subsection{Data Description}	
 	\subsubsection{Poissonian}
 	
-	In the cortex, the timing of the spikes is highly irregular~\cite{squire1998findings}.
+	In the cortex, the timing of the spikes is highly irregular~[\cite{squire1998findings}].
 	It can be interpreted that the inter-spike interval reflects a random process driven by the instantaneous firing rate.
 	If the generation of each spike is assumed to be independent of all the other spikes, the spike train is seen as a Poisson process.
 	And the spiking rate can be estimated by averaging the pooled responses of the neurons.
@@ -58,7 +58,7 @@ Python code of converting the file format to and from the other is also provided
 	The purposes of including the subset of DVS recorded flashing digits are to (1) promote the application of Rank-Order-Coding to DVS output; and (2) accelerate the recognition by using just the beginning input with few spikes.
 	
 	Every digit and a blank image were shown alternately for five times and each display lasted one second.
-	The digits were displayed on a LCD monitor in front of the DVS retina~\cite{serrano-gotarredona_128_2013} and were placed in the centre of the visual field of the camera.
+	The digits were displayed on a LCD monitor in front of the DVS retina~[\cite{serrano-gotarredona_128_2013}] and were placed in the centre of the visual field of the camera.
 	And each recording was cut into 10 sub ones.
 	Since there are two polarities of the spikes: 'ON' indicates the increase of the intensity while 'OFF' reflects the opposite, there are five 'ON' and 'OFF' flashing recordings respectively per digit.
 	In Fig~\ref{fig:count}, the bursty of spikes is illustrated comparing to the Poissonian spike trains.
