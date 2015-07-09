@@ -1,6 +1,6 @@
 from scipy.signal import sepfir2d, convolve2d
 
-class Correlations():
+class Correlation():
   
   def __init__(self, full_kernels):
   ''' full_kernels is a dictionary that contains 2D DoG kernels for each

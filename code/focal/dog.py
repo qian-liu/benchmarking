@@ -1,9 +1,9 @@
-class DoG():
+class DifferenceOfGaussians():
   
   
   def __init__(self):
     self.max_num_kernels = 4
-    self.kernels, self. self.create_all_kernels()
+    self.kernels, self.full_kernels = self.create_all_kernels()
     self.midget_off, self.midget_on, self.parasol_off, self.parasol_on = range(4)
     self.idx_to_name = ["midget_off", "midget_on", "parasol_off", "parasol_on"]
 
