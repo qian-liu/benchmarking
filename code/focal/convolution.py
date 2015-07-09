@@ -3,6 +3,9 @@ from scipy.signal import sepfir2d
 
 class Convolution():
   
+  def __init__():
+    pass
+    
   def sep_convolution(self, img, horz_k, vert_k, col_keep=1, row_keep=1, mode="full"):
     ''' Separated convolution -
         img      => image to convolve
