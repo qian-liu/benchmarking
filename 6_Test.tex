@@ -1,11 +1,12 @@
-\section{A Test on the Database}
+\section{Case Studies}
 \label{sec:test}
-In this chapter, we present a digit recognition system on the Poissonian subset as an example use of the dataset.
+In this chapter, we present two recognition systems on the Poissonian subset as an example use of the dataset.
+\subsection{Case Study I}
 Both the training and testing exploited the Poinssonian presentation of the digits.
 The network was trained online with STDP learning rule.
 The performance of the model was evaluated with both software simulation (on NEST~[\cite{gewaltig2007nest}]) and hardware implementation (on SpiNNaker). 
 %\subsection{Description of the data used}
-\subsection{Training}
+\subsubsection{Training}
 There are two layers in the neural network model.
 And 28$\times$28 input neurons fully connected to 100 output neurons.
 Each output neuron represented a trained template of a digit.
@@ -57,7 +58,7 @@ v\_thresh & -50.0\\
 \end{tabular}
 \end{table}
 
-\subsection{Testing}
+\subsubsection{Testing}
 The weights were normalised after training and applied to the same network.
 And weak weights (=0) were set to inhibitory connections with an identical strength.
 %The output neurons inhibited all the other neurons as a winner take all circuit.
@@ -79,6 +80,6 @@ Fig~\ref{Fig:test}.
 	\caption{A raster plot of test of a digits sequence.}
 	\label{Fig:output}
 \end{figure} 
-\subsection{Evaluation}
+\subsubsection{Evaluation}
 
-	
+\subsection{[Evangelos Stromatias]Case Study II}

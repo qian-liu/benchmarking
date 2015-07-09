@@ -3,9 +3,20 @@
 %Experiment setup/ collection method/ properties of each class/ etc.
 The name of the first proposed dataset in the benchmarking system is NE15-MNIST which stands for Neuromorphic Engineering 2015 on MNIST.
 The original MNIST dataset is downloaded from the website\footnote{http://yann.lecun.com/exdb/mnist/} of THE MNIST DATABASE of handwritten digits~[\cite{lecun_gradient-based_1998}].
-The NE15-MNIST is converted spiking version of the original dataset consisting of four subsets which were generated for different purposes.
+The NE15-MNIST is converted spiking version of the original dataset consisting of four subsets which were generated for different purposes:
+\begin{itemize}
+	\item \textit{Poissonian}
+	to benchmarking existing methods of rate-based spiking models.
+	\item \textit{FoCol}
+	to promote the study on Rank-Order-Coding applied to recognition tasks.
+	\item \textit{DVS recorded flashing input}
+	to encourage the research on fast recognition methods which found in the primate visual pathway.
+	\item \textit{DVS recorded moving input}
+	to trigger the study of algorithms targeting on continuous input from real-world sensors and to implement them on mobile neuromorphic robots.
+\end{itemize}
+The dataset can be found in the web link: https://github.com/qian-liu/benchmarking.
 \subsection{File~Formats}
-
+	
 Two file formats are supported in the dataset: jAER format~[\cite{delbruck2008frame}] (.dat or .aedat), and binary file in NumPy .npy format.
 The  address event representation (AER) interface has been widely used in neuromorphic systems, especially for vision sensors.
 The spikes are encoded as time events with corresponding addresses to convey information.
