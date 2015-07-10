@@ -72,22 +72,23 @@ Python code of converting the file format to and from the other is also provided
 	The digits were displayed on a LCD monitor in front of the DVS retina~[\cite{serrano-gotarredona_128_2013}] and were placed in the centre of the visual field of the camera.
 	And each recording was cut into 10 sub ones.
 	Since there are two polarities of the spikes: 'ON' indicates the increase of the intensity while 'OFF' reflects the opposite, there are five 'ON' and 'OFF' flashing recordings respectively per digit.
-	In Fig~\ref{fig:count}, the bursty of spikes is illustrated comparing to the Poissonian spike trains.
+	In Fig~\ref{fig:flash}, the bursty of spikes is illustrated where most of the spikes occur in a 30~ms slot. 
 	In total, the subset of the database contains 10$\times$60000 recordings for training and 10$\times$10000 for testing.
+
 	\begin{figure}[b!]
 	  \centering
-	  \subfloat[Spike count of a Poissonian spike train]{
-	    \label{fig:poisson_count}
-	    \includegraphics[width=0.48\textwidth]{poisson_count.pdf}
+	  \subfloat[Spikes plotted in the sequence of appearing time during 1s of time.]{
+	    \label{fig:flash_a}
+	    \includegraphics[width=0.48\textwidth]{flash.png}
 	  }
 	  \\
-	  \subfloat[Spike count of a DVS recording of a flashing digit]{
-	  	\label{fig:flash_count}
-	  	\includegraphics[width=0.48\textwidth]{count.pdf}
+	  \subfloat[Bursty spikes appearing in a 30~ms slot.]{
+	  	\label{fig:flash_b}
+	  	\includegraphics[width=0.48\textwidth]{flash_30.png}
 	  }
 
-	  \caption{Comparison of spike counts between a Poissonian spike train and a DVS recording of a flashing digit.}
-	  \label{fig:count}
+	  \caption{The bursty of spikes is illustrated where most of the spikes occur in a 30~ms slot.}
+	  \label{fig:flash}
 	\end{figure}
 %	\subsubsection{DVS Sensor Output with Oscillating Input}
 	\subsubsection{DVS Sensor Output with Moving Input}
