@@ -66,7 +66,7 @@ Python code of converting the file format to and from the other is also provided
 	\subsubsection{Rank-Order-Encoding}
   \input{4-2-2_Rank-ordered_encoding}
 	\subsubsection{DVS Sensor Output with Flashing Input}
-	The purposes of including the subset of DVS recorded flashing digits are to (1) promote the application of Rank-Order-Coding to DVS output; and (2) accelerate the recognition by using just the beginning input with few spikes.
+	The purposes of including the subset of DVS recorded flashing digits are to (1) promote the application of Rank-Order-Coding to DVS output; and (2) accelerate the fast on-set recognition by using just the beginning part of spike trains within less than 30~ms.
 	
 	Every digit and a blank image were shown alternately for five times and each display lasted one second.
 	The digits were displayed on a LCD monitor in front of the DVS retina~[\cite{serrano-gotarredona_128_2013}] and were placed in the centre of the visual field of the camera.
@@ -74,6 +74,7 @@ Python code of converting the file format to and from the other is also provided
 	Since there are two polarities of the spikes: 'ON' indicates the increase of the intensity while 'OFF' reflects the opposite, there are five 'ON' and 'OFF' flashing recordings respectively per digit.
 	In Fig~\ref{fig:flash}, the bursty of spikes is illustrated where most of the spikes occur in a 30~ms slot. 
 	In total, the subset of the database contains 10$\times$60000 recordings for training and 10$\times$10000 for testing.
+	Due to the size limit of online repositories, only the third of every sequence flashes is published.
 
 	\begin{figure}[b!]
 	  \centering
