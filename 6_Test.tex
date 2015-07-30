@@ -1,7 +1,12 @@
 \section{Case Studies}
 \label{sec:test}
-In this chapter, we present two recognition systems on the Poissonian subset as an example use of the dataset.
+In this chapter, we present two recognition systems working on the Poissonian subset as examples of using the NE15-MNIST dataset.
+They provide possible concerns of creating benchmark tests, such as, using unified SNN description language, standard learning rules and neural models.
+Thus, in order to apply the same benchmarking system on various simulators both software and hardware.
+Evaluation on such a benchmark test is still under investigation, the case studies only give an attempt.
+
 \subsection{Case Study I}
+It is a simple two-layered network.
 Both the training and testing exploited the Poinssonian presentation of the digits.
 The network was trained online with STDP learning rule.
 The performance of the model was evaluated with both software simulation (on NEST~[\cite{gewaltig2007nest}]) and hardware implementation (on SpiNNaker). 
