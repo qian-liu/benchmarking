@@ -49,6 +49,24 @@ A number of different classes are expected, this quantity might give an insight 
 
 
 \subsection{[Evangelos Stromatias] Hardware-Specific}
+
+% mention ne platforms + and -
+$\cdot$ \textit{ Mention the different types of neuromorphic hardware. The advantages and disadvantages of each platform:}
+\\
+Neuromorphic engineering, a concept originally developed by [Mead, 1990], aims to provide real-time simulations of spiking neural networks in an energy efficient manner. Depending on how neurons, synapses and spike transmission are implemented neuromorphic systems can be categorised as either analogue, digital, or mixed-mode analogue/digital VLSI circuits. Analogue implementations exploit the sub-threshold transistor dynamics [Indiveri et al., 2011] and are more energy-efficient while requiring less area than their digital counterparts [Joubert et al., 2012]. However, the behaviour of analogue circuits is largely determined during the fabrication process due to transistor mismatch [Indiveri et al., 2011; Pedram and Nazarian, 2006; Linares-Barranco et al., 2003]. The majority of mixed-mode analogue/digital neuromorphic platforms use digital packet-based technology to communicate spikes as AER events. This enables reconfigurable connectivity patterns while the time of spikes is expressed implicitly since typically a spike reaches its destination in less than a millisecond, thus fulfilling the real-time requirement. Neuromorphic systems suffer from model flexibility, since neurons and synapses are fabricated directly on hardware with only a small subset of parameters available to the researcher. 
+\\
+$\cdot$ \textit{ Mention Spinnaker here as an exploration platform for neuromorphic research. Advantages too:}
+\\
+$\cdot$ \textit{ Mention that is difficult to compare the platforms. We can use power (se, SOPS/W,etc), real- or accelerated simulation time, and system latency but this depends on the neural architecture (maybe i shouldnt mention it here. }
+\\
+% mention spinnaker, for this work
+
+%power
+
+%real-time or accelerated
+
+% latency
+
 Specifying hardware is of utmost importance when comparing computing times and power consumption. Analog or digital or a hybrid system.
 
 Different platforms have special benefits, purely hardware solutions have low power consumption but lack programmability.
