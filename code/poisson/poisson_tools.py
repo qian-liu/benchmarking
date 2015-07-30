@@ -4,7 +4,7 @@ import sys
 import matplotlib.pyplot as plt
 import numpy as np
 import os
-
+import datetime
 
 # In[19]:
 
@@ -178,7 +178,7 @@ def spike_to_aerfile(spike_source_array_on, spike_source_array_off, file_name, i
         tok2='# This is a raw AE data file - do not edit'
         tok3='# Data format is int32 address, int32 timestamp (8 bytes total), repeated for each event'
         tok4='# Timestamps tick is 1 us'
-        tok5='# created Tue Apr 29 11:36:59 CEST 2008'
+        tok5='# Created %s'%(datetime.datetime.now())
         v=2.0
 
         f.write('%s'%tok)
@@ -195,7 +195,7 @@ def spike_to_aerfile(spike_source_array_on, spike_source_array_off, file_name, i
         All = All.astype(dtype='>u4')
         All.tofile(f)
         f.close()
-        return AllTs, AllAddr, Polarity
+        return AllTs, neuron_id, Polarity
     else:
         print 'Output is []'
         return []

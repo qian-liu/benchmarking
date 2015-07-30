@@ -78,14 +78,19 @@ Python code of converting the file format to and from the other is also provided
 
 	\begin{figure}[b!]
 	  \centering
+	  \subfloat[Spikes recorded in the order of neuron ID during 1s of time.]{
+	  	    \label{fig:flash_all}
+	  	    \includegraphics[width=0.48\textwidth]{flash_full.png}
+	  	  }
+	  	  \\
 	  \subfloat[Spikes plotted in the sequence of appearing time during 1s of time.]{
 	    \label{fig:flash_a}
-	    \includegraphics[width=0.48\textwidth]{flash.png}
+	    \includegraphics[width=0.48\textwidth]{flash_full_order.png}
 	  }
 	  \\
 	  \subfloat[Bursty spikes appearing in a 30~ms slot.]{
 	  	\label{fig:flash_b}
-	  	\includegraphics[width=0.48\textwidth]{flash_30.png}
+	  	\includegraphics[width=0.48\textwidth]{flash_100.png}
 	  }
 
 	  \caption{The bursty of spikes is illustrated where most of the spikes occur in a 30~ms slot.}
