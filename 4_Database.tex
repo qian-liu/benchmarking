@@ -66,6 +66,7 @@ Python code of converting the file format to and from the other is also provided
 	\subsubsection{Rank-Order-Encoding}
   \input{4-2-2_Rank-ordered_encoding}
 	\subsubsection{DVS Sensor Output with Flashing Input}
+	\label{subsec_flash}
 	The purposes of including the subset of DVS recorded flashing digits are to (1) promote the application of Rank-Order-Coding to DVS output; and (2) accelerate the fast on-set recognition by using just the beginning part of spike trains within less than 30~ms.
 	
 	Every digit and a blank image were shown alternately for five times and each display lasted one second.
@@ -100,5 +101,8 @@ Python code of converting the file format to and from the other is also provided
 	\subsubsection{DVS Sensor Output with Moving Input}
 	In order to address the problems of position- and scale- invariance, the subset of DVS recorded moving digits is presented.
 	
-	MNIST characters were scaled to three different sizes, by using smooth interpolation algorithms to increase their size from the original 28x28 pixel size, and displayed on the monitor with slow motion. 
+	MNIST digits were scaled to three different sizes, by using smooth interpolation algorithms to increase their size from the original 28x28 pixel size, and displayed on the monitor with slow motion. 
+	The same DVS~\cite{serrano-gotarredona_128_2013} used in Section~\ref{subsec_flash} captured the movements of the digits and generated spike trains for each pixel of its 128$\times$128 resolution.
 	A total of 30,000 recordings were made: 10 characters (handwritten digits '0' to '9'), at 3 different scales, 1000 different handwritten samples for each.
+	The subset is available at the website\footnote {http://imse-cnm.csic.es/caviar/MNIST\_DVS}.
+	
