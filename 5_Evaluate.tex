@@ -50,15 +50,17 @@ A number of different classes are expected, this quantity might give an insight 
 
 \subsection{[Evangelos Stromatias] Hardware-Specific}
 
-% mention ne platforms + and -
-$\cdot$ \textit{ Mention the different types of neuromorphic hardware. The advantages and disadvantages of each platform:}
-\\
-Neuromorphic engineering, a concept originally developed by [Mead, 1990], aims to provide real-time simulations of spiking neural networks in an energy efficient manner. Depending on how neurons, synapses and spike transmission are implemented neuromorphic systems can be categorised as either analogue, digital, or mixed-mode analogue/digital VLSI circuits. Analogue implementations exploit the sub-threshold transistor dynamics [Indiveri et al., 2011] and are more energy-efficient while requiring less area than their digital counterparts [Joubert et al., 2012]. However, the behaviour of analogue circuits is largely determined during the fabrication process due to transistor mismatch [Indiveri et al., 2011; Pedram and Nazarian, 2006; Linares-Barranco et al., 2003]. The majority of mixed-mode analogue/digital neuromorphic platforms use digital packet-based technology to communicate spikes as AER events. This enables reconfigurable connectivity patterns while the time of spikes is expressed implicitly since typically a spike reaches its destination in less than a millisecond, thus fulfilling the real-time requirement. Neuromorphic systems suffer from model flexibility, since neurons and synapses are fabricated directly on hardware with only a small subset of parameters available to the researcher. 
-\\
-$\cdot$ \textit{ Mention Spinnaker here as an exploration platform for neuromorphic research. Advantages too:}
-\\
-$\cdot$ \textit{ Mention that is difficult to compare the platforms. We can use power (se, SOPS/W,etc), real- or accelerated simulation time, and system latency but this depends on the neural architecture (maybe i shouldnt mention it here. }
-\\
+
+Depending on how neurons, synapses and spike transmission are implemented neuromorphic systems can be categorised as either analogue, digital, or mixed-mode analogue/digital VLSI circuits. Analogue implementations exploit the sub-threshold transistor dynamics to emulate neurons and synapses directly on hardware \citep{giacom} and are more energy-efficient while requiring less area than their digital counterparts \citep{temamanalogdigital}. However, the behaviour of analogue circuits is largely determined during the fabrication process due to transistor mismatch \citep{giacom,analoguemismatch,bernabeDACsynapses}, while their wiring densities render them impractical for large-scale systems. The majority of mixed-mode analogue/digital neuromorphic platforms, such as High Input Count Analog Neural Network (HI-CANN) \citep{Schemmel_etal10}, Neurogrid \citep{Benjamin_etal14}, HiAER-IFAT \citep{gert}, use analogue circuits to emulate neurons and digital packet-based technology to communicate spikes as AER events. This enables reconfigurable connectivity patterns, while the time of spikes is expressed implicitly since typically a spike reaches its destination in less than a millisecond, thus fulfilling the real-time requirement. Digital neuromorphic platforms such as TrueNorth \citep{Merolla08082014} use digital circuits with finite precision to simulate neurons in an event driven manner to minimise the active power dissipation. Neuromorphic systems suffer from model flexibility, since neurons and synapses are fabricated directly on hardware with only a small subset of parameters exposed to the researcher. 
+
+The Spiking Neural Network Architecture, or SpiNNaker, is a biologically inspired, massively-parallel, scalable computing architecture designed by the Advanced Processor Technologies (APT) group at the University of Manchester. SpiNNaker has been optimised to simulate very large-scale spiking neural networks in real-time \citep{spiNNakerProject}. SpiNNaker aims to combine the advantages of conventional computers and neuromorphic hardware by utilising low-power programmable cores and scalable event-driven communications hardware. \textit{\textbf{[ADD AS MUCH DETAILS ABOUT THE SPINNAKER ARCHITECTURE AND SOFTWARE HERE]}}. 
+
+A direct comparison between neuromorphic platforms is not a trivial task due to the different hardware implementation technology. Comparing the performance of each platform in terms of power requirements is an interesting comparison metric especially if targeted for mobile applications and robotics. Some researchers have suggested the use of energy per synaptic event (SE) \citep{Sharp2012110,strometal} as a power metric because the large number of fan in and out of a neuron tend to dominate the total power dissipation during a simulation. Merolla et al. proposed the number of synaptic operations per second per Watt (SOPS/W) \citep{Merolla08082014}. 
+
+Additional comparison metrics could be the precision used to describe the membrane potential of neurons (for the digital platforms), synaptic weights, axonal delays, simulation type (time or event driven) and if the simulation runs in real- or accelerated time.
+ 
+Table~\ref{tb:hardware_comparison} aims to summarise the aforementioned hardware comparison metrics.
+ 
 % mention spinnaker, for this work
 
 %power
@@ -67,19 +69,19 @@ $\cdot$ \textit{ Mention that is difficult to compare the platforms. We can use 
 
 % latency
 
-Specifying hardware is of utmost importance when comparing computing times and power consumption. Analog or digital or a hybrid system.
-
-Different platforms have special benefits, purely hardware solutions have low power consumption but lack programmability.
-
-New theories, such as Polychronization, suggest that axonal delays are an integral part of the brain's computing mechanisms~[\cite{Izhikevich2005}]. 
-
-Power consumption is a key issue for mobile applications and robotics. A way to measure is to state the number of \emph{Synaptic operations per Watt} that the hardware is capable of.
-
-An important factor to measure performance is the number of \emph{Synaptic events per second}; i.e. rough throughput
-
-A piece of hardware that is difficult to use/program is of little use, thus \emph{front-end support} is
-
-Neural activity highly depends on synapses, specifying what model was used and its precision will impact on the performance.
+%Specifying hardware is of utmost importance when comparing computing times and power consumption. Analog or digital or a hybrid system.
+%
+%Different platforms have special benefits, purely hardware solutions have low power consumption but lack programmability.
+%
+%New theories, such as Polychronization, suggest that axonal delays are an integral part of the brain's computing mechanisms~[\cite{Izhikevich2005}]. 
+%
+%Power consumption is a key issue for mobile applications and robotics. A way to measure is to state the number of \emph{Synaptic operations per Watt} that the hardware is capable of.
+%
+%An important factor to measure performance is the number of \emph{Synaptic events per second}; i.e. rough throughput
+%
+%A piece of hardware that is difficult to use/program is of little use, thus \emph{front-end support} is
+%
+%Neural activity highly depends on synapses, specifying what model was used and its precision will impact on the performance.
 
 \begin{table*}
   \caption{Hardware dependant comparison}
@@ -94,15 +96,17 @@ Neural activity highly depends on synapses, specifying what model was used and i
        \begin{minipage}{1cm}\centering Axonal delays \end{minipage} & 
        \begin{minipage}{1cm}\centering Synaptic model \end{minipage} & 
        \begin{minipage}{1.2cm}\centering Synaptic precision \end{minipage} & 
-       \begin{minipage}{1.2cm}\centering Synaptic events per sec \end{minipage} & 
+       \begin{minipage}{1.2cm}\centering Energy per SE \end{minipage} & 
        \begin{minipage}{1.4cm}\centering Synaptic ops per Watt \end{minipage} & 
        \begin{minipage}{1.7cm}\centering Programming front-end \end{minipage}  \\
        \hline
        % contents!
-       \begin{minipage}{1.8cm}\centering Paper 1 [ref] \end{minipage} & & & & & & & & & \\
-       \begin{minipage}{1.8cm}\centering Paper 2 [ref]\end{minipage} & & & & & & & & & \\
-       \begin{minipage}{1.8cm}\centering Paper 3 [ref]\end{minipage} & & & & & & & & & \\
-       \begin{minipage}{1.8cm}\centering Paper 4 [ref]\end{minipage} & & & & & & & & & 
+       \begin{minipage}{1.8cm}\centering SpiNNaker \citep{strometal} \end{minipage} &Digital& & & & & & 8~nJ &54.27 MSops/W & \\
+       \begin{minipage}{1.8cm}\centering TrueNorth \citep{Merolla08082014}\end{minipage} &Digital& & & & & & &46 GSops/W & \\
+       \begin{minipage}{1.8cm}\centering Neurogrid \citep{Benjamin_etal14}\end{minipage} &Mixed-mode& & & & & & & & \\
+       \begin{minipage}{1.8cm}\centering HI-CANN \citep{Schemmel_etal10}  \end{minipage} &Mixed-mode & & & & & & & & \\
+       \begin{minipage}{1.8cm}\centering HiAER-IFAT \citep{gert}\end{minipage} &Mixed-mode & & & & & & & & 
+       
     \end{tabular}
     \egroup
   \end{center}
