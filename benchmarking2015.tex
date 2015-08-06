@@ -119,9 +119,11 @@ CNM-CSIC), Sevilla, Spain }
 To gain a better understanding of the brain and build biologically-inspired computers, increasing attention is being paid to research into spike-based neural computation.
 Within the field, the visual pathway and its hierarchical organisation have been extensively studied within the primate brain.
 Spiking Neural Networks (SNNs) inspired by the understanding of observed biological structure and functions have been successfully applied to visual recognition/classification tasks.
+Besides, the implementations on neuromorhpic hardware have made large-scale networks running in or even faster than real time, and made applications possible on mobile robots with real-time visual stimuli.
 A new series of vision benchmarks for spike-based neural processing are now needed to quantitatively measure progress within this rapidly advancing field.
-We propose that a large dataset of spike-based visual stimuli is needed to provide a baseline for comparisons.
-Furthermore a complementary evaluation methodology is also crucial to assess the accuracy and efficiency of an algorithm.
+We propose that a large dataset of spike-based visual stimuli is needed to provide a baseline for comparisons on SNN models and algorithms.
+And some benchmarking network models are also required to validate the accuracy and cost of these neuromorphic hardware platforms.
+Furthermore a complementary evaluation methodology is also crucial to assess both the model-level and hardware-level performance.
 
 First of all, an initial NE (Neuromorphic Engineering) dataset of input stimuli based on standard computer vision benchmarks consisting of %facial images (FERET database) and 
 digits (MNIST database) is presented according to the current research on spike-based image recognition.
@@ -130,18 +132,24 @@ We describe how we intend to expand this dataset to fulfil the needs of upcoming
 For instance, the data should provide cases to measure position-, scale-, and viewing-angle invariance.
 The data will be in Address-Event Representation (AER) format which is well-applied in neuromorphic engineering field unlike conventional images.
 These spike trains are produced by various techniques: rate-based Poisson spike generation, rank order encoding and recorded output from a silicon retina with both flashing and oscillating input stimuli.
-An evaluation methodology is also presented which describes how to consistently assess the accuracy, speed, efficiency and cost of an algorithm working with the dataset.
-Finally, we provide a baseline for comparison based on a proposed SNN's performance on the dataset.
-The network is trained on-line using the Spike Timing Dependent Plasticity (STDP) learning rule on a massive-parallel neuromorphic simulator, e.g. SpiNNaker.
+An evaluation methodology is also presented which describes how to consistently assess the performance of a SNN model and its cost implemented on neuromorphic hardware.
+Finally, we provide two case studies as examples.
+%The network is trained on-line using the Spike Timing Dependent Plasticity (STDP) learning rule on a massive-parallel neuromorphic simulator, e.g. SpiNNaker.
 
-With this benchmark we hope to (1) promote meaningful comparison among algorithms in the field of neural computation, (2) allow comparison with conventional image recognition methods, (3) provide an assessment of the state of the art in spike-based visual recognition, and (4) help researchers identify future directions and advance the field.
+With this dataset we hope to (1) provide an assessment of the state of the art in spike-based visual recognition, (2) benchmarking SNN models on various neuromorphic hardware platforms, (3) allow comparison with conventional image recognition methods, and (4) help researchers identify future directions and advance the field.
+%(1) promote meaningful comparison among algorithms in the field of neural computation,
 
 \tiny
 \section{Keywords:} Benchmarking, Neuromorphic Engineering, Real-Time, Spiking Neural Networks, Vision
 %All article types: you may provide up to 8 keywords; at least 5 are mandatory.
 \end{abstract}
 
-%\section{Introduction}
+Outline:
+\begin{itemize}
+	\item present a dataset
+	\item evaluate models on the dataset(SW/HW)
+	\item examples of using the dataset and evaluation
+\end{itemize}
 %\label{sec:intro}
 \input{1_Introduction.tex}
 \input{2_Relatework.tex}
@@ -153,7 +161,8 @@ With this benchmark we hope to (1) promote meaningful comparison among algorithm
 \section*{Acknowledgments}
 The work presented in this paper is largely inspired on discussions carried out at the 2015 Workshops on Neuromorphic Cognition Engineering in CapoCaccia.
 The authors would like to thank the organisers and the sponsors.
-The SpiNNaker project is supported by the Engineering and Physical Science Research Council (EPSRC), grant EP/4015740/1, and also by ARM and Silistix. The authors thank the support of these sponsors and industrial partners.
+The SpiNNaker project is supported by the Engineering and Physical Science Research Council (EPSRC grant EP/4015740/1), the EU Flagship Human Brain Project (FP7-604102), and also by ARM and Silistix.
+The authors thank the support of these sponsors and industrial partners.
 \bibliographystyle{frontiersinSCNS&ENG} % for Science and Engineering articles
 %\bibliographystyle{frontiersinMED} % for Medicine articles
 

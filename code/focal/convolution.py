@@ -69,7 +69,7 @@ class Convolution():
     return tmp2
 
   def dog_sep_convolution(self, img, k, cell_type, originating_function="filter",
-                          force_homebrew = False):
+                          force_homebrew = False, mode="full"):
     ''' Wrapper for separated convolution for DoG kernels in FoCal, 
         enables use of NumPy based sepfir2d.
         
@@ -80,6 +80,7 @@ class Convolution():
         originating_function => if "filter": use special sampling resolution,
                                 else: use every pixel
         force_hombrew        => if True: use my code, else: NumPy's
+        mode                 => "full" all image convolution, else only valid
     '''
 
     if originating_function == "filter":
@@ -88,14 +89,14 @@ class Convolution():
         row_keep, col_keep = 1, 1
 
     if not force_homebrew:
-        right_img = sepfir2d(img.copy(), k[0], k[1])
-        left_img  = sepfir2d(img.copy(), k[2], k[3])
+      # has a problem with images smaller than kernel
+      right_img = sepfir2d(img.copy(), k[0], k[1])
+      left_img  = sepfir2d(img.copy(), k[2], k[3])
     else:
-
-        right_img = sep_convolution(img, k[0], k[1], 
-                                    col_keep=col_keep, row_keep=row_keep)
-        left_img  = sep_convolution(img, k[2], k[3], 
-                                    col_keep=col_keep, row_keep=row_keep)
+      right_img = sep_convolution(img, k[0], k[1], col_keep=col_keep, 
+                                  row_keep=row_keep, mode=mode)
+      left_img  = sep_convolution(img, k[2], k[3], col_keep=col_keep, 
+                                  row_keep=row_keep, mode=mode )
 
     conv_img = left_img + right_img
 

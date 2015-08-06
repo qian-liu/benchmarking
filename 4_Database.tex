@@ -2,17 +2,28 @@
 \label{sec:data}
 %Experiment setup/ collection method/ properties of each class/ etc.
 The name of the first proposed dataset in the benchmarking system is NE15-MNIST which stands for Neuromorphic Engineering 2015 on MNIST.
-The original MNIST dataset is downloaded from the website\footnote{http://yann.lecun.com/exdb/mnist/} of THE MNIST DATABASE of handwritten digits~\cite{lecun_gradient-based_1998}.
-The NE15-MNIST is converted spiking version of the original dataset consisting of four subsets which were generated for different purposes.
+The original MNIST dataset is downloaded from the website\footnote{http://yann.lecun.com/exdb/mnist/} of THE MNIST DATABASE of handwritten digits~[\cite{lecun_gradient-based_1998}].
+The NE15-MNIST is converted spiking version of the original dataset consisting of four subsets which were generated for different purposes:
+\begin{itemize}
+	\item \textit{Poissonian}
+	to benchmarking existing methods of rate-based spiking models.
+	\item \textit{FoCol}
+	to promote the study on Rank-Order-Coding applied to recognition tasks.
+	\item \textit{DVS recorded flashing input}
+	to encourage the research on fast recognition methods which found in the primate visual pathway.
+	\item \textit{DVS recorded moving input}
+	to trigger the study of algorithms targeting on continuous input from real-world sensors and to implement them on mobile neuromorphic robots.
+\end{itemize}
+The dataset can be found in the web link: https://github.com/qian-liu/benchmarking.
 \subsection{File~Formats}
-
-Two file formats are supported in the dataset: jAER format~\cite{delbruck2008frame} (.dat or .aedat), and binary file in NumPy .npy format.
+	
+Two file formats are supported in the dataset: jAER format~[\cite{delbruck2008frame}] (.dat or .aedat), and binary file in NumPy .npy format.
 The  address event representation (AER) interface has been widely used in neuromorphic systems, especially for vision sensors.
 The spikes are encoded as time events with corresponding addresses to convey information.
 The spikes in jAER format both recorded from a DVS retina and artificially generated can be displayed in jAER software.
-Fig~\ref{Fig:jaer} is a snapshot of the software displaying an .aedat file which is recorded by a DVS retina~\cite{serrano-gotarredona_128_2013}.
+Fig~\ref{Fig:jaer} is a snapshot of the software displaying an .aedat file which is recorded by a DVS retina~[\cite{serrano-gotarredona_128_2013}].
 The resolution of the DVS recorded data is 128$\times$128, while the original MNIST data is of 28$\times$28.
-The other format of spikes is used as a list of spike source arrays in PyNN~\cite{davison2008pynn}, a description language for building spiking neuronal network models.
+The other format of spikes is used as a list of spike source arrays in PyNN~[\cite{davison2008pynn}], a description language for building spiking neuronal network models.
 Python code of converting the file format to and from the other is also provided.
 
 \begin{figure}[hbt]
@@ -37,7 +48,7 @@ Python code of converting the file format to and from the other is also provided
 \subsection{Data Description}	
 	\subsubsection{Poissonian}
 	
-	In the cortex, the timing of the spikes is highly irregular~\cite{squire1998findings}.
+	In the cortex, the timing of the spikes is highly irregular~[\cite{squire1998findings}].
 	It can be interpreted that the inter-spike interval reflects a random process driven by the instantaneous firing rate.
 	If the generation of each spike is assumed to be independent of all the other spikes, the spike train is seen as a Poisson process.
 	And the spiking rate can be estimated by averaging the pooled responses of the neurons.
@@ -55,32 +66,43 @@ Python code of converting the file format to and from the other is also provided
 	\subsubsection{Rank-Order-Encoding}
   \input{4-2-2_Rank-ordered_encoding}
 	\subsubsection{DVS Sensor Output with Flashing Input}
-	The purposes of including the subset of DVS recorded flashing digits are to (1) promote the application of Rank-Order-Coding to DVS output; and (2) accelerate the recognition by using just the beginning input with few spikes.
+	\label{subsec_flash}
+	The purposes of including the subset of DVS recorded flashing digits are to (1) promote the application of Rank-Order-Coding to DVS output; and (2) accelerate the fast on-set recognition by using just the beginning part of spike trains within less than 30~ms.
 	
 	Every digit and a blank image were shown alternately for five times and each display lasted one second.
-	The digits were displayed on a LCD monitor in front of the DVS retina~\cite{serrano-gotarredona_128_2013} and were placed in the centre of the visual field of the camera.
+	The digits were displayed on a LCD monitor in front of the DVS retina~[\cite{serrano-gotarredona_128_2013}] and were placed in the centre of the visual field of the camera.
 	And each recording was cut into 10 sub ones.
 	Since there are two polarities of the spikes: 'ON' indicates the increase of the intensity while 'OFF' reflects the opposite, there are five 'ON' and 'OFF' flashing recordings respectively per digit.
-	In Fig~\ref{fig:count}, the bursty of spikes is illustrated comparing to the Poissonian spike trains.
+	In Fig~\ref{fig:flash}, the bursty of spikes is illustrated where most of the spikes occur in a 30~ms slot. 
 	In total, the subset of the database contains 10$\times$60000 recordings for training and 10$\times$10000 for testing.
+	Due to the size limit of online repositories, only the third of every sequence flashes is published.
+
 	\begin{figure}[b!]
 	  \centering
-	  \subfloat[Spike count of a Poissonian spike train]{
-	    \label{fig:poisson_count}
-	    \includegraphics[width=0.48\textwidth]{poisson_count.pdf}
+	  \subfloat[Spikes recorded in the order of neuron ID during 1s of time.]{
+	  	    \label{fig:flash_all}
+	  	    \includegraphics[width=0.48\textwidth]{flash_full.png}
+	  	  }
+	  	  \\
+	  \subfloat[Spikes plotted in the sequence of appearing time during 1s of time.]{
+	    \label{fig:flash_a}
+	    \includegraphics[width=0.48\textwidth]{flash_full_order.png}
 	  }
 	  \\
-	  \subfloat[Spike count of a DVS recording of a flashing digit]{
-	  	\label{fig:flash_count}
-	  	\includegraphics[width=0.48\textwidth]{count.pdf}
+	  \subfloat[Bursty spikes appearing in a 30~ms slot.]{
+	  	\label{fig:flash_b}
+	  	\includegraphics[width=0.48\textwidth]{flash_100.png}
 	  }
 
-	  \caption{Comparison of spike counts between a Poissonian spike train and a DVS recording of a flashing digit.}
-	  \label{fig:count}
+	  \caption{The bursty of spikes is illustrated where most of the spikes occur in a 30~ms slot.}
+	  \label{fig:flash}
 	\end{figure}
 %	\subsubsection{DVS Sensor Output with Oscillating Input}
 	\subsubsection{DVS Sensor Output with Moving Input}
 	In order to address the problems of position- and scale- invariance, the subset of DVS recorded moving digits is presented.
 	
-	MNIST characters were scaled to three different sizes, by using smooth interpolation algorithms to increase their size from the original 28x28 pixel size, and displayed on the monitor with slow motion. 
+	MNIST digits were scaled to three different sizes, by using smooth interpolation algorithms to increase their size from the original 28x28 pixel size, and displayed on the monitor with slow motion. 
+	The same DVS~\cite{serrano-gotarredona_128_2013} used in Section~\ref{subsec_flash} captured the movements of the digits and generated spike trains for each pixel of its 128$\times$128 resolution.
 	A total of 30,000 recordings were made: 10 characters (handwritten digits '0' to '9'), at 3 different scales, 1000 different handwritten samples for each.
+	The subset is available at the website\footnote {http://imse-cnm.csic.es/caviar/MNIST\_DVS}.
+	
