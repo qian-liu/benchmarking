@@ -8,20 +8,24 @@ We would like to assist with the following considerations.
   \begin{center}
     \bgroup
     \def\arraystretch{1.4}
-    \begin{tabular}{ l | c c c c c c }
+    \begin{tabular}{ l | c c c c }
       $ $ &
-      \begin{minipage}{1.9cm}Topology \end{minipage} & 
-      \begin{minipage}{1.9cm}Accuracy \end{minipage} & 
-      \begin{minipage}{1.9cm}Preprocessing \end{minipage} &
-      \begin{minipage}{1.9cm}Training \end{minipage} & 
-      \begin{minipage}{1.9cm}Supervised \end{minipage} &
-      \begin{minipage}{1.9cm}Extra classifier \end{minipage} \\
+      \multirow{2}{*}{\begin{minipage}{1.9cm}Preprocessing\end{minipage} }& 
+      \begin{minipage}{2.5cm}\centering Network\end{minipage} & 
+      \begin{minipage}{2.5cm}\centering Training \end{minipage} & 
+      \begin{minipage}{2.5cm}\centering Recognition \end{minipage} \\
+      \cline{3-5}
+       & 
+       & 
+      \begin{minipage}{2.5cm}\centering \vspace*{0.1cm} Topology, neuron and synapse model, extra classifier \end{minipage} &
+      \begin{minipage}{2.5cm}\centering \vspace*{0.1cm} Methodology, simulation time, sample repetition \end{minipage} & 
+      \begin{minipage}{2.5cm}\centering \vspace*{0.1cm} Events/$s$, time/sample, response time, accuracy\end{minipage} \\
       \hline
 %contents
-      \begin{minipage}{2cm} Paper 1 [ref] \end{minipage}  & & & & & & \\
-      \begin{minipage}{2cm} Paper 2 [ref]\end{minipage}  & & & & & & \\
-      \begin{minipage}{2cm} Paper 3 [ref]\end{minipage}  & & & & & & \\
-      \begin{minipage}{2cm} Paper 4 [ref]\end{minipage}  & & & & & & 
+      \begin{minipage}{2cm} Paper 1 [ref] \end{minipage} & & & &  \\
+      \begin{minipage}{2cm} Paper 2 [ref]\end{minipage}  & & & &  \\
+      \begin{minipage}{2cm} Paper 3 [ref]\end{minipage}  & & & &  \\
+      \begin{minipage}{2cm} Paper 4 [ref]\end{minipage}  & & & &  
     \end{tabular}
     \egroup
   \end{center}
@@ -29,13 +33,15 @@ We would like to assist with the following considerations.
 \end{table*}
 
 \subsection{Hardware-Independent}
+As we are proposing spike based data-sets or a methodology to produce them, it's desirable that the users specify whether they added any further processing either to images or spikes~[\cite{best-practice-nn-img}]. This is important For example, if we want to use a particular set to test noisy inputs, it would be extremely useful to have a notion of the type of noise added.
+
+
 A brief description of the \emph{network topology} is most welcome, we believe different topologies will have a deep impact on the overall performance. Furthermore, sharing this designs can inspire fellow scientists to create new structures that, might  a new point-of-view to bloom, generating a positive feedback loop where everybody wins.
 
 Most classification papers report a percentage of accuracy that gives the reader a measure of the correct classifications~[\cite{dietterich1998approximate}]. Some times it might be desirable, for a better understanding of the paper, that a distinction between ambiguous, outliers and incorrect classes is made~[\cite{liu2002performance}]. A very useful piece of information is clear citation of the base-line source, which is almost always there but lost in a sea of references.
 
 %Should we report also incorrect or ambiguous? Could some ``correct'' be masking ambiguous? Were the ambiguous due to noise? Was the noise added on purpose? 
 
-As we are proposing spike based data-sets, it's desirable that the users specify if there was any preprocessing applied before actually feeding the spike trains into their networks~[\cite{best-practice-nn-img}]. For example, if we want to use a particular set to test noisy inputs, it would be extremely useful to have a notion of the type of noise added.
 
 %Traditionally, neural network training has been done using rate-based encoding. As new theories emerge, a
 
@@ -84,7 +90,7 @@ Table~\ref{tb:hardware_comparison} aims to summarise the aforementioned hardware
 %Neural activity highly depends on synapses, specifying what model was used and its precision will impact on the performance.
 
 \begin{table*}
-  \caption{Hardware dependant comparison}
+  \caption{Hardware dependent comparison}
   \begin{center}
       \bgroup
       \def\arraystretch{1.4}
@@ -101,11 +107,11 @@ Table~\ref{tb:hardware_comparison} aims to summarise the aforementioned hardware
        \begin{minipage}{1.7cm}\centering Programming front-end \end{minipage}  \\
        \hline
        % contents!
-       \begin{minipage}{1.8cm}\centering SpiNNaker \citep{strometal} \end{minipage} &Digital& & & & & & 8~nJ &54.27 MSops/W & \\
-       \begin{minipage}{1.8cm}\centering TrueNorth \citep{Merolla08082014}\end{minipage} &Digital& & & & & & &46 GSops/W & \\
-       \begin{minipage}{1.8cm}\centering Neurogrid \citep{Benjamin_etal14}\end{minipage} &Mixed-mode& & & & & & & & \\
-       \begin{minipage}{1.8cm}\centering HI-CANN \citep{Schemmel_etal10}  \end{minipage} &Mixed-mode & & & & & & & & \\
-       \begin{minipage}{1.8cm}\centering HiAER-IFAT \citep{gert}\end{minipage} &Mixed-mode & & & & & & & & 
+       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} SpiNNaker \citep{strometal} \end{minipage} &Digital& & & & & & 8~nJ &54.27 MSops/W & \\
+       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} TrueNorth \citep{Merolla08082014}\end{minipage} &Digital& & & & & & &46 GSops/W & \\
+       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} Neurogrid \citep{Benjamin_etal14}\end{minipage} &Mixed-mode& & & & & & & & \\
+       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} HI-CANN \citep{Schemmel_etal10}  \end{minipage} &Mixed-mode & & & & & & & & \\
+       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} iAER-IFAT \citep{gert}\end{minipage} &Mixed-mode & & & & & & & & 
        
     \end{tabular}
     \egroup
