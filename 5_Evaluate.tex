@@ -55,7 +55,35 @@ A number of different classes are expected, this quantity might give an insight 
 
 
 \subsection{[Evangelos Stromatias] Hardware-Specific}
-
+\begin{table*}[t!]
+  \caption{Hardware dependent comparison}
+  \begin{center}
+      \bgroup
+      \def\arraystretch{1.4}
+    \begin{tabular}{l | c c c c c c c c c}
+      $ $ & 
+       \begin{minipage}{1.2cm}\centering Hardware approach \end{minipage} & 
+       \begin{minipage}{1.3cm}\centering Simulation type \end{minipage} & 
+       \begin{minipage}{1.7cm}\centering Programmable \end{minipage} & 
+       \begin{minipage}{1cm}\centering Axonal delays \end{minipage} & 
+       \begin{minipage}{1cm}\centering Synaptic model \end{minipage} & 
+       \begin{minipage}{1.2cm}\centering Synaptic precision \end{minipage} & 
+       \begin{minipage}{1.2cm}\centering Energy per SE \end{minipage} & 
+       \begin{minipage}{1.4cm}\centering Synaptic ops per Watt \end{minipage} & 
+       \begin{minipage}{1.7cm}\centering Programming front-end \end{minipage}  \\
+       \hline
+       % contents!
+       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} SpiNNaker \citep{strometal} \end{minipage} &Digital& & & & & & 8~nJ &54.27 MSops/W & \\
+       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} TrueNorth \citep{Merolla08082014}\end{minipage} &Digital& & & & & & &46 GSops/W & \\
+       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} Neurogrid \citep{Benjamin_etal14}\end{minipage} &Mixed-mode& & & & & & & & \\
+       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} HI-CANN \citep{Schemmel_etal10}  \end{minipage} &Mixed-mode & & & & & & & & \\
+       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} iAER-IFAT \citep{gert}\end{minipage} &Mixed-mode & & & & & & & & 
+       
+    \end{tabular}
+    \egroup
+  \end{center}
+  \label{tb:hardware_comparison}
+\end{table*}
 
 Depending on how neurons, synapses and spike transmission are implemented neuromorphic systems can be categorised as either analogue, digital, or mixed-mode analogue/digital VLSI circuits. Analogue implementations exploit the sub-threshold transistor dynamics to emulate neurons and synapses directly on hardware \citep{giacom} and are more energy-efficient while requiring less area than their digital counterparts \citep{temamanalogdigital}. However, the behaviour of analogue circuits is largely determined during the fabrication process due to transistor mismatch \citep{giacom,analoguemismatch,bernabeDACsynapses}, while their wiring densities render them impractical for large-scale systems. The majority of mixed-mode analogue/digital neuromorphic platforms, such as High Input Count Analog Neural Network (HI-CANN) \citep{Schemmel_etal10}, Neurogrid \citep{Benjamin_etal14}, HiAER-IFAT \citep{gert}, use analogue circuits to emulate neurons and digital packet-based technology to communicate spikes as AER events. This enables reconfigurable connectivity patterns, while the time of spikes is expressed implicitly since typically a spike reaches its destination in less than a millisecond, thus fulfilling the real-time requirement. Digital neuromorphic platforms such as TrueNorth \citep{Merolla08082014} use digital circuits with finite precision to simulate neurons in an event driven manner to minimise the active power dissipation. Neuromorphic systems suffer from model flexibility, since neurons and synapses are fabricated directly on hardware with only a small subset of parameters exposed to the researcher. 
 
@@ -89,34 +117,34 @@ Table~\ref{tb:hardware_comparison} aims to summarise the aforementioned hardware
 %
 %Neural activity highly depends on synapses, specifying what model was used and its precision will impact on the performance.
 
-\begin{table*}
-  \caption{Hardware dependent comparison}
-  \begin{center}
-      \bgroup
-      \def\arraystretch{1.4}
-    \begin{tabular}{l | c c c c c c c c c}
-      $ $ & 
-       \begin{minipage}{1.2cm}\centering Hardware approach \end{minipage} & 
-       \begin{minipage}{1.3cm}\centering Simulation type \end{minipage} & 
-       \begin{minipage}{1.7cm}\centering Programmable \end{minipage} & 
-       \begin{minipage}{1cm}\centering Axonal delays \end{minipage} & 
-       \begin{minipage}{1cm}\centering Synaptic model \end{minipage} & 
-       \begin{minipage}{1.2cm}\centering Synaptic precision \end{minipage} & 
-       \begin{minipage}{1.2cm}\centering Energy per SE \end{minipage} & 
-       \begin{minipage}{1.4cm}\centering Synaptic ops per Watt \end{minipage} & 
-       \begin{minipage}{1.7cm}\centering Programming front-end \end{minipage}  \\
-       \hline
-       % contents!
-       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} SpiNNaker \citep{strometal} \end{minipage} &Digital& & & & & & 8~nJ &54.27 MSops/W & \\
-       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} TrueNorth \citep{Merolla08082014}\end{minipage} &Digital& & & & & & &46 GSops/W & \\
-       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} Neurogrid \citep{Benjamin_etal14}\end{minipage} &Mixed-mode& & & & & & & & \\
-       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} HI-CANN \citep{Schemmel_etal10}  \end{minipage} &Mixed-mode & & & & & & & & \\
-       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} iAER-IFAT \citep{gert}\end{minipage} &Mixed-mode & & & & & & & & 
-       
-    \end{tabular}
-    \egroup
-  \end{center}
-  \label{tb:hardware_comparison}
-\end{table*}
+%\begin{table*}[t!]
+%  \caption{Hardware dependent comparison}
+%  \begin{center}
+%      \bgroup
+%      \def\arraystretch{1.4}
+%    \begin{tabular}{l | c c c c c c c c c}
+%      $ $ & 
+%       \begin{minipage}{1.2cm}\centering Hardware approach \end{minipage} & 
+%       \begin{minipage}{1.3cm}\centering Simulation type \end{minipage} & 
+%       \begin{minipage}{1.7cm}\centering Programmable \end{minipage} & 
+%       \begin{minipage}{1cm}\centering Axonal delays \end{minipage} & 
+%       \begin{minipage}{1cm}\centering Synaptic model \end{minipage} & 
+%       \begin{minipage}{1.2cm}\centering Synaptic precision \end{minipage} & 
+%       \begin{minipage}{1.2cm}\centering Energy per SE \end{minipage} & 
+%       \begin{minipage}{1.4cm}\centering Synaptic ops per Watt \end{minipage} & 
+%       \begin{minipage}{1.7cm}\centering Programming front-end \end{minipage}  \\
+%       \hline
+%       % contents!
+%       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} SpiNNaker \citep{strometal} \end{minipage} &Digital& & & & & & 8~nJ &54.27 MSops/W & \\
+%       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} TrueNorth \citep{Merolla08082014}\end{minipage} &Digital& & & & & & &46 GSops/W & \\
+%       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} Neurogrid \citep{Benjamin_etal14}\end{minipage} &Mixed-mode& & & & & & & & \\
+%       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} HI-CANN \citep{Schemmel_etal10}  \end{minipage} &Mixed-mode & & & & & & & & \\
+%       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} iAER-IFAT \citep{gert}\end{minipage} &Mixed-mode & & & & & & & & 
+%       
+%    \end{tabular}
+%    \egroup
+%  \end{center}
+%  \label{tb:hardware_comparison}
+%\end{table*}
     
 %table summary?
