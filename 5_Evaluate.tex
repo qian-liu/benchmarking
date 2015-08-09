@@ -53,31 +53,37 @@ We would like to assist with the following considerations.
 As we are proposing spike based data-sets or a methodology to produce them, it's desirable that the users specify whether they added any further processing either to images or spikes~[\cite{best-practice-nn-img}]. This is important, for example, if we want to use a modified set to test noisy inputs.
 
 A description of the network is most welcome, as it is the basis for the overall performance. Furthermore, sharing this designs may inspire fellow scientists to create new structures that, might take a new point of view to the problem, generating a positive feedback loop where everybody wins. We believe the \emph{network description} should include some of the following elements:
-{ 
-  \setlength{\leftmargini}{0.3cm}
-  \begin{itemize}
-    \item[] \hspace*{-0.3cm} \textit{Topology}. \newline
-      What are the elements of the network (layers, populations)?
-      How are the different elements of the network arranged? Does the arrangement have any physical or biological interpretation? What are the interactions between them? What was the intuition behind this particular topology?
-    \item[] \hspace*{-0.3cm} \textit{Neuron model.} \newline
-      Does the model have a I\&F behaviour? What particular model was used?
-    \item[] \hspace*{-0.3cm} \textit{Synapse model}. \newline
-      In terms of synapse, what was the  used? Does the network support short-term and/or long-term plasticity?
-    \item[] \hspace*{-0.3cm} \textit{Extra classifier}. \newline
-      Some research make use of a non-neural classifier at the output of the NN. How is that integrated into the recognition system? What motivated its use?   
+%{ 
+%  \setlength{\leftmargini}{0.3cm}
+%  \begin{itemize}
+    %\item[] \hspace*{-0.3cm} 
+    \textit{Topology}, % \newline
+    which includes the number of neurons, how where they arranged and the interaction between them. 
+    %  What are the elements of the network (layers, populations)?
+    %  How are the different elements of the network arranged? Does the arrangement have any physical or biological interpretation? What are the interactions between them? What was the intuition behind this particular topology?
+    %\item[] \hspace*{-0.3cm} 
+    Additional details on the \textit{neuron model}, %\newline
+    like the activation function and any particulars of the implementation.
+    %Does the model have a I\&F behaviour? What particular model was used?
+    %\item[] \hspace*{-0.3cm} 
+    The \textit{synaptic plasticity model} %\newline
+    is key for learning in the network, so the report should include a description of its characteristics (e.g. short-term and/or long-term).
+    %In terms of synapse, what was the  used? Does the network support short-term and/or long-term plasticity?
+    %\item[] \hspace*{-0.3cm} 
+    %\textit{Extra classifier}. %\newline
+      Some research make use of \emph{extra non-neural classifiers}, sometimes to aid the design others to enhance the output of the NN. Any particulars on this subject are greatly appreciated.
   %\item[]
-  \end{itemize}
-}
+%  \end{itemize}
+%}
 
 
+An important distinction to make, we think, is the nature of the \emph{training} procedure. A clear distinction has always been made between supervised, semi-supervised and unsupervised learning. Other specifications are the simulation time each sample is presented to the network, whether repeating samples was necessary and if they were presented continuously or with some ``silence'' was introduced between samples. Most works use adaptations to learning rules, details on the particular modifications are highly desired. Particulars on any additional weight-changing procedures used in the simulation are always welcome.
 
-An important distinction to make, we think, is the nature of the \emph{training} procedure. A clear distinction has always been made between supervised, semi-supervised and unsupervised learning. The simulation time each sample is presented, 
-Sometimes, repeating samples is necessary, how many times were they repeated, continuous repetition or interleaved
+%Also, details on the particulars of the applied learning rule (e.g. STDP, BCM), was it modified somehow?
 
-Also, details on the particulars of the applied learning rule (e.g. STDP, BCM), was it modified somehow?
+In the testing phase, the characteristics of the \emph{recognition} should include details on the way the samples where presented (e.g. events per simulation time unit, simulation time per sample). An interesting characteristic to report, particularly for deep networks, is the response time, although this might not be measured as often. A commonly reported characteristic is the accuracy of the network, perhaps adding remarks on how these scores were obtained could help to unify criteria and ease comparison.
 
-In the testing phase, the characteristics of the \emph{recognition} should include details on the way the samples where presented (e.g. events per simulation time unit, simulation time per sample). An interesting characteristic, particularly for deep networks, is the response time .
-Most classification papers report a percentage of accuracy that gives the reader a measure of the correct classifications~[\cite{dietterich1998approximate}]. Some times it might be desirable, for a better understanding of the paper, that a distinction between ambiguous, outliers and incorrect classes is made~[\cite{liu2002performance}]. A very useful piece of information is clear citation of the base-line source, which is almost always there but lost in a sea of references.
+%Most classification papers report a percentage of accuracy that gives the reader a measure of the correct classifications~[\cite{dietterich1998approximate}]. Some times it might be desirable, for a better understanding of the paper, that a distinction between ambiguous, outliers and incorrect classes is made~[\cite{liu2002performance}]. A very useful piece of information is clear citation of the base-line source, which is almost always there but lost in a sea of references.
 
 %Should we report also incorrect or ambiguous? Could some ``correct'' be masking ambiguous? Were the ambiguous due to noise? Was the noise added on purpose? 
 
