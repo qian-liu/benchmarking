@@ -60,9 +60,9 @@ In the standard configuration, there are 10 decision neurons answering a same di
 Those templates are embedded in the connection weights between the two layers.
 Fig~\ref{Fig:train} shows how the connections to a single decision neuron is tuned.
 
-The training set of $60,000$ hand written digits were firstly classified into 100 classes, 10 subclasses per digit, using K-means clusters.
+The training set of $60,000$ hand written digits are firstly classified into 100 classes, 10 subclasses per digit, using K-means clusters.
 So the images in a certain subclass are used to train one corresponding decision neuron.
-The firing rate of the input neurons were assigned linearly according to their intensities and normalised with a total firing rate of 2000~$Hz/s$.
+The firing rate of the input neurons are assigned linearly according to their intensities and normalised with a total firing rate of 2000~$Hz/s$.
 All the images together are presented 180~$s$ (about 300~$ms$ per image) during training and at the same time a teaching signal of 50~$Hz/s$ is conveyed to the decision neuron to trigger STDP learning.
 The trained weights are plotted in accordance with the positions of the decision neurons in Fig~\ref{Fig:test}.
 \begin{figure}[hbt!]
@@ -86,10 +86,11 @@ The trained weights are plotted in accordance with the positions of the decision
 
 
 \subsubsection{Testing}
+After training the weights of the plastic synapses are set to the weights 
 The weights were normalised after training and applied to the same network.
 And weak weights (=0) were set to inhibitory connections with an identical strength.
 %The output neurons inhibited all the other neurons as a winner take all circuit.
-The feed=forward testing network is shown in Fig~\ref{Fig:test}.
+The feed-forward testing network is shown in Fig~\ref{Fig:test}.
 Poissonion spike trains are generated with input neurons and conveyed through trained synaptic connections to the decision neurons.
 Every testing image was presented 1 second to the network, and the output neuron with the highest firing rate decides.
 The accuracy of the recognition reached 82.42\%.%83.14\%.
