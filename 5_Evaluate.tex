@@ -7,25 +7,42 @@ We would like to assist with the following considerations.
   \caption{Hardware independent comparison}
   \begin{center}
     \bgroup
-    \def\arraystretch{1.4}
-    \begin{tabular}{ l | c c c c }
+    \def\arraystretch{1.5}
+    \begin{tabular}{ l  c c c c }
       $ $ &
       \multirow{2}{*}{\begin{minipage}{1.9cm}Preprocessing\end{minipage} }& 
-      \begin{minipage}{2.5cm}\centering Network\end{minipage} & 
-      \begin{minipage}{2.5cm}\centering Training \end{minipage} & 
-      \begin{minipage}{2.5cm}\centering Recognition \end{minipage} \\
+      \begin{minipage}{3.5cm}\centering Network\end{minipage} & 
+      \begin{minipage}{3.5cm}\centering Training \end{minipage} & 
+      \begin{minipage}{3.5cm}\centering Recognition \end{minipage} \\
       \cline{3-5}
        & 
        & 
-      \begin{minipage}{2.5cm}\centering \vspace*{0.1cm} Topology, neuron and synapse model, extra classifier \end{minipage} &
-      \begin{minipage}{2.5cm}\centering \vspace*{0.1cm} Methodology, simulation time, sample repetition \end{minipage} & 
-      \begin{minipage}{2.5cm}\centering \vspace*{0.1cm} Events/$s$, time/sample, response time, accuracy\end{minipage} \\
+      \begin{minipage}{3.5cm}\centering \vspace*{0.1cm} Topology, neuron and synapse model, extra classifier \vspace*{0.1cm} \end{minipage} &
+      \begin{minipage}{3.5cm}\centering \vspace*{0.1cm} Methodology, simulation time, sample repetition \end{minipage} & 
+      \begin{minipage}{3.5cm}\centering \vspace*{0.1cm} Events/$s$, time/sample, response time, accuracy\end{minipage} \\
       \hline
 %contents
-      \begin{minipage}{2cm} Paper 1 [ref] \end{minipage} & & & &  \\
-      \begin{minipage}{2cm} Paper 2 [ref]\end{minipage}  & & & &  \\
-      \begin{minipage}{2cm} Paper 3 [ref]\end{minipage}  & & & &  \\
-      \begin{minipage}{2cm} Paper 4 [ref]\end{minipage}  & & & &  
+      \begin{minipage}{3cm} \cite{Diehl2015unsupervised} \end{minipage} & 
+       \centering None &
+       \begin{minipage}{3.5cm}\centering Two layers, LI\&F, inhibitory feedback  \end{minipage}& 
+       \begin{minipage}{3.5cm}\centering  Unsupervised, exponential STDP, adaptive membrane potential, 150ms silence between samples \end{minipage} & 
+       \begin{minipage}{3.5cm}\centering 95\% accuracy \end{minipage}\\
+      \begin{minipage}{3cm} \cite{Diehl2015fast}\end{minipage}  & 
+      \centering None & 
+      \begin{minipage}{3.5cm}\centering ConvNet and fully connected deep net, ReLU neurons (training), I\&F neurons (testing) \end{minipage}& 
+      \begin{minipage}{3.5cm}\centering Pre-trained with then converted to SNN, weight normalization \end{minipage}&  
+      \begin{minipage}{3.5cm}\centering Simulation time [0.5$s$, 5$s$]; accuracy ConvNet 99.1\%, FCnet 98.6\%\end{minipage}\\
+      \begin{minipage}{3cm} Paper 3 [ref]\end{minipage}  & 
+      \centering & 
+      \begin{minipage}{3.5cm}\centering  \end{minipage}& 
+      \begin{minipage}{3.5cm}\centering  \end{minipage}&  
+      \begin{minipage}{3.5cm}\centering  \end{minipage}\\
+      \begin{minipage}{3cm} Paper 4 [ref]\end{minipage}  
+      \centering & 
+      \begin{minipage}{3.5cm}\centering  \end{minipage}& 
+      \begin{minipage}{3.5cm}\centering  \end{minipage}& 
+      \begin{minipage}{3.5cm}\centering  \end{minipage}&
+      \begin{minipage}{3.5cm}\centering  \end{minipage}  
     \end{tabular}
     \egroup
   \end{center}
@@ -33,23 +50,50 @@ We would like to assist with the following considerations.
 \end{table*}
 
 \subsection{Hardware-Independent}
-As we are proposing spike based data-sets or a methodology to produce them, it's desirable that the users specify whether they added any further processing either to images or spikes~[\cite{best-practice-nn-img}]. This is important For example, if we want to use a particular set to test noisy inputs, it would be extremely useful to have a notion of the type of noise added.
+As we are proposing spike based data-sets or a methodology to produce them, it's desirable that the users specify whether they added any further processing either to images or spikes~[\cite{best-practice-nn-img}]. This is important, for example, if we want to use a modified set to test noisy inputs.
+
+A description of the network is most welcome, as it is the basis for the overall performance. Furthermore, sharing this designs may inspire fellow scientists to create new structures that, might take a new point of view to the problem, generating a positive feedback loop where everybody wins. We believe the \emph{network description} should include some of the following elements:
+%{ 
+%  \setlength{\leftmargini}{0.3cm}
+%  \begin{itemize}
+    %\item[] \hspace*{-0.3cm} 
+    \textit{Topology}, % \newline
+    which includes the number of neurons, how where they arranged and the interaction between them. 
+    %  What are the elements of the network (layers, populations)?
+    %  How are the different elements of the network arranged? Does the arrangement have any physical or biological interpretation? What are the interactions between them? What was the intuition behind this particular topology?
+    %\item[] \hspace*{-0.3cm} 
+    Additional details on the \textit{neuron model}, %\newline
+    like the activation function and any particulars of the implementation.
+    %Does the model have a I\&F behaviour? What particular model was used?
+    %\item[] \hspace*{-0.3cm} 
+    The \textit{synaptic plasticity model} %\newline
+    is key for learning in the network, so the report should include a description of its characteristics (e.g. short-term and/or long-term).
+    %In terms of synapse, what was the  used? Does the network support short-term and/or long-term plasticity?
+    %\item[] \hspace*{-0.3cm} 
+    %\textit{Extra classifier}. %\newline
+      Some research make use of \emph{extra non-neural classifiers}, sometimes to aid the design others to enhance the output of the NN. Any particulars on this subject are greatly appreciated.
+  %\item[]
+%  \end{itemize}
+%}
 
 
-A brief description of the \emph{network topology} is most welcome, we believe different topologies will have a deep impact on the overall performance. Furthermore, sharing this designs can inspire fellow scientists to create new structures that, might  a new point-of-view to bloom, generating a positive feedback loop where everybody wins.
+An important distinction to make, we think, is the nature of the \emph{training} procedure. A clear distinction has always been made between supervised, semi-supervised and unsupervised learning. Other specifications are the simulation time each sample is presented to the network, whether repeating samples was necessary and if they were presented continuously or with some ``silence'' was introduced between samples. Most works use adaptations to learning rules, details on the particular modifications are highly desired. Particulars on any additional weight-changing procedures used in the simulation are always welcome.
 
-Most classification papers report a percentage of accuracy that gives the reader a measure of the correct classifications~[\cite{dietterich1998approximate}]. Some times it might be desirable, for a better understanding of the paper, that a distinction between ambiguous, outliers and incorrect classes is made~[\cite{liu2002performance}]. A very useful piece of information is clear citation of the base-line source, which is almost always there but lost in a sea of references.
+%Also, details on the particulars of the applied learning rule (e.g. STDP, BCM), was it modified somehow?
+
+In the testing phase, the characteristics of the \emph{recognition} should include details on the way the samples where presented (e.g. events per simulation time unit, simulation time per sample). An interesting characteristic to report, particularly for deep networks, is the response time, although this might not be measured as often. A commonly reported characteristic is the accuracy of the network, perhaps adding remarks on how these scores were obtained could help to unify criteria and ease comparison.
+
+%Most classification papers report a percentage of accuracy that gives the reader a measure of the correct classifications~[\cite{dietterich1998approximate}]. Some times it might be desirable, for a better understanding of the paper, that a distinction between ambiguous, outliers and incorrect classes is made~[\cite{liu2002performance}]. A very useful piece of information is clear citation of the base-line source, which is almost always there but lost in a sea of references.
 
 %Should we report also incorrect or ambiguous? Could some ``correct'' be masking ambiguous? Were the ambiguous due to noise? Was the noise added on purpose? 
 
 
 %Traditionally, neural network training has been done using rate-based encoding. As new theories emerge, a
 
-An important distinction to make is the nature of the training procedure. One example is the way data was exposed to the network (e.g. How many times each image was presented? How much time was a single example shown?. [\cite{Diehl2015unsupervised}]) Also, details on the particulars of the implementation of the learning rule used (e.g. Delta, STDP, BCM, etc.) is highly desirable. 
 
-One the biggest distinctions on learning procedures is whether they were done using some \emph{supervision} or not; making this distinction clear is vastly appreciated. On supervised learning, the label of the data influences to establish categories and connection weights. Unsupervised learning has fewer constraints when it comes to class creation but might be tougher to get right. 
+%One the biggest distinctions on learning procedures is whether they were done using some \emph{supervision} or not; making this distinction clear is vastly appreciated. On supervised learning, the label of the data influences to establish categories and connection weights. Unsupervised learning has fewer constraints when it comes to class creation but might be tougher to get right. 
 
-A number of different classes are expected, this quantity might give an insight onto the network topology and dynamics. A description of the methods used to generate and populate the classes is very helpful for the reader. (e.g. Did we use a statistical measure? Was it a combination of NN with some other algorithms?)
+%A number of different classes are expected, this quantity might give an insight onto the network topology and dynamics. A description of the methods used to generate and populate the classes is very helpful for the reader. (e.g. Did we use a statistical measure? Was it a combination of NN with some other algorithms?)
 
 
 
