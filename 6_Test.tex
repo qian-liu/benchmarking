@@ -29,7 +29,7 @@ For simplicity of describing the system, one standard configuration is set as ex
 \def\arraystretch{1.1}
   \begin{tabular}{c|c|c}
   %\hline
-  Type & IF\_curr\_exp & Units\\
+  Parameters & Values & Units \\
   \hline
   cm & 0.25 & nF	\\
   %\hline
@@ -65,7 +65,7 @@ So the images in a certain subclass are used to train one corresponding decision
 The firing rate of the input neurons are assigned linearly according to their intensities and normalised with a total firing rate of 2000~$Hz/s$.
 All the images together are presented 180~$s$ (about 300~$ms$ per image) during training and at the same time a teaching signal of 50~$Hz/s$ is conveyed to the decision neuron to trigger STDP learning.
 The trained weights are plotted in accordance with the positions of the decision neurons in Fig~\ref{Fig:test}.
-\begin{figure}[hbt!]
+\begin{figure}[thb!]
 	\centering
 	\subfloat[Training model of a single decision neuron.]{
 		\label{Fig:train}
@@ -86,24 +86,65 @@ The trained weights are plotted in accordance with the positions of the decision
 
 
 \subsubsection{Testing}
-After training the weights of the plastic synapses are set to the weights 
-The weights were normalised after training and applied to the same network.
-And weak weights (=0) were set to inhibitory connections with an identical strength.
+After training the weights of the plastic synapses are set to static, keeping the state of the weights on the last moment during training.
+%The weights were normalised after training and applied to the same network.
+And the weak weights were set to inhibitory connections with an identical strength.
 %The output neurons inhibited all the other neurons as a winner take all circuit.
-The feed-forward testing network is shown in Fig~\ref{Fig:test}.
-Poissonion spike trains are generated with input neurons and conveyed through trained synaptic connections to the decision neurons.
-Every testing image was presented 1 second to the network, and the output neuron with the highest firing rate decides.
-The accuracy of the recognition reached 82.42\%.%83.14\%.
-The recording of the output neurons of a test sequence of digits (4, 1, 1, 0, 9, 3, 1, 9, 4, 6) was shown in the raster plot (Fig~\ref{Fig:output}).
-Fig~\ref{Fig:test}.
+The feed-forward testing network is shown in Fig~\ref{Fig:test} where Poissonion spike trains are generated the same way as in the training.
+The input neurons convey the same spike trains to every decision neuron through its responding trained synaptic weights. 
+Every testing image ($10,000$ images in total) is presented once and lasts 1 second with a silence of 100~ms between them.
+the output neuron with the highest firing rate decides.
+Taken the trained weights from NEST simulation, the accuracy of the recognition on NEST as well reaches 90.01\% with the standard configuration.
+In comparison, trained and tested on SpiNNaker the recognition rate is \textcolor{red}{**.**\%}.
+While taken the same NEST trained weights, the result turns to be a slight drop to  \textcolor{red}{**.**\%}.
+%In order to compare the recognition difference, another experiment on SpiNNaker is taken to test with the same NEST trained weights.
+The recording of the output neurons of a test sequence of digits (4, 1, 1, 0, 9, 3, 1, 9, 4, 6) is shown in the raster plot (Fig~\ref{Fig:output}).
+
 
 \begin{figure}[hbt!]
 	\centering
 	\includegraphics[width=0.48\textwidth]{images/test300-301.pdf}
-	\caption{A raster plot of test of a digits sequence.}
+	\caption{A raster plot of spike trains of the decision neurons. The sequence of the test are (4, 1, 1, 0, 9, 3, 1, 9, 4, 6). In order to make the raster plot easier to read, we apply inhibit connections between neurons which are not in the same subclasses.}
 	\label{Fig:output}
 \end{figure} 
 \subsubsection{Evaluation}
+The evaluation starts from the hardware-independent part, especially on the spike-based recognition analysis.
+As mentioned in Section~\ref{subsec:model}, accuracy and response time (latency) are the main concerns assessing the recognition capability.
+Regarding to the network size, it not only influences the accuracy of a model but also the time taken for simulation on specific platforms thus impact the energy usage on hardware. 
+
+The accuracy is dependent on the input spiking rates and the time last for each testing sample, see \textcolor{red}{Fig~}.
+\textcolor{red}{Describe the figure.}
+\textcolor{red}{Fig~a} shows the recognition accuracy changes over the input spiking rates.
+As more spikes injected to the network, the decision neurons become more active and the output disparity enlarges among the decision neurons.
+However, with increasing spikes injected the spiking rate of the decision neurons saturate to the limit of $1/tau\_refrac$, where $tau\_refrac$ refers to the refractory period.  
+So, the rate gap between the correct decision neuron and the others narrow as the input rates increase higher than a certain level.
+\textcolor{red}{Fig~b} shows the recognition accuracy changes over the time last for each testing sample.
+The longer an image is presented more information is gathered, so the accuracy climbs.
+
+The latency of a SNN model is mainly the result of the input rates, although synaptic weights also play a role.
+As the input rates grow, there are more spikes arriving at the decision neurons and triggering them to spike sooner.
+Similar idea apply, if stronger weights are taken the membrane potential of a neuron reaches its threshold earlier.
+\textcolor{red}{Fig~a and b} indicate the latency shortened with increasing input rates with both the original weights and scaled-up weights (10 times as the original).
+
+For the purpose of comparing the accuracy, simulation time and energy usage, different configurations have been tested on NEST and SpiNNaker.
+Table~
+
+\begin{table}[h]
+\caption{Comparisons of NEST and SpiNNaker performances.}
+\begin{center}
+\begin{tabular} {c|c|c|c|c|c|c}
+	 &\multicolumn{2}{c|}{Accuracy (\%)}  &\multicolumn{2}{c|}{Simulation (ms)}
+	 &\multicolumn{2}{c}{Energy Use}   \\
+	 \cline{2-7}
+	& N & S & N & S & N & S\\
+    \hline
+    Config 1 & 90.00 & 90.00 & 90.00 & 90.00 & 90.00 & 90.00 \\
+
+\end{tabular}
+\label{tbl:compare}
+\end{center}
+\end{table}
+
 
 \subsection{[Evangelos Stromatias]Case Study II}
 network topology 784-500-500-10. mention that its offline trained and presented in previous work. mention minitaur. mention that we are going to investigate how the precision affects the classification accuracy.
@@ -113,12 +154,13 @@ network topology 784-500-500-10. mention that its offline trained and presented 
 \subsubsection{Testing}
 After the training process the trained synaptic weights can be used in a spiking neural network which consists of LIF neurons with delta-current synapses. Table~\ref{Tab:NeuralParams} shows the LIF parameters used in the simulations.
 
-\begin{table}%[!t]
+\begin{table}[htb!]
 \textbf{\refstepcounter{table}\label{Tab:NeuralParams} Table \arabic{table}.}{ Default parameters of the Leaky Integrate-and-Fire Model used in simulations.}
 
 \processtable{}
-{\begin{tabular}{lllll}\toprule
-Parameters & Values & Units \\\midrule
+{\begin{tabular}{c|c|c} %{lllll}\toprule
+Parameters & Values & Units \\
+\hline
 $\tau_{m}$ 		 & 5.0 & s  \\
 $T_{\mathrm{refract}}$ & 2.0 & ms \\
 %$V_{\mathrm{init}}$ 		 & 0.0 & mV\\
@@ -152,17 +194,17 @@ Figure~\textbf{[WILLADDFIGURE]} shows the effect of reduced weight bit precision
 \begin{table}[h]
 \caption{Classification accuracy (CA) of the same DBN running on different platforms.}
 \begin{center}
-\begin{tabular} {|c|c|c|}
-    \hline
-    \multicolumn{1}{|c|}{\textbf{Simulator}}
-    & \multicolumn{1}{|c|}{\textbf{CA (\%)}}
-    & \multicolumn{1}{|c|}{\textbf{Weight Precision}} \\
+\begin{tabular} {c|c|c}
+	Simulator & CA (\%) & Weight Precision \\
+%    \multicolumn{1}{|c|}{\textbf{Simulator}}
+%    & \multicolumn{1}{|c|}{\textbf{CA (\%)}}
+%    & \multicolumn{1}{|c|}{\textbf{Weight Precision}} \\
     \hline
     Matlab & 96.06 & Double floating point\\
     Brian & 95.00 & Double floating point\\
     Brian & 94.955 & Q3.8\\
     SpiNNaker & 94.94 & Q3.8\\
-    \hline
+%    \hline
 \end{tabular}
 \label{tab:casimulators}
 \end{center}
