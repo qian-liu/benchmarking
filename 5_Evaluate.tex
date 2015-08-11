@@ -11,55 +11,66 @@ As neuromorphic hardware is more commonly used in research, larger and more comp
     \def\arraystretch{1.5}
     \begin{tabular}{ l  c c c c }
       $ $ &
-      \multirow{2}{*}{\begin{mycell}{1.9cm}Preprocessing\end{mycell} }& 
+      \begin{mycell}{1.9cm}Preprocessing\end{mycell} & 
       \begin{mycell}{3.5cm} Network\end{mycell} & 
       \begin{mycell}{3.5cm} Training \end{mycell} & 
       \begin{mycell}{3.5cm} Recognition \end{mycell} \\
-      \cline{3-5}
-       & 
-       & 
-      \begin{mycell}{3.5cm}Topology, neuron and synapse models, \\extra classifier  \end{mycell} &
-      \begin{mycell}{3.5cm}Methodology, simulation time, sample repetition \end{mycell} & 
-      \begin{mycell}{3.5cm}Events/$s$, time/sample, response time, accuracy\end{mycell} \\
+%      \cline{3-5}
+%       & 
+%       & 
+%      \begin{mycell}{3.5cm}Topology, neuron and synapse models, \\extra classifier  \end{mycell} &
+%      \begin{mycell}{3.5cm}Methodology, simulation time, sample repetition \end{mycell} & 
+%      \begin{mycell}{3.5cm}Events/$s$, time/sample, response time, accuracy\end{mycell} \\
       \hline
 %contents
-      \begin{mycell}{3cm} \cite{Diehl2015fast}\end{mycell}  & 
+      \begin{mycell}{2.5cm} \cite{Diehl2015fast}\end{mycell}  & 
       \centering None & 
       \begin{mycell}{3.5cm} ConvNet or \\FCnet, LIF neurons \end{mycell}& 
       \begin{mycell}{3.5cm} Pre-trained with ReLU, weight normalization \end{mycell}&  
       \begin{mycell}{3.5cm} 99.1\% (ConvNet), \\ 98.6\% (FCnet);\\
         Sim. time [0.5$s$, 5$s$] \end{mycell}\\
       %
-      \begin{mycell}{3cm} \cite{brader2007learning} \end{mycell} & 
+      \begin{mycell}{2.5cm} \cite{brader2007learning} \end{mycell} & 
       \begin{mycell}{1.9cm} None \end{mycell} & % preprocessing
       \begin{mycell}{3.5cm} Two layer, LIF neurons\end{mycell}&  % network
       \begin{mycell}{3.5cm} Semi-supervised, STDP, calcium LTP/LTD\end{mycell}&  % training
       \begin{mycell}{3.5cm} 96.5\% \\ (2.2\% non-class, \\1.3\% wrong-class)\end{mycell} \\% recognition
       %
-      \begin{mycell}{3cm} \cite{Diehl2015unsupervised} \end{mycell} & 
+      \begin{mycell}{2.5cm} \cite{Diehl2015unsupervised} \end{mycell} & 
        \centering None &
        \begin{mycell}{3.5cm} Two layers, LIF neurons, inhibitory feedback  \end{mycell}& 
        \begin{mycell}{3.5cm} Unsupervised, exp. STDP, %adaptive membrane potential, 
          $150ms$ silence between samples \end{mycell} & 
        \begin{mycell}{3.5cm} 95\% \end{mycell}\\
       %
-      \begin{mycell}{3cm} \cite{neftci2013event} \end{mycell} & 
+      \begin{mycell}{2.5cm} \cite{Stromatias2015scalable} \\ This paper \end{mycell} & 
+      \begin{mycell}{1.9cm} None \end{mycell} & % preprocessing
+      \begin{mycell}{3.5cm} Four layer RBM, \\ LIF neurons \end{mycell}&  % network
+      \begin{mycell}{3.5cm} Pre-trained, unsupervised \end{mycell}&  % training
+      \begin{mycell}{3.5cm} 95.1\% \end{mycell} \\% recognition
+      %
+      \begin{mycell}{2.5cm} \cite{neftci2013event} \end{mycell} & 
       \begin{mycell}{1.9cm} Thresholding\end{mycell} & % preprocessing
       \begin{mycell}{3.5cm} Two layer RBM, \\ LIF neurons \end{mycell}&  % network
       \begin{mycell}{3.5cm} Event-driven contrastive divergence, supervised \end{mycell}&  % training
       \begin{mycell}{3.5cm} 91.9\% \end{mycell} \\% recognition
       %
-      \begin{mycell}{3cm} \cite{beyeler2013categorization} \end{mycell} & 
+      \begin{mycell}{2.5cm} \cite{beyeler2013categorization} \end{mycell} & 
       \begin{mycell}{1.9cm} None \end{mycell} & % preprocessing
       \begin{mycell}{3.5cm} V1 (edge), \\V4 (orientation),\\ and competitive decision, Izhikevich neurons\end{mycell}&  % network
       \begin{mycell}{3.5cm} Semi-supervised, STDP, \\ calcium LTP/LTD \end{mycell} &  % training
       \begin{mycell}{3.5cm} 91.6\% \\ (8.3 \% non-class, \\ 0.1\% wrong-class) \end{mycell} \\% recognition
       %
-      \begin{mycell}{3cm} \cite{zhao_feedforward_2014}\end{mycell}  & 
+      \begin{mycell}{2.5cm} \cite{zhao_feedforward_2014}\end{mycell}  & 
       \begin{mycell}{1.9cm} Thresholding or DVS \end{mycell}& % preprocessing 
       \begin{mycell}{3.5cm} Simple (Gabor), \\Complex (MAX) \\and Tempotron  \end{mycell}& % network
-      \begin{mycell}{3.5cm} Tempotron (supervised) \end{mycell}& % training
+      \begin{mycell}{3.5cm} Tempotron, supervised \end{mycell}& % training
       \begin{mycell}{3.5cm} 91.3\% (threshold) \\ $88.1\% $ (DVS)\end{mycell}\\ % recognition
+      \begin{mycell}{2.5cm} This paper \end{mycell}  & 
+      \begin{mycell}{1.9cm} None \end{mycell}& % preprocessing 
+      \begin{mycell}{3.5cm} k-means clustering, \\ FC decision layer, \\ LIF neurons \end{mycell}& % network
+      \begin{mycell}{3.5cm} Supervised \end{mycell}& % training
+      \begin{mycell}{3.5cm} 90\% \end{mycell}\\ % recognition
     \end{tabular}
     \egroup
   \end{center}
