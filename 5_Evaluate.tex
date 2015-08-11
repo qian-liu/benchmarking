@@ -1,8 +1,9 @@
 \section{Performance Evaluation}
 \label{sec:eval}
 
-A crucial part of research is reporting results and comparing achievements with other state-of-the-art work. Unfortunately there is no standard way of fulfilling that task, this leads to a hard 
-We would like to assist with the following considerations.
+A crucial part of research is reporting results and comparing achievements with other state-of-the-art work. Unfortunately there is no standard way of fulfilling those tasks, which, sometimes, leads to confusion for the reader. We feel that the neuroscience community would benefit from a common ground for NN characteristics.
+
+As neuromorphic hardware is more commonly used in research, larger and more complex NN models could be used. Additionally, performance of the network may be influenced by the chosen development platform. We would like to assist with the following considerations when facing these impending changes.
 \begin{table*}[hbt!]
   \caption{Hardware independent comparison}
   \begin{center}
@@ -31,26 +32,26 @@ We would like to assist with the following considerations.
       %
       \begin{mycell}{3cm} \cite{brader2007learning} \end{mycell} & 
       \begin{mycell}{1.9cm} None \end{mycell} & % preprocessing
-      \begin{mycell}{3.5cm} Two layer, LIF\end{mycell}&  % network
+      \begin{mycell}{3.5cm} Two layer, LIF neurons\end{mycell}&  % network
       \begin{mycell}{3.5cm} Semi-supervised, STDP, calcium LTP/LTD\end{mycell}&  % training
       \begin{mycell}{3.5cm} 96.5\% \\ (2.2\% non-class, \\1.3\% wrong-class)\end{mycell} \\% recognition
       %
       \begin{mycell}{3cm} \cite{Diehl2015unsupervised} \end{mycell} & 
        \centering None &
-       \begin{mycell}{3.5cm} Two layers, LI\&F, inhibitory feedback  \end{mycell}& 
+       \begin{mycell}{3.5cm} Two layers, LIF neurons, inhibitory feedback  \end{mycell}& 
        \begin{mycell}{3.5cm} Unsupervised, exp. STDP, %adaptive membrane potential, 
          $150ms$ silence between samples \end{mycell} & 
        \begin{mycell}{3.5cm} 95\% \end{mycell}\\
       %
       \begin{mycell}{3cm} \cite{neftci2013event} \end{mycell} & 
       \begin{mycell}{1.9cm} Thresholding\end{mycell} & % preprocessing
-      \begin{mycell}{3.5cm} Two layer RBM \end{mycell}&  % network
+      \begin{mycell}{3.5cm} Two layer RBM, \\ LIF neurons \end{mycell}&  % network
       \begin{mycell}{3.5cm} Event-driven contrastive divergence, supervised \end{mycell}&  % training
       \begin{mycell}{3.5cm} 91.9\% \end{mycell} \\% recognition
       %
       \begin{mycell}{3cm} \cite{beyeler2013categorization} \end{mycell} & 
       \begin{mycell}{1.9cm} None \end{mycell} & % preprocessing
-      \begin{mycell}{3.5cm} V1 (edge), \\V4 (orientation),\\ and competitive decision \end{mycell}&  % network
+      \begin{mycell}{3.5cm} V1 (edge), \\V4 (orientation),\\ and competitive decision, Izhikevich neurons\end{mycell}&  % network
       \begin{mycell}{3.5cm} Semi-supervised, STDP, \\ calcium LTP/LTD \end{mycell} &  % training
       \begin{mycell}{3.5cm} 91.6\% \\ (8.3 \% non-class, \\ 0.1\% wrong-class) \end{mycell} \\% recognition
       %
