@@ -30,6 +30,17 @@
   linkcolor=blue,anchorcolor=black,citecolor=blue,urlcolor=blue
 }
 
+\newenvironment{mycell}[1]
+  {
+    \begin{minipage}{#1}
+      \begin{center}
+        \vspace*{0.1cm}
+  }
+  {
+        \vspace*{0.1cm}
+      \end{center}
+    \end{minipage}
+  }
 
 
 \newenvironment{equationexp}[1]% Environment for explaining equation variables
