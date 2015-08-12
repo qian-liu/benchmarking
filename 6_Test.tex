@@ -62,8 +62,8 @@ Fig~\ref{Fig:train} shows how the connections to a single decision neuron is tun
 
 The training set of $60,000$ hand written digits are firstly classified into 100 classes, 10 subclasses per digit, using K-means clusters.
 So the images in a certain subclass are used to train one corresponding decision neuron.
-The firing rate of the input neurons are assigned linearly according to their intensities and normalised with a total firing rate of 2000~$Hz$.
-All the images together are presented 180~$s$ (about 300~$ms$ per image) during training and at the same time a teaching signal of 50~$Hz$ is conveyed to the decision neuron to trigger STDP learning.
+The firing rate of the input neurons are assigned linearly according to their intensities and normalised with a total firing rate of 2000~Hz.
+All the images together are presented 180~$s$ (about 300~$ms$ per image) during training and at the same time a teaching signal of 50~Hz is conveyed to the decision neuron to trigger STDP learning.
 The trained weights are plotted in accordance with the positions of the decision neurons in Fig~\ref{Fig:test}.
 \begin{figure}[thb!]
 	\centering
@@ -90,65 +90,69 @@ After training the weights of the plastic synapses are set to static, keeping th
 %The weights were normalised after training and applied to the same network.
 And the weak weights were set to inhibitory connections with an identical strength.
 %The output neurons inhibited all the other neurons as a winner take all circuit.
-The feed-forward testing network is shown in Fig~\ref{Fig:test} where Poissonion spike trains are generated the same way as in the training.
+The feed-forward testing network is shown in Fig~\ref{Fig:test} where Poissonion spike trains are generated the same way as in the training with a total firing rate of 2000~Hz.
 The input neurons convey the same spike trains to every decision neuron through its responding trained synaptic weights. 
-Every testing image ($10,000$ images in total) is presented once and lasts 1 second with a silence of 100~ms between them.
+Every testing image ($10,000$ images in total) is presented once and lasts 1 second with a silence of 200~ms between them.
 the output neuron with the highest firing rate decides.
 Taken the trained weights from NEST simulation, the accuracy of the recognition on NEST as well reaches 90.01\% with the standard configuration.
 In comparison, trained and tested on SpiNNaker the recognition rate is \textcolor{red}{**.**\%}.
 While taken the same NEST trained weights, the result turns to be a slight drop to 89.88\%.
 %In order to compare the recognition difference, another experiment on SpiNNaker is taken to test with the same NEST trained weights.
-The recording of the output neurons of a test sequence of digits (4, 1, 1, 0, 9, 3, 1, 9, 4, 6) is shown in the raster plot (Fig~\ref{Fig:output}).
+The recording of the output neurons of a test sequence of digits is shown in the raster plot (Fig~\ref{Fig:output}).
+In order to make the raster plot easier to read, we apply inhibit connections between neurons which are not in the same subclasses.
 
 
 \begin{figure}[hbt!]
 	\centering
 	\includegraphics[width=0.48\textwidth]{images/test300-301.pdf}
-	\caption{A raster plot of spike trains of the decision neurons. The sequence of the test are (4, 1, 1, 0, 9, 3, 1, 9, 4, 6). In order to make the raster plot easier to read, we apply inhibit connections between neurons which are not in the same subclasses.}
+	\caption{A raster plot of spike trains of the decision neurons. The sequence of the test are (4, 1, 1, 0, 9, 3, 1, 9, 4, 6).}
 	\label{Fig:output}
 \end{figure} 
 \subsubsection{Evaluation}
-The evaluation starts from the hardware-independent part, especially on the spike-based recognition analysis.
+The evaluation starts from the hardware-independent part, focus on the spike-based recognition analysis.
 As mentioned in Section~\ref{subsec:model}, accuracy and response time (latency) are the main concerns assessing the recognition capability.
-Regarding to the network size, it not only influences the accuracy of a model but also the time taken for simulation on specific platforms thus impact the energy usage on hardware. 
-
-The accuracy is dependent on the input spiking rates and the time last for each testing sample, see \textcolor{red}{Fig~}.
-\textcolor{red}{Describe the figure.}
-\textcolor{red}{Fig~a} shows the recognition accuracy changes over the input spiking rates.
-As more spikes injected to the network, the decision neurons become more active and the output disparity enlarges among the decision neurons.
+The accuracy is dependent on the time last for each testing sample and the input spiking rates, see Fig~\ref{fig:assess}.
+The output spikes of the decision neurons are effected by both the input spiking rate and the connection weights.
+Therefore, two sets of weights are applied: original STDP trained weights and the scaled-up weights which are 10 times stronger.
+Fig~\ref{fig:acc_time} shows the recognition accuracy changes over the time last for each testing sample.
+The longer an image is presented more information is gathered, so the accuracy climbs.
+Fig~\ref{fig:acc_rate} shows the recognition accuracy changes over the input spiking rates.
+Given more intense spikes injected to the network, the decision neurons become more active and the output disparity enlarges among the decision neurons.
 However, with increasing spikes injected the spiking rate of the decision neurons saturate to the limit of $1/tau\_refrac$, where $tau\_refrac$ refers to the refractory period.  
 So, the rate gap between the correct decision neuron and the others narrow as the input rates increase to a certain level.
-\textcolor{red}{Fig~b} shows the recognition accuracy changes over the time last for each testing sample.
-The longer an image is presented more information is gathered, so the accuracy climbs.
+With stronger weights, the accuracy is much higher when the input firing rate is less than 2000~Hz.
 
-The latency of a SNN model is mainly the result of the input rates, although synaptic weights also play a role.
+
+The latency of a SNN model is mainly the result of the input rates, and synaptic weights also play a role.
 As the input rates grow, there are more spikes arriving at the decision neurons and triggering them to spike sooner.
-Similar idea apply, if stronger weights are taken the membrane potential of a neuron reaches its threshold earlier.
-\textcolor{red}{Fig~a and b} indicate the latency shortened with increasing input rates with both the original weights and scaled-up weights (10 times as the original).
-
+Similar idea apply, if stronger weights are taken then the membrane potential of a neuron reaches its threshold earlier.
+Fig~\ref{fig:lat_rate} indicates the latency shortened with increasing input rates with both the original weights and scaled-up weights.
+When the spiking rate is less than 2000~Hz, stronger weights shortened the latency a lot.
+As long as there are enough spikes to trigger the decision neurons to spike, the increasing test time will not make the network respond sooner, see Fig~\ref{fig:lat_time}.
 	\begin{figure}[htb!]
 	  \centering
-	  \subfloat[Spikes recorded in the order of neuron ID during 1s of time.]{
+	  \subfloat[Accuracy changes against test time.]{
 	  	    \label{fig:acc_time}
 	  	    \includegraphics[width=0.25\textwidth]{acc_dur.png}
 	  	  }
-	  \subfloat[Spikes recorded in the order of neuron ID during 1s of time.]{
+	  \subfloat[Accuracy changes against firing rate.]{
 	  	    \label{fig:acc_rate}
 	  	    \includegraphics[width=0.25\textwidth]{acc_rate.png}
 	  	  }
 	  	  \\
-	  \subfloat[Spikes recorded in the order of neuron ID during 1s of time.]{
+	  \subfloat[Latency stablises against test time.]{
 	  	    \label{fig:lat_time}
 	  	    \includegraphics[width=0.25\textwidth]{lat_dur.png}
 	  	  }
-	  \subfloat[Spikes recorded in the order of neuron ID during 1s of time.]{
+	  \subfloat[Latency changes against firing rate.]{
 	  	    \label{fig:lat_rate}
 	  	    \includegraphics[width=0.25\textwidth]{lat_rate.png}
 	  	  }
-	  \caption{The bursty of spikes is illustrated where most of the spikes occur in a 30~ms slot. Blue for 'ON' events and green for 'OFF'.}
+	  \caption{Accuracy and respond time (latency) change over test time and input firing rate per testing image. Original trained weights are used (in blue) as well as the scaled up ($\times10$) weights (in green). }
 	  \label{fig:assess}
 	\end{figure}
 
+Regarding to the network size, it not only influences the accuracy of a model but also the time taken for simulation on specific platforms thus impact the energy usage on hardware.
 For the purpose of comparing the accuracy, simulation time and energy usage, different configurations have been tested on NEST and SpiNNaker, referring to Table~\ref{tbl:compare}.
 
 \begin{table}[h]

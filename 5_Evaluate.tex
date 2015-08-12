@@ -9,7 +9,7 @@ As neuromorphic hardware is more commonly used in research, larger and more comp
   \begin{center}
     \bgroup
     \def\arraystretch{1.5}
-    \begin{tabular}{ l  c c c c }
+    \begin{tabular}{ l c c c c }
       $ $ &
       \begin{mycell}{1.9cm}Preprocessing\end{mycell} & 
       \begin{mycell}{3.5cm} Network\end{mycell} & 
@@ -28,7 +28,9 @@ As neuromorphic hardware is more commonly used in research, larger and more comp
       \begin{mycell}{3.5cm} ConvNet or \\FCnet, LIF neurons \end{mycell}& 
       \begin{mycell}{3.5cm} Pre-trained with ReLU, weight normalization \end{mycell}&  
       \begin{mycell}{3.5cm} 99.1\% (ConvNet), \\ 98.6\% (FCnet);\\
-        Sim. time [0.5$s$, 5$s$] \end{mycell}\\
+%        Sim. time [0.5$s$, 5$s$] 
+		Biology time
+        \end{mycell}\\
       %
       \begin{mycell}{2.5cm} \cite{brader2007learning} \end{mycell} & 
       \begin{mycell}{1.9cm} None \end{mycell} & % preprocessing
@@ -47,7 +49,7 @@ As neuromorphic hardware is more commonly used in research, larger and more comp
       \begin{mycell}{1.9cm} None \end{mycell} & % preprocessing
       \begin{mycell}{3.5cm} Four layer RBM, \\ LIF neurons \end{mycell}&  % network
       \begin{mycell}{3.5cm} Pre-trained, unsupervised \end{mycell}&  % training
-      \begin{mycell}{3.5cm} 95.1\% \end{mycell} \\% recognition
+      \begin{mycell}{3.5cm} 95.1\%\\Latency\\Biology time \end{mycell} \\% recognition
       %
       \begin{mycell}{2.5cm} \cite{neftci2013event} \end{mycell} & 
       \begin{mycell}{1.9cm} Thresholding\end{mycell} & % preprocessing
@@ -70,7 +72,7 @@ As neuromorphic hardware is more commonly used in research, larger and more comp
       \begin{mycell}{1.9cm}  K-means clusters \end{mycell}& % preprocessing 
       \begin{mycell}{3.5cm} FC decision layer, \\ LIF neurons \end{mycell}& % network
       \begin{mycell}{3.5cm} Supervised STDP \end{mycell}& % training
-      \begin{mycell}{3.5cm} 90.0\% \end{mycell}\\ % recognition
+      \begin{mycell}{3.5cm} 90.0\%\\Latency\\Biology time \end{mycell}\\ % recognition
     \end{tabular}
     \egroup
   \end{center}
@@ -134,7 +136,7 @@ In the testing phase, the characteristics of the \emph{recognition} should inclu
   \begin{center}
       \bgroup
       \def\arraystretch{1.4}
-    \begin{tabular}{l | c c c c c c c c c}
+    \begin{tabular}{l c c c c c c}
       $ $ & 
        \begin{minipage}{2.0cm}\centering System \end{minipage} & 
 %       \begin{minipage}{1.3cm}\centering Simulation type \end{minipage} & 
@@ -147,16 +149,16 @@ In the testing phase, the characteristics of the \emph{recognition} should inclu
 %       \begin{minipage}{1.2cm}\centering Energy per SE \end{minipage} & 
 %       \begin{minipage}{1.4cm}\centering Synaptic ops per Watt \end{minipage} & 
        \begin{minipage}{2.0cm}\centering Simulation Time \end{minipage} & 
-       \begin{minipage}{2.0cm}\centering Energy Use \end{minipage} & 
+       \begin{minipage}{2.0cm}\centering Energy Use \end{minipage} 
 %       \begin{minipage}{1.7cm}\centering Programming front-end \end{minipage}  
 	   \\
        \hline
        % contents!
        \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} SpiNNaker \citep{strometal} \end{minipage} & \begin{minipage}{2.0cm}\centering Digital \\ Event-driven \end{minipage} & Yes & \begin{minipage}{2.0cm}\centering Neuron/Synapse \\ Axonal delay \\ Learning rule \end{minipage}  & Programmable & \begin{minipage}{2.0cm}\centering Real-time \\ Flexible time resolution \end{minipage}  &\begin{minipage}{2.5cm}\centering 8~nJ/SE \\54.27 MSops/W \end{minipage} \\
        \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} TrueNorth \citep{Merolla08082014}\end{minipage} & Digital& & & & & 46 GSops/W \\
-       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} Neurogrid \citep{Benjamin_etal14}\end{minipage} &Mixed-mode& & & & & & & & \\
-       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} HI-CANN \citep{Schemmel_etal10}  \end{minipage} & Mixed-mode & & & & & & \\
-       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} iAER-IFAT \citep{gert}\end{minipage} &Mixed-mode & & & & & & 
+       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} Neurogrid \citep{Benjamin_etal14}\end{minipage} & Mixed-mode& & & & & \\
+       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} HI-CANN \citep{Schemmel_etal10}  \end{minipage} & Mixed-mode & & & & &\\
+       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} iAER-IFAT \citep{gert}\end{minipage} & Mixed-mode & & & & & 
        
     \end{tabular}
     \egroup
