@@ -169,10 +169,19 @@ For the purpose of comparing the accuracy, simulation time and energy usage, dif
 
 
 \subsection{[Evangelos Stromatias]Case Study II}
-network topology 784-500-500-10. mention that its offline trained and presented in previous work. mention minitaur. mention that we are going to investigate how the precision affects the classification accuracy.
+% brief intro about dbn
+Deep learning architectures and in particular Convolutional Networks \citep{lecun1998gradient} and Deep Belief Networks (DBNs) \citep{Hinton_etal_2006} have been characterised as one of the breakthrough technologies of the decade \citep{MIT_TechReview}. One of the advantages of these type of networks is that their performance can be increased by adding more layers \citep{Hinton_Contr_Divergence2006}.
+
+However, state-of-the-art deep networks comprise a large number of layers, neurons and connections resulting in high energy demands, communication overheads, and high response latencies. This is a problem for mobile and robotic platforms which may have limited computational and power resources but require fast system responses. 
+
+
+% about oneils model 
+\citet{10.3389/fnins.2013.00178} proposed a method to map off-line trained DBNs into a spiking neural networks and take advantage of the real-time performance and energy efficiency of neuromorphic platforms. This lead initially to an implementation on an event-driven Field-Programmable Gate Array (FPGA) called Minitaur \citep{dannminitaur} and then on the SpiNNaker platform \citep{iscasSpinnakerAcceptedDemo,SpinnakerDBN2015}. For this work we used an off-line trained\footnote{\url{https://github.com/dannyneil/edbn/}} spiking DBN with a 784-500-500-10 network topology. Simulations take place on a software spiking neural network simulator named Brian \citep{briansim} and results are verified on the SpiNNaker platform.
 
 \subsubsection{Training}
-\citet{10.3389/fnins.2013.00178}
+
+DBNs consist of stacked Restricted Boltzmann Machines (RBMs), which are fully connected recurrent networks but without any connections between neurons of the same layers. Training is performed unsupervised using the standard Contrastive Divergence (CD) rule \citep{Hinton_Contr_Divergence2006} and only the output layer is trained in a supervised manner. The main difference is the activation function used for the neurons. \citet{10.3389/fnins.2013.00178} proposed the use of the Siegert approximation \citep{Jug_etal_2012} as the activation function, which returns the expected firing rate of a leaky integrate and fire (LIF) neuron given input firing rates, input weights, and standard neuron parameters.
+
 \subsubsection{Testing}
 After the training process the trained synaptic weights can be used in a spiking neural network which consists of LIF neurons with delta-current synapses. Table~\ref{Tab:NeuralParams} shows the LIF parameters used in the simulations.
 
@@ -195,7 +204,7 @@ $V_{\mathrm{thresh}}$ 		 & 1.0 & mV \\
 The pixels of each MNIST digit from the testing set are converted into Poisson spike trains with a rate proportional to the intensity of their pixel, while their firing rates are scaled so that the total firing rate of the input population is constant \citep{10.3389/fnins.2013.00178}.
 
  
-Table~\ref{tab:casimulators} presents a comparison of the classification accuracies (CA) between the rate-based implementation in MATLAB using the Siegert neurons, Brian \citep{} a software spiking neural network simulator, and SpiNNaker. The default fixed-point weight precision for SpiNNaker is 22 bits, 6 for the integer part and 16 for the fractional part (Q6.16) \citep{}.
+Table~\ref{tab:casimulators} presents a comparison of the classification accuracies (CA) between the rate-based implementation in MATLAB using the Siegert neurons, Brian, and SpiNNaker. %The default fixed-point weight precision for SpiNNaker is 22 bits, 6 for the integer part and 16 for the fractional part (Q6.16) \citep{}.
 
 
 
