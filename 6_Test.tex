@@ -62,8 +62,8 @@ Fig~\ref{Fig:train} shows how the connections to a single decision neuron is tun
 
 The training set of $60,000$ hand written digits are firstly classified into 100 classes, 10 subclasses per digit, using K-means clusters.
 So the images in a certain subclass are used to train one corresponding decision neuron.
-The firing rate of the input neurons are assigned linearly according to their intensities and normalised with a total firing rate of 2000~$Hz/s$.
-All the images together are presented 180~$s$ (about 300~$ms$ per image) during training and at the same time a teaching signal of 50~$Hz/s$ is conveyed to the decision neuron to trigger STDP learning.
+The firing rate of the input neurons are assigned linearly according to their intensities and normalised with a total firing rate of 2000~$Hz$.
+All the images together are presented 180~$s$ (about 300~$ms$ per image) during training and at the same time a teaching signal of 50~$Hz$ is conveyed to the decision neuron to trigger STDP learning.
 The trained weights are plotted in accordance with the positions of the decision neurons in Fig~\ref{Fig:test}.
 \begin{figure}[thb!]
 	\centering
@@ -126,8 +126,30 @@ As the input rates grow, there are more spikes arriving at the decision neurons 
 Similar idea apply, if stronger weights are taken the membrane potential of a neuron reaches its threshold earlier.
 \textcolor{red}{Fig~a and b} indicate the latency shortened with increasing input rates with both the original weights and scaled-up weights (10 times as the original).
 
-For the purpose of comparing the accuracy, simulation time and energy usage, different configurations have been tested on NEST and SpiNNaker.
-Table~
+	\begin{figure}[htb!]
+	  \centering
+	  \subfloat[Spikes recorded in the order of neuron ID during 1s of time.]{
+	  	    \label{fig:acc_time}
+	  	    \includegraphics[width=0.25\textwidth]{acc_dur.png}
+	  	  }
+	  \subfloat[Spikes recorded in the order of neuron ID during 1s of time.]{
+	  	    \label{fig:acc_rate}
+	  	    \includegraphics[width=0.25\textwidth]{acc_rate.png}
+	  	  }
+	  	  \\
+	  \subfloat[Spikes recorded in the order of neuron ID during 1s of time.]{
+	  	    \label{fig:lat_time}
+	  	    \includegraphics[width=0.25\textwidth]{lat_dur.png}
+	  	  }
+	  \subfloat[Spikes recorded in the order of neuron ID during 1s of time.]{
+	  	    \label{fig:lat_rate}
+	  	    \includegraphics[width=0.25\textwidth]{lat_rate.png}
+	  	  }
+	  \caption{The bursty of spikes is illustrated where most of the spikes occur in a 30~ms slot. Blue for 'ON' events and green for 'OFF'.}
+	  \label{fig:assess}
+	\end{figure}
+
+For the purpose of comparing the accuracy, simulation time and energy usage, different configurations have been tested on NEST and SpiNNaker, referring to Table~\ref{tbl:compare}.
 
 \begin{table}[h]
 \caption{Comparisons of NEST and SpiNNaker performances.}
