@@ -24,7 +24,7 @@ In order to fully assess the performance, different settings have been configure
 For simplicity of describing the system, one standard configuration is set as example in the following sections.
 \begin{table}[hbbp]
 \centering
-\caption{\label{tbl:pynnSetting}Parameter setting for the current-based LIF neurons using PyNN}
+\caption{\label{tbl:pynnSetting}Parameter setting for the current-based LIF neurons using PyNN.}
 \bgroup
 \def\arraystretch{1.1}
   \begin{tabular}{c|c|c}
@@ -158,13 +158,19 @@ For the purpose of comparing the accuracy, simulation time and energy usage, dif
 \begin{table}[h]
 \caption{Comparisons of NEST and SpiNNaker performances.}
 \begin{center}
-\begin{tabular} {c|c|c|c|c|c|c}
-	 &\multicolumn{2}{c|}{Accuracy (\%)}  &\multicolumn{2}{c|}{Simulation (ms)}
-	 &\multicolumn{2}{c}{Energy Use}   \\
+\begin{tabular} {r|c|c|c|c|c|c}
+	 Subclasses
+	 &\multicolumn{2}{c|}{Accuracy (\%)}  &\multicolumn{2}{c|}{Simulation (s)}
+	 &\multicolumn{2}{c}{Energy Use (W)}   \\
 	 \cline{2-7}
+	 per digit
 	& N & S & N & S & N & S\\
     \hline
-    Config 1 & 90.00 & 90.00 & 90.00 & 90.00 & 90.00 & 90.00 \\
+    1 & 74.68 & NA & 554.77 & \multirow{5}{*}{12000} & \multirow{5}{*}{21} & 0.52 \\
+    10 & 91.45 & NA & 621.74 &   &   & 90.00 \\
+    50 & 93.23 & NA & 1125.12 &   &   & 90.00 \\
+    100 & 86.99 & NA & 1406.01 &   &   & 90.00 \\
+    1000 & 89.65 & NA & 30316.88 &   &   & 90.00 \\
 
 \end{tabular}
 \label{tbl:compare}
@@ -189,21 +195,42 @@ DBNs consist of stacked Restricted Boltzmann Machines (RBMs), which are fully co
 \subsubsection{Testing}
 After the training process the trained synaptic weights can be used in a spiking neural network which consists of LIF neurons with delta-current synapses. Table~\ref{Tab:NeuralParams} shows the LIF parameters used in the simulations.
 
-\begin{table}[htb!]
-\textbf{\refstepcounter{table}\label{Tab:NeuralParams} Table \arabic{table}.}{ Default parameters of the Leaky Integrate-and-Fire Model used in simulations.}
-
-\processtable{}
-{\begin{tabular}{c|c|c} %{lllll}\toprule
-Parameters & Values & Units \\
-\hline
-$\tau_{m}$ 		 & 5.0 & s  \\
-$T_{\mathrm{refract}}$ & 2.0 & ms \\
-%$V_{\mathrm{init}}$ 		 & 0.0 & mV\\
-$V_{\mathrm{reset}}$ 		 & 0.0 & mV \\
-$V_{\mathrm{thresh}}$ 		 & 1.0 & mV \\
-\end{tabular}}{}
+%\begin{table}[htb!]
+%\textbf{\refstepcounter{table}\label{Tab:NeuralParams} Table \arabic{table}.}{ Default parameters of the Leaky Integrate-and-Fire Model used in simulations.}
+%
+%\processtable{}
+%{\begin{tabular}{c|c|c} %{lllll}\toprule
+%Parameters & Values & Units \\
+%\hline
+%$\tau_{m}$ 		 & 5.0 & s  \\
+%$T_{\mathrm{refract}}$ & 2.0 & ms \\
+%%$V_{\mathrm{init}}$ 		 & 0.0 & mV\\
+%$V_{\mathrm{reset}}$ 		 & 0.0 & mV \\
+%$V_{\mathrm{thresh}}$ 		 & 1.0 & mV \\
+%\end{tabular}}{}
+%\end{table}
+\begin{table}[hbbp]
+\centering
+\caption{\label{Tab:NeuralParams}Default parameters of the Leaky Integrate-and-Fire Model used in simulations.}
+\bgroup
+\def\arraystretch{1.1}
+  \begin{tabular}{c|c|c}
+  %\hline
+  Parameters & Values & Units \\
+  \hline
+  tau\_m & 5 & s\\
+  %\hline
+  tau\_refrac & 2.0 & ms\\
+  %\hline
+  v\_reset & 0.0 & mV\\
+  %\hline
+  v\_rest & 0.0 & mV\\
+  %\hline
+  v\_thresh & 1.0 & mV\\
+  %\hline
+  \end{tabular}
+\egroup
 \end{table}
-
 
 The pixels of each MNIST digit from the testing set are converted into Poisson spike trains with a rate proportional to the intensity of their pixel, while their firing rates are scaled so that the total firing rate of the input population is constant \citep{10.3389/fnins.2013.00178}.
 
