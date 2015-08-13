@@ -9,7 +9,7 @@ As neuromorphic hardware is more commonly used in research, larger and more comp
   \begin{center}
     \bgroup
     \def\arraystretch{1.5}
-    \begin{tabular}{ l  c c c c }
+    \begin{tabular}{ l c c c c }
       $ $ &
       \begin{mycell}{1.9cm}Preprocessing\end{mycell} & 
       \begin{mycell}{3.5cm} Network\end{mycell} & 
@@ -28,7 +28,9 @@ As neuromorphic hardware is more commonly used in research, larger and more comp
       \begin{mycell}{3.5cm} ConvNet or \\FCnet, LIF neurons \end{mycell}& 
       \begin{mycell}{3.5cm} Pre-trained with ReLU, weight normalization \end{mycell}&  
       \begin{mycell}{3.5cm} 99.1\% (ConvNet), \\ 98.6\% (FCnet);\\
-        Sim. time [0.5$s$, 5$s$] \end{mycell}\\
+%        Sim. time [0.5$s$, 5$s$] 
+		Biology time
+        \end{mycell}\\
       %
       \begin{mycell}{2.5cm} \cite{brader2007learning} \end{mycell} & 
       \begin{mycell}{1.9cm} None \end{mycell} & % preprocessing
@@ -47,7 +49,7 @@ As neuromorphic hardware is more commonly used in research, larger and more comp
       \begin{mycell}{1.9cm} None \end{mycell} & % preprocessing
       \begin{mycell}{3.5cm} Four layer RBM, \\ LIF neurons \end{mycell}&  % network
       \begin{mycell}{3.5cm} Pre-trained, unsupervised \end{mycell}&  % training
-      \begin{mycell}{3.5cm} 95.1\% \end{mycell} \\% recognition
+      \begin{mycell}{3.5cm} 95.1\%\\Latency\\Biology time \end{mycell} \\% recognition
       %
       \begin{mycell}{2.5cm} \cite{neftci2013event} \end{mycell} & 
       \begin{mycell}{1.9cm} Thresholding\end{mycell} & % preprocessing
@@ -67,10 +69,10 @@ As neuromorphic hardware is more commonly used in research, larger and more comp
       \begin{mycell}{3.5cm} Tempotron, supervised \end{mycell}& % training
       \begin{mycell}{3.5cm} 91.3\% (threshold) \\ $88.1\% $ (DVS)\end{mycell}\\ % recognition
       \begin{mycell}{2.5cm} This paper \end{mycell}  & 
-      \begin{mycell}{1.9cm} None \end{mycell}& % preprocessing 
-      \begin{mycell}{3.5cm} k-means clustering, \\ FC decision layer, \\ LIF neurons \end{mycell}& % network
-      \begin{mycell}{3.5cm} Supervised \end{mycell}& % training
-      \begin{mycell}{3.5cm} 90\% \end{mycell}\\ % recognition
+      \begin{mycell}{1.9cm}  K-means clusters \end{mycell}& % preprocessing 
+      \begin{mycell}{3.5cm} FC decision layer, \\ LIF neurons \end{mycell}& % network
+      \begin{mycell}{3.5cm} Supervised STDP \end{mycell}& % training
+      \begin{mycell}{3.5cm} 90.0\%\\Latency\\Biology time \end{mycell}\\ % recognition
     \end{tabular}
     \egroup
   \end{center}
@@ -129,29 +131,34 @@ In the testing phase, the characteristics of the \emph{recognition} should inclu
 
 \subsection{[Evangelos Stromatias] Hardware-Specific}
 \label{subsec:hw}
-\begin{table*}[th!]
+\begin{table*}[thb!]
   \caption{Hardware dependent comparison}
   \begin{center}
       \bgroup
       \def\arraystretch{1.4}
-    \begin{tabular}{l | c c c c c c c c c}
+    \begin{tabular}{l c c c c c c}
       $ $ & 
-       \begin{minipage}{1.2cm}\centering Hardware approach \end{minipage} & 
-       \begin{minipage}{1.3cm}\centering Simulation type \end{minipage} & 
-       \begin{minipage}{1.7cm}\centering Programmable \end{minipage} & 
-       \begin{minipage}{1cm}\centering Axonal delays \end{minipage} & 
-       \begin{minipage}{1cm}\centering Synaptic model \end{minipage} & 
-       \begin{minipage}{1.2cm}\centering Synaptic precision \end{minipage} & 
-       \begin{minipage}{1.2cm}\centering Energy per SE \end{minipage} & 
-       \begin{minipage}{1.4cm}\centering Synaptic ops per Watt \end{minipage} & 
-       \begin{minipage}{1.7cm}\centering Programming front-end \end{minipage}  \\
+       \begin{minipage}{2.0cm}\centering System \end{minipage} & 
+%       \begin{minipage}{1.3cm}\centering Simulation type \end{minipage} & 
+       \begin{minipage}{2.0cm}\centering Scalable \end{minipage} & 
+       \begin{minipage}{2.0cm}\centering Programmable \end{minipage} & 
+%       \begin{minipage}{1cm}\centering Axonal delays \end{minipage} & 
+%       \begin{minipage}{1cm}\centering Synaptic model \end{minipage} & 
+       \begin{minipage}{2.0cm}\centering Precision \end{minipage} &  
+%       \begin{minipage}{1.2cm}\centering Synaptic precision \end{minipage} & 
+%       \begin{minipage}{1.2cm}\centering Energy per SE \end{minipage} & 
+%       \begin{minipage}{1.4cm}\centering Synaptic ops per Watt \end{minipage} & 
+       \begin{minipage}{2.0cm}\centering Simulation Time \end{minipage} & 
+       \begin{minipage}{2.0cm}\centering Energy Use \end{minipage} 
+%       \begin{minipage}{1.7cm}\centering Programming front-end \end{minipage}  
+	   \\
        \hline
        % contents!
-       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} SpiNNaker \citep{strometal} \end{minipage} &Digital& & & & & & 8~nJ &54.27 MSops/W & \\
-       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} TrueNorth \citep{Merolla08082014}\end{minipage} &Digital& & & & & & &46 GSops/W & \\
-       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} Neurogrid \citep{Benjamin_etal14}\end{minipage} &Mixed-mode& & & & & & & & \\
-       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} HI-CANN \citep{Schemmel_etal10}  \end{minipage} &Mixed-mode & & & & & & & & \\
-       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} iAER-IFAT \citep{gert}\end{minipage} &Mixed-mode & & & & & & & & 
+       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} SpiNNaker \citep{strometal} \end{minipage} & \begin{minipage}{2.0cm}\centering Digital \\ Event-driven \end{minipage} & Yes & \begin{minipage}{2.0cm}\centering Neuron/Synapse \\ Axonal delay \\ Learning rule \end{minipage}  & Programmable & \begin{minipage}{2.0cm}\centering Real-time \\ Flexible time resolution \end{minipage}  &\begin{minipage}{2.5cm}\centering 8~nJ/SE \\54.27 MSops/W \end{minipage} \\
+       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} TrueNorth \citep{Merolla08082014}\end{minipage} & Digital& & & & & 46 GSops/W \\
+       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} Neurogrid \citep{Benjamin_etal14}\end{minipage} & Mixed-mode& & & & & \\
+       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} HI-CANN \citep{Schemmel_etal10}  \end{minipage} & Mixed-mode & & & & &\\
+       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} iAER-IFAT \citep{gert}\end{minipage} & Mixed-mode & & & & & 
        
     \end{tabular}
     \egroup
@@ -161,12 +168,27 @@ In the testing phase, the characteristics of the \emph{recognition} should inclu
 
 Depending on how neurons, synapses and spike transmission are implemented neuromorphic systems can be categorised as either analogue, digital, or mixed-mode analogue/digital VLSI circuits. Analogue implementations exploit the sub-threshold transistor dynamics to emulate neurons and synapses directly on hardware \citep{giacom} and are more energy-efficient while requiring less area than their digital counterparts \citep{temamanalogdigital}. However, the behaviour of analogue circuits is largely determined during the fabrication process due to transistor mismatch \citep{giacom,analoguemismatch,bernabeDACsynapses}, while their wiring densities render them impractical for large-scale systems. The majority of mixed-mode analogue/digital neuromorphic platforms, such as High Input Count Analog Neural Network (HI-CANN) \citep{Schemmel_etal10}, Neurogrid \citep{Benjamin_etal14}, HiAER-IFAT \citep{gert}, use analogue circuits to emulate neurons and digital packet-based technology to communicate spikes as AER events. This enables reconfigurable connectivity patterns, while the time of spikes is expressed implicitly since typically a spike reaches its destination in less than a millisecond, thus fulfilling the real-time requirement. Digital neuromorphic platforms such as TrueNorth \citep{Merolla08082014} use digital circuits with finite precision to simulate neurons in an event driven manner to minimise the active power dissipation. Neuromorphic systems suffer from model flexibility, since neurons and synapses are fabricated directly on hardware with only a small subset of parameters exposed to the researcher. 
 
-The Spiking Neural Network Architecture, or SpiNNaker, is a biologically inspired, massively-parallel, scalable computing architecture designed by the Advanced Processor Technologies (APT) group at the University of Manchester. SpiNNaker has been optimised to simulate very large-scale spiking neural networks in real-time \citep{spiNNakerProject}. SpiNNaker aims to combine the advantages of conventional computers and neuromorphic hardware by utilising low-power programmable cores and scalable event-driven communications hardware. \textit{\textbf{[ADD AS MUCH DETAILS ABOUT THE SPINNAKER ARCHITECTURE AND SOFTWARE HERE]}}. 
+The Spiking Neural Network Architecture, or SpiNNaker, is a biologically inspired, massively-parallel, scalable computing architecture designed by the Advanced Processor Technologies (APT) group at the University of Manchester. SpiNNaker has been optimised to simulate very large-scale spiking neural networks in real-time \citep{spiNNakerProject}. SpiNNaker aims to combine the advantages of conventional computers and neuromorphic hardware by utilising low-power programmable cores and scalable event-driven communications hardware.
+%\textit{\textbf{[ADD AS MUCH DETAILS ABOUT THE SPINNAKER ARCHITECTURE AND SOFTWARE HERE. Qian Liu: only hardware is ok?]}}. 
 
-A direct comparison between neuromorphic platforms is not a trivial task due to the different hardware implementation technology. Comparing the performance of each platform in terms of power requirements is an interesting comparison metric especially if targeted for mobile applications and robotics. Some researchers have suggested the use of energy per synaptic event (SE) \citep{Sharp2012110,strometal} as a power metric because the large number of fan in and out of a neuron tend to dominate the total power dissipation during a simulation. Merolla et al. proposed the number of synaptic operations per second per Watt (SOPS/W) \citep{Merolla08082014}. 
+A direct comparison between neuromorphic platforms is not a trivial task due to the different hardware implementation technologies as mentioned above.
+%Qian Liu modified
+The metric proposed in Table~\ref{tb:hardware_comparison} attempts to unveil the advantages and disadvantages of different neuromorphic hardware thus to find out the network properties each platform suits for.
+The scalability of a hardware determines the network size limit of a neural application running on itself.
+Considering the various neural, synaptic models, plasticity learning rules and lengths of axonal delays, a programmable platform is flexible for diverse SNNs while hard-wired system supporting only specific models wins for its simpler design and implementation.
+Comparison metrics could be the precision used to describe the membrane potential of neurons (for the digital platforms) and synaptic weights.
+It will impact on system performance on the accuracy of a classification/recognition SNN.
+Simulation time is an important measure of running large-scale networks on hardware.
+Real-time implementation is an essential requirement for robotic systems because of the real-time input from the neuromorphic sensors.
+Running faster than real time is attractive for large/long simulations.
+However, due to the limitation of hardware resources simulation time may accelerate or slow down according to the network topology and spike dynamics.
+Also finer time resolution plays an important role in precision sensitive neural models or in sub-millisecond tasks~(\cite{lagorce2015breaking}).
+%Qian Liu done
+Comparing the performance of each platform in terms of power requirements is an interesting comparison metric especially if targeted for mobile applications and robotics. Some researchers have suggested the use of energy per synaptic event (SE) \citep{Sharp2012110,strometal} as a power metric because the large number of fan in and out of a neuron tend to dominate the total power dissipation during a simulation. Merolla et al. proposed the number of synaptic operations per second per Watt (SOPS/W) \citep{Merolla08082014}. 
 
-Additional comparison metrics could be the precision used to describe the membrane potential of neurons (for the digital platforms), synaptic weights, axonal delays, simulation type (time or event driven) and if the simulation runs in real- or accelerated time.
- 
+%Qian Liu modified
+For a particular SNN application or benchmark, the scalability and programmability will determine whether the network is able to run on a platform.
+And the system performance will be assessed on the accuracy, simulation time and energy use of running the network. 
 Table~\ref{tb:hardware_comparison} aims to summarise the aforementioned hardware comparison metrics.
  
 % mention spinnaker, for this work
