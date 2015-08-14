@@ -7,7 +7,7 @@ Meanwhile, as tentative benchmarks the models are implemented on SpiNNaker to as
 Presenting proper benchmarks for vision recognition systems is still under investigation, the case studies only make an attempt.
 
 \subsection{Case Study I}
-It is a simple two-layered network where the input neurons receive Poissonian presented spike trains from the dataset and fully connect to the decision neurons.
+It is a simple two-layered network where the input neurons receive Poissonian presented spike trains from the dataset and form a fully connected (FC) network with the decision neurons.
 The model utilises Leaky-Integrate-and-Fire (LIF) neurons, and the parameters are all with biological means, see the listed values in Table~\ref{tbl:pynnSetting}.
 The connections between the input neurons and the decision neurons are plastic, so the connection weights can be modulated during training with standard STDP learning rule.
 The model is described with PyNN and the code is published in\footnote {https://github.com/qian-liu/benchmarking/tree/master/code/case\_study\_I} the same github repository with the dataset.
