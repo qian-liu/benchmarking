@@ -5,45 +5,45 @@ In computer vision, there are a few datasets playing import roles in different t
 The MNIST is a subset of NIST hand written digits dataset. 
 %Both of the training and testing sets are selected half from SD-3 and the other half from SD-1. 
 The training set contains 60,000 patterns collected from approximately 250 writers.
-And the testing set is composed of 10,000 patterns written by disjoint individuals.
+The testing set is composed of 10,000 patterns written by disjoint individuals.
 All the digits in the dataset are of similar scale centring in a 28$ \times $28 image.
 Due to its straightforward target of classifying real-world images, the plain format of binary data and the simple patterns, MNIST is one of the most popular datasets in computer vision over 20 years.
 
-Many methods have been verified on this dataset: K-means, SVM, ConvNets and etc.
+Many methods have been verified on this dataset: K-means, SVM, ConvNets, etc.
 The descending recognition error rate makes it nearly a solved problem, however some modifications, such as position shifts, scaling and noise, bring new challenges.
 Certainly, a spiking version of the dataset will be an interesting artificial distortion and draw attention to new methods and algorithms on the challenge. 
 
 \subsection{ImageNet~[\cite{deng_imagenet:_2009}]}
-Since the new era of the 4th generation ANN, Deep Neural Network, a flow of successful applications have been reported.
+Since the new era of the 4th generation ANN, the Deep Neural Network, a flow of successful applications have been reported.
 Meanwhile, training the deeper network triggers a huge demand for more data.
-This is the purpose of putting forward ImageNet to provide researchers a large-scale image database.
-Currently there are 14,197,122 images and 21841 synsets indexed in the dataset.
-Synsets are meaningful concepts described with a few words or phrases, and they are organised in hierarchy in WordNet.
-The final goal of ImageNet is to provide about 1000 images per synset in the total of 100,000 of them.
-In another word, there will be tens of millions images tidily structured, accurately labelled and human annotated.
+This is the purpose of putting forward ImageNet to provide researchers with a large-scale image database.
+Currently there are 14,197,122 images and 21,841 synsets indexed in the dataset.
+Synsets are meaningful concepts described with a few words or phrases, and they are organised in a hierarchy as in WordNet\footnote{http://www.image-net.org/}.
+The final goal of ImageNet is to provide about 1000 images per synset in the total of 100,000 images.
+In another words, there will be tens of millions of images tidily structured, accurately labelled and human annotated.
 The dataset is a well-recognised benchmark test for the deep learning community, and many attempts have been made to improve the performance, for example~[\cite{krizhevsky2012imagenet}].
 
 \subsection{Microsoft COCO~[\cite{lin_microsoft_2014}]}
-As a good example of database catching up with state-of-the-art technologies, Microsoft COCO aims to solve three problems in scene understanding by providing a large-scale datasets.
+As a good example of a database catching up with state-of-the-art technologies, Microsoft COCO aims to solve three problems in scene understanding by providing large-scale datasets.
 First is to categorise objects in their non-iconic views, such as being small, ambiguous or partially occluded.
 Secondly, understanding the context (contextual reasoning) of multiple objects in an image is necessary.
-At last, spatial labelling the objects is a core analysis in scene understanding.
+Lastly, spatial labelling of the objects is a core analysis in scene understanding.
 Up to date, the dataset contains 300,000+ images, 2 Million instances and 5 captions per image.
 
 \subsection{Action Datasets}
 Similar examples could be found in video datasets.
-Two early benchmarks, the KTH ~[\cite{schuldt2004recognizing}] and Weizmann~[\cite{blank2005actions}], have been tested on extensively in the past decade. 
-These videos were produced with scripted behaviours under controlled environment (``in the lab'') .
-And the single atomic actions were simple and neat: walking, running, sitting and etc.
+Two early benchmarks, the KTH ~[\cite{schuldt2004recognizing}] and Weizmann~[\cite{blank2005actions}], have been used extensively in the past decade. 
+These videos were produced with scripted behaviours in a controlled environment (``in the lab'') .
+The single atomic actions were simple and neat: walking, running, sitting and etc.
 
 Taking the advantages of continuous spiking trains instead of frames of videos, spiking version of such action datasets will be provided in our future work.
 A DVS simulation may be needed to convert frames of images into spikes.
  
-YouTube Action Dataset~[\cite{liu_recognizing_2009}] targets of recognising realistic actions from videos ``in the wild''.
-Thanks to the digit era, unconstrained videos are abundant on the Internet, e.g. YouTube.
-This YouTube Action dataset is composed of 1,168 videos of 11 categories.
+The YouTube Action Dataset~[\cite{liu_recognizing_2009}] targets recognising realistic actions from videos ``in the wild''.
+Thanks to the digital era, unconstrained videos are abundant on the Internet, e.g. YouTube.
+This YouTube Action dataset is composed of 1,168 videos in 11 categories.
 The main challenge relies on the massive variations due to the moving camera, background clutter, viewing angles, illuminations and so on.
-It also aims to detect complex action (non-atomic), e.g. long jump, which is consisted with several continuous atomic actions.
+It also aims to detect complex action (non-atomic), e.g. long jump, which consists of several continuous atomic actions.
 
 %\subsection{Current Status}
 %\subsubsection{Converting from MPL to SNN}

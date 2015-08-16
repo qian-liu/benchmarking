@@ -83,18 +83,18 @@ As neuromorphic hardware is more commonly used in research, larger and more comp
 \label{subsec:model}
 As we are proposing spike based data-sets or a methodology to produce them, it's desirable that the users specify whether they added any further processing either to images or spikes~[\cite{best-practice-nn-img}]. This is important, for example, if we want to use a modified set to test noisy inputs.
 
-A description of the network is most welcome, as it is the basis for the overall performance. Furthermore, sharing this designs may inspire fellow scientists to create new structures that, might take a new point of view to the problem, generating a positive feedback loop where everybody wins. We believe the \emph{network description} should include some of the following elements:
+A description of the network is most welcome, as it is the basis for the overall performance. Furthermore, sharing the designs may inspire fellow scientists to create new structures that, might take a new point of view to the problem, generating a positive feedback loop where everybody wins. We believe the \emph{network description} should include some of the following elements:
 %{ 
 %  \setlength{\leftmargini}{0.3cm}
 %  \begin{itemize}
     %\item[] \hspace*{-0.3cm} 
     \textit{Topology}, % \newline
-    which includes the number of neurons, how where they arranged and the interaction between them. 
+    which includes the number of neurons, how they were arranged and the interaction between them. 
     %  What are the elements of the network (layers, populations)?
     %  How are the different elements of the network arranged? Does the arrangement have any physical or biological interpretation? What are the interactions between them? What was the intuition behind this particular topology?
     %\item[] \hspace*{-0.3cm} 
     Additional details on the \textit{neuron model}, %\newline
-    like the activation function and any particulars of the implementation.
+    such as the activation function and any particulars of the implementation.
     %Does the model have a I\&F behaviour? What particular model was used?
     %\item[] \hspace*{-0.3cm} 
     The \textit{synaptic plasticity model} %\newline
@@ -112,7 +112,7 @@ An important distinction to make, we think, is the nature of the \emph{training}
 
 %Also, details on the particulars of the applied learning rule (e.g. STDP, BCM), was it modified somehow?
 
-In the testing phase, the characteristics of the \emph{recognition} should include details on the way the samples where presented (e.g. events per simulation time unit, simulation time per sample). An interesting characteristic to report, particularly for deep networks, is the response time, although this might not be measured as often. A commonly reported characteristic is the accuracy of the network, perhaps adding remarks on how these scores were obtained could help to unify criteria and ease comparison.
+In the testing phase, the characteristics of the \emph{recognition} should include details on the way the samples presented (e.g. events per simulation time unit, simulation time per sample). An interesting characteristic to report, particularly for deep networks, is the response time, although this might not be measured as often. A commonly reported characteristic is the accuracy of the network, perhaps adding remarks on how these scores were obtained could help to unify criteria and ease comparison.
 
 %Most classification papers report a percentage of accuracy that gives the reader a measure of the correct classifications~[\cite{dietterich1998approximate}]. Some times it might be desirable, for a better understanding of the paper, that a distinction between ambiguous, outliers and incorrect classes is made~[\cite{liu2002performance}]. A very useful piece of information is clear citation of the base-line source, which is almost always there but lost in a sea of references.
 
@@ -200,7 +200,7 @@ In the testing phase, the characteristics of the \emph{recognition} should inclu
 
 Depending on how neurons, synapses and spike transmission are implemented neuromorphic systems can be categorised as either analogue, digital, or mixed-mode analogue/digital VLSI circuits. Analogue implementations exploit the sub-threshold transistor dynamics to emulate neurons and synapses directly on hardware \citep{giacom} and are more energy-efficient while requiring less area than their digital counterparts \citep{temamanalogdigital}. However, the behaviour of analogue circuits is largely determined during the fabrication process due to transistor mismatch \citep{giacom,analoguemismatch,bernabeDACsynapses}, while their wiring densities render them impractical for large-scale systems. The majority of mixed-mode analogue/digital neuromorphic platforms, such as High Input Count Analog Neural Network (HI-CANN) \citep{Schemmel_etal10}, Neurogrid \citep{Benjamin_etal14}, HiAER-IFAT \citep{gert}, use analogue circuits to emulate neurons and digital packet-based technology to communicate spikes as AER events. This enables reconfigurable connectivity patterns, while the time of spikes is expressed implicitly since typically a spike reaches its destination in less than a millisecond, thus fulfilling the real-time requirement. Digital neuromorphic platforms such as TrueNorth \citep{Merolla08082014} use digital circuits with finite precision to simulate neurons in an event driven manner to minimise the active power dissipation. Neuromorphic systems suffer from model flexibility, since neurons and synapses are fabricated directly on hardware with only a small subset of parameters exposed to the researcher. 
 
-The Spiking Neural Network Architecture, or SpiNNaker, is a biologically inspired, massively-parallel, scalable computing architecture designed by the Advanced Processor Technologies (APT) group at the University of Manchester. SpiNNaker has been optimised to simulate very large-scale spiking neural networks in real-time \citep{spiNNakerProject}. SpiNNaker aims to combine the advantages of conventional computers and neuromorphic hardware by utilising low-power programmable cores and scalable event-driven communications hardware.
+SpiNNaker Spiking Neural Network Architecture is a biologically inspired, massively-parallel, scalable computing architecture designed by the Advanced Processor Technologies (APT) group at the University of Manchester. SpiNNaker has been optimised to simulate very large-scale spiking neural networks in real-time \citep{spiNNakerProject}. SpiNNaker aims to combine the advantages of conventional computers and neuromorphic hardware by utilising low-power programmable cores and scalable event-driven communications hardware.
 %\textit{\textbf{[ADD AS MUCH DETAILS ABOUT THE SPINNAKER ARCHITECTURE AND SOFTWARE HERE. Qian Liu: only hardware is ok?]}}. 
 
 A direct comparison between neuromorphic platforms is not a trivial task due to the different hardware implementation technologies as mentioned above.

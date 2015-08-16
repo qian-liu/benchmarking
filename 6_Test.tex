@@ -7,7 +7,7 @@ Meanwhile, as tentative benchmarks the models are implemented on SpiNNaker to as
 Presenting proper benchmarks for vision recognition systems is still under investigation, the case studies only make an attempt.
 
 \subsection{Case Study I}
-It is a simple two-layered network where the input neurons receive Poissonian presented spike trains from the dataset and form a fully connected (FC) network with the decision neurons.
+The first case study is a simple two-layered network where the input neurons receive Poissonian presented spike trains from the dataset and form a fully connected (FC) network with the decision neurons.
 The model utilises Leaky-Integrate-and-Fire (LIF) neurons, and the parameters are all with biological means, see the listed values in Table~\ref{tbl:pynnSetting}.
 The connections between the input neurons and the decision neurons are plastic, so the connection weights can be modulated during training with standard STDP learning rule.
 The model is described with PyNN and the code is published in\footnote {https://github.com/qian-liu/benchmarking/tree/master/code/case\_study\_I} the same github repository with the dataset.
@@ -127,7 +127,7 @@ As the input rates grow, there are more spikes arriving at the decision neurons 
 Similar idea apply, if stronger weights are taken then the membrane potential of a neuron reaches its threshold earlier.
 Fig~\ref{fig:lat_rate} indicates the latency shortened with increasing input rates with both the original weights and scaled-up weights.
 When the spiking rate is less than 2000~Hz, stronger weights shortened the latency a lot.
-As long as there are enough spikes to trigger the decision neurons to spike, the increasing test time will not make the network respond sooner, see Fig~\ref{fig:lat_time}.
+As long as there are enough spikes to trigger the decision neurons to spike, increasing the test time will not make the network respond sooner, see Fig~\ref{fig:lat_time}.
 	\begin{figure}[htb!]
 	  \centering
 	  \subfloat[Accuracy changes against test time.]{
@@ -147,12 +147,12 @@ As long as there are enough spikes to trigger the decision neurons to spike, the
 	  	    \label{fig:lat_rate}
 	  	    \includegraphics[width=0.25\textwidth]{lat_rate.png}
 	  	  }
-	  \caption{Accuracy and respond time (latency) change over test time and input firing rate per testing image. Original trained weights are used (in blue) as well as the scaled up ($\times10$) weights (in green). }
+	  \caption{Accuracy and response time (latency) change over test time and input firing rate per testing image. Original trained weights are used (in blue) as well as the scaled up ($\times10$) weights (in green). }
 	  \label{fig:assess}
 	\end{figure}
 
-Regarding to the network size, it not only influences the accuracy of a model but also the time taken for simulation on specific platforms thus impact the energy usage on hardware.
-For the purpose of comparing the accuracy, simulation time and energy usage, different configurations have been tested on NEST and SpiNNaker, referring to Table~\ref{tbl:compare}.
+Regarding the network size, it not only influences the accuracy of a model but also the time taken for simulation on specific platforms thus impacting the energy usage on the hardware.
+For the purpose of comparing the accuracy, simulation time and energy usage, different configurations have been tested on NEST and SpiNNaker, see to Table~\ref{tbl:compare}.
 
 \begin{table}[h]
 \caption{Comparisons of NEST and SpiNNaker performances.}
@@ -165,10 +165,10 @@ For the purpose of comparing the accuracy, simulation time and energy usage, dif
 	 per digit
 	& N & S & N & S & N & S\\
     \hline
-    1 & 74.68 & NA & 554.77 & \multirow{5}{*}{12000} & \multirow{5}{*}{21} & 0.52 \\
-    10 & 91.45 & NA & 621.74 &   &   & 90.00 \\
-    50 & 93.23 & NA & 1125.12 &   &   & 90.00 \\
-    100 & 86.99 & NA & 1406.01 &   &   & 90.00 \\
+    1 & 74.68 & 79.50 & 554.77 & \multirow{5}{*}{12000} & \multirow{5}{*}{21} & 0.52 \\
+    10 & 91.45 & 71.43 & 621.74 &   &   & 90.00 \\
+    50 & 93.23 & 92.92 & 1125.12 &   &   & 90.00 \\
+    100 & 86.99 & 86.83 & 1406.01 &   &   & 90.00 \\
     1000 & 89.65 & NA & 30316.88 &   &   & 90.00 \\
 
 \end{tabular}
