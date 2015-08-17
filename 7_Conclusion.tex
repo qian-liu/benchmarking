@@ -9,15 +9,34 @@
 %The use of neuromorphic hardware in research is increasing, some of its characteristics may alter simulation results. We invite researchers to describe some hardware characteristics that have a direct implication in the performance of neural networks.
 
 This paper puts forward the NE dataset as a baseline for comparisons on vision based SNNs.
-It aims to (1) promote meaningful comparison among algorithms in the field of neural computation, (2) allow comparison with conventional image recognition methods, (3) provide an assessment of the state of the art in spike-based visual recognition, and (4) help researchers identify future directions and advance the field.
+It contains converted spike presentations of existed wide-used databases in vision recognition field.
+Since new problems will be introduced continuously before vision becomes a solved question, the dataset will evolve as research develops. 
+The conversion methods transforming images and videos to spike trains will advance, increasing number of vision databases will be added and the corresponding evaluation methodology will evolve.
+The dataset aims to provide a unified spike-based vision database and a complementary evaluation methodologies to assess performances of various SNN algorithms.
+It also makes comparisons of SNNs with conventional recognition methods possible by using converted spikes presentations of the same vision databases.
+As the dataset grows, it brings new problems for researchers thus to identify future directions and advance the field.
+%(1) promote meaningful comparison among algorithms in the field of neural computation, (2) allow comparison with conventional image recognition methods, (3) provide an assessment of the state of the art in spike-based visual recognition, and (4) help researchers identify future directions and advance the field.
+
+The first launch of the dataset is published as NE15-MNIST, which contains four different spike presentations of the stationary hand-written digit database.
+The Poissonian subset aims at benchmarking the existing rate-based recognition methods.
+The rank-order-encoded subset, FoCal, encourages research of spatial-temporal algorithms on recognition applications using only small amounts of input.
+Fast recognition can be verified on the subset of DVS recorded flashing input, since merely 30~ms of useful spike trains are recorded for each image.
+As a step forward, the continuous spike trains captured from the DVS recorded moving input can be a good test on mobile neuromorphic robots.
 
 The complementary evaluation methodology is essential to assess both the model-level and hardware-level performances.
-For a SNN model, its network topology, neural and synapses models used and training methods are major descriptions while the recognition accuracy, network latency and also the time taken for both training and testing are important measurements of a spike-based model.
-With an identical SNN model built on the dataset will benchmark various neuromorphic hardware to compare their performances.
-Table 3.
+For a network model, its topology, neural and synapses models and training methods are major descriptions for any kind of neural networks including SNNs.
+While the recognition accuracy, network latency and also the biological-time taken for both training and testing are specific performance measurements of a spike-based model.
+To build any SNN model on a hardware platform, its network size will be constrained by the scalability of the hardware;
+the neural and synaptic models can be only selected from the supported ones if the they are not programmable on the hardware;
+the accuracy of the result (e.g. recognition rate) will be effected by the precision of the membrane potential and synaptic weights;
+and an online-learning algorithm cannot be implemented on a hardware if synaptic plasticity is not supported.
+Running an identical SNN model on  different neuromorphic hardware platforms can benchmark their performances on simulation time and energy use.
 
-Using the Poissonian subset of NE15-MNIST dataset, there are two benchmark systems proposed. 
 
+Using the Poissonian subset of NE15-MNIST dataset, there were two benchmark systems proposed. 
+The models were described and the performances on accuracy, network latency, simulation time and energy use were presented.
+The example benchmarking systems provided a recommended way of using the dataset and evaluating system performances.
+They gave a baseline of comparisons and encourages improved algorithms and models to applied on. 
 \subsection{The future direction of developing the database}
 What are the future algorithms we are encouraging.
 
