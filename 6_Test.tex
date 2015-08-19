@@ -103,8 +103,8 @@ In order to make the raster plot easier to read, we apply inhibit connections be
 
 \begin{figure}[hbt!]
 	\centering
-	\includegraphics[width=0.48\textwidth]{images/test300-301.pdf}
-	\caption{A raster plot of spike trains of the decision neurons. The sequence of the test are (4, 1, 1, 0, 9, 3, 1, 9, 4, 6).}
+	\includegraphics[width=0.48\textwidth]{images/decision.pdf}
+	\caption{A raster plot of spike trains of the decision neurons. The sequence of the testing images are (7, 2, 1, 0, 4, 1, 4, 9, 5, 9).}
 	\label{Fig:output}
 \end{figure} 
 \subsubsection{Evaluation}
@@ -152,7 +152,15 @@ As long as there are enough spikes to trigger the decision neurons to spike, inc
 	\end{figure}
 
 Regarding the network size, it not only influences the accuracy of a model but also the time taken for simulation on specific platforms thus impacting the energy usage on the hardware.
-For the purpose of comparing the accuracy, simulation time and energy usage, different configurations have been tested on NEST and SpiNNaker, see to Table~\ref{tbl:compare}.
+For the purpose of comparing the accuracy, simulation time and energy usage, different configurations have been tested on NEST (working on a PC with CPU: i5-4570 and 8G memory) and SpiNNaker, see to Table~\ref{tbl:compare}.
+The recognition accuracy reaches the highest when 50 patterns are trained per digit.
+Because of \textbf{lower precision on membrane potential and synaptic weights}, the accuracies differ in the range of $\pm0.5\%$.
+As the growth of network size there are more decision neurons and synapses connecting to them, thus the simulation time on NEST increases.
+On the other hand, SpiNNaker works in real time (biology time) and the simulation time becomes shorter when 1000 patterns per digit are used.
+The Thermal Design Power (TDP) usage of all four processors active operating at Base Frequency is 84~W.
+Nest was run fully active on a single core which cost 21~W of power usage.
+The energy use can be calculated as the product of the simulation time and the power use.
+Even with the smallest network, SpiNNaker wins in the energy cost comparison.
 
 \begin{table}[h]
 \caption{Comparisons of NEST and SpiNNaker performances.}
@@ -160,7 +168,7 @@ For the purpose of comparing the accuracy, simulation time and energy usage, dif
 \begin{tabular} {r|c|c|c|c|c|c}
 	 Subclasses
 	 &\multicolumn{2}{c|}{Accuracy (\%)}  &\multicolumn{2}{c|}{Simulation (s)}
-	 &\multicolumn{2}{c}{Energy Use (W)}   \\
+	 &\multicolumn{2}{c}{Power Use (W)}   \\
 	 \cline{2-7}
 	 per digit
 	& N & S & N & S & N & S\\
