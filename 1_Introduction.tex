@@ -2,7 +2,7 @@
 \label{sec:intro}
 %\subsection{What Is the Problem}
 With rapid developments in neural engineering, researchers are approaching the aims of understanding brain functions and building brain-like machines using this knowledge~[\cite{furber2007neural}].
-As a fast growing field, neuromorphic engineering has provided biologically-inspired sensors such as DVS(Dynamic Vision Sensor) silicon retinas~[\cite{serrano-gotarredona_128_2013, lichtsteiner2008128}], which are good examples of low-cost visual processing thanks to their event-driven and redundancy-reducing style of computation.
+As a fast growing field, neuromorphic engineering has provided biologically-inspired sensors such as DVS~(Dynamic Vision Sensor) silicon retinas~[\cite{serrano-gotarredona_128_2013, lichtsteiner2008128}], which are good examples of low-cost visual processing thanks to their event-driven and redundancy-reducing style of computation.
 Moreover, SNN simulation tools~[\cite{davison2008pynn, gewaltig2007nest, goodman2008brian}] and neuromorphic hardware platforms~[\cite{furber2013overview,  schemmel2010wafer, moradi2014event}] have been developed to allow exploration of the brain by mimicking its functions and developing large-scale practical applications.
 SNNs have become an active area of computer vision thanks to the explicit  biological study of the central visual pathway.
 The central visual system consists of several cortical areas responsible for visual processing, which are placed in a hierarchical pattern according to anatomical experiments~[\cite{felleman1991distributed}].
@@ -10,24 +10,24 @@ Fast object recognition proceeds in  the feed-forward hierarchy of the ventral p
 %There are two basic streams locating in the visual area: a dorsal and a ventral pathway.
 %They differ in behavioural patterns according to the observation from brain lesions~[\cite{prado2005two}], and also in functions where the ventral (`perception') stream perceives the world by means of object recognition and memory, while the dorsal (`action') stream provides real-time visual guidance for motor actions such as eye movements and grasping objects~[\cite{goodale1992separate}]. 
 
-Riesenhuber and Poggio [\cite{riesenhuber1999hierarchical}] proposed a quantitative modelling framework of object recognition with position-, scale- and view-invariance based on the units of MAX-like operations.
+\cite{riesenhuber1999hierarchical} proposed a quantitative modelling framework of object recognition with position-, scale- and view-invariance based on the units of MAX-like operations.
 The cortical-like model has been analysed on several datasets~[\cite{serre2007robust}].
-And recently Fu et al.~[\cite{fu_spiking_2012}] reported that their SNN implementation of the framework was capable of facial expression recognition tasks (97.35\% on JAFFE dataset~[\cite{lyons1998coding}] which contains 213 images of 7 facial expressions posed by 10 individuals).
+And recently \cite{fu_spiking_2012} reported that their SNN implementation of the framework was capable of facial expression recognition tasks (97.35\% on JAFFE dataset~[\cite{lyons1998coding}] which contains 213 images of 7 facial expressions posed by 10 individuals).
 % 97.35\% on JAFFE dataset.
 They employed simple integrate-and-fire neurons with rank order coding (ROC) where  the earliest pre-synaptic spikes have the strongest impact on the post synaptic potentials.
-According to Thorpe~[\cite{vanrullen_surfing_2002}], the first wave of spikes  carry explicit information through the ventral stream and in each stage meaningful information is extracted and spikes are regenerated. 
-Using one spike per neuron, Delorme and Thorpe~[\cite{delorme_face_2001}] reported 100\% and 97.5\% of accuracies on the face identification task over changing  contrast and luminance training (40 individuals $\times$ 8 images) and testing data  (40 individuals $\times$ 2 images) respectively.
+According to \cite{vanrullen_surfing_2002}, the first wave of spikes  carry explicit information through the ventral stream and in each stage meaningful information is extracted and spikes are regenerated. 
+Using one spike per neuron, \cite{delorme_face_2001} reported 100\% and 97.5\% of accuracies on the face identification task over changing  contrast and luminance training (40 individuals $\times$ 8 images) and testing data (40 individuals $\times$ 2 images) respectively.
 %These developments yielded a large number of papers on SNNs based recognition, with a majority reporting outstanding recognition resulton limited-size databases.
 
-The convolutional Neural Network (CNN), also known as the \textit{ConvNet} developed by Lecun and Bengio [\cite{lecun1995convolutional}], is a well applied model of such a cortex-like framework.
+The convolutional Neural Network (CNN), also known as the \textit{ConvNet} developed by \cite{lecun1995convolutional}, is a well applied model of such a cortex-like framework.
 %Reported results:
 %Hand Gestures, Qian Liu
 An early Convolutional Spiking Neural Network (CSNN) model identified faces of 35 persons with an accuracy of 98.3\% exploiting simple integrate and fire neurons~[\cite{matsugu2002convolutional}].
 Another CSNN model~[\cite{zhao_feedforward_2014}] was trained and tested both with DVS raw data and Leaky Integrate-and-Fire (LIF) neurons.
 %The MAX operation, training and the switch are not only neuron involved.
 It was capable of recognising three moving postures with an accuracy about 99.48\% and 88.14\% on the MNIST-DVS dataset (see Chapter~\ref{sec:data}).
-As one step forward, the paper [\cite{camunas2012event}] implemented a convolution processor module in hardware which could be combined with an DVS for high-speed recognition tasks.
-The input of the ConvNet was continuous spike events instead of static images or frame-based videos. 
+As one step forward, \cite{camunas2012event} implemented a convolution processor module in hardware which could be combined with a DVS for high-speed recognition tasks.
+The input of the ConvNet were continuous spike events instead of static images or frame-based videos. 
 The chip detected four suits of a 52 card deck while the cards were fast browsed in only 410 ms.
 Similarly, a real-time gesture recognition model~[\cite{liu2014real}] was implemented on a neuromorphic system with a DVS as a front-end and a SpiNNaker~[\cite{furber2013overview}] machine as the back-end where LIF neurons built up the ConvNet configured with biological parameters.
 In this study's largest configuration, a network of 74,210 neurons and 15,216,512 synapses used 290 SpiNNaker cores in parallel and reached 93.0\% accuracy. 
@@ -42,7 +42,7 @@ Current trend of training Spiking DNNs on-line using biologically-plausible lear
 An event driven Contrastive Divergence (CD) training algorithm for RBMs (Restricted Boltzmann Machines) was proposed for Deep Belief Networks (DBN) using LIF neurons with STDP (Spike-Timing-Dependent Plasticity) synapses and verified on MNIST (91.9\%)~[\cite{neftci2013event}].
 
 STDP as a biological learning process is applied to vision tasks.
-The paper [\cite{bichler2012extraction}] demonstrated an unsupervised STDP learning model to classify car trajectories captured with a DVS retina. 
+\cite{bichler2012extraction} demonstrated an unsupervised STDP learning model to classify car trajectories captured with a DVS retina. 
 A similar model was tested on Poissonian spike presentation of MNIST dataset achieving the performance of 95.0\%~[\cite{Diehl2015unsupervised}].
 Theoretical analysis~[\cite{nessler2013bayesian}] showed unsupervised STDP was able to approximate a stochastic version of Expectation Maximization, a powerful learning algorithm in machine learning.
 The computer simulation achieved 80.14\% accuracy on MNIST and could be implemented in a memrisitve device~[\cite{bill2014compound}]. 
@@ -57,7 +57,7 @@ We propose that a large dataset of spike-based visual stimuli is needed to provi
 Furthermore a complementary evaluation methodology is also crucial to assess the accuracy and efficiency of an algorithm.
 
 This is not a special case in the problems of the computer vision research.
-Whenever a new research reaches a certain level of influence and accumulation, a matching dataset will be required.
+Whenever a new research field reaches a certain level of influence and accumulation, a matching dataset will be required.
 In Section~\ref{sec:Related}, some example datasets and their evaluation methods are introduced.
 Section~\ref{sec:guide} claims the purpose, protocols and advantages of the proposed dataset.
 The sub-datasets and their generation methods are described in detail in Section~\ref{sec:data}.

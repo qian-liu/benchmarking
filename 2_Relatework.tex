@@ -7,20 +7,20 @@ The MNIST is a subset of NIST hand written digits dataset.
 The training set contains 60,000 patterns collected from approximately 250 writers.
 The testing set is composed of 10,000 patterns written by disjoint individuals.
 All the digits in the dataset are of similar scale centring in a 28$ \times $28 image.
-Due to its straightforward target of classifying real-world images, the plain format of binary data and the simple patterns, MNIST is one of the most popular datasets in computer vision over 20 years.
+Due to its straightforward target of classifying real-world images, the plain format of binary data and the simple patterns, MNIST has been one of the most popular datasets in computer vision for over 20 years.
 
 Many methods have been verified on this dataset: K-means, SVM, ConvNets, etc.
 The descending recognition error rate makes it nearly a solved problem, however some modifications, such as position shifts, scaling and noise, bring new challenges.
 Certainly, a spiking version of the dataset will be an interesting artificial distortion and draw attention to new methods and algorithms on the challenge. 
 
 \subsection{ImageNet~[\cite{deng_imagenet:_2009}]}
-Since the new era of the 4th generation ANN, the Deep Neural Network, a flow of successful applications have been reported.
-Meanwhile, training the deeper network triggers a huge demand for more data.
-This is the purpose of putting forward ImageNet to provide researchers with a large-scale image database.
+Since the new era of the 4th generation ANN, the Deep Neural Network (DNN), a flow of successful applications have been reported.
+Meanwhile, training the deeper network triggers a huge demand for sample data.
+The purpose of putting forward ImageNet was to provide researchers with a large-scale image database, which matches nicely with DNN data requirements.
 Currently there are 14,197,122 images and 21,841 synsets indexed in the dataset.
 Synsets are meaningful concepts described with a few words or phrases, and they are organised in a hierarchy as in WordNet\footnote{http://www.image-net.org/}.
-The final goal of ImageNet is to provide about 1000 images per synset in the total of 100,000 images.
-In another words, there will be tens of millions of images tidily structured, accurately labelled and human annotated.
+The final goal of ImageNet is to provide about 1000 images for each of the 80,000 synsets in WordNet.
+In other words, there will be tens of millions of images tidily structured, accurately labelled and human annotated.
 The dataset is a well-recognised benchmark test for the deep learning community, and many attempts have been made to improve the performance, for example~[\cite{krizhevsky2012imagenet}].
 
 \subsection{Microsoft COCO~[\cite{lin_microsoft_2014}]}
@@ -33,8 +33,8 @@ Up to date, the dataset contains 300,000+ images, 2 Million instances and 5 capt
 \subsection{Action Datasets}
 Similar examples could be found in video datasets.
 Two early benchmarks, the KTH ~[\cite{schuldt2004recognizing}] and Weizmann~[\cite{blank2005actions}], have been used extensively in the past decade. 
-These videos were produced with scripted behaviours in a controlled environment (``in the lab'') .
-The single atomic actions were simple and neat: walking, running, sitting and etc.
+These videos were produced with scripted behaviours in a controlled environment (``in the lab'').
+They contain single atomic actions, which are simple and neat: walking, running, sitting, etc.
 
 Taking the advantages of continuous spiking trains instead of frames of videos, spiking version of such action datasets will be provided in our future work.
 A DVS simulation may be needed to convert frames of images into spikes.

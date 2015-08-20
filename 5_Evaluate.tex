@@ -1,9 +1,10 @@
 \section{Performance Evaluation}
 \label{sec:eval}
 
-A crucial part of research is reporting results and comparing achievements with other state-of-the-art work. Unfortunately there is no standard way of fulfilling those tasks, which, sometimes, leads to confusion for the reader. We feel that the neuroscience community would benefit from a common ground for NN characteristics.
+A crucial part of research is reporting results and comparing achievements with other state-of-the-art work. Unfortunately there is no standard way of fulfilling those tasks, which, sometimes, leads to confusion for the reader. We feel that the neuroscience community would benefit from a common ground for NN characteristics, our thoughts on this matter are reflected in the first part of this section.
 
 As neuromorphic hardware is more commonly used in research, larger and more complex NN models could be used. Additionally, performance of the network may be influenced by the chosen development platform. We would like to assist with the following considerations when facing these impending changes.
+
 \begin{table*}[hbt!]
   \caption{Hardware independent comparison}
   \begin{center}
@@ -81,7 +82,7 @@ As neuromorphic hardware is more commonly used in research, larger and more comp
 
 \subsection{Hardware-Independent}
 \label{subsec:model}
-As we are proposing spike based data-sets or a methodology to produce them, it's desirable that the users specify whether they added any further processing either to images or spikes~[\cite{best-practice-nn-img}]. This is important, for example, if we want to use a modified set to test noisy inputs.
+As we are proposing spike based data-sets or a methodology to produce them, it's desirable that the users specify whether they added any further processing either to images or spikes. This is important, for example, if we want to use a modified set to test noisy inputs~[\cite{best-practice-nn-img}].
 
 A description of the network is most welcome, as it is the basis for the overall performance. Furthermore, sharing the designs may inspire fellow scientists to create new structures that, might take a new point of view to the problem, generating a positive feedback loop where everybody wins. We believe the \emph{network description} should include some of the following elements:
 %{ 
@@ -89,30 +90,30 @@ A description of the network is most welcome, as it is the basis for the overall
 %  \begin{itemize}
     %\item[] \hspace*{-0.3cm} 
     \textit{Topology}, % \newline
-    which includes the number of neurons, how they were arranged and the interaction between them. 
+    which includes the number of neurons, how they were arranged and the interaction between them; 
     %  What are the elements of the network (layers, populations)?
     %  How are the different elements of the network arranged? Does the arrangement have any physical or biological interpretation? What are the interactions between them? What was the intuition behind this particular topology?
     %\item[] \hspace*{-0.3cm} 
-    Additional details on the \textit{neuron model}, %\newline
-    such as the activation function and any particulars of the implementation.
+    the \textit{neuron model}, %\newline
+    such as the activation function and any particulars of the implementation;
     %Does the model have a I\&F behaviour? What particular model was used?
     %\item[] \hspace*{-0.3cm} 
-    The \textit{synaptic plasticity model} %\newline
+    the \textit{synaptic plasticity model} %\newline
     is key for learning in the network, so the report should include a description of its characteristics (e.g. short-term and/or long-term).
     %In terms of synapse, what was the  used? Does the network support short-term and/or long-term plasticity?
     %\item[] \hspace*{-0.3cm} 
     %\textit{Extra classifier}. %\newline
-      Some research make use of \emph{extra non-neural classifiers}, sometimes to aid the design others to enhance the output of the NN. Any particulars on this subject are greatly appreciated.
+      Some researchers make use of \emph{extra non-neural classifiers}, sometimes to aid the design, others to enhance the output of the NN. Any particulars on this subject are greatly appreciated.
   %\item[]
 %  \end{itemize}
 %}
 
 
-An important distinction to make, we think, is the nature of the \emph{training} procedure. A clear distinction has always been made between supervised, semi-supervised and unsupervised learning. Other specifications are the simulation time each sample is presented to the network, whether repeating samples was necessary and if they were presented continuously or with some ``silence'' was introduced between samples. Most works use adaptations to learning rules, details on the particular modifications are highly desired. Particulars on any additional weight-changing procedures used in the simulation are always welcome.
+An important distinction to make, we think, is the nature of the \emph{training} procedure. A clear distinction has always been made between supervised, semi-supervised and unsupervised learning. Other specifications are the simulation time each sample is presented to the network, whether repeating samples was necessary and if they were presented continuously or with some ``silence'' was introduced between samples. Most publications reflect the use of adaptations to learning rules, details on the modifications are highly desired. A description of any additional weight-altering procedures used in the simulation are always welcome.
 
 %Also, details on the particulars of the applied learning rule (e.g. STDP, BCM), was it modified somehow?
 
-In the testing phase, the characteristics of the \emph{recognition} should include details on the way the samples presented (e.g. events per simulation time unit, simulation time per sample). An interesting characteristic to report, particularly for deep networks, is the response time, although this might not be measured as often. A commonly reported characteristic is the accuracy of the network, perhaps adding remarks on how these scores were obtained could help to unify criteria and ease comparison.
+In the testing phase, the characteristics of the \emph{recognition} should include details on the way the samples presented (e.g. events per simulation time unit, simulation time per sample). An interesting characteristic to report, particularly for deep networks, is the response time, although this might not be measured as often. A commonly reported characteristic is the accuracy of the network, perhaps adding remarks on how these scores were obtained could help to unify criteria and ease comparison. We've summarized the comments on software independent properties in Table~\ref{tb:software_comparison}.
 
 %Most classification papers report a percentage of accuracy that gives the reader a measure of the correct classifications~[\cite{dietterich1998approximate}]. Some times it might be desirable, for a better understanding of the paper, that a distinction between ambiguous, outliers and incorrect classes is made~[\cite{liu2002performance}]. A very useful piece of information is clear citation of the base-line source, which is almost always there but lost in a sea of references.
 
@@ -164,21 +165,21 @@ In the testing phase, the characteristics of the \emph{recognition} should inclu
        %
        \begin{mycell}{1.8cm} TrueNorth \citep{Merolla08082014}\end{mycell} & \begin{mycell}{2.0cm}Digital \end{mycell}& 
        \begin{mycell}{2.0cm}Yes\end{mycell}& 
-       \begin{mycell}{2.0cm}Configurable\end{mycell}& 
-       \begin{mycell}{2.0cm}No plasticity\end{mycell}& 
+       \begin{mycell}{2.0cm}Configurable\\No plasticity\end{mycell}& 
+       \begin{mycell}{2.0cm}122 bits per neuron \\(parameters + state)\\ $\sim$4-bit synapse \\ (4 signed integer choices + on/off state)\end{mycell}& 
        \begin{mycell}{2.0cm}Real-time\end{mycell}& 
        \begin{mycell}{2.0cm}46 GSops/W\end{mycell} \\
        %
        \begin{mycell}{1.8cm} Neurogrid \citep{Benjamin_etal14}\end{mycell} &
        \begin{mycell}{2.0cm}Mixed-mode\end{mycell} & 
-       \begin{mycell}{2.0cm}No\end{mycell} & 
+       \begin{mycell}{2.0cm}No (same as bellow?)\end{mycell} & 
        \begin{mycell}{2.0cm}Configurable\end{mycell} & 
        \begin{mycell}{2.0cm}13-bit shared \\ synapses\end{mycell} &
        \begin{mycell}{2.0cm}Real-time\end{mycell} &
        \begin{mycell}{2.0cm}941 pJ/SE\end{mycell} \\
        %
        \begin{mycell}{1.8cm} HI-CANN \citep{Schemmel_etal10}  \end{mycell} & \begin{mycell}{2.0cm}Mixed-mode\end{mycell} &
-       \begin{mycell}{2.0cm}No\end{mycell}& 
+       \begin{mycell}{2.0cm}No (too hot?)\end{mycell}& 
        \begin{mycell}{2.0cm}Configurable\end{mycell}& 
        \begin{mycell}{2.0cm}4-bit synapses\end{mycell}& 
        \begin{mycell}{2.0cm}Faster than\\ real-time\end{mycell}&
@@ -206,7 +207,7 @@ SpiNNaker Spiking Neural Network Architecture is a biologically inspired, massiv
 A direct comparison between neuromorphic platforms is not a trivial task due to the different hardware implementation technologies as mentioned above.
 %Qian Liu modified
 The metric proposed in Table~\ref{tb:hardware_comparison} attempts to unveil the advantages and disadvantages of different neuromorphic hardware thus to find out the network properties each platform suits for.
-The scalability of a hardware determines the network size limit of a neural application running on itself.
+The scalability of a hardware platform determines the network size limit of a neural application running on itself.
 Considering the various neural, synaptic models, plasticity learning rules and lengths of axonal delays, a programmable platform is flexible for diverse SNNs while hard-wired system supporting only specific models wins for its simpler design and implementation.
 Comparison metrics could be the precision used to describe the membrane potential of neurons (for the digital platforms) and synaptic weights.
 It will impact on system performance on the accuracy of a classification/recognition SNN.
