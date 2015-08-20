@@ -9,7 +9,7 @@
 %The use of neuromorphic hardware in research is increasing, some of its characteristics may alter simulation results. We invite researchers to describe some hardware characteristics that have a direct implication in the performance of neural networks.
 
 This paper puts forward the NE dataset as a baseline for comparisons on vision based SNNs.
-It contains converted spike presentations of existed wide-used databases in vision recognition field.
+It contains converted spike representations of existing widely-used databases in the vision recognition field.
 Since new problems will be introduced continuously before vision becomes a solved question, the dataset will evolve as research develops. 
 The conversion methods transforming images and videos to spike trains will advance, increasing number of vision databases will be added and the corresponding evaluation methodology will evolve.
 The dataset aims to provide a unified spike-based vision database and a complementary evaluation methodologies to assess performances of various SNN algorithms.
@@ -17,29 +17,30 @@ The dataset aims to provide a unified spike-based vision database and a compleme
 
 The first launch of the dataset is published as NE15-MNIST, which contains four different spike presentations of the stationary hand-written digit database.
 The Poissonian subset aims at benchmarking the existing rate-based recognition methods.
-The rank-order-encoded subset, FoCal, encourages research of spatial-temporal algorithms on recognition applications using only small amounts of input.
+The rank-order-encoded subset, FoCal, encourages research of spatial-temporal algorithms on recognition applications using only small amounts of input spikes.
 Fast recognition can be verified on the subset of DVS recorded flashing input, since merely 30~ms of useful spike trains are recorded for each image.
 As a step forward, the continuous spike trains captured from the DVS recorded moving input can be a good test on mobile neuromorphic robots.
 
 The complementary evaluation methodology is essential to assess both the model-level and hardware-level performances.
-For a network model, its topology, neural and synapses models and training methods are major descriptions for any kind of neural networks including SNNs.
+For a network model, its topology, neuron and synapse models, and training methods are major descriptions for any kind of neural networks, including SNNs.
 While the recognition accuracy, network latency and also the biological-time taken for both training and testing are specific performance measurements of a spike-based model.
 To build any SNN model on a hardware platform, its network size will be constrained by the scalability of the hardware;
-the neural and synaptic models can be only selected from the supported ones if the they are not programmable on the hardware;
-the accuracy of the result (e.g. recognition rate) will be effected by the precision of the membrane potential and synaptic weights;
-and an online-learning algorithm cannot be implemented on a hardware if synaptic plasticity is not supported.
+the neural and synaptic models can only be selected from the supported ones if the they are not programmable on the hardware;
+the accuracy of the result (e.g. recognition rate) will be affected by the precision of the membrane potential and synaptic weights;
+and an on-line learning algorithm cannot be implemented on a hardware if synaptic plasticity is not supported.
 Running an identical SNN model on  different neuromorphic hardware platforms can benchmark their performances on simulation time and energy use.
 
 
 Using the Poissonian subset of NE15-MNIST dataset, there were two benchmark systems proposed. 
-The models were described and the performances on accuracy, network latency, simulation time and energy use were presented.
-The example benchmarking systems provided a recommended way of using the dataset and evaluating system performances.
-They gave a baseline of comparisons and encourages improved algorithms and models to applied on. 
+The models were described and their performances on accuracy, network latency, simulation time and energy usage were presented.
+The example benchmarking systems provided a recommended way of using the dataset and evaluating system performance.
+They provide a baseline of comparisons and encourage improved algorithms and models to applied on the dataset. 
 
 Although spike-based algorithms have not surpassed their non-spiking counterparts in terms of recognition accuracy, they have shown great performances in response time and energy efficiency.
 The dataset makes the comparisons of SNNs with conventional recognition methods possible by using converted spikes presentations of the same vision databases.
 As the dataset grows, it brings new problems for researchers thus to identify future directions and advance the field.
-\subsection{The future direction of developing the database}
+%\subsection{The future direction of a developing database}
+\subsection{The future direction of an evolving database}
 The database will expend by converting more popular vision datasets to spike presentations.
 As mentioned in Section~\ref{sec:intro}, face recognition has become a hot topic in SNN approaches, however there is not a unified spike-based dataset to benchmark theses networks.
 Thus, the next step of developing our dataset is to include face recognition databases.
@@ -56,6 +57,6 @@ In order to explore the invariant object recognition, the dataset is going to in
 Action recognition will be the first problem of video processing to be introduced in the dataset.
 Using the DVS retina to convert KTH and Weizmann benchmarks to spiking version is the initial plan.
 Meanwhile, providing a software DVS retina simulator to transform  frames into spike trains is also on the schedule.
-By doing this, huge amount of videos, such as in YouTube, can be automatically converted to spikes therefore make researchers free to work on their own applications.
+By doing this, huge amount of videos, such as in YouTube, can be automatically converted to spikes, therefore providing researchers more time to work on their own applications.
 
 

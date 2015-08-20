@@ -11,13 +11,13 @@ The first case study is a simple two-layered network where the input neurons rec
 The model utilises Leaky-Integrate-and-Fire (LIF) neurons, and the parameters are all with biological means, see the listed values in Table~\ref{tbl:pynnSetting}.
 The connections between the input neurons and the decision neurons are plastic, so the connection weights can be modulated during training with standard STDP learning rule.
 The model is described with PyNN and the code is published in\footnote {https://github.com/qian-liu/benchmarking/tree/master/code/case\_study\_I} the same github repository with the dataset.
-Considering to be a potential benchmark, this system is composed with simple neural models, trained with standard learning rules and written in unified SNN description language thus to apply the same network on various simulators both software and hardware.
+Considering to be a potential benchmark, this system is composed with simple neural models, trained with standard learning rules and written in a unified SNN description language. These characteristics allow the same network on to be tested on various simulators, both software- and hardware-based.
 %Consequently, the benchmark can be directly run on different SNN simulators as long as PyNN is supported.
 %Besides, any modification on neuron or learning model is not required since only standard models are used.
 %During training, each decision neuron is triggered by a teaching neuron while the weights of the synaptic connections of the input neurons and the decision neuron are modulated with standard STDP learning rule, see Fig~\ref{Fig:train}.
 
 Both the training and testing exploit the Poissonian subset of the NE15-MNIST dataset.
-Because different simulators generate random Poissonian spike trains with various mechanisms, languages and codes, using the same dataset is able to evaluate performance of these simulators without the interference by the non-unified input.
+Because different simulators generate random Poissonian spike trains with various mechanisms, languages and codes, using the same dataset enables   performance evaluation of these simulators without the interference created by non-unified input.
 In terms of this case study, the performance of the model was evaluated with both software simulation (on NEST~[\cite{gewaltig2007nest}]) and hardware implementation (on SpiNNaker).
 
 In order to fully assess the performance, different settings have been configured on the network, such as network size, input rate and testing images duration.
@@ -56,7 +56,7 @@ For simplicity of describing the system, one standard configuration is set as ex
 
 There are two layers in the model: 28$\times$28 input neurons fully connect to 100 decision neurons.
 Each decision neuron responds to a certain template of a digit.
-In the standard configuration, there are 10 decision neurons answering a same digit with slightly different templates.
+In the standard configuration, there are 10 decision neurons answering to the same digit with slightly different templates.
 Those templates are embedded in the connection weights between the two layers.
 Fig~\ref{Fig:train} shows how the connections to a single decision neuron is tuned.
 
@@ -90,10 +90,10 @@ After training the weights of the plastic synapses are set to static, keeping th
 %The weights were normalised after training and applied to the same network.
 And the weak weights were set to inhibitory connections with an identical strength.
 %The output neurons inhibited all the other neurons as a winner take all circuit.
-The feed-forward testing network is shown in Fig~\ref{Fig:test} where Poissonion spike trains are generated the same way as in the training with a total firing rate of 2000~Hz.
+The feed-forward testing network is shown in Fig~\ref{Fig:test} where Poissonion spike trains are generated the same way as in the training with a total firing rate of 2000~Hz per image.
 The input neurons convey the same spike trains to every decision neuron through its responding trained synaptic weights. 
 Every testing image ($10,000$ images in total) is presented once and lasts 1 second with a silence of 200~ms between them.
-the output neuron with the highest firing rate decides.
+The output neuron with the highest firing rate decides what digit was recognized.
 Taken the trained weights from NEST simulation, the accuracy of the recognition on NEST as well reaches 89.94\% with the standard configuration, while the result drops slightly to 89.88\% using SpiNNaker.
 In comparison, trained and tested both on SpiNNaker the recognition accuracy is 87.41\%, and the same weights applied to NEST the result turns to be 87.25\%. 
 %In order to compare the recognition difference, another experiment on SpiNNaker is taken to test with the same NEST trained weights.
@@ -108,26 +108,26 @@ In order to make the raster plot easier to read, we apply inhibit connections be
 	\label{Fig:output}
 \end{figure} 
 \subsubsection{Evaluation}
-The evaluation starts from the hardware-independent part, focus on the spike-based recognition analysis.
-As mentioned in Section~\ref{subsec:model}, accuracy and response time (latency) are the main concerns assessing the recognition capability.
-The accuracy is dependent on the time last for each testing sample and the input spiking rates, see Fig~\ref{fig:assess}.
-The output spikes of the decision neurons are effected by both the input spiking rate and the connection weights.
-Therefore, two sets of weights are applied: original STDP trained weights and the scaled-up weights which are 10 times stronger.
-Fig~\ref{fig:acc_time} shows the recognition accuracy changes over the time last for each testing sample.
-The longer an image is presented more information is gathered, so the accuracy climbs.
-Fig~\ref{fig:acc_rate} shows the recognition accuracy changes over the input spiking rates.
-Given more intense spikes injected to the network, the decision neurons become more active and the output disparity enlarges among the decision neurons.
-However, with increasing spikes injected the spiking rate of the decision neurons saturate to the limit of $1/tau\_refrac$, where $tau\_refrac$ refers to the refractory period.  
-So, the rate gap between the correct decision neuron and the others narrow as the input rates increase to a certain level.
+The evaluation starts from the hardware-independent side, focusing on the spike-based recognition analysis.
+As mentioned in Section~\ref{subsec:model}, classification accuracy (CA) and response time (latency) are the main concerns assessing the recognition capability.
+In our experiment, two sets of weights were applied: original STDP trained weights and scaled-up weights which are 10 times stronger. Spiking rates of testing samples were also modified, ranging from 10 to 5000~Hz.
+
+We found that accuracy depends largely on the time each sample is exposed to the network and the sample spiking rate (Fig.~\ref{fig:assess}.)
+Furthermore, the latency of the output of the decision neurons is affected by both the spiking rate and connection weights.
+Fig.~\ref{fig:acc_time} shows that the CA is better as exposure time increases. The longer an image is presented, the more information is gathered by the network, so the accuracy climbs.
+Classification accuracy also increases when input spiking rates are augmented (Fig.~\ref{fig:acc_rate}.) Given that the spike trains injected into the network are more intense, the decision neurons become more active and so does the output disparity among them.
+Nonetheless, it is important to know that these increments in CA have a limit, as is shown in the aforementioned figures.
+%However, with increasing spikes injected the spiking rate of the decision neurons saturate to the limit of $1/tau\_refrac$, where $tau\_refrac$ refers to the refractory period.  
+%So, the rate gap between the correct decision neuron and the others narrow as the input rates increase to a certain level.
 With stronger weights, the accuracy is much higher when the input firing rate is less than 2000~Hz.
 
 
-The latency of a SNN model is mainly the result of the input rates, and synaptic weights also play a role.
-As the input rates grow, there are more spikes arriving at the decision neurons and triggering them to spike sooner.
-Similar idea apply, if stronger weights are taken then the membrane potential of a neuron reaches its threshold earlier.
-Fig~\ref{fig:lat_rate} indicates the latency shortened with increasing input rates with both the original weights and scaled-up weights.
+The latency of a SNN model is the result of the input rates and synaptic weights.
+As the input rates grow, there are more spikes arriving at the decision neurons, triggering them to spike sooner.
+A similar idea applies to the influence of synaptic weights. If stronger weights are taken, then the membrane potential of a neuron reaches its threshold earlier.
+Fig.~\ref{fig:lat_rate} indicates the latency is shortened with increasing input rates with both the original and scaled-up weights.
 When the spiking rate is less than 2000~Hz, the network with stronger weights has a much shorter latency.
-As long as there are enough spikes to trigger the decision neurons to spike, increasing the test time will not make the network respond sooner, see Fig~\ref{fig:lat_time}.
+As long as there are enough spikes to trigger the decision neurons to spike, increasing the test time will not make the network respond sooner~(Fig.~\ref{fig:lat_time}.)
 	\begin{figure}[htb!]
 	  \centering
 	  \subfloat[Accuracy changes against test time.]{
@@ -307,7 +307,9 @@ Figure~\ref{Fig:brianCAfiringrate} shows the effect of reduced weight bit precis
 %CA and latency as a function of input spikes per sec
 %both brian and use spinnaker to validate results
 
-An additional experiment was conducted to investigate how the classification latency, which is the time passed between the first input spike and the first output spike, and the CA are affected by the total number of input spikes per second. The input rates were varied from 500~Hz to 2000~Hz and the results are summarised in Figure~\ref{Fig:brianLatency}. Simulations ran in Brian for all 10,000 MNIST digits of the testing set and for 4 trials. Figure~\ref{Fig:spinnLatency1500hz} shows a histogram of the classification latencies on SpiNNaker when the input rates are 1500~Hz. The mean classification latency for the particular spiking DBN on SpiNNaker is 16~ms which is identical to the Brian simulation seen in Figure~\ref{Fig:brianLatency}.
+%An additional experiment was conducted to investigate how the classification latency, which is the time passed between the first input spike and the first output spike, and the CA are affected by the total number of input spikes per second.
+A similar experiment to the one presented for the Case Study I was performed, its purpose was to establish the relation that input spike rates hold with latency and classification accuracy.
+The input rates were varied from 500~Hz to 2000~Hz and the results are summarised in Figure~\ref{Fig:brianLatency}. Simulations ran in Brian for all 10,000 MNIST digits of the testing set and for 4 trials. Figure~\ref{Fig:spinnLatency1500hz} shows a histogram of the classification latencies on SpiNNaker when the input rates are 1500~Hz. The mean classification latency for the particular spiking DBN on SpiNNaker is 16~ms which is identical to the Brian simulation seen in Figure~\ref{Fig:brianLatency}.
 
 
 \begin{figure}[hbt!]
