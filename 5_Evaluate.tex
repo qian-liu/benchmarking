@@ -82,7 +82,7 @@ As neuromorphic hardware is more commonly used in research, larger and more comp
 
 \subsection{Hardware-Independent}
 \label{subsec:model}
-As we are proposing spike based data-sets or a methodology to produce them, it's desirable that the users specify whether they added any further processing either to images or spikes. This is important, for example, if we want to use a modified set to test noisy inputs~[\cite{best-practice-nn-img}].
+As we are proposing spike based data-sets or a methodology to produce them, it's desirable that the users specify whether they added any further processing either to images or spikes. This is important, for example, if we want to use a modified set to test noisy inputs~\citep{best-practice-nn-img}.
 
 A description of the network is most welcome, as it is the basis for the overall performance. Furthermore, sharing the designs may inspire fellow scientists to create new structures that, might take a new point of view to the problem, generating a positive feedback loop where everybody wins. We believe the \emph{network description} should include some of the following elements:
 %{ 
@@ -115,7 +115,7 @@ An important distinction to make, we think, is the nature of the \emph{training}
 
 In the testing phase, the characteristics of the \emph{recognition} should include details on the way the samples presented (e.g. events per simulation time unit, simulation time per sample). An interesting characteristic to report, particularly for deep networks, is the response time, although this might not be measured as often. A commonly reported characteristic is the accuracy of the network, perhaps adding remarks on how these scores were obtained could help to unify criteria and ease comparison. We've summarized the comments on software independent properties in Table~\ref{tb:software_comparison}.
 
-%Most classification papers report a percentage of accuracy that gives the reader a measure of the correct classifications~[\cite{dietterich1998approximate}]. Some times it might be desirable, for a better understanding of the paper, that a distinction between ambiguous, outliers and incorrect classes is made~[\cite{liu2002performance}]. A very useful piece of information is clear citation of the base-line source, which is almost always there but lost in a sea of references.
+%Most classification papers report a percentage of accuracy that gives the reader a measure of the correct classifications~\citep{dietterich1998approximate}. Some times it might be desirable, for a better understanding of the paper, that a distinction between ambiguous, outliers and incorrect classes is made~\citep{liu2002performance}. A very useful piece of information is clear citation of the base-line source, which is almost always there but lost in a sea of references.
 
 %Should we report also incorrect or ambiguous? Could some ``correct'' be masking ambiguous? Were the ambiguous due to noise? Was the noise added on purpose? 
 
@@ -236,7 +236,7 @@ Table~\ref{tb:hardware_comparison} aims to summarise the aforementioned hardware
 %
 %Different platforms have special benefits, purely hardware solutions have low power consumption but lack programmability.
 %
-%New theories, such as Polychronization, suggest that axonal delays are an integral part of the brain's computing mechanisms~[\cite{Izhikevich2005}]. 
+%New theories, such as Polychronization, suggest that axonal delays are an integral part of the brain's computing mechanisms~\citep{Izhikevich2005}. 
 %
 %Power consumption is a key issue for mobile applications and robotics. A way to measure is to state the number of \emph{Synaptic operations per Watt} that the hardware is capable of.
 %

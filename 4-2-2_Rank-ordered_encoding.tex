@@ -2,7 +2,7 @@ A different way of encoding spikes is using a \emph{rank-order} code; this means
 keep just the order in which those spikes were fired and disregard the exact timing. Rank-ordered spike trains have been used in vision tasks under a biological plausibility constraint, making them a viable way of image encoding for neural applications~[\cite{van-rullen-rate-coding,basab-model,Masmoudi2010}].
 
 Rank-ordered encoding can be performed using an algorithm known as 
-{Filter overlap Correction algorithm} or \textit{FoCal}~[\cite{basab-model}]. It models the \emph{foveal pit} region, the highest resolution area of the retina, with four ganglion cell layers that show a \emph{centre-surround} behaviour~[\cite{Kolb2003}]. In order to simulate these layers, four discrete 2D convolutions are performed. The centre-surround behaviour of the ganglion cells is modelled using Differences of Gaussians~(DoG). 
+{Filter overlap Correction algorithm} or \textit{FoCal}~\citep{basab-model}. It models the \emph{foveal pit} region, the highest resolution area of the retina, with four ganglion cell layers that show a \emph{centre-surround} behaviour~\citep{Kolb2003}. In order to simulate these layers, four discrete 2D convolutions are performed. The centre-surround behaviour of the ganglion cells is modelled using Differences of Gaussians~(DoG). 
 \begin{equation}
 \label{eq-dog}
 DoG_w(x,y) = \pm\frac{1}{2\pi\sigma_{w,c}^2}e^{\frac{-(x^2 + y^2)}{2\sigma_{w,c}^2}}
@@ -105,7 +105,7 @@ between convolution kernels (Alg.~\ref{code-focal-corr}).
   \end{algorithmic}
 \end{algorithm}
 
-After the correction step, the most important information can be recovered using only the first 30\% of the spikes. These significant spikes are shown in Figure~\ref{fig-raster-plot-30pc}, assuming that each spike will be generated 1~ms apart. One of the main advantages of ROC is that neurons will only spike once. Figure~\ref{fig-sorted-raster-plot-30pc} illustrates this fact and it also shows that not all simulated neurons fire, just the ones that encode useful information.
+After the correction step, the most important information can be recovered using only the first 30\% of the spikes~\citep{basab-model}. These significant spikes are shown in Figure~\ref{fig-raster-plot-30pc}, assuming that each spike will be generated 1~ms apart. One of the main advantages of ROC is that neurons will only spike once. Figure~\ref{fig-sorted-raster-plot-30pc} illustrates this fact and it also shows that not all simulated neurons fire, just the ones that encode useful information.
 \begin{figure}[hbt]
   \centering
   \subfloat[First 30\% of generated spikes.]{
