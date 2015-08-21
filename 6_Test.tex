@@ -18,7 +18,7 @@ Considering to be a potential benchmark, this system is composed with simple neu
 
 Both the training and testing exploit the Poissonian subset of the NE15-MNIST dataset.
 Because different simulators generate random Poissonian spike trains with various mechanisms, languages and codes, using the same dataset enables   performance evaluation of these simulators without the interference created by non-unified input.
-In terms of this case study, the performance of the model was evaluated with both software simulation (on NEST~\citep{gewaltig2007nest}) and hardware implementation (on SpiNNaker).
+In terms of this case study, the performance of the model was evaluated with both software simulation [on NEST~\citep{gewaltig2007nest}] and hardware implementation (on SpiNNaker).
 
 In order to fully assess the performance, different settings have been configured on the network, such as network size, input rate and testing images duration.
 For simplicity of describing the system, one standard configuration is set as example in the following sections.
@@ -157,7 +157,7 @@ The input rates of all the tests are 5000~Hz, and each image is presented 1~s.
 The configurations only differ in number of templates (subclasses) per digit.
 The recognition accuracies differ in a range of $\pm0.5\%$ between NEST and SpiNNaker due to the limited fast memory and the necessity for fixed-point arithmetic on SpiNNaker to ensure real-time operation.
 It is inevitable that numerical precision will be below IEEE double precision at various points in the processing chain from synaptic input to membrane potential.
-The main bottleneck is currently in the ring buffer where total precision for accumulated spike inputs is 16-bit, meaning that individual spikes are realistically going to be limited to 11- to 14-bit depending upon the probabilistic headroom calculated as necessary from the network configuration and spike throughput~\cite{Hopkins2015Accuracy}.
+The main bottleneck is currently in the ring buffer where total precision for accumulated spike inputs is 16-bit, meaning that individual spikes are realistically going to be limited to 11- to 14-bit depending upon the probabilistic headroom calculated as necessary from the network configuration and spike throughput~\citep{Hopkins2015Accuracy}.
 As the growth of network size there are more decision neurons and synapses connecting to them, thus the simulation time on NEST increases.
 On the other hand, SpiNNaker works in real time (biology time) and the simulation time becomes shorter when 1000 patterns per digit are used.
 The Thermal Design Power (TDP) usage of all four processors active operating at Base Frequency is 84~W.

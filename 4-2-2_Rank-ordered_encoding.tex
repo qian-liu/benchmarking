@@ -1,5 +1,5 @@
 A different way of encoding spikes is using a \emph{rank-order} code; this means
-keep just the order in which those spikes were fired and disregard the exact timing. Rank-ordered spike trains have been used in vision tasks under a biological plausibility constraint, making them a viable way of image encoding for neural applications~[\cite{van-rullen-rate-coding,basab-model,Masmoudi2010}].
+keep just the order in which those spikes were fired and disregard the exact timing. Rank-ordered spike trains have been used in vision tasks under a biological plausibility constraint, making them a viable way of image encoding for neural applications~\citep{van-rullen-rate-coding,basab-model,Masmoudi2010}.
 
 Rank-ordered encoding can be performed using an algorithm known as 
 {Filter overlap Correction algorithm} or \textit{FoCal}~\citep{basab-model}. It models the \emph{foveal pit} region, the highest resolution area of the retina, with four ganglion cell layers that show a \emph{centre-surround} behaviour~\citep{Kolb2003}. In order to simulate these layers, four discrete 2D convolutions are performed. The centre-surround behaviour of the ganglion cells is modelled using Differences of Gaussians~(DoG). 
