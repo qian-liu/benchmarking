@@ -96,17 +96,31 @@ Every testing image ($10,000$ images in total) is presented once and lasts 1 sec
 the output neuron with the highest firing rate decides.
 Taken the trained weights from NEST simulation, the accuracy of the recognition on NEST as well reaches 89.94\% with the standard configuration, while the result drops slightly to 89.88\% using SpiNNaker.
 In comparison, trained and tested both on SpiNNaker the recognition accuracy is 87.41\%, and the same weights applied to NEST the result turns to be 87.25\%. 
-%In order to compare the recognition difference, another experiment on SpiNNaker is taken to test with the same NEST trained weights.
-The recording of the output neurons of a test sequence of digits is shown in the raster plot (Fig~\ref{Fig:output}).
-In order to make the raster plot easier to read, we apply inhibit connections between neurons which are not in the same subclasses.
+%%In order to compare the recognition difference, another experiment on SpiNNaker is taken to test with the same NEST trained weights.
+%The recording of the output neurons of a test sequence of digits is shown in the raster plot (Fig~\ref{fig:output}).
+%In order to make the raster plot easier to read, we apply inhibitory connections between neurons which are not in the same classes, see Fig~\ref{fig:output_inhi}.
 
 
-\begin{figure}[hbt!]
-	\centering
-	\includegraphics[width=0.48\textwidth]{images/decision.pdf}
-	\caption{A raster plot of spike trains of the decision neurons. The sequence of the testing images are (7, 2, 1, 0, 4, 1, 4, 9, 5, 9).}
-	\label{Fig:output}
-\end{figure} 
+%%\begin{figure}[hbt!]
+%%	\centering
+%%	\includegraphics[width=0.48\textwidth]{images/decision.pdf}
+%%	\caption{A raster plot of spike trains of the decision neurons. The sequence of the testing images are (7, 2, 1, 0, 4, 1, 4, 9, 5, 9).}
+%%	\label{Fig:output}
+%%\end{figure} 
+%
+%\begin{figure}[hbt!]
+%	 \centering
+%	 \subfloat[Output of the decision neurons.]{
+%	 	\label{fig:output}
+%	 	\includegraphics[width=0.48\textwidth]{images/10test.pdf}
+%	 }\\
+%	  \subfloat[Output of the decision neurons with inhibitory connections between classes.]{
+%	  	\label{fig:output_inhi}
+%	  	\includegraphics[width=0.48\textwidth]{images/10test_inhi.pdf}
+%	  }
+%	\caption{Raster plots of spike trains of the decision neurons. The sequence of the testing images are (7, 2, 1, 0, 4, 1, 4, 9, 5, 9).}
+%	\label{Fig:raster}
+%\end{figure} 
 \subsubsection{Evaluation}
 The evaluation starts from the hardware-independent part, focus on the spike-based recognition analysis.
 As mentioned in Section~\ref{subsec:model}, accuracy and response time (latency) are the main concerns assessing the recognition capability.
@@ -183,7 +197,7 @@ The network achieved the recognition accuracy of 92.98\%, average latency of 10.
     10 & 91.29 & 91.43 & 621.74 &   &   & 0.38 \\
     50 & 92.98 & 92.92 & 1125.12 &   &   & 0.41 \\
     100 & 87.27 & 86.83 & 1406.01 &   &   & 0.44 \\
-    1000 & 89.65 & NA & 30316.88 &   &   & 1.50 \\
+    1000 & 89.65 & 89.74 & 30316.88 &   &   & 1.50 \\
 
 \end{tabular}
 \label{tbl:compare}
