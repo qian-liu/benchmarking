@@ -1,8 +1,8 @@
 A different way of encoding spikes is using a \emph{rank-order} code; this means
-keep just the order in which those spikes were fired and disregard the exact timing. Rank-ordered spike trains have been used in vision tasks under a biological plausibility constraint, making them a viable way of image encoding for neural applications~[\cite{van-rullen-rate-coding,basab-model,Masmoudi2010}].
+keep just the order in which those spikes were fired and disregard the exact timing. Rank-ordered spike trains have been used in vision tasks under a biological plausibility constraint, making them a viable way of image encoding for neural applications~\citep{van-rullen-rate-coding,basab-model,Masmoudi2010}.
 
 Rank-ordered encoding can be performed using an algorithm known as 
-\emph{Filter overlap Correction algorithm} or \textbf{FoCal}~[\cite{basab-model}]. It models the \emph{foveal pit} region, the highest resolution area of the retina, with four ganglion cell layers that show a \emph{centre-surround} behaviour~[\cite{Kolb2003}]. In order to simulate these layers, four discrete 2D convolutions are performed. The centre-surround behaviour of the ganglion cells is modelled using Differences of Gaussians (DoG, Eq.~\ref{eq-dog}). 
+{Filter overlap Correction algorithm} or \textit{FoCal}~\citep{basab-model}. It models the \emph{foveal pit} region, the highest resolution area of the retina, with four ganglion cell layers that show a \emph{centre-surround} behaviour~\citep{Kolb2003}. In order to simulate these layers, four discrete 2D convolutions are performed. The centre-surround behaviour of the ganglion cells is modelled using Differences of Gaussians~(DoG). 
 \begin{equation}
 \label{eq-dog}
 DoG_w(x,y) = \pm\frac{1}{2\pi\sigma_{w,c}^2}e^{\frac{-(x^2 + y^2)}{2\sigma_{w,c}^2}}
@@ -81,7 +81,7 @@ is inversely proportional to a spike emission time (i.e. the higher the pixel va
   \caption{Results of simulating ganglion cell layers and correcting for redundancy (convolved images are enhanced for better contrast).}
   \label{fig-convolution-results}
 \end{figure}
-The algorithm also performs a redundancy correction step; it does so by 
+The algorithm also performs a redundancy correction step, it does so by 
 adjusting the convolved image's pixel value according to the correlation 
 between convolution kernels (Alg.~\ref{code-focal-corr}).
 \begin{algorithm}[h]
@@ -105,14 +105,14 @@ between convolution kernels (Alg.~\ref{code-focal-corr}).
   \end{algorithmic}
 \end{algorithm}
 
-After the correction step, the most important information can be recovered using only the first 30\% of the spikes. These significant spikes are shown in Figure~\ref{fig-raster-plot-30pc}, assuming that each spike will be generated 1~ms apart. One of the main advantages of ROC is that neurons will only spike once. Figure~\ref{fig-sorted-raster-plot-30pc} illustrates this fact and it also shows that not all simulated neurons fire, just the ones that encode useful information.
+After the correction step, the most important information can be recovered using only the first 30\% of the spikes~\citep{basab-model}. These significant spikes are shown in Figure~\ref{fig-raster-plot-30pc}, assuming that each spike will be generated 1~ms apart. One of the main advantages of ROC is that neurons will only spike once. Figure~\ref{fig-sorted-raster-plot-30pc} illustrates this fact and it also shows that not all simulated neurons fire, just the ones that encode useful information.
 \begin{figure}[hbt]
   \centering
   \subfloat[First 30\% of generated spikes.]{
     \label{fig-raster-plot-30pc}
     \includegraphics[width=0.475\textwidth]{raster-plot-21-0-30pc}
   }\\[0.1em]
-  \subfloat[Spikes are, at most, emited once.]{
+  \subfloat[Spikes are, at most, emited once (spikes where sorted by the origin neuron id.) ][Spikes are, at most, emited once \\(spikes where sorted neuron id.) ]{
     \label{fig-sorted-raster-plot-30pc}
     \includegraphics[width=0.475\textwidth]{sorted-raster-plot-21-0-30pc}
   }
@@ -120,7 +120,7 @@ After the correction step, the most important information can be recovered using
   \label{fig-focal-raster-spikes}
 \end{figure}
 
-Figure \ref{fig-reconstruction-results} shows the reconstruction results for the two stages of the algorithm. On Fig. \ref{pic-lena-reconstructed-raw} the reconstruction was applied after the convolution, a blurry image is the result of redundancy in the spike representation. A better reconstruction can be obtained after Algorithm \ref{code-focal-corr} has been performed, the result is shown in Figure \ref{pic-lena-reconstructed-focal}.
+Figure \ref{fig-reconstruction-results} shows the reconstruction results for the two stages of the algorithm. On Fig. \ref{pic-lena-reconstructed-raw} the reconstruction was applied after the convolution, a blurry image is the result of redundancy in the spike representation. A better reconstruction can be obtained after Algorithm \ref{code-focal-corr} has been applied, the result is shown in Figure \ref{pic-lena-reconstructed-focal}.
 
 
 \begin{figure}[hbt]
@@ -142,4 +142,4 @@ Figure \ref{fig-reconstruction-results} shows the reconstruction results for the
 \end{figure}
 %Two resolutions are provided for the rank-order encoded portion of the database, the first is the original $28\times28$ one. An additional up-scaled resolution version is also provided, the images where scaled to a $128\times128$ resolution using bi-cubic interpolation, this was done to match the DVS native resolution. 
 
-The source Python scripts to transform images to ROC spike trains, to convert the results into AER and pyNN's spike source array will be provided.
+The source Python scripts to transform images to ROC spike trains, to convert the results into AER and PyNN's spike source array can be found in the dataset's website.
