@@ -5,7 +5,7 @@ In computer vision, there are a few datasets playing import roles in different t
 The MNIST is a subset of NIST hand written digits dataset. 
 %Both of the training and testing sets are selected half from SD-3 and the other half from SD-1. 
 The training set contains 60,000 patterns collected from approximately 250 writers.
-The testing set is composed of 10,000 patterns written by disjoint individuals.
+The testing set is composed of 10,000 patterns written by disjoint individuals which were not listed in the training set.
 All the digits in the dataset are of similar scale centring in a 28$ \times $28 image.
 Due to its straightforward target of classifying real-world images, the plain format of binary data and the simple patterns, MNIST has been one of the most popular datasets in computer vision for over 20 years.
 
@@ -14,11 +14,11 @@ The descending recognition error rate makes it nearly a solved problem, however 
 Certainly, a spiking version of the dataset will be an interesting artificial distortion and draw attention to new methods and algorithms on the challenge. 
 
 \subsection{ImageNet~\citep{deng_imagenet:_2009}}
-Since the new era of the 4th generation ANN, the Deep Neural Network (DNN), a flow of successful applications have been reported.
+Since the new era of the 4th generation ANN, the DNN, a flow of successful applications have been reported.
 Meanwhile, training the deeper network triggers a huge demand for sample data.
 The purpose of putting forward ImageNet was to provide researchers with a large-scale image database, which matches nicely with DNN data requirements.
-Currently there are 14,197,122 images and 21,841 synsets indexed in the dataset.
-Synsets are meaningful concepts described with a few words or phrases, and they are organised in a hierarchy as in WordNet\footnote{http://www.image-net.org/}.
+Currently there are 14,197,122 images and 21,841 synsets indexed in the dataset\footnote{http://www.image-net.org/}.
+Synsets are meaningful concepts described with a few words or phrases, and they are organised in a hierarchy as in WordNet.
 The final goal of ImageNet is to provide about 1000 images for each of the 80,000 synsets in WordNet.
 In other words, there will be tens of millions of images tidily structured, accurately labelled and human annotated.
 The dataset is a well-recognised benchmark test for the deep learning community, and many attempts have been made to improve the performance, for example~\citep{krizhevsky2012imagenet}.

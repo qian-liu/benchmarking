@@ -37,7 +37,9 @@ As neuromorphic hardware is more commonly used in research, larger and more comp
       \begin{mycell}{1.9cm} None \end{mycell} & % preprocessing
       \begin{mycell}{3.5cm} Two layer, LIF neurons\end{mycell}&  % network
       \begin{mycell}{3.5cm} Semi-supervised, STDP, calcium LTP/LTD\end{mycell}&  % training
-      \begin{mycell}{3.5cm} 96.5\% \\ (2.2\% non-class, \\1.3\% wrong-class)\end{mycell} \\% recognition
+      \begin{mycell}{3.5cm} 96.5\% 
+%      	\\ (2.2\% non-class, \\1.3\% wrong-class)
+      	\end{mycell} \\% recognition
       %
       \begin{mycell}{2.5cm} \cite{Diehl2015unsupervised} \end{mycell} & 
        \centering None &
@@ -49,7 +51,7 @@ As neuromorphic hardware is more commonly used in research, larger and more comp
       \begin{mycell}{2.5cm} \cite{Stromatias2015scalable} \\ This paper \end{mycell} & 
       \begin{mycell}{1.9cm} None \end{mycell} & % preprocessing
       \begin{mycell}{3.5cm} Four layer RBM, \\ LIF neurons \end{mycell}&  % network
-      \begin{mycell}{3.5cm} Pre-trained, unsupervised \end{mycell}&  % training
+      \begin{mycell}{3.5cm} Off-line training,\\ unsupervised \end{mycell}&  % training
       \begin{mycell}{3.5cm} 94.94\%\\Latency\\Biology time \end{mycell} \\% recognition
       %
       \begin{mycell}{2.5cm} \cite{neftci2013event} \end{mycell} & 
@@ -159,14 +161,19 @@ In the testing phase, the characteristics of the \emph{recognition} should inclu
        \begin{mycell}{2.0cm} Digital \\  \end{mycell} & 
        Yes & 
        \begin{mycell}{2.1cm}Neuron/Synapse\\Axonal delay\\Learning rule \end{mycell}& 
-       Programmable & 
+       \begin{mycell}{2.0cm}11- to 14-bit synapses \\ Programmable
+       \end{mycell} & 
        \begin{mycell}{2.0cm} Real-time \\ Flexible time resolution \end{mycell}  &
        \begin{mycell}{2.5cm} 8~nJ/SE \\54.27 MSops/W \end{mycell} \\
        %
        \begin{mycell}{1.8cm} TrueNorth \citep{Merolla08082014}\end{mycell} & \begin{mycell}{2.0cm}Digital \end{mycell}& 
        \begin{mycell}{2.0cm}Yes\end{mycell}& 
        \begin{mycell}{2.0cm}Configurable\\No plasticity\end{mycell}& 
-       \begin{mycell}{2.0cm}122 bits per neuron \\(parameters + state)\\ $\sim$4-bit synapse \\ (4 signed integer choices + on/off state)\end{mycell}& 
+       \begin{mycell}{2.0cm}122 bits
+%       	 per neuron \\(parameters + state)
+       	 \\ $\sim$4-bit synapse 
+%       	 \\ (4 signed integer choices + on/off state)
+       	 \end{mycell}& 
        \begin{mycell}{2.0cm}Real-time\end{mycell}& 
        \begin{mycell}{2.0cm}46 GSops/W\end{mycell} \\
        %
