@@ -137,14 +137,14 @@ In the testing phase, the characteristics of the \emph{recognition} should inclu
   \begin{center}
       \bgroup
       \def\arraystretch{1.4}
-    \begin{tabular}{l c c c c c c}
+    \begin{tabular}{l c c c c c c c}
       $ $ & 
-       \begin{mycell}{2.0cm} System \end{mycell} & 
+       \begin{mycell}{1.cm} System \end{mycell} & 
 %       \begin{minipage}{1.3cm}\centering Simulation type \end{minipage} & 
-       \begin{mycell}{2.0cm} Scalable \end{mycell} & 
+       \begin{mycell}{1.0cm} Scalable \end{mycell} & 
        \begin{mycell}{2.0cm} Programmable \end{mycell} & 
 %       \begin{minipage}{1cm}\centering Axonal delays \end{minipage} & 
-%       \begin{minipage}{1cm}\centering Synaptic model \end{minipage} & 
+       \begin{mycell}{1cm}Synaptic model \end{mycell} & 
        \begin{mycell}{2.0cm} Precision \end{mycell} &  
 %       \begin{minipage}{1.2cm}\centering Synaptic precision \end{minipage} & 
 %       \begin{minipage}{1.2cm}\centering Energy per SE \end{minipage} & 
@@ -155,40 +155,52 @@ In the testing phase, the characteristics of the \emph{recognition} should inclu
 	   \\
        \hline
        % contents!
+       %
        \begin{mycell}{1.8cm} SpiNNaker \citep{strometal} \end{mycell} &
-       \begin{mycell}{2.0cm} Digital \\  \end{mycell} & 
-       Yes & 
-       \begin{mycell}{2.1cm}Neuron/Synapse\\Axonal delay\\Learning rule \end{mycell}& 
+       \begin{mycell}{1.cm} Digital \\  \end{mycell} & 
+       \begin{mycell}{1.0cm}Yes\end{mycell}& 
+       \begin{mycell}{2.1cm}Neuron/Synapse\\Axonal delay\\Learning rule \end{mycell}&
+       Programmable &
        Programmable & 
        \begin{mycell}{2.0cm} Real-time \\ Flexible time resolution \end{mycell}  &
        \begin{mycell}{2.5cm} 8~nJ/SE \\54.27 MSops/W \end{mycell} \\
        %
-       \begin{mycell}{1.8cm} TrueNorth \citep{Merolla08082014}\end{mycell} & \begin{mycell}{2.0cm}Digital \end{mycell}& 
-       \begin{mycell}{2.0cm}Yes\end{mycell}& 
-       \begin{mycell}{2.0cm}Configurable\\No plasticity\end{mycell}& 
-       \begin{mycell}{2.0cm}122 bits per neuron \\(parameters + state)\\ $\sim$4-bit synapse \\ (4 signed integer choices + on/off state)\end{mycell}& 
+       %
+       \begin{mycell}{1.8cm} TrueNorth \citep{Merolla08082014}\end{mycell} & \begin{mycell}{1.cm}Digital \end{mycell}& 
+       \begin{mycell}{1.0cm}Yes\end{mycell}& 
+       \begin{mycell}{2.0cm}Configurable\end{mycell}&
+       \begin{mycell}{1.0cm}No plasticity\end{mycell} &
+       \begin{mycell}{2.0cm}122 bits per neuron \\(parameters + state)\\ $\sim$4-bit synapse \\ (4 signed integer choices + on/off state)\end{mycell}&
        \begin{mycell}{2.0cm}Real-time\end{mycell}& 
        \begin{mycell}{2.0cm}46 GSops/W\end{mycell} \\
        %
+       %
        \begin{mycell}{1.8cm} Neurogrid \citep{Benjamin_etal14}\end{mycell} &
-       \begin{mycell}{2.0cm}Mixed-mode\end{mycell} & 
-       \begin{mycell}{2.0cm}No (same as bellow?)\end{mycell} & 
+       \begin{mycell}{1.cm}Mixed mode\end{mycell} & 
+       \begin{mycell}{1.0cm}Yes %No (same as bellow?)
+         \end{mycell} & 
        \begin{mycell}{2.0cm}Configurable\end{mycell} & 
+       \begin{mycell}{1.0cm}Fixed\end{mycell} &
        \begin{mycell}{2.0cm}13-bit shared \\ synapses\end{mycell} &
        \begin{mycell}{2.0cm}Real-time\end{mycell} &
        \begin{mycell}{2.0cm}941 pJ/SE\end{mycell} \\
        %
-       \begin{mycell}{1.8cm} HI-CANN \citep{Schemmel_etal10}  \end{mycell} & \begin{mycell}{2.0cm}Mixed-mode\end{mycell} &
-       \begin{mycell}{2.0cm}No (too hot?)\end{mycell}& 
+       %
+       \begin{mycell}{1.8cm} HI-CANN \citep{Schemmel_etal10}  \end{mycell} & \begin{mycell}{1.cm}Mixed mode\end{mycell} &
+       \begin{mycell}{1.0cm}Yes %No (too hot?)
+         \end{mycell}& 
        \begin{mycell}{2.0cm}Configurable\end{mycell}& 
+       \begin{mycell}{1.0cm}Fixed\end{mycell} &
        \begin{mycell}{2.0cm}4-bit synapses\end{mycell}& 
        \begin{mycell}{2.0cm}Faster than\\ real-time\end{mycell}&
        \begin{mycell}{2.0cm}198 pJ/SE \\ 13.5 MSops/W \\(network only) \end{mycell}\\
        %
+       %
        \begin{mycell}{1.8cm} iAER-IFAT \citep{gert}\end{mycell} & 
-       Mixed-mode & 
-       Yes &  
-       \begin{mycell}{2.0cm}Configurable\end{mycell} &  
+       \begin{mycell}{1.cm}Mixed mode\end{mycell}& 
+       \begin{mycell}{1.0cm}Yes\end{mycell}&  
+       \begin{mycell}{2.0cm}Configurable\end{mycell} &
+       \begin{mycell}{1.0cm}Fixed\end{mycell} &  
        \begin{mycell}{2.0cm}Analogue neuron/synapse\end{mycell} & 
        Real-time& 
        20GSop/W
