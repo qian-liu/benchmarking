@@ -5,7 +5,7 @@ With rapid developments in neural engineering, researchers are approaching the a
 As a fast growing field, neuromorphic engineering has provided biologically-inspired sensors such as DVS~(Dynamic Vision Sensor) silicon retinas~\citep{serrano-gotarredona_128_2013, lichtsteiner2008128}, which are good examples of low-cost visual processing thanks to their event-driven and redundancy-reducing style of computation.
 Moreover, SNN simulation tools~\citep{davison2008pynn, gewaltig2007nest, goodman2008brian} and neuromorphic hardware platforms~\citep{furber2013overview,  schemmel2010wafer, moradi2014event} have been developed to allow exploration of the brain by mimicking its functions and developing large-scale practical applications.
 Particularly for visual processing, the central visual system consists of several cortical areas which are placed in a hierarchical pattern according to anatomical experiments~\citep{felleman1991distributed}.
-Fast object recognition takes place in  the feed-forward hierarchy of the ventral pathway, one of the two central visual pathways, which mainly handles the ``What`` tasks.
+Fast object recognition takes place in  the feed-forward hierarchy of the ventral pathway, one of the two central visual pathways, which mainly handles the ``What'' tasks.
 Experiments have revealed that the information is unfolded along the ventral stream to the  IT (Inferior Temporal) cortex~\citep{dicarlo2012does}.
 Inspired by the  explicit  biological study of the central visual pathway, SNNs models have successfully been adopted to computer vision tasks. 
 %become an active area of computer vision thanks to the
@@ -47,22 +47,24 @@ STDP as a biological learning process is applied to vision tasks.
 \cite{bichler2012extraction} demonstrated an unsupervised STDP learning model to classify car trajectories captured with a DVS retina. 
 A similar model was tested on Poissonian spike presentation of MNIST dataset achieving the performance of 95.0\%~\citep{Diehl2015unsupervised}.
 Theoretical analysis~\citep{nessler2013bayesian} showed unsupervised STDP was able to approximate a stochastic version of Expectation Maximization, a powerful learning algorithm in machine learning.
-The computer simulation achieved 80.14\% CA on MNIST and could be implemented in a memrisitve device~\citep{bill2014compound}. 
+The computer simulation achieved~83.3\% CA on MNIST and could be implemented in a memrisitve device~\citep{bill2014compound}. 
 
-Despite of the promising research on vision recognition using SNNs, there is no commonly used database in the format of spikes.
+Despite of the promising research on SNN-based vision recognition, there is no commonly used database in the format of spikes.
 In the listed studies above, all the vision data used are in one of the following format:
 (1) the grey-scale raw values of images;
-(2) Poissonian generated spike trains of images' intensity;
-(3) unpublished DVS recorded spike trains of videos.
-As a consequence, a new series of vision benchmarks for spike-based neural processing are now needed to quantitatively measure progress within this rapidly advancing field.
-We propose that a large dataset of spike-based visual stimuli is needed to provide a baseline for comparisons.
-Furthermore a complementary evaluation methodology is also crucial to assess the accuracy and efficiency of an algorithm.
+(2) rate-based spike trains according to pixel intensities with various Poissonian generator;
+(3) unpublished DVS recorded spike-based videos.
+As a consequence, a new series of spike-based vision datasets are now needed to quantitatively measure progress within this rapidly advancing field and to provide fair competition resources for researchers.
+Apart from using spikes instead of frame-based data of conventional computer vision, there are new concerns of evaluating neuromorphic vision tasks except for recognition accuracy.
+Therefore a common metric of performance evaluation on spike-based vision is also required to specify the measurements of algorithms and models. 
+Different assessments take into considerations when implementing models on neuromorphic hardware, especially the trade-offs between simulation time, precision and power consumption.
+Thus benchmarking neuromorphic hardware with various network models will reveal advantages and disadvantages of different platforms.
+In this paper we propose a large dataset of spike-based visual stimuli, NE, and its complementary evaluation methodology.
+The dataset expands and evolves as research develops and new problems are introduced.
 
-This is not a special case in the problems of the computer vision research.
-Whenever a new research field reaches a certain level of influence and accumulation, a matching dataset will be required.
-In Section~\ref{sec:Related}, some example datasets are introduced.
-Section~\ref{sec:guide} claims the purpose, protocols and advantages of the proposed dataset.
+In Section~\ref{sec:Related}, some example datasets of conventional non-spiking computer vision are introduced.
+Section~\ref{sec:guide} claims the purpose and protocols of the proposed dataset.
 The sub-datasets and their generation methods are described in detail in Section~\ref{sec:data}.
 In accordance with the dataset, its evaluation methodology is demonstrated in Section~\ref{sec:eval}.
 Moreover, two SNN models are provided as examples of benchmarking hardware platforms in Section~\ref{sec:test}.
-Finally, Section~\ref{sec:summ} summarises the paper and discusses the future work.
+Section~\ref{sec:summ} summarises the paper and discusses the future work.
