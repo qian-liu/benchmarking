@@ -105,23 +105,13 @@ between convolution kernels (Alg.~\ref{code-focal-corr}).
   \end{algorithmic}
 \end{algorithm}
 
-<<<<<<< HEAD
+
 After the correction step, the most important information can be recovered using only the first 30\% of the spikes~\citep{sen2009evaluating}. These significant spikes are shown in Fig.~\ref{fig-raster-plot-30pc}, assuming that each spike will be generated 1~ms apart. Neurons in Layer 1 emit spikes faster and in larger quantities than any other layer, making it the most important one. Layers 2 and 3 have few spikes, this is due to the large convolution kernels used to simulate the ganglion cells. One of the main advantages of ROC is that neurons will only spike once, this can be seen particularly well in these two layers. Layers 0 and 1 encode fine details, while layers 2 and 3 result in blob like features.
 \begin{figure}[hbt]
   \centering
       \includegraphics[width=0.475\textwidth]{raster-plot-21-0-30pc}
       \caption{First 30\% of the rank-order encoded spikes produced with FoCal.}
       \label{fig-raster-plot-30pc}
-=======
-After the correction step, the most important information can be recovered using only the first 30\% of the spikes~\citep{basab-model}. These significant spikes are shown in Fig.~\ref{fig-raster-plot-30pc}, assuming that each spike will be generated 1~ms apart. Neurons in Layer 1 emit spikes faster and in larger quantities than any other layer, making it the most important one. Layers 2 and 3 have few spikes, this is due to the large convolution kernels used to simulate the ganglion cells. One of the main advantages of ROC is that neurons will only spike once, this can be seen particularly well in these two layers. Layers 0 and 1 encode fine details, while layers 2 and 3 result in blob like features.
-
-\begin{figure}[hbt]
-  \centering
-    \includegraphics[width=0.475\textwidth]{raster-plot-21-0-30pc}
-%    \includegraphics[width=0.475\textwidth]{sorted-raster-plot-21-0-30pc}
-  \caption{First 30\% of the rank-order encoded spikes produced with FoCal.}
-  \label{fig-raster-plot-30pc}
->>>>>>> 7059eb97ce659e6943f936f858bc9f8504ba0a63
 \end{figure}
 
 Figure \ref{fig-reconstruction-results} shows the reconstruction results for the two stages of the algorithm. On Fig. \ref{pic-lena-reconstructed-raw} the reconstruction was applied after the convolution, a blurry image is the result of redundancy in the spike representation. A better reconstruction can be obtained after Algorithm \ref{code-focal-corr} has been applied, the result is shown in Figure \ref{pic-lena-reconstructed-focal}.
