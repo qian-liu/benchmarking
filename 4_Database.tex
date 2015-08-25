@@ -2,7 +2,7 @@
 \label{sec:data}
 %Experiment setup/ collection method/ properties of each class/ etc.
 The name of the first proposed dataset in the benchmarking system is NE15-MNIST which stands for Neuromorphic Engineering 2015 on MNIST.
-The original MNIST dataset is downloaded from the website\footnote{http://yann.lecun.com/exdb/mnist/} of THE MNIST DATABASE of handwritten digits~\citep{lecun_gradient-based_1998}.
+The original MNIST dataset is downloaded from the website\footnote{http://yann.lecun.com/exdb/mnist/} of THE MNIST DATABASE of handwritten digits~\citep{lecun1998gradient}.
 The NE15-MNIST is converted into a spiking version of the original dataset consisting of four subsets which were generated for different purposes:
 \begin{itemize}
 	\item \textit{Poissonian}
@@ -21,7 +21,7 @@ Two file formats are supported in the dataset: jAER format~\citep{delbruck2008fr
 The  address event representation (AER) interface has been widely used in neuromorphic systems, especially for vision sensors.
 The spikes are encoded as time events with corresponding addresses to convey information.
 The spikes in jAER format, both recorded from a DVS retina and artificially generated, can be displayed in jAER software.
-Fig~\ref{Fig:jaer} is a snapshot of the software displaying an .aedat file which is recorded by a DVS retina~\citep{serrano-gotarredona_128_2013}.
+Fig~\ref{Fig:jaer} is a snapshot of the software displaying an .aedat file which is recorded by a DVS retina~\citep{serrano2013128}.
 The resolution of the DVS recorded data is 128$\times$128.
 %, while the original MNIST data is 28$\times$28.
 The other format of spikes used is a list of spike source arrays in PyNN~\citep{davison2008pynn}, a description language for building spiking neuronal network models.
@@ -73,7 +73,7 @@ Python code for converting one file format to and from the other is also provide
 	The purposes of including the subset of DVS recorded flashing digits are to promote the application of Rank-Order-Coding to DVS output, and accelerate the fast on-set recognition by using just the beginning part of spike trains within less than 30~ms.
 	
 	Each digit and a blank image were shown alternately and each display lasted one second.
-	The digits were displayed on a LCD monitor in front of the DVS retina~\citep{serrano-gotarredona_128_2013} and were placed in the centre of the visual field of the camera.
+	The digits were displayed on a LCD monitor in front of the DVS retina~\citep{serrano2013128} and were placed in the centre of the visual field of the camera.
 %	Each recording was cut into 10 sub sections.
 	Since there are two polarities of the spikes: 'ON' indicates the increase of the intensity while 'OFF' reflects the opposite, there are an 'ON' and an 'OFF' flashing recordings respectively per digit.
 	In Fig~\ref{fig:flash}, the bursty of the spikes is illustrated where most of the spikes occur in a 30~ms slot. 
@@ -105,7 +105,7 @@ Python code for converting one file format to and from the other is also provide
 	In order to address the problems of position- and scale- invariance, the subset of DVS recorded moving digits is presented.
 	
 	MNIST digits were scaled to three different sizes, by using smooth interpolation algorithms to increase their size from the original 28x28 pixel size, and displayed on the monitor with slow motion. 
-	The same DVS~\citep{serrano-gotarredona_128_2013} used in Section~\ref{subsec_flash} captured the movements of the digits and generated spike trains for each pixel of its 128$\times$128 resolution.
+	The same DVS~\citep{serrano2013128} used in Section~\ref{subsec_flash} captured the movements of the digits and generated spike trains for each pixel of its 128$\times$128 resolution.
 	A total of 30,000 recordings were made: 10 digits, at 3 different scales, 1000 different handwritten samples for each.
 %	The subset is available at the website\footnote {http://imse-cnm.csic.es/caviar/MNIST\_DVS}.
 	

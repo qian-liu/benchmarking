@@ -1,7 +1,7 @@
 \section{Related Work}
 \label{sec:Related}
 In conventional computer vision, there are a few datasets playing import roles in different time and aiming at various targets.
-\subsection{MNIST~\citep{lecun_gradient-based_1998}}
+\subsection{MNIST~\citep{lecun1998gradient}}
 The MNIST is a subset of NIST hand written digits dataset. 
 %Both of the training and testing sets are selected half from SD-3 and the other half from SD-1. 
 The training set contains 60,000 patterns collected from approximately 250 writers.
@@ -13,17 +13,17 @@ Many methods have been verified on this dataset: K-means, SVM, ConvNets, etc.
 The descending recognition error rate makes it nearly a solved problem, however some modifications, such as position shifts, scaling and noise, bring new challenges.
 Certainly, a spiking version of the dataset will be an interesting artificial distortion and draw attention to new methods and algorithms on the challenge. 
 
-\subsection{ImageNet~\citep{deng_imagenet:_2009}}
+\subsection{ImageNet~\citep{deng2009imagenet}}
 Since the new era of the 4th generation ANN, the DNN, a flow of successful applications have been reported.
 Meanwhile, training the deeper network triggers a huge demand for sample data.
 The purpose of putting forward ImageNet was to provide researchers with a large-scale image database, which matches nicely with DNN data requirements.
 Currently there are 14,197,122 images and 21,841 synsets indexed in the dataset\footnote{http://www.image-net.org/}.
-Synsets are meaningful concepts described with a few words or phrases, and they are organised in a hierarchy as in WordNet.
+Synsets are meaningful concepts described with a few words or phrases, and they are organised in a hierarchy as in WordNet~\citep{deng2009imagenet}.
 The final goal of ImageNet is to provide about 1000 images for each of the 80,000 synsets in WordNet.
 In other words, there will be tens of millions of images tidily structured, accurately labelled and human annotated.
 The dataset is a well-recognised benchmark test for the deep learning community, and many attempts have been made to improve the performance, for example~\citep{krizhevsky2012imagenet}.
 
-\subsection{Microsoft COCO~\citep{lin_microsoft_2014}}
+\subsection{Microsoft COCO~\citep{lin2014microsoft}}
 As a good example of a database catching up with state-of-the-art technologies, Microsoft COCO aims to solve three problems in scene understanding by providing large-scale datasets.
 First is to categorise objects in their non-iconic views, such as being small, ambiguous or partially occluded.
 Secondly, understanding the context (contextual reasoning) of multiple objects in an image is necessary.
@@ -39,7 +39,7 @@ They contain single atomic actions, which are simple and neat: walking, running,
 Taking the advantages of continuous spiking trains instead of frames of videos, spiking version of such action datasets will be provided in our future work.
 A DVS simulation may be needed to convert frames of images into spikes.
  
-The YouTube Action Dataset~\citep{liu_recognizing_2009} targets recognising realistic actions from videos ``in the wild''.
+The YouTube Action Dataset~\citep{liu2009recognizing} targets recognising realistic actions from videos ``in the wild''.
 Thanks to the digital era, unconstrained videos are abundant on the Internet, e.g. YouTube.
 This YouTube Action dataset is composed of 1,168 videos in 11 categories.
 The main challenge relies on the massive variations due to the moving camera, background clutter, viewing angles, illuminations and so on.

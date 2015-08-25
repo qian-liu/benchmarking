@@ -64,7 +64,7 @@ Fig~\ref{Fig:train} shows how the connections to a single decision neuron is tun
 The training set of $60,000$ hand written digits are firstly classified into 100 classes, 10 subclasses per digit, using K-means clusters.
 So the images in a certain subclass are used to train one corresponding decision neuron.
 The firing rate of the input neurons are assigned linearly according to their intensities and normalised with a total firing rate of 2000~Hz.
-All the images together are presented 180~$s$ (about 300~$ms$ per image) during training and at the same time a teaching signal of 50~Hz is conveyed to the decision neuron to trigger STDP learning.
+All the images together are presented $18,000$~s (about 300~ms per image) during training and at the same time a teaching signal of 50~Hz is conveyed to the decision neuron to trigger STDP learning.
 The trained weights are plotted in accordance with the positions of the decision neurons in Fig~\ref{Fig:test}.
 \begin{figure}[thb!]
 	\centering
@@ -172,16 +172,16 @@ The input rates of all the tests are 5000~Hz, and each image is presented 1~s.
 The configurations only differ in number of templates (subclasses) per digit.
 The recognition accuracies differ in a range of $\pm0.5\%$ between NEST and SpiNNaker due to the limited fast memory and the necessity for fixed-point arithmetic on SpiNNaker to ensure real-time operation.
 It is inevitable that numerical precision will be below IEEE double precision at various points in the processing chain from synaptic input to membrane potential.
-The main bottleneck is currently in the ring buffer where total precision for accumulated spike inputs is 16-bit, meaning that individual spikes are realistically going to be limited to 11- to 14-bit depending upon the probabilistic headroom calculated as necessary from the network configuration and spike throughput~[\citep{Hopkins2015Accuracy}].
+The main bottleneck is currently in the ring buffer where total precision for accumulated spike inputs is 16-bit, meaning that individual spikes are realistically going to be limited to 11- to 14-bit depending upon the probabilistic headroom calculated as necessary from the network configuration and spike throughput~\citep{Hopkins2015Accuracy}.
 As the growth of network size there are more decision neurons and synapses connecting to them, thus the simulation time on NEST increases.
 On the other hand, SpiNNaker works in real time (biology time) and the simulation time becomes shorter than NEST simulation when 1000 patterns per digit are used.
-The Thermal Design Power (TDP) usage of all four processors of i5-4570 active operating at base frequency is 84~W.
+The Thermal Design Power (TDP) usage of all four processors of i5-4570 active operating at base frequency is 84~W\footnote{\url{http://ark.intel.com/products/75043/Intel-Core-i5-4570-Processor-6M-Cache-up-to-3_60-GHz}}.
 NEST was run fully active on a single core which cost 21~W of power usage.
 The energy use can be calculated as the product of the simulation time and the power use.
 Even with the smallest network, SpiNNaker wins in the energy cost comparison, see Fig~\ref{fig:energy}.
 Among different network configurations, the network of 500 decision neurons reaches the highest recognition rate.
 %The recognition accuracy reaches the highest (92.98\%) when 50 patterns are trained per digit.
-The network achieved the CA of 92.98\%, average latency of 10.70~ms and energy use of 4920~J on SpiNNaker.
+The network achieved the CA of 92.98\%, average latency of 10.70~ms and energy use of $4,920$~J on SpiNNaker.
 
 \begin{table}[h]
 \caption{Comparisons of NEST and SpiNNaker performances.}
@@ -213,17 +213,17 @@ The network achieved the CA of 92.98\%, average latency of 10.70~ms and energy u
 \end{figure}
 \subsection{Case Study II}
 % brief intro about dbn
-Deep learning architectures and in particular Convolutional Networks \citep{lecun1998gradient} and Deep Belief Networks (DBNs) \citep{Hinton_etal_2006} have been characterised as one of the breakthrough technologies of the decade \citep{MIT_TechReview}. One of the advantages of these type of networks is that their performance can be increased by adding more layers \citep{Hinton_Contr_Divergence2006}.
+Deep learning architectures and in particular Convolutional Networks~\citep{lecun1998gradient} and Deep Belief Networks (DBNs)~\citep{hinton2006fast} have been characterised as one of the breakthrough technologies of the decade~\citep{MIT_TechReview}. One of the advantages of these type of networks is that their performance can be increased by adding more layers~\citep{hinton2006fast}.
 
 However, state-of-the-art deep networks comprise a large number of layers, neurons and connections resulting in high energy demands, communication overheads, and high response latencies. This is a problem for mobile and robotic platforms which may have limited computational and power resources but require fast system responses. 
 
 
 % about oneils model 
-\citet{10.3389/fnins.2013.00178} proposed a method to map off-line trained DBNs into a spiking neural networks and take advantage of the real-time performance and energy efficiency of neuromorphic platforms. This lead initially to an implementation on an event-driven Field-Programmable Gate Array (FPGA) called Minitaur \citep{dannminitaur} and then on the SpiNNaker platform \citep{iscasSpinnakerAcceptedDemo,SpinnakerDBN2015}. For this work we used an off-line trained\footnote{\url{https://github.com/dannyneil/edbn/}} spiking DBN with a 784-500-500-10 network topology. Simulations take place on a software spiking neural network simulator named Brian \citep{briansim} and results are verified on the SpiNNaker platform.
+\citet{o2013real} proposed a method to map off-line trained DBNs into a spiking neural networks and take advantage of the real-time performance and energy efficiency of neuromorphic platforms. This lead initially to an implementation on an event-driven Field-Programmable Gate Array (FPGA) called Minitaur~\citep{neil2014minitaur} and then on the SpiNNaker platform~\citep{Stromatias2015scalable}. For this work we used an off-line trained\footnote{\url{https://github.com/dannyneil/edbn/}} spiking DBN with a 784-500-500-10 network topology. Simulations take place on a software spiking neural network simulator named Brian~\citep{goodman2008brian} and results are verified on the SpiNNaker platform.
 
 \subsubsection{Training}
 
-DBNs consist of stacked Restricted Boltzmann Machines (RBMs), which are fully connected recurrent networks but without any connections between neurons of the same layer. Training is performed unsupervised using the standard Contrastive Divergence (CD) rule \citep{Hinton_Contr_Divergence2006} and only the output layer is trained in a supervised manner. The main difference between spiking DBNs and traditional DBNs is the activation function used for the neurons. \citet{10.3389/fnins.2013.00178} proposed the use of the Siegert approximation \citep{Jug_etal_2012} as the activation function, which returns the expected firing rate of a leaky integrate and fire (LIF) neuron given input firing rates, input weights, and standard neuron parameters.
+DBNs consist of stacked Restricted Boltzmann Machines (RBMs), which are fully connected recurrent networks but without any connections between neurons of the same layer. Training is performed unsupervised using the standard CD rule~\citep{hinton2006fast} and only the output layer is trained in a supervised manner. The main difference between spiking DBNs and traditional DBNs is the activation function used for the neurons.~\cite{o2013real} proposed the use of the Siegert approximation~\citep{Jug_etal_2012} as the activation function, which returns the expected firing rate of a LIF neuron given input firing rates, input weights, and standard neuron parameters.
 
 \subsubsection{Testing}
 After the training process the learnt synaptic weights can be used in a spiking neural network which consists of LIF neurons with delta-current synapses. Table~\ref{Tab:NeuralParams} shows the LIF parameters used in the simulations.
@@ -265,11 +265,11 @@ After the training process the learnt synaptic weights can be used in a spiking 
 \egroup
 \end{table}
 
-The pixels of each MNIST digit from the testing set are converted into Poisson spike trains with a rate proportional to the intensity of their pixel, while their firing rates are scaled so that the total firing rate of the input population is constant \citep{10.3389/fnins.2013.00178}.
+The pixels of each MNIST digit from the testing set are converted into Poisson spike trains with a rate proportional to the intensity of their pixel, while their firing rates are scaled so that the total firing rate of the input population is constant~\citep{o2013real}.
   
-The classification accuracy (CA) was chosen as the performance metric of the spiking DBN, which is the percentage of the correctly classified digits over the whole MNIST testing set.
+The CA was chosen as the performance metric of the spiking DBN, which is the percentage of the correctly classified digits over the whole MNIST testing set.
  
-%Table~\ref{tab:casimulators} presents a comparison of the classification accuracies (CA) between the rate-based implementation in MATLAB using the Siegert neurons, Brian, and SpiNNaker. %The default fixed-point weight precision for SpiNNaker is 22 bits, 6 for the integer part and 16 for the fractional part (Q6.16) \citep{}.
+%Table~\ref{tab:casimulators} presents a comparison of the classification accuracies (CA) between the rate-based implementation in MATLAB using the Siegert neurons, Brian, and SpiNNaker. %The default fixed-point weight precision for SpiNNaker is 22 bits, 6 for the integer part and 16 for the fractional part (Q6.16)~\citep{}.
 
 
 
@@ -282,9 +282,9 @@ The classification accuracy (CA) was chosen as the performance metric of the spi
 %verify brian results with spinnaker for a particular
 %weight precision.
 
-Neuromorphic platforms may have limited hardware resources to store the synaptic weights \citep{Schemmel_etal10,Merolla08082014}. In order to investigate how the precision of the weights affect the classification accuracy (CA) of a spiking DBN the double floating point weights of the offline trained network were converted to different fixed-point representations. The following notation will be used throughout this paper, Q\textit{m.f}, where \textit{m} signifies the number of bits for the integer part (including the sign bit) and \textit{f} the number of bits used for the fractional part.
+Neuromorphic platforms may have limited hardware resources to store the synaptic weights~\citep{schemmel2010wafer,merolla2014million}. In order to investigate how the precision of the weights affect the CA of a spiking DBN the double floating point weights of the offline trained network were converted to different fixed-point representations. The following notation will be used throughout this paper, Q\textit{m.f}, where \textit{m} signifies the number of bits for the integer part (including the sign bit) and \textit{f} the number of bits used for the fractional part.
 
-Figure~\ref{Fig:brianCAfiringrate} shows the effect of reduced weight bit precision on the CA for different input firing rates on the Brian simulator. To validate the results of the software simulator simulations ran on SpiNNaker for a weight resolution of Q3.8. SpiNNaker achieved a CA of 94.94\% when 1500~Hz was used for the input population \citep{SpinnakerDBN2015,iscasSpinnakerAcceptedDemo}. Brian for the same firing rates and weight precision achieved a CA of 94.955\%. Results are summarised in Table~\ref{tab:casimulators}.   
+Figure~\ref{Fig:brianCAfiringrate} shows the effect of reduced weight bit precision on the CA for different input firing rates on the Brian simulator. To validate the results of the software simulator simulations ran on SpiNNaker for a weight resolution of Q3.8. SpiNNaker achieved a CA of 94.94\% when 1500~Hz was used for the input population~\citep{Stromatias2015scalable}. Brian for the same firing rates and weight precision achieved a CA of 94.955\%. Results are summarised in Table~\ref{tab:casimulators}.   
 
 \begin{figure}[hbt!]
 	\centering
@@ -317,7 +317,7 @@ Figure~\ref{Fig:brianCAfiringrate} shows the effect of reduced weight bit precis
 %351 weights and SpiNNaker with Q3.8 fixed-point weights is 0.06%, which is in agreement with a previous
 %352 study (Stromatias et al., 2015b).
 
-\citet{stromateldbn} showed that spiking DBNs are capable of maintaining a high CA even for weight precisions down to Q3.3, while they are also remarkably robust to high levels of input noise regardless of the weight precision. 
+\citet{stromatias2015robustness} showed that spiking DBNs are capable of maintaining a high CA even for weight precisions down to Q3.3, while they are also remarkably robust to high levels of input noise regardless of the weight precision. 
 
 %CA and latency as a function of input spikes per sec
 %both brian and use spinnaker to validate results
@@ -346,7 +346,7 @@ The input rates were varied from 500~Hz to 2000~Hz and the results are summarise
 %Mention power consumption and compare against an
 %FPGA implementation on the identical network
 
-Finally, this particular spiking DBN ran on a single SpiNNaker chip (16 ARM9 cores) and dissipated less than 0.3~W when 2000 spikes per second per digit were used, as seen in Figure~\ref{Fig:spinnchipPower}. The identical network ran on Minitaur \citep{dannminitaur}, an event-driven FPGA implementation, and consumed 1.5~W when 1000 spikes per image were used.  
+Finally, this particular spiking DBN ran on a single SpiNNaker chip (16 ARM9 cores) and dissipated less than 0.3~W when 2000 spikes per second per digit were used, as seen in Figure~\ref{Fig:spinnchipPower}. The identical network ran on Minitaur~\citep{neil2014minitaur}, an event-driven FPGA implementation, and consumed 1.5~W when 1000 spikes per image were used.  
 
 
 \begin{figure}[hbt!]

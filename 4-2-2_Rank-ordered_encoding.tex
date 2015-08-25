@@ -1,8 +1,8 @@
-A different way of encoding spikes is using a \emph{rank-order} code; this means
-keep just the order in which those spikes were fired and disregard the exact timing. Rank-ordered spike trains have been used in vision tasks under a biological plausibility constraint, making them a viable way of image encoding for neural applications~\citep{van-rullen-rate-coding,basab-model,Masmoudi2010}.
+A different way of encoding spikes is using a rank-order code; this means
+keep just the order in which those spikes were fired and disregard the exact timing. Rank-ordered spike trains have been used in vision tasks under a biological plausibility constraint, making them a viable way of image encoding for neural applications~\citep{van2001rate,sen2009evaluating,masmoudi2010novel}.
 
 Rank-ordered encoding can be performed using an algorithm known as 
-{Filter overlap Correction algorithm} or \textit{FoCal}~\citep{basab-model}. It models the \emph{foveal pit} region, the highest resolution area of the retina, with four ganglion cell layers that show a \emph{centre-surround} behaviour~\citep{Kolb2003}. In order to simulate these layers, four discrete 2D convolutions are performed. The centre-surround behaviour of the ganglion cells is modelled using Differences of Gaussians~(DoG). 
+{Filter overlap Correction algorithm} or FoCal~\citep{sen2009evaluating}. It models the foveal pit region, the highest resolution area of the retina, with four ganglion cell layers that show a{centre-surround behaviour~\citep{kolb2003retina}. In order to simulate these layers, four discrete 2D convolutions are performed. The centre-surround behaviour of the ganglion cells is modelled using Differences of Gaussians~(DoG). 
 \begin{equation}
 \label{eq-dog}
 DoG_w(x,y) = \pm\frac{1}{2\pi\sigma_{w,c}^2}e^{\frac{-(x^2 + y^2)}{2\sigma_{w,c}^2}}
@@ -10,9 +10,9 @@ DoG_w(x,y) = \pm\frac{1}{2\pi\sigma_{w,c}^2}e^{\frac{-(x^2 + y^2)}{2\sigma_{w,c}
 \end{equation}
 where $\sigma_{w,c}$ and $\sigma_{w,s}$ are the standard deviation for the 
 centre and surround components of the DoG at layer $w$. The signs 
-will be ($-$,$+$) if the ganglion cell has an \textsc{off}-centre behaviour and 
-($+$,$-$) if it has an \textsc{on}-centre one. Table~\ref{tab-kernel-specs} 
-describes the parameters used to compute the convolution \emph{kernels} at each 
+will be ($-$,$+$) if the ganglion cell has an OFF-centre behaviour and 
+($+$,$-$) if it has an ON-centre one. Table~\ref{tab-kernel-specs} 
+describes the parameters used to compute the convolution kernels at each 
 scale $w$.
 
 \begin{table}[htb]
@@ -32,19 +32,19 @@ scale $w$.
     \begin{minipage}{1.3cm}\centering Sampling resolution (cols,rows)\vspace*{0.1cm}\end{minipage} \\
     \hline
     \begin{minipage}{0.7cm}\centering 1  \end{minipage} &
-    \begin{minipage}{0.8cm}\centering \textsc{off} \vspace*{0.005cm} \end{minipage}& 
+    \begin{minipage}{0.8cm}\centering OFF \vspace*{0.005cm} \end{minipage}& 
     \begin{minipage}{0.7cm}\centering$3$ \end{minipage}& 
     $0.8$ & $6.7 \times \sigma_c$ &  1, 1 \\
     \begin{minipage}{0.7cm}\centering 2 \end{minipage} & 
-    \begin{minipage}{0.8cm}\centering \textsc{on} \vspace*{0.005cm}\end{minipage} & 
+    \begin{minipage}{0.8cm}\centering ON \vspace*{0.005cm}\end{minipage} & 
     \begin{minipage}{0.7cm}\centering $11$ \end{minipage}& 
     $1.04$ & $6.7 \times \sigma_c$ & 1, 1 \\
     \begin{minipage}{0.7cm}\centering3 \end{minipage} &
-    \begin{minipage}{0.8cm}\centering \textsc{off} \vspace*{0.005cm}\end{minipage} & 
+    \begin{minipage}{0.8cm}\centering OFF \vspace*{0.005cm}\end{minipage} & 
     \begin{minipage}{0.7cm}\centering $61$ \end{minipage}& 
     $8$ & $4.8 \times \sigma_c$ & 5, 3 \\
     \begin{minipage}{0.7cm}\centering 4  \end{minipage} & 
-    \begin{minipage}{0.8cm}\centering \textsc{on} \vspace*{0.005cm}\end{minipage} & 
+    \begin{minipage}{0.8cm}\centering ON \vspace*{0.005cm}\end{minipage} & 
     \begin{minipage}{0.7cm}\centering $243$\end{minipage} &
     $10.4$ & $4.8 \times \sigma_c$ & 5, 3 
   \end{tabular}
@@ -78,7 +78,7 @@ is inversely proportional to a spike emission time (i.e. the higher the pixel va
     \label{pic-lena-P-ON}
     \includegraphics[width=0.15\textwidth]{filtered-21-0-layer-3}
   }
-  \caption{Results of simulating ganglion cell layers and correcting for redundancy (convolved images are enhanced for better contrast).}
+  \caption{Results of correcting the spikes from the simulated ganglion cell layers.}
   \label{fig-convolution-results}
 \end{figure}
 The algorithm also performs a redundancy correction step, it does so by 
@@ -105,19 +105,12 @@ between convolution kernels (Alg.~\ref{code-focal-corr}).
   \end{algorithmic}
 \end{algorithm}
 
-After the correction step, the most important information can be recovered using only the first 30\% of the spikes~\citep{basab-model}. These significant spikes are shown in Figure~\ref{fig-raster-plot-30pc}, assuming that each spike will be generated 1~ms apart. One of the main advantages of ROC is that neurons will only spike once. Figure~\ref{fig-sorted-raster-plot-30pc} illustrates this fact and it also shows that not all simulated neurons fire, just the ones that encode useful information.
+After the correction step, the most important information can be recovered using only the first 30\% of the spikes~\citep{sen2009evaluating}. These significant spikes are shown in Fig.~\ref{fig-raster-plot-30pc}, assuming that each spike will be generated 1~ms apart. Neurons in Layer 1 emit spikes faster and in larger quantities than any other layer, making it the most important one. Layers 2 and 3 have few spikes, this is due to the large convolution kernels used to simulate the ganglion cells. One of the main advantages of ROC is that neurons will only spike once, this can be seen particularly well in these two layers. Layers 0 and 1 encode fine details, while layers 2 and 3 result in blob like features.
 \begin{figure}[hbt]
   \centering
-  \subfloat[First 30\% of generated spikes.]{
-    \label{fig-raster-plot-30pc}
-    \includegraphics[width=0.475\textwidth]{raster-plot-21-0-30pc}
-  }\\[0.1em]
-  \subfloat[Spikes are, at most, emited once (spikes where sorted by the origin neuron id.) ][Spikes are, at most, emited once \\(spikes where sorted neuron id.) ]{
-    \label{fig-sorted-raster-plot-30pc}
-    \includegraphics[width=0.475\textwidth]{sorted-raster-plot-21-0-30pc}
-  }
-  \caption{Analysis of the generated ROC spikes.}
-  \label{fig-focal-raster-spikes}
+      \includegraphics[width=0.475\textwidth]{raster-plot-21-0-30pc}
+      \caption{First 30\% of the rank-order encoded spikes produced with FoCal.}
+      \label{fig-raster-plot-30pc}
 \end{figure}
 
 Figure \ref{fig-reconstruction-results} shows the reconstruction results for the two stages of the algorithm. On Fig. \ref{pic-lena-reconstructed-raw} the reconstruction was applied after the convolution, a blurry image is the result of redundancy in the spike representation. A better reconstruction can be obtained after Algorithm \ref{code-focal-corr} has been applied, the result is shown in Figure \ref{pic-lena-reconstructed-focal}.

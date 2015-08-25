@@ -11,7 +11,7 @@
 The complementary evaluation methodology is essential to provide common metrics and assess both the model-level and hardware-level performances.
 Specific measurements on SNNs take into considerations when evaluating algorithms and models.
 Additionally, performance of the network may be influenced by the chosen development platform.
-Benchmarking different neuromorphic hardware, precision, energy consumption and simulation time are the main concerns.
+Benchmarking different neuromorphic hardware, simulation time and energy consumption are the main concerns.
 %A crucial part of research is reporting results and comparing achievements with other state-of-the-art work. Unfortunately there is no standard way of fulfilling those tasks, which, sometimes, leads to confusion for the reader. We feel that the neuroscience community would benefit from a common ground for NN characteristics, our thoughts on this matter are reflected in the first part of this section.
 
 %As neuromorphic hardware is more commonly used in research, larger and more complex NN models could be used. Additionally, performance of the network may be influenced by the chosen development platform. We would like to assist with the following considerations when facing these impending changes.
@@ -34,45 +34,48 @@ Benchmarking different neuromorphic hardware, precision, energy consumption and 
 %      \begin{mycell}{3.5cm}Methodology, simulation time, sample repetition \end{mycell} & 
 %      \begin{mycell}{3.5cm}Events/$s$, time/sample, response time, accuracy\end{mycell} \\
       \hline
-%contents
-      \begin{mycell}{2.5cm} \cite{Diehl2015fast}\end{mycell}  & 
-      \begin{mycell}{1.9cm} None \end{mycell} & % preprocessing
-      \begin{mycell}{3.5cm} ConvNet or \\FCnet, LIF neurons \end{mycell}& % network
-      \begin{mycell}{3.5cm} Off-line trained with ReLU, weight normalization \end{mycell}&   % training
-      \begin{mycell}{3.5cm} 99.1\% (ConvNet), \\ 98.6\% (FCnet);\\Biological time\end{mycell}\\ % recognition
+
       %
-      \begin{mycell}{2.5cm} \cite{brader2007learning} \end{mycell} & 
+      \begin{mycell}{2.5cm}~\cite{brader2007learning} \end{mycell} & 
       \begin{mycell}{1.9cm} None \end{mycell} & % preprocessing
       \begin{mycell}{3.5cm} Two layer, LIF neurons\end{mycell}&  % network
       \begin{mycell}{3.5cm} Semi-supervised, STDP, calcium LTP/LTD\end{mycell}&  % training
       \begin{mycell}{3.5cm} 96.5\% \end{mycell} \\% recognition
-%      \begin{mycell}{3.5cm} 96.5\% \\ (2.2\% non-class, \\1.3\% wrong-class)\end{mycell} \\% recognition
+      
       %
-      \begin{mycell}{2.5cm} \cite{Diehl2015unsupervised} \end{mycell} & 
-       \centering None &
-       \begin{mycell}{3.5cm} Two layers, LIF neurons, inhibitory feedback  \end{mycell}& 
-       \begin{mycell}{3.5cm} Unsupervised, exp. STDP, %adaptive membrane potential, 
-         150~ms silence between samples \end{mycell} & 
-       \begin{mycell}{3.5cm} 95\% \end{mycell}\\
-      %
-      \begin{mycell}{2.5cm} \cite{neftci2013event} \end{mycell} & 
-      \begin{mycell}{1.9cm} Thresholding\end{mycell} & % preprocessing
-      \begin{mycell}{3.5cm} Two layer RBM, \\ LIF neurons \end{mycell}&  % network
-      \begin{mycell}{3.5cm} Event-driven contrastive divergence, supervised \end{mycell}&  % training
-      \begin{mycell}{3.5cm} 91.9\% \\ 1~s latency\end{mycell} \\% recognition
-      %
-      \begin{mycell}{2.5cm} \cite{beyeler2013categorization} \end{mycell} & 
+      \begin{mycell}{2.5cm}~\cite{beyeler2013categorization} \end{mycell} & 
       \begin{mycell}{1.9cm} None \end{mycell} & % preprocessing
       \begin{mycell}{3.5cm} V1 (edge), \\V4 (orientation),\\ and competitive decision, Izhikevich neurons\end{mycell}&  % network
       \begin{mycell}{3.5cm} Semi-supervised, STDP, \\ calcium LTP/LTD \end{mycell} &  % training
-      \begin{mycell}{3.5cm} 91.6\% \\ 300~ms latency \end{mycell} \\% recognition
-      %\begin{mycell}{3.5cm} 91.6\% \\ (8.3\% non-class, \\ 0.1\% wrong-class) \\ 300~ms latency \end{mycell} \\% recognition
+      \begin{mycell}{3.5cm} 91.6\% \\ 300~ms per test \end{mycell} \\% recognition
+      
       %
-      \begin{mycell}{2.5cm} \cite{zhao_feedforward_2014}\end{mycell}  & 
-      \begin{mycell}{1.9cm} Threshold or DVS \end{mycell}& % preprocessing 
+      \begin{mycell}{2.5cm}~\cite{neftci2013event} \end{mycell} & 
+      \begin{mycell}{1.9cm} Thresholding\end{mycell} & % preprocessing
+      \begin{mycell}{3.5cm} Two layer RBM, \\ LIF neurons \end{mycell}&  % network
+      \begin{mycell}{3.5cm} Event-driven contrastive divergence, supervised \end{mycell}&  % training
+      \begin{mycell}{3.5cm} 91.9\% \\ 1~s per test\end{mycell} \\% recognition
+	  
+ 	  %
+      \begin{mycell}{2.5cm}~\cite{diehl2015unsupervised} \end{mycell} & 
+       \centering None &
+       \begin{mycell}{3.5cm} Two layers, LIF neurons, inhibitory feedback  \end{mycell}& 
+       \begin{mycell}{3.5cm} Unsupervised, exp. STDP, %adaptive membrane potential, 
+         $3,000,000$~s of training\\ $200,000$~s per iteration\end{mycell} & 
+       \begin{mycell}{3.5cm} 95\% \end{mycell}\\
+       
+       %
+       \begin{mycell}{2.5cm}~\cite{Diehl2015fast}\end{mycell}  & 
+       \begin{mycell}{1.9cm} None \end{mycell} & % preprocessing
+       \begin{mycell}{3.5cm} ConvNet or \\FCnet, LIF neurons \end{mycell}& % network
+       \begin{mycell}{3.5cm} Off-line trained with ReLU, weight normalization \end{mycell}&   % training
+       \begin{mycell}{3.5cm} 99.1\% (ConvNet), \\ 98.6\% (FCnet);\\0.5~s per test\end{mycell}\\ % recognition    
+	  %
+      \begin{mycell}{2.5cm}~\cite{zhao2014feedforward}\end{mycell}  & 
+      \begin{mycell}{1.9cm} Thresholding\\ or DVS \end{mycell}& % preprocessing 
       \begin{mycell}{3.5cm} Simple (Gabor), \\Complex (MAX) \\and Tempotron  \end{mycell}& % network
       \begin{mycell}{3.5cm} Tempotron, supervised \end{mycell}& % training
-      \begin{mycell}{3.5cm} 91.3\% (threshold) \\ 88.1\% (DVS) \\ 11~s latency\end{mycell}\\ % recognition
+      \begin{mycell}{3.5cm} Thresholding \\ 91.3\%, 11~s per test \\ DVS \\ 88.1\%, 2~s per test\end{mycell}\\ % recognition
       %
       \begin{mycell}{2.5cm} % %\cite{Stromatias2015scalable} \\ 
         This paper \end{mycell} & 
@@ -82,10 +85,10 @@ Benchmarking different neuromorphic hardware, precision, energy consumption and 
       \begin{mycell}{3.5cm} 94.94\%\\16 ms latency \end{mycell} \\% recognition
       %
       \begin{mycell}{2.5cm} This paper \end{mycell}  & 
-      \begin{mycell}{1.9cm} K-means clusters \end{mycell}& % preprocessing 
+      \begin{mycell}{1.9cm} None \end{mycell}& % preprocessing 
       \begin{mycell}{3.5cm} FC decision layer, \\ LIF neurons \end{mycell}& % network
-      \begin{mycell}{3.5cm} Supervised STDP\\180~s of training \end{mycell}& % training
-      \begin{mycell}{3.5cm} 92.98\%\\10.70~ms latency\\1~s per test\end{mycell}\\ % recognition
+      \begin{mycell}{3.5cm} K-means clusters,\\Supervised STDP\\$18,000$~s of training \end{mycell}& % training
+      \begin{mycell}{3.5cm} 92.98\%\\1~s per test\\10.70~ms latency\end{mycell}\\ % recognition
     \end{tabular}
     \egroup
   \end{center}
@@ -98,12 +101,14 @@ Benchmarking different neuromorphic hardware, precision, energy consumption and 
 
 %As we are proposing spike based data-sets or a methodology to produce them, i
 First of all it's desirable for researchers to specify whether they add any preprocessing either to images or spikes.
-Filtering the raw input may ease the problem while adding noise~\citep{best-practice-nn-img} may require stronger robustness of the model.
+Filtering the raw input may ease the problem while adding noise may require stronger robustness of the model.
 %This is important, for example, if we want to use a modified set to test noisy inputs.
 Secondly, same as the evaluation on conventional artificial neural network, a description of the network characteristics is most welcome since it is the basis for the overall performance.
 Furthermore, sharing the designs may inspire fellow scientists to bring new point of views to the problem and generate a positive feedback loop where everybody wins.
 The network description should include the topology, and neural/synaptic model.
 The network topology defines the number of neurons used for each layer, and the connections between layers and neurons.
+Some researchers make use of extra non-neural classifiers, sometimes to aid the design, others to enhance the output of the network.
+Any particulars on this subject are greatly appreciated.
 It is essential to state the type of neural/synaptic models (e.g. current-based LIF neuron) exploited in the network and the parameters configuring them, because neural activities differ greatly given various configurations.
 %We believe the \emph{network description} should include some of the following elements:
 %%{ 
@@ -130,12 +135,11 @@ It is essential to state the type of neural/synaptic models (e.g. current-based 
 %%}
 Thirdly, the learning procedure determines the recognition capability of a network model.
 A clear distinction has always been made between supervised, semi-supervised and unsupervised learning.
-A detailed description of new proposed spike-based learning rules will of great contribution to the field due to the lack of spatial-temporal learning algorithms.
+A detailed description of new proposed spike-based learning rules will be of great contribution to the field due to the lack of spatial-temporal learning algorithms.
 Most publications reflect the use of adaptations to existing learning rules, details on the modifications are highly desired.
 In conventional computer vision, iterations of training images presented to the network play an important role.
 Similarly, the biological time of training decides the amount of information provided.
-Some researchers make use of extra non-neural classifiers, sometimes to aid the design, others to enhance the output of the network.
-Any particulars on this subject are greatly appreciated.
+
 %An important distinction to make, we think, is the nature of the \emph{training} procedure. A clear distinction has always been made between supervised, semi-supervised and unsupervised learning. Other specifications are the simulation time each sample is presented to the network, whether repeating samples was necessary and if they were presented continuously or with some ``silence'' was introduced between samples. Most publications reflect the use of adaptations to learning rules, details on the modifications are highly desired. A description of any additional weight-altering procedures used in the simulation are always welcome.
 
 %Also, details on the particulars of the applied learning rule (e.g. STDP, BCM), was it modified somehow?
@@ -145,7 +149,7 @@ It should include details of the way samples presented: event rates, and biologi
 The combination of these two factors determines how much information is presented to the network.
 An important performance metric is the response time (latency) of a SNN model.
 A faster model is more suitable for real-time recognition systems as neuromorphic robotics.
-A commonly reported characteristic is the accuracy of the network, perhaps adding remarks on how these scores were obtained could help to unify criteria and ease comparison.
+A commonly reported characteristic is the accuracy of the network, perhaps adding remarks on how these scores are obtained could help to unify criteria and ease comparison.
 Works on SNN-based classifications of MNIST are listed on in Table~\ref{tb:software_comparison} and evaluated on the proposed metrics.
 
 %Most classification papers report a percentage of accuracy that gives the reader a measure of the correct classifications~\citep{dietterich1998approximate}. Some times it might be desirable, for a better understanding of the paper, that a distinction between ambiguous, outliers and incorrect classes is made~\citep{liu2002performance}. A very useful piece of information is clear citation of the base-line source, which is almost always there but lost in a sea of references.
@@ -176,29 +180,29 @@ Works on SNN-based classifications of MNIST are listed on in Table~\ref{tb:softw
 %       \begin{minipage}{1.3cm}\centering Simulation type \end{minipage} & 
        
        \begin{mycell}{2.0cm} Neuron Model \end{mycell} & 
-       \begin{mycell}{2.0cm} Synaptic Plasticity \end{mycell} & 
+       \begin{mycell}{2.0cm}Synaptic\\Plasticity\end{mycell} &	
 %       \begin{minipage}{1cm}\centering Axonal delays \end{minipage} & 
 %       \begin{minipage}{1cm}\centering Synaptic model \end{minipage} & 
        \begin{mycell}{2.0cm} Precision \end{mycell} &  
 %       \begin{minipage}{1.2cm}\centering Synaptic precision \end{minipage} & 
 %       \begin{minipage}{1.2cm}\centering Energy per SE \end{minipage} & 
 %       \begin{minipage}{1.4cm}\centering Synaptic ops per Watt \end{minipage} & 
-       \begin{mycell}{2.0cm} Simulation Time \end{mycell} & 
+       \begin{mycell}{2.0cm} Simulation\\Time \end{mycell} & 
        \begin{mycell}{2.0cm} Energy Use \end{mycell} 
 %       \begin{minipage}{1.7cm}\centering Programming front-end \end{minipage}  
 	   \\
        \hline
        % contents!
-       \begin{mycell}{1.8cm} SpiNNaker \citep{strometal} \end{mycell} &
-       \begin{mycell}{2.0cm} Digital, \\Scalable to \\$10^{5}$ neurons \end{mycell} & 
-       \begin{mycell}{2.1cm}Programmable\\Neuron/Synapse\\Axonal delay \end{mycell}& 
-       \begin{mycell}{2.1cm}Programmable\\Learning rule \end{mycell}& 
+       \begin{mycell}{1.8cm} SpiNNaker \citep{stromatias2013power} \end{mycell} &
+       \begin{mycell}{2.0cm} Digital, \\Scalable \end{mycell} & 
+       \begin{mycell}{2.1cm}Programmable\\Neuron/Synapse,\\Axonal delay \end{mycell}& 
+       \begin{mycell}{2.1cm}Programmable\\learning rule\end{mycell}& 
        \begin{mycell}{2.0cm}11- to 14-bit synapses\end{mycell} & 
        \begin{mycell}{2.0cm} Real-time \\ Flexible time resolution \end{mycell}  &
        \begin{mycell}{2.5cm} 8~nJ/SE \\54.27 MSops/W \end{mycell} \\
        %
-       \begin{mycell}{1.8cm} TrueNorth \citep{Merolla08082014}\end{mycell} & \begin{mycell}{2.0cm}Digital, \\Scalable \end{mycell}& 
-       \begin{mycell}{2.0cm}Configurable\\\end{mycell}& 
+       \begin{mycell}{1.8cm} TrueNorth \citep{merolla2014million}\end{mycell} & \begin{mycell}{2.0cm}Digital, \\Scalable \end{mycell}& 
+       \begin{mycell}{2.0cm}Fixed models,\\Config params,\\Axonal delay\end{mycell}& 
        \begin{mycell}{2.0cm}No plasticity\end{mycell}& 
        \begin{mycell}{2.2cm}122 bits \\params \& states,
 %       	 per neuron
@@ -211,27 +215,27 @@ Works on SNN-based classifications of MNIST are listed on in Table~\ref{tb:softw
        %
        \begin{mycell}{1.8cm} Neurogrid \citep{benjamin2014neurogrid}\end{mycell} &
        \begin{mycell}{2.0cm}Mixed-mode,\\Scalable\end{mycell} & 
-       \begin{mycell}{2.0cm}Configurable\end{mycell} & 
-       \begin{mycell}{2.0cm}Configurable\end{mycell} & 
+       \begin{mycell}{2.0cm}Fixed models,\\Config params\end{mycell} & 
+       \begin{mycell}{2.0cm}Fixed rule\end{mycell} & 
        \begin{mycell}{2.0cm}13-bit shared \\ synapses\end{mycell} &
        \begin{mycell}{2.0cm}Real-time\end{mycell} &
        \begin{mycell}{2.0cm}941 pJ/SE\end{mycell} \\
        %
-       \begin{mycell}{1.8cm} HI-CANN \citep{Schemmel_etal10}  \end{mycell} & \begin{mycell}{2.0cm}Mixed-mode,\\Scalable\end{mycell} &
-       \begin{mycell}{2.0cm}Configurable\end{mycell}& 
-       \begin{mycell}{2.0cm}Configurable\end{mycell}& 
+       \begin{mycell}{1.8cm} HI-CANN \citep{schemmel2010wafer}  \end{mycell} & \begin{mycell}{2.0cm}Mixed-mode,\\Scalable\end{mycell} &
+       \begin{mycell}{2.0cm}Fixed models,\\Config params\end{mycell}& 
+       \begin{mycell}{2.0cm}Fixed rule\end{mycell}& 
        \begin{mycell}{2.0cm}4-bit synapses\end{mycell}& 
        \begin{mycell}{2.0cm}Faster than\\ real-time\end{mycell}&
        \begin{mycell}{2.0cm}198 pJ/SE \\ 13.5 MSops/W \\(network only) \end{mycell}\\
        
        %
-       \begin{mycell}{1.8cm} iAER-IFAT \citep{gert}\end{mycell} & 
+       \begin{mycell}{1.8cm} iAER-IFAT \citep{yu201265k}\end{mycell} & 
        \begin{mycell}{2.0cm}Mixed-mode,\\Scalable\end{mycell} &
-       \begin{mycell}{2.0cm}Configurable\end{mycell}& 
-       \begin{mycell}{2.0cm}Configurable\end{mycell} &  
+       \begin{mycell}{2.0cm}Fixed models,\\Config params\end{mycell}& 
+       \begin{mycell}{2.0cm}No plasticity\end{mycell} &  
        \begin{mycell}{2.0cm}Analogue neuron/synapse\end{mycell} & 
        Real-time& 
-       20GSop/W
+       20GSops/W
        %dummy update text
     \end{tabular}
     \egroup
@@ -266,7 +270,7 @@ Works on SNN-based classifications of MNIST are listed on in Table~\ref{tb:softw
 %       \hline
 %       % contents!
 %       %
-%       \begin{mycell}{1.8cm} SpiNNaker \citep{strometal} \end{mycell} &
+%       \begin{mycell}{1.8cm} SpiNNaker~\citep{stromatias2013power} \end{mycell} &
 %       \begin{mycell}{1.cm} Digital \\  \end{mycell} & 
 %       \begin{mycell}{1.0cm}Yes\end{mycell}& 
 %       \begin{mycell}{2.1cm}Neuron/Synapse\\Axonal delay\\Learning rule \end{mycell}&
@@ -276,7 +280,7 @@ Works on SNN-based classifications of MNIST are listed on in Table~\ref{tb:softw
 %       \begin{mycell}{2.5cm} 8~nJ/SE \\54.27 MSops/W \end{mycell} \\
 %       %
 %       %
-%       \begin{mycell}{1.8cm} TrueNorth \citep{Merolla08082014}\end{mycell} & \begin{mycell}{1.cm}Digital \end{mycell}& 
+%       \begin{mycell}{1.8cm} TrueNorth~\citep{merolla2014million}\end{mycell} & \begin{mycell}{1.cm}Digital \end{mycell}& 
 %       \begin{mycell}{1.0cm}Yes\end{mycell}& 
 %       \begin{mycell}{2.0cm}Configurable\end{mycell}&
 %       \begin{mycell}{1.0cm}No plasticity\end{mycell} &
@@ -285,7 +289,7 @@ Works on SNN-based classifications of MNIST are listed on in Table~\ref{tb:softw
 %       \begin{mycell}{2.0cm}46 GSops/W\end{mycell} \\
 %       %
 %       %
-%       \begin{mycell}{1.8cm} Neurogrid \citep{benjamin2014neurogrid}\end{mycell} &
+%       \begin{mycell}{1.8cm} Neurogrid~\citep{benjamin2014neurogrid}\end{mycell} &
 %       \begin{mycell}{1.cm}Mixed mode\end{mycell} & 
 %       \begin{mycell}{1.0cm}Yes %No (same as bellow?)
 %         \end{mycell} & 
@@ -296,7 +300,7 @@ Works on SNN-based classifications of MNIST are listed on in Table~\ref{tb:softw
 %       \begin{mycell}{2.0cm}941 pJ/SE\end{mycell} \\
 %       %
 %       %
-%       \begin{mycell}{1.8cm} HI-CANN \citep{Schemmel_etal10}  \end{mycell} & \begin{mycell}{1.cm}Mixed mode\end{mycell} &
+%       \begin{mycell}{1.8cm} HI-CANN~\citep{schemmel2010wafer}  \end{mycell} & \begin{mycell}{1.cm}Mixed mode\end{mycell} &
 %       \begin{mycell}{1.0cm}Yes %No (too hot?)
 %         \end{mycell}& 
 %       \begin{mycell}{2.0cm}Configurable\end{mycell}& 
@@ -306,7 +310,7 @@ Works on SNN-based classifications of MNIST are listed on in Table~\ref{tb:softw
 %       \begin{mycell}{2.0cm}198 pJ/SE \\ 13.5 MSops/W \\(network only) \end{mycell}\\
 %       %
 %       %
-%       \begin{mycell}{1.8cm} iAER-IFAT \citep{gert}\end{mycell} & 
+%       \begin{mycell}{1.8cm} iAER-IFAT~\citep{yu201265k}\end{mycell} & 
 %       \begin{mycell}{1.cm}Mixed mode\end{mycell}& 
 %       \begin{mycell}{1.0cm}Yes\end{mycell}&  
 %       \begin{mycell}{2.0cm}Configurable\end{mycell} &
@@ -320,9 +324,9 @@ Works on SNN-based classifications of MNIST are listed on in Table~\ref{tb:softw
 %  \end{center}
 %  \label{tb:hardware_comparison}
 %\end{table*}
-Depending on how neurons, synapses and spike transmission are implemented neuromorphic systems can be categorised as either analogue, digital, or mixed-mode analogue/digital VLSI circuits. Analogue implementations exploit the sub-threshold transistor dynamics to emulate neurons and synapses directly on hardware \citep{giacom} and are more energy-efficient while requiring less area than their digital counterparts \citep{temamanalogdigital}. However, the behaviour of analogue circuits is largely determined during the fabrication process due to transistor mismatch \citep{giacom,analoguemismatch,bernabeDACsynapses}, while their wiring densities render them impractical for large-scale systems. The majority of mixed-mode analogue/digital neuromorphic platforms, such as High Input Count Analog Neural Network (HI-CANN) \citep{Schemmel_etal10}, Neurogrid \citep{benjamin2014neurogrid}, HiAER-IFAT \citep{gert}, use analogue circuits to emulate neurons and digital packet-based technology to communicate spikes as AER events. This enables reconfigurable connectivity patterns, while the time of spikes is expressed implicitly since typically a spike reaches its destination in less than a millisecond, thus fulfilling the real-time requirement. Digital neuromorphic platforms such as TrueNorth \citep{Merolla08082014} use digital circuits with finite precision to simulate neurons in an event driven manner to minimise the active power dissipation. Neuromorphic systems suffer from model flexibility, since neurons and synapses are fabricated directly on hardware with only a small subset of parameters exposed to the researcher. 
+Depending on how neurons, synapses and spike transmission are implemented neuromorphic systems can be categorised as either analogue, digital, or mixed-mode analogue/digital VLSI circuits. Analogue implementations exploit the sub-threshold transistor dynamics to emulate neurons and synapses directly on hardware~\citep{indiveri2011neuromorphic} and are more energy-efficient while requiring less area than their digital counterparts~\citep{joubert2012hardware}. However, the behaviour of analogue circuits is largely determined during the fabrication process due to transistor mismatch~\citep{indiveri2011neuromorphic,pedram2006thermal,linares2003compact}, while their wiring densities render them impractical for large-scale systems. The majority of mixed-mode analogue/digital neuromorphic platforms, such as High Input Count Analog Neural Network (HI-CANN)~\citep{schemmel2010wafer}, Neurogrid~\citep{benjamin2014neurogrid}, HiAER-IFAT~\citep{yu201265k}, use analogue circuits to emulate neurons and digital packet-based technology to communicate spikes as AER events. This enables reconfigurable connectivity patterns, while the time of spikes is expressed implicitly since typically a spike reaches its destination in less than a millisecond, thus fulfilling the real-time requirement. Digital neuromorphic platforms such as TrueNorth~\citep{merolla2014million} use digital circuits with finite precision to simulate neurons in an event driven manner to minimise the active power dissipation. Neuromorphic systems suffer from model flexibility, since neurons and synapses are fabricated directly on hardware with only a small subset of parameters exposed to the researcher. 
 
-SpiNNaker Spiking Neural Network Architecture is a biologically inspired, massively-parallel, scalable computing architecture designed by the Advanced Processor Technologies (APT) group at the University of Manchester. SpiNNaker has been optimised to simulate very large-scale spiking neural networks in real-time \citep{spiNNakerProject}. SpiNNaker aims to combine the advantages of conventional computers and neuromorphic hardware by utilising low-power programmable cores and scalable event-driven communications hardware.
+SpiNNaker Spiking Neural Network Architecture is a biologically inspired, massively-parallel, scalable computing architecture designed by the Advanced Processor Technologies (APT) group at the University of Manchester. SpiNNaker has been optimised to simulate very large-scale spiking neural networks in real-time~\citep{furber2014spinnaker}. SpiNNaker aims to combine the advantages of conventional computers and neuromorphic hardware by utilising low-power programmable cores and scalable event-driven communications hardware.
 %\textit{\textbf{[ADD AS MUCH DETAILS ABOUT THE SPINNAKER ARCHITECTURE AND SOFTWARE HERE. Qian Liu: only hardware is ok?]}}. 
 
 A direct comparison between neuromorphic platforms is not a trivial task due to the different hardware implementation technologies as mentioned above.
@@ -338,7 +342,7 @@ Running faster than real time is attractive for large/long simulations.
 However, due to the limitation of hardware resources simulation time may accelerate or slow down according to the network topology and spike dynamics.
 Also finer time resolution plays an important role in precision sensitive neural models or in sub-millisecond tasks~\citep{lagorce2015breaking}.
 %Qian Liu done
-Comparing the performance of each platform in terms of power requirements is an interesting comparison metric especially if targeted for mobile applications and robotics. Some researchers have suggested the use of energy per synaptic event (J/SE) \citep{Sharp2012110,strometal} as a power metric because the large number of fan in and out of a neuron tend to dominate the total power dissipation during a simulation. Merolla et al. proposed the number of synaptic operations per second per Watt (Sops/W) \citep{Merolla08082014}. 
+Comparing the performance of each platform in terms of power requirements is an interesting comparison metric especially if targeted for mobile applications and robotics. Some researchers have suggested the use of energy per synaptic event (J/SE)~\citep{sharp2012power,stromatias2013power} as a power metric because the large number of fan in and out of a neuron tend to dominate the total power dissipation during a simulation. Merolla et al. proposed the number of synaptic operations per second per Watt (Sops/W)~\citep{merolla2014million}. 
 
 %Qian Liu modified
 For a particular SNN application or benchmark, the scalability and programmability will determine whether the network is able to run on a platform.
@@ -385,11 +389,11 @@ Table~\ref{tb:hardware_comparison} aims to summarise the aforementioned hardware
 %       \begin{minipage}{1.7cm}\centering Programming front-end \end{minipage}  \\
 %       \hline
 %       % contents!
-%       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} SpiNNaker \citep{strometal} \end{minipage} &Digital& & & & & & 8~nJ &54.27 MSops/W & \\
-%       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} TrueNorth \citep{Merolla08082014}\end{minipage} &Digital& & & & & & &46 GSops/W & \\
-%       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} Neurogrid \citep{benjamin2014neurogrid}\end{minipage} &Mixed-mode& & & & & & & & \\
-%       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} HI-CANN \citep{Schemmel_etal10}  \end{minipage} &Mixed-mode & & & & & & & & \\
-%       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} iAER-IFAT \citep{gert}\end{minipage} &Mixed-mode & & & & & & & & 
+%       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} SpiNNaker~\citep{stromatias2013power} \end{minipage} &Digital& & & & & & 8~nJ &54.27 MSops/W & \\
+%       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} TrueNorth~\citep{merolla2014million}\end{minipage} &Digital& & & & & & &46 GSops/W & \\
+%       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} Neurogrid~\citep{benjamin2014neurogrid}\end{minipage} &Mixed-mode& & & & & & & & \\
+%       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} HI-CANN~\citep{Schemmel_etal10}  \end{minipage} &Mixed-mode & & & & & & & & \\
+%       \begin{minipage}{1.8cm}\centering \vspace*{0.1cm} iAER-IFAT~\citep{gert}\end{minipage} &Mixed-mode & & & & & & & & 
 %       
 %    \end{tabular}
 %    \egroup
