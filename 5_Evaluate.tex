@@ -8,10 +8,10 @@
 %the accuracy of the result (e.g. recognition rate) will be affected by the precision of the membrane potential and synaptic weights;
 %and an on-line learning algorithm cannot be implemented on a hardware if synaptic plasticity is not supported.
 %Running an identical SNN model on  different neuromorphic hardware platforms can benchmark their performances on simulation time and energy use.
-The complementary evaluation methodology is essential to provide common metrics and assess both the model-level and hardware-level performances.
-Specific measurements on SNNs take into considerations when evaluating algorithms and models.
-Additionally, performance of the network may be influenced by the chosen development platform.
-Benchmarking different neuromorphic hardware, simulation time and energy consumption are the main concerns.
+A complementary evaluation methodology is essential to provide common metrics and assess both the model-level and hardware-level performance.
+%Regarding the hardware-independent evaluation, specific measurements on SNNs take into consideration in addition to assessment of conventional neural networks.
+%Additionally, the performance of the network, such as CA, simulation time and energy consumption may be influenced by the chosen hardware platform.
+%Thus, when benchmarking different neuromorphic hardware, simulation time and energy consumption are the main concerns.
 %A crucial part of research is reporting results and comparing achievements with other state-of-the-art work. Unfortunately there is no standard way of fulfilling those tasks, which, sometimes, leads to confusion for the reader. We feel that the neuroscience community would benefit from a common ground for NN characteristics, our thoughts on this matter are reflected in the first part of this section.
 
 %As neuromorphic hardware is more commonly used in research, larger and more complex NN models could be used. Additionally, performance of the network may be influenced by the chosen development platform. We would like to assist with the following considerations when facing these impending changes.
@@ -101,16 +101,16 @@ Benchmarking different neuromorphic hardware, simulation time and energy consump
 
 
 %As we are proposing spike based data-sets or a methodology to produce them, i
-First of all it's desirable for researchers to specify whether they add any preprocessing either to images or spikes.
+First of all it is desirable for researchers to specify whether they add any preprocessing either to images or spikes.
 Filtering the raw input may ease the problem while adding noise may require stronger robustness of the model.
 %This is important, for example, if we want to use a modified set to test noisy inputs.
-Secondly, same as the evaluation on conventional artificial neural network, a description of the network characteristics is most welcome since it is the basis for the overall performance.
-Furthermore, sharing the designs may inspire fellow scientists to bring new point of views to the problem and generate a positive feedback loop where everybody wins.
-The network description should include the topology, and neural/synaptic model.
+Secondly, as with the evaluation on conventional artificial neural networks, a description of the network characteristics is most welcome since it is the basis for the overall performance.
+Furthermore, sharing the designs may inspire fellow scientists to bring new points of view to the problem and generate a positive feedback loop where everybody wins.
+The network description should include the topology, and the neural and synaptic models.
 The network topology defines the number of neurons used for each layer, and the connections between layers and neurons.
 Some researchers make use of extra non-neural classifiers, sometimes to aid the design, others to enhance the output of the network.
 Any particulars on this subject are greatly appreciated.
-It is essential to state the type of neural/synaptic models (e.g. current-based LIF neuron) exploited in the network and the parameters configuring them, because neural activities differ greatly given various configurations.
+It is essential to state the type of neural and synaptic model (e.g. current-based LIF neuron) exploited in the network and the parameters configuring them, because neural activities differ greatly between various configurations.
 %We believe the \emph{network description} should include some of the following elements:
 %%{ 
 %%  \setlength{\leftmargini}{0.3cm}
@@ -136,7 +136,7 @@ It is essential to state the type of neural/synaptic models (e.g. current-based 
 %%}
 Thirdly, the learning procedure determines the recognition capability of a network model.
 A clear distinction has always been made between supervised, semi-supervised and unsupervised learning.
-A detailed description of new proposed spike-based learning rules will be of great contribution to the field due to the lack of spatial-temporal learning algorithms.
+A detailed description of new proposed spike-based learning rules will be a great contribution to the field due to the lack of spatial-temporal learning algorithms.
 Most publications reflect the use of adaptations to existing learning rules, details on the modifications are highly desired.
 In conventional computer vision, iterations of training images presented to the network play an important role.
 Similarly, the biological time of training decides the amount of information provided.
@@ -145,13 +145,13 @@ Similarly, the biological time of training decides the amount of information pro
 
 %Also, details on the particulars of the applied learning rule (e.g. STDP, BCM), was it modified somehow?
 
-Finally in the testing phase where performance evaluation takes place, except for recognition accuracy specific measurements of SNN models are essential.
-It should include details of the way samples presented: event rates, and biological time per testing sample.
+Finally in the testing phase where performance evaluation takes place, specific measurements of SNN models are essential in addition to recognition accuracy .
+It should include details of the way samples were presented: event rates, and biological time per testing sample.
 The combination of these two factors determines how much information is presented to the network.
-An important performance metric is the response time (latency) of a SNN model.
-A faster model is more suitable for real-time recognition systems as neuromorphic robotics.
+An important performance metric is the response time (latency) of an SNN model.
+A faster model is more suitable for real-time recognition systems such as neuromorphic robotics.
 A commonly reported characteristic is the accuracy of the network, perhaps adding remarks on how these scores are obtained could help to unify criteria and ease comparison.
-Works on SNN-based classifications of MNIST are listed on in Table~\ref{tb:software_comparison} and evaluated on the proposed metrics.
+Work on SNN-based classifications of MNIST are listed in Table~\ref{tb:software_comparison} and evaluated on the proposed metrics.
 
 %Most classification papers report a percentage of accuracy that gives the reader a measure of the correct classifications~\citep{dietterich1998approximate}. Some times it might be desirable, for a better understanding of the paper, that a distinction between ambiguous, outliers and incorrect classes is made~\citep{liu2002performance}. A very useful piece of information is clear citation of the base-line source, which is almost always there but lost in a sea of references.
 
@@ -208,8 +208,8 @@ Works on SNN-based classifications of MNIST are listed on in Table~\ref{tb:softw
        \begin{mycell}{2.0cm}No plasticity\end{mycell}& 
        \begin{mycell}{2.2cm}122 bits \\params \& states,
 %       	 per neuron
-       	 \\ $\sim$4-bit synapse 
-%       	 \\ (4 signed integer choices + on/off state)
+       	 \\ 4-bit synapse 
+         \\(4 signed int + on/off state)
        	 \end{mycell}& 
        \begin{mycell}{2.0cm}Real-time\end{mycell}& 
        \begin{mycell}{2.0cm}46 GSops/W\end{mycell} \\
@@ -325,29 +325,30 @@ Works on SNN-based classifications of MNIST are listed on in Table~\ref{tb:softw
 %  \end{center}
 %  \label{tb:hardware_comparison}
 %\end{table*}
-Depending on how neurons, synapses and spike transmission are implemented neuromorphic systems can be categorised as either analogue, digital, or mixed-mode analogue/digital VLSI circuits. Analogue implementations exploit the sub-threshold transistor dynamics to emulate neurons and synapses directly on hardware~\citep{indiveri2011neuromorphic} and are more energy-efficient while requiring less area than their digital counterparts~\citep{joubert2012hardware}. However, the behaviour of analogue circuits is largely determined during the fabrication process due to transistor mismatch~\citep{indiveri2011neuromorphic,pedram2006thermal,linares2003compact}, while their wiring densities render them impractical for large-scale systems. The majority of mixed-mode analogue/digital neuromorphic platforms, such as High Input Count Analog Neural Network (HI-CANN)~\citep{schemmel2010wafer}, Neurogrid~\citep{benjamin2014neurogrid}, HiAER-IFAT~\citep{yu201265k}, use analogue circuits to emulate neurons and digital packet-based technology to communicate spikes as AER events. This enables reconfigurable connectivity patterns, while the time of spikes is expressed implicitly since typically a spike reaches its destination in less than a millisecond, thus fulfilling the real-time requirement. Digital neuromorphic platforms such as TrueNorth~\citep{merolla2014million} use digital circuits with finite precision to simulate neurons in an event driven manner to minimise the active power dissipation. Neuromorphic systems suffer from model flexibility, since neurons and synapses are fabricated directly on hardware with only a small subset of parameters exposed to the researcher. 
+Depending on how neurons, synapses and spike transmission are implemented neuromorphic systems can be categorised as either analogue, digital, or mixed-mode analogue/digital VLSI circuits. Some analogue implementations exploit sub-threshold transistor dynamics to emulate neurons and synapses directly on hardware~\citep{indiveri2011neuromorphic} and are more energy-efficient while requiring less area than their digital counterparts~\citep{joubert2012hardware}. However, the behaviour of analogue circuits is largely determined during the fabrication process due to transistor mismatch~\citep{indiveri2011neuromorphic,pedram2006thermal,linares2003compact}, while their wiring densities render them impractical for large-scale systems. The majority of mixed-mode analogue/digital neuromorphic platforms, such as the High Input Count Analog Neural Network (HI-CANN)~\citep{schemmel2010wafer}, Neurogrid~\citep{benjamin2014neurogrid}, HiAER-IFAT~\citep{yu201265k}, use analogue circuits to emulate neurons and digital packet-based technology to communicate spikes as AER events. This enables reconfigurable connectivity patterns, while the time of spikes is expressed implicitly since typically a spike reaches its destination in less than a millisecond, thus fulfilling the real-time requirement. Digital neuromorphic platforms such as TrueNorth~\citep{merolla2014million} use digital circuits with finite precision to simulate neurons in an event driven manner to minimise the active power dissipation. Neuromorphic systems suffer from model flexibility, since neurons and synapses are fabricated directly on hardware with only a small subset of parameters exposed to the researcher. 
 
-SpiNNaker Spiking Neural Network Architecture is a biologically inspired, massively-parallel, scalable computing architecture designed by the Advanced Processor Technologies (APT) group at the University of Manchester. SpiNNaker has been optimised to simulate very large-scale spiking neural networks in real-time~\citep{furber2014spinnaker}. SpiNNaker aims to combine the advantages of conventional computers and neuromorphic hardware by utilising low-power programmable cores and scalable event-driven communications hardware.
+SpiNNaker is a biologically inspired, massively-parallel, scalable computing architecture designed by the Advanced Processor Technologies (APT) group at the University of Manchester. SpiNNaker has been optimised to simulate very large-scale spiking neural networks in real-time~\citep{furber2014spinnaker}. SpiNNaker aims to combine the advantages of conventional computers and neuromorphic hardware by utilising low-power programmable cores and scalable event-driven communications hardware.
 %\textit{\textbf{[ADD AS MUCH DETAILS ABOUT THE SPINNAKER ARCHITECTURE AND SOFTWARE HERE. Qian Liu: only hardware is ok?]}}. 
 
 A direct comparison between neuromorphic platforms is not a trivial task due to the different hardware implementation technologies as mentioned above.
 %Qian Liu modified
-The metric proposed in Table~\ref{tb:hardware_comparison} attempts to unveil the advantages and disadvantages of different neuromorphic hardware thus to find out the network properties each platform suits for.
-The scalability of a hardware platform determines the network size limit of a neural application running on itself.
-Considering the various neural, synaptic models, plasticity learning rules and lengths of axonal delays, a programmable platform is flexible for diverse SNNs while hard-wired system supporting only specific models wins for its simpler design and implementation.
+The metric proposed in Table~\ref{tb:hardware_comparison} attempts to unveil the advantages and disadvantages of different neuromorphic hardware thus to find out the network properties each platform is suited to.
+The scalability of a hardware platform determines the network size limit of a neural application running on it.
+Considering the various neural, synaptic models, plasticity learning rules and lengths of axonal delays, a programmable platform is flexible for diverse SNNs while a hard-wired system supporting only specific models wins for its simpler design and implementation.
 Comparison metrics could be the precision used to describe the membrane potential of neurons (for the digital platforms) and synaptic weights.
-It will impact on system performance on the accuracy of a classification/recognition SNN.
+The accuracy of a classification/recognition SNN will impact on system performance.
 Simulation time is an important measure of running large-scale networks on hardware.
 Real-time implementation is an essential requirement for robotic systems because of the real-time input from the neuromorphic sensors.
 Running faster than real time is attractive for large/long simulations.
 However, due to the limitation of hardware resources simulation time may accelerate or slow down according to the network topology and spike dynamics.
 Also finer time resolution plays an important role in precision sensitive neural models or in sub-millisecond tasks~\citep{lagorce2015breaking}.
 %Qian Liu done
-Comparing the performance of each platform in terms of power requirements is an interesting comparison metric especially if targeted for mobile applications and robotics. Some researchers have suggested the use of energy per synaptic event (J/SE)~\citep{sharp2012power,stromatias2013power} as a power metric because the large number of fan in and out of a neuron tend to dominate the total power dissipation during a simulation. Merolla et al. proposed the number of synaptic operations per second per Watt (Sops/W)~\citep{merolla2014million}. 
+Comparing the performance of each platform in terms of power requirements is an interesting comparison metric especially if targeted for mobile applications and robotics. Some researchers have suggested the use of energy per synaptic event (J/SE)~\citep{sharp2012power,stromatias2013power} as a power metric because the large number of fan in and out of a neuron tend to dominate the total power dissipation during a simulation. Merolla et al. proposed the number of synaptic operations per Watt (Sops/W)~\citep{merolla2014million}.
+These two measurements are the same presentations of energy use of synaptic events, since J/SE$\times$Sops/W = 1. 
 
 %Qian Liu modified
 For a particular SNN application or benchmark, the scalability and programmability will determine whether the network is able to run on a platform.
-And the system performance will be assessed on the accuracy, simulation time and energy use of running the network. 
+The system performance will be assessed on the accuracy, simulation time and energy use running the network. 
 Table~\ref{tb:hardware_comparison} aims to summarise the aforementioned hardware comparison metrics.
  
 % mention spinnaker, for this work

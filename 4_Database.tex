@@ -42,7 +42,10 @@ Python code for converting one file format to and from the other is also provide
     \includegraphics[width=0.48\textwidth]{images/zero.pdf}
   }
   
-  \caption{Snapshots of jAER software playing spike presented videos. The same image of digit ``0'' are transform to spikes with two conventional means. The raster plot of the Poissonian spike trains is also provided.}
+  \caption{
+  Snapshots of jAER software playing spike presented videos.
+  The same image of digit ``0'' is transformed to spikes by DVS recording and the Poissonian generation respectively.
+  A raster plot of the Poissonian spike trains is also provided.}
   \label{fig:zero}
 \end{figure}
 
@@ -56,7 +59,7 @@ Python code for converting one file format to and from the other is also provide
 		
 	As stated above, rate coding is exclusively used in presenting images with spikes.
 	The spiking rate of each neuron is in accordance with its corresponding pixel intensity.
-	Instead of providing exact spike arrays, we share the Python code of generating the spikes.
+	Instead of providing exact spike arrays, we share the Python code for generating the spikes.
 	Every recognition system may require different spiking rates and various lengths of their durations.
 	The generated Poissonian spikes can be in the formats of both jAER and PyNN spike source array.
 	Thus, it is easy to visualise the digits and also to build spiking neural networks.
@@ -70,14 +73,14 @@ Python code for converting one file format to and from the other is also provide
   \input{4-2-2_Rank-ordered_encoding}
 	\subsubsection{DVS Sensor Output with Flashing Input}
 	\label{subsec_flash}
-	The purposes of including the subset of DVS recorded flashing digits are to promote the application of Rank-Order-Coding to DVS output, and accelerate the fast on-set recognition by using just the beginning part of spike trains within less than 30~ms.
+	The purpose of including the subset of DVS recorded flashing digits is to promote the application of Rank-Order-Coding to DVS output, and accelerate the fast on-set recognition by using just the beginning part of spike trains within less than 30~ms.
 	
 	Each digit and a blank image were shown alternately and each display lasted one second.
-	The digits were displayed on a LCD monitor in front of the DVS retina~\citep{serrano2013128} and were placed in the centre of the visual field of the camera.
+	The digits were displayed on an LCD monitor in front of the DVS retina~\citep{serrano2013128} and were placed in the centre of the visual field of the camera.
 %	Each recording was cut into 10 sub sections.
-	Since there are two polarities of the spikes: 'ON' indicates the increase of the intensity while 'OFF' reflects the opposite, there are an 'ON' and an 'OFF' flashing recordings respectively per digit.
-	In Fig~\ref{fig:flash}, the bursty of the spikes is illustrated where most of the spikes occur in a 30~ms slot. 
-	In total, the subset of the database contains 2$\times$60000 recordings for training and 2$\times$10000 for testing.
+	Since there are two polarities of the spikes: 'ON' indicates the increase of the intensity while 'OFF' reflects the opposite, there are 'ON' and 'OFF' flashing recordings respectively per digit.
+	In Fig~\ref{fig:flash}, the burstiness of the spikes is illustrated where most of the spikes occur in a 30~ms slot. 
+	In total, the subset of the database contains 2$\times$$60,000$ recordings for training and 2$\times$$10,000$ for testing.
 %	Due to the size limit of online repositories, only the third of every sequence of flashes is published.
 
 	\begin{figure}[b!]
@@ -102,7 +105,7 @@ Python code for converting one file format to and from the other is also provide
 	\end{figure}
 %	\subsubsection{DVS Sensor Output with Oscillating Input}
 	\subsubsection{DVS Sensor Output with Moving Input}
-	In order to address the problems of position- and scale- invariance, the subset of DVS recorded moving digits is presented.
+	In order to address the problems of position- and scale- invariance, a subset of DVS recorded moving digits is presented.
 	
 	MNIST digits were scaled to three different sizes, by using smooth interpolation algorithms to increase their size from the original 28x28 pixel size, and displayed on the monitor with slow motion. 
 	The same DVS~\citep{serrano2013128} used in Section~\ref{subsec_flash} captured the movements of the digits and generated spike trains for each pixel of its 128$\times$128 resolution.
