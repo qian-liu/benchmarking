@@ -102,7 +102,7 @@ A complementary evaluation methodology is essential to provide common metrics an
 
 %As we are proposing spike based data-sets or a methodology to produce them, i
 First of all it is desirable for researchers to specify whether they add any preprocessing either to images or spikes.
-Filtering the raw input may ease the problem while adding noise may require stronger robustness of the model.
+Filtering the raw input may ease the classification/recognition task while adding noise may require stronger robustness of the model.
 %This is important, for example, if we want to use a modified set to test noisy inputs.
 Secondly, as with the evaluation on conventional artificial neural networks, a description of the network characteristics is most welcome since it is the basis for the overall performance.
 Furthermore, sharing the designs may inspire fellow scientists to bring new points of view to the problem and generate a positive feedback loop where everybody wins.
@@ -330,21 +330,22 @@ Depending on how neurons, synapses and spike transmission are implemented neurom
 SpiNNaker is a biologically inspired, massively-parallel, scalable computing architecture designed by the Advanced Processor Technologies (APT) group at the University of Manchester. SpiNNaker has been optimised to simulate very large-scale spiking neural networks in real-time~\citep{furber2014spinnaker}. SpiNNaker aims to combine the advantages of conventional computers and neuromorphic hardware by utilising low-power programmable cores and scalable event-driven communications hardware.
 %\textit{\textbf{[ADD AS MUCH DETAILS ABOUT THE SPINNAKER ARCHITECTURE AND SOFTWARE HERE. Qian Liu: only hardware is ok?]}}. 
 
-A direct comparison between neuromorphic platforms is not a trivial task due to the different hardware implementation technologies as mentioned above.
+A direct comparison between neuromorphic platforms is a non-trivial task due to the different hardware implementation technologies as mentioned above.
 %Qian Liu modified
-The metric proposed in Table~\ref{tb:hardware_comparison} attempts to unveil the advantages and disadvantages of different neuromorphic hardware thus to find out the network properties each platform is suited to.
+The metric proposed in Table~\ref{tb:hardware_comparison} attempts to expose the advantages and disadvantages of different neuromorphic hardware thus to find out the network properties each platform is suited to.
 The scalability of a hardware platform determines the network size limit of a neural application running on it.
 Considering the various neural, synaptic models, plasticity learning rules and lengths of axonal delays, a programmable platform is flexible for diverse SNNs while a hard-wired system supporting only specific models wins for its simpler design and implementation.
-Comparison metrics could be the precision used to describe the membrane potential of neurons (for the digital platforms) and synaptic weights.
-The accuracy of a classification/recognition SNN will impact on system performance.
-Simulation time is an important measure of running large-scale networks on hardware.
+%Comparison metrics could be the precision used to describe the membrane potential of neurons (for the digital platforms) and synaptic weights.
+The classification accuracy of a SNN running on a hardware system can be different from the software simulation, since hardware implementation limits on the precision used for the membrane potential of neurons (for the digital platforms) and the synaptic weights.
+Thus comparison metrics is supposed to include precision as a major assessment of the system performance.
+Simulation time is another important measure of running large-scale networks on hardware.
 Real-time implementation is an essential requirement for robotic systems because of the real-time input from the neuromorphic sensors.
 Running faster than real time is attractive for large/long simulations.
 However, due to the limitation of hardware resources simulation time may accelerate or slow down according to the network topology and spike dynamics.
 Also finer time resolution plays an important role in precision sensitive neural models or in sub-millisecond tasks~\citep{lagorce2015breaking}.
 %Qian Liu done
-Comparing the performance of each platform in terms of power requirements is an interesting comparison metric especially if targeted for mobile applications and robotics. Some researchers have suggested the use of energy per synaptic event (J/SE)~\citep{sharp2012power,stromatias2013power} as a power metric because the large number of fan in and out of a neuron tend to dominate the total power dissipation during a simulation. Merolla et al. proposed the number of synaptic operations per Watt (Sops/W)~\citep{merolla2014million}.
-These two measurements are the same presentations of energy use of synaptic events, since J/SE$\times$Sops/W = 1. 
+Comparing the performance of each platform in terms of energy requirements is an interesting comparison metric especially if targeted for mobile applications and robotics. Some researchers have suggested the use of energy per synaptic event (J/SE)~\citep{sharp2012power,stromatias2013power} as an energy metric because the large fan in and out of a neuron tend to dominate the total energy dissipation during a simulation. Merolla et al. proposed the number of synaptic operations per Watt (Sops/W)~\citep{merolla2014million}.
+These two measurements are the same presentations of energy use of synaptic events, since J/SE$\times$Sops/W = 1 s. 
 
 %Qian Liu modified
 For a particular SNN application or benchmark, the scalability and programmability will determine whether the network is able to run on a platform.

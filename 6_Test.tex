@@ -9,6 +9,17 @@ Presenting proper benchmarks for vision recognition systems is still under inves
 \subsection{Case Study I}
 The first case study is a simple two-layered network where the input neurons receive Poissonian presented spike trains from the dataset and form an FC network with the decision neurons.
 The model utilises LIF neurons, and the parameters are all with biological means, see the listed values in Table~\ref{tbl:pynnSetting}.
+The LIF neuron model follows the membrane potential
+dynamics:
+\begin{equation}
+    \tau_m \frac{\D V}{\D t}=V_{rest} - V + R_{m} I_{syn}(t) ~~~,
+    \label{eq:LIF}
+\end{equation}
+where $\tau_m$ is the membrane time constant, $ V_{rest} $ is the resting potential, $ R_{m} $ is the membrane resistance and $ I_{syn} $ is the synaptic input current.
+In PyNN, $ R_{m} $ is presented by $ R_{m}=\tau_m/C_{m} $, where $C_{m} $ is the membrane capacitance.
+A spike is generated when the membrane potential goes beyond the threshold, $ V_{thresh} $ and the membrane potential resets to $V_{reset}$.
+In addition, a neuron cannot fire within the refractory period, $ \tau_{refrac} $, after generating a spike.
+
 The connections between the input neurons and the decision neurons are plastic, so the connection weights can be modulated during training with a standard STDP learning rule.
 The model is described with PyNN and the code is published in\footnote {https://github.com/qian-liu/benchmarking/tree/master/code/case\_study\_I} the same github repository with the dataset.
 As a potential benchmark, this system is composed with simple neural models, trained with standard learning rules and written in a unified SNN description language. These characteristics allow the same network on to be tested on various simulators, both software- and hardware-based.
@@ -38,10 +49,10 @@ For simplicity of describing the system, one standard configuration is set as th
   %\hline
   tau\_refrac & 2.0 & ms\\
   %\hline
-  tau\_syn\_E & 1.0 & ms\\
-  %\hline
-  tau\_syn\_I & 1.0 & ms\\
-  %\hline
+%  tau\_syn\_E & 1.0 & ms\\
+%  %\hline
+%  tau\_syn\_I & 1.0 & ms\\
+%  %\hline
   v\_reset & -70.0 & mV\\
   %\hline
   v\_rest & -65.0 & mV\\
@@ -175,7 +186,7 @@ The recognition accuracies differ in a range of $\pm0.5\%$ between NEST and SpiN
 It is inevitable that numerical precision will be below IEEE double precision at various points in the processing chain from synaptic input to membrane potential.
 The main bottleneck is currently in the ring buffer where the total precision for accumulated spike inputs is 16-bit, meaning that individual spikes are realistically going to be limited to 11- to 14-bit depending upon the probabilistic headroom calculated as necessary from the network configuration and spike throughput~\citep{Hopkins2015Accuracy}.
 As the network size grows there are more decision neurons and synapses connecting to them, thus the simulation time on NEST increases.
-On the other hand, SpiNNaker works in real (biology real) time and the simulation time becomes shorter than NEST simulation when $1,000$ patterns per digit are used.
+On the other hand, SpiNNaker works in real (biologically real) time and the simulation time becomes shorter than NEST simulation when $1,000$ patterns per digit are used.
 The Thermal Design Power (TDP) usage of all four processors of i5-4570 actively operating at base frequency is 84~W\footnote{\url{http://ark.intel.com/products/75043/Intel-Core-i5-4570-Processor-6M-Cache-up-to-3_60-GHz}}.
 NEST was run fully active on a single core which cost 21~W of power usage.
 The energy use can be calculated as the product of the simulation time and the power use.
@@ -283,9 +294,12 @@ The CA was chosen as the performance metric of the spiking DBN, which is the per
 %verify brian results with spinnaker for a particular
 %weight precision.
 
-Neuromorphic platforms may have limited hardware resources to store the synaptic weights~\citep{schemmel2010wafer,merolla2014million}. In order to investigate how the precision of the weights affect the CA of a spiking DBN the double floating point weights of the offline trained network were converted to different fixed-point representations. The following notation will be used throughout this paper, Q\textit{m.f}, where \textit{m} signifies the number of bits for the integer part (including the sign bit) and \textit{f} the number of bits used for the fractional part.
+Neuromorphic platforms may have limited hardware resources to store the synaptic weights~\citep{schemmel2010wafer,merolla2014million}. In order to investigate how the precision of the weights affects the CA of a spiking DBN the double floating point weights of the offline trained network were converted to different fixed-point representations. The following notation will be used throughout this paper, Q\textit{m.f}, where \textit{m} signifies the number of bits for the integer part (including the sign bit) and \textit{f} the number of bits used for the fractional part.
 
-Figure~\ref{Fig:brianCAfiringrate} shows the effect of reduced weight bit precision on the CA for different input firing rates on the Brian simulator. To validate the results of the software simulator simulations ran on SpiNNaker for a weight resolution of Q3.8. SpiNNaker achieved a CA of 94.94\% when 1500~Hz was used for the input population~\citep{Stromatias2015scalable}. Brian for the same firing rates and weight precision achieved a CA of 94.955\%. Results are summarised in Table~\ref{tab:casimulators}.   
+Figure~\ref{Fig:brianCAfiringrate} shows the effect of reduced weight bit precision on the CA for different input firing rates on the Brian simulator.
+%To validate the results of the software simulator simulations ran on SpiNNaker for a weight resolution of Q3.8.
+Using the same weight precision of Q3.8, SpiNNaker achieved a CA of 94.94\% when 1500~Hz was used for the input population~\citep{Stromatias2015scalable}. Brian for the same firing rates and weight precision achieved a CA of 94.955\%. Results are summarised in Table~\ref{tab:casimulators}.
+The slightly lower CA of the SpiNNaker simulation indicates that not only the weight precision but also the precision of the membrane potential affects the overall classification performance.    
 
 \begin{figure}[hbt!]
 	\centering
@@ -324,7 +338,7 @@ Figure~\ref{Fig:brianCAfiringrate} shows the effect of reduced weight bit precis
 %both brian and use spinnaker to validate results
 
 %An additional experiment was conducted to investigate how the classification latency, which is the time passed between the first input spike and the first output spike, and the CA are affected by the total number of input spikes per second.
-A similar experiment to the one presented for the Case Study I was performed, its purpose was to establish the relation that input spike rates hold with latency and classification accuracy.
+A similar experiment to the one presented for the Case Study I was performed; its purpose was to establish the relation that input spike rates hold with latency and classification accuracy.
 The input rates were varied from 500~Hz to $2,000$~Hz and the results are summarised in Figure~\ref{Fig:brianLatency}. Simulations ran in Brian for all $10,000$ MNIST digits of the testing set and for 4 trials. Figure~\ref{Fig:spinnLatency1500hz} shows a histogram of the classification latencies on SpiNNaker when the input rates are 1500~Hz. The mean classification latency for the particular spiking DBN on SpiNNaker is 16~ms which is identical to the Brian simulation seen in Figure~\ref{Fig:brianLatency}.
 
 
