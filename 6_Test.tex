@@ -21,15 +21,17 @@ A spike is generated when the membrane potential goes beyond the threshold, $ V_
 In addition, a neuron cannot fire within the refractory period, $ \tau_{refrac} $, after generating a spike.
 
 The connections between the input neurons and the decision neurons are plastic, so the connection weights can be modulated during training with a standard STDP learning rule.
-The model is described with PyNN and the code is published in\footnote {https://github.com/qian-liu/benchmarking/tree/master/code/case\_study\_I} the same github repository with the dataset.
-As a potential benchmark, this system is composed with simple neural models, trained with standard learning rules and written in a unified SNN description language. These characteristics allow the same network on to be tested on various simulators, both software- and hardware-based.
+The model is described with PyNN and the code is published in
+%\footnote {https://github.com/qian-liu/benchmarking/tree/master/code/case\_study\_I}
+the same Github repository with the dataset.
+As a potential benchmark, this system is composed with simple neural models, trained with standard learning rules and written in a unified SNN description language. These characteristics allow the same network to be tested on various simulators, both software- and hardware-based.
 %Consequently, the benchmark can be directly run on different SNN simulators as long as PyNN is supported.
 %Besides, any modification on neuron or learning model is not required since only standard models are used.
-%During training, each decision neuron is triggered by a teaching neuron while the weights of the synaptic connections of the input neurons and the decision neuron are modulated with standard STDP learning rule, see Fig~\ref{Fig:train}.
+%During training, each decision neuron is triggered by a teaching neuron while the weights of the synaptic connections of the input neurons and the decision neuron are modulated with standard STDP learning rule, see Fig.~\ref{Fig:train}.
 
 Both the training and testing exploit the Poissonian subset of the NE15-MNIST dataset.
 %Because different simulators generate random Poissonian spike trains with various mechanisms, languages and codes, using the same dataset enables   performance evaluation of these simulators without the interference created by non-unified input.
-This makes performance evaluation on different simulators possible with the unified spike source array provided by the dataset, 
+This makes performance evaluation on different simulators possible with the unified spike source array provided by the dataset. 
 In terms of this case study, the performance of the model was evaluated with both software simulation [on NEST~\citep{gewaltig2007nest}] and hardware implementation (on SpiNNaker).
 
 In order to fully assess the performance, different settings have been configured on the network, such as network size, input rate and testing images duration.
@@ -70,13 +72,13 @@ There are two layers in the model: 28$\times$28 input neurons fully connect to 1
 Each decision neuron responds to a certain template of a digit.
 In the standard configuration, there are 10 decision neurons answering to the same digit with slightly different templates.
 Those templates are embedded in the connection weights between the two layers.
-Fig~\ref{Fig:train} shows how the connections to a single decision neuron are tuned.
+Fig.~\ref{Fig:train} shows how the connections to a single decision neuron are tuned.
 
 The training set of $60,000$ hand written digits are firstly classified into 100 classes, 10 subclasses per digit, using K-means clusters.
 So the images in a certain subclass are used to train one corresponding decision neuron.
 The firing rates of the input neurons are assigned linearly according to their intensities and normalised with a total firing rate of $2,000$~Hz.
 All the images together are presented for $18,000$~s (about 300~ms per image) during training and at the same time a teaching signal of 50~Hz is conveyed to the decision neuron to trigger STDP learning.
-The trained weights are plotted in accordance with the positions of the decision neurons in Fig~\ref{Fig:test}.
+The trained weights are plotted in accordance with the positions of the decision neurons in Fig.~\ref{Fig:test}.
 \begin{figure}[thb!]
 	\centering
 	\subfloat[Training model of a single decision neuron.]{
@@ -102,15 +104,15 @@ After training the weights of the plastic synapses are set to static, keeping th
 %The weights were normalised after training and applied to the same network.
 The weak weights were set to inhibitory connections with an identical strength.
 %The output neurons inhibited all the other neurons as a winner take all circuit.
-The feed-forward testing network is shown in Fig~\ref{Fig:test} where Poissonion spike trains are generated the same way as in the training with a total firing rate of $2,000$~Hz per image.
+The feed-forward testing network is shown in Fig.~\ref{Fig:test} where Poissonion spike trains are generated the same way as in the training with a total firing rate of $2,000$~Hz per image.
 The input neurons convey the same spike trains to every decision neuron through its responding trained synaptic weights. 
 Every testing image ($10,000$ images in total) is presented once and lasts 1~s with a silence of 200~ms between them.
 The output neuron with the highest firing rate decides what digit was recognized.
 Taken the trained weights from the NEST simulation, the accuracy of the recognition on NEST reaches 90.03\% with the standard configuration, while the result drops slightly to 89.97\% using SpiNNaker.
 In comparison, both trained and tested on SpiNNaker the recognition accuracy is 87.41\%, and with the same weights applied to NEST the result turns out to be 87.25\%. 
 %%In order to compare the recognition difference, another experiment on SpiNNaker is taken to test with the same NEST trained weights.
-%The recording of the output neurons of a test sequence of digits is shown in the raster plot (Fig~\ref{fig:output}).
-%In order to make the raster plot easier to read, we apply inhibitory connections between neurons which are not in the same classes, see Fig~\ref{fig:output_inhi}.
+%The recording of the output neurons of a test sequence of digits is shown in the raster plot (Fig.~\ref{fig:output}).
+%In order to make the raster plot easier to read, we apply inhibitory connections between neurons which are not in the same classes, see Fig.~\ref{fig:output_inhi}.
 
 
 %%\begin{figure}[hbt!]
@@ -190,7 +192,7 @@ On the other hand, SpiNNaker works in real (biologically real) time and the simu
 The Thermal Design Power (TDP) usage of all four processors of i5-4570 actively operating at base frequency is 84~W\footnote{\url{http://ark.intel.com/products/75043/Intel-Core-i5-4570-Processor-6M-Cache-up-to-3_60-GHz}}.
 NEST was run fully active on a single core which cost 21~W of power usage.
 The energy use can be calculated as the product of the simulation time and the power use.
-Even with the smallest network, SpiNNaker wins in the energy cost comparison, see Fig~\ref{fig:energy}.
+Even with the smallest network, SpiNNaker wins in the energy cost comparison, see Fig.~\ref{fig:energy}.
 Among different network configurations, the network of 500 decision neurons (50 clusters per digit) reaches the highest recognition rate.
 %The recognition accuracy reaches the highest (92.98\%) when 50 patterns are trained per digit.
 The network achieved a CA of 92.98\% and average latency of 10.70~ms, and the simulation costs SpiNNaker 0.41~W on power use and $4,920$~J on energy use.
@@ -298,7 +300,7 @@ Neuromorphic platforms may have limited hardware resources to store the synaptic
 
 Figure~\ref{Fig:brianCAfiringrate} shows the effect of reduced weight bit precision on the CA for different input firing rates on the Brian simulator.
 %To validate the results of the software simulator simulations ran on SpiNNaker for a weight resolution of Q3.8.
-Using the same weight precision of Q3.8, SpiNNaker achieved a CA of 94.94\% when 1500~Hz was used for the input population~\citep{Stromatias2015scalable}. Brian for the same firing rates and weight precision achieved a CA of 94.955\%. Results are summarised in Table~\ref{tab:casimulators}.
+Using the same weight precision of Q3.8, SpiNNaker achieved a CA of 94.94\% when $1,500$~Hz was used for the input population~\citep{Stromatias2015scalable}. Brian for the same firing rates and weight precision achieved a CA of 94.955\%. Results are summarised in Table~\ref{tab:casimulators}.
 The slightly lower CA of the SpiNNaker simulation indicates that not only the weight precision but also the precision of the membrane potential affects the overall classification performance.    
 
 \begin{figure}[hbt!]
@@ -339,13 +341,13 @@ The slightly lower CA of the SpiNNaker simulation indicates that not only the we
 
 %An additional experiment was conducted to investigate how the classification latency, which is the time passed between the first input spike and the first output spike, and the CA are affected by the total number of input spikes per second.
 A similar experiment to the one presented for the Case Study I was performed; its purpose was to establish the relation that input spike rates hold with latency and classification accuracy.
-The input rates were varied from 500~Hz to $2,000$~Hz and the results are summarised in Figure~\ref{Fig:brianLatency}. Simulations ran in Brian for all $10,000$ MNIST digits of the testing set and for 4 trials. Figure~\ref{Fig:spinnLatency1500hz} shows a histogram of the classification latencies on SpiNNaker when the input rates are 1500~Hz. The mean classification latency for the particular spiking DBN on SpiNNaker is 16~ms which is identical to the Brian simulation seen in Figure~\ref{Fig:brianLatency}.
+The input rates were varied from 500~Hz to $2,000$~Hz and the results are summarised in Figure~\ref{Fig:brianLatency}. Simulations ran in Brian for all $10,000$ MNIST digits of the testing set and for 4 trials. Figure~\ref{Fig:spinnLatency1500hz} shows a histogram of the classification latencies on SpiNNaker when the input rates are $1,500$~Hz. The mean classification latency for the particular spiking DBN on SpiNNaker is 16~ms which is identical to the Brian simulation seen in Figure~\ref{Fig:brianLatency}.
 
 
 \begin{figure}[hbt!]
 	\centering
 	\includegraphics[width=0.48\textwidth]{images/evan/latencyCAfiringrate.pdf}
-	\caption{Mean classification latency and classification accuracy as a function of the input spikes per second for the spiking DBN. Results are averaged over 4 trials, error bars show standard deviations.}
+	\caption{Mean classification latency (black) and classification accuracy (blue) as a function of the input spikes per second for the spiking DBN. Results are averaged over 4 trials, error bars show standard deviations.}
 	\label{Fig:brianLatency}
 \end{figure} 
 
@@ -354,7 +356,7 @@ The input rates were varied from 500~Hz to $2,000$~Hz and the results are summar
 \begin{figure}[hbt!]
 	\centering
 	\includegraphics[width=0.48\textwidth]{images/evan/classlatencyIJCNN1500hz.pdf}
-	\caption{Histogram of the classification latencies for the MNIST digits of the testing set when the input rates are set to 1500 Hz. The mean classification latency of the spiking DBN on SpiNNaker is 16 ms.}
+	\caption{Histogram of the classification latencies for the MNIST digits of the testing set when the input rates are set to $1,500$~Hz. The mean classification latency of the spiking DBN on SpiNNaker is 16 ms.}
 	\label{Fig:spinnLatency1500hz}
 \end{figure} 
 

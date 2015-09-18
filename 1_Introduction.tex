@@ -2,7 +2,7 @@
 \label{sec:intro}
 %\subsection{What Is the Problem}
 With rapid developments in neural engineering, researchers are approaching the aims of understanding brain functions and building brain-like machines using this knowledge~\citep{furber2007neural}.
-As a fast growing field, neuromorphic engineering has provided biologically-inspired sensors such as DVS~(Dynamic Vision Sensor) silicon retinas~\citep{serrano2013128, delbruck2008frame}, which are good examples of low-cost visual processing thanks to their event-driven and redundancy-reducing style of computation.
+As a fast growing field, neuromorphic engineering has provided biologically-inspired sensors such as DVS~(Dynamic Vision Sensor) silicon retinas~\citep{serrano2013128, delbruck2008frame, yang2015dynamic, posch2014retinomorphic}, which are good examples of low-cost visual processing thanks to their event-driven and redundancy-reducing style of computation.
 Moreover, SNN simulation tools~\citep{davison2008pynn, gewaltig2007nest, goodman2008brian} and neuromorphic hardware platforms~\citep{furber2014spinnaker,  schemmel2010wafer, merolla2014million} have been developed to allow exploration of the brain by mimicking its functions and developing large-scale practical applications~\citep{eliasmith2012large}.
 Particularly for visual processing, the central visual system consists of several cortical areas which are placed in a hierarchical pattern according to anatomical experiments~\citep{felleman1991distributed}.
 Fast object recognition takes place in  the feed-forward hierarchy of the ventral pathway, one of the two central visual pathways, which mainly handles the ``What'' tasks.
@@ -37,7 +37,7 @@ In this study's largest configuration, a network of 74,210 neurons and 15,216,51
 Deep Neural Networks (DNNs) together with deep learning are the most exciting research fields in vision recognition.
 The spiking deep network has great potential to combine remarkable performance with the energy efficient training and running.
 In the initial stage of the research, the study was focused on converting off-line trained deep network to SNNs~\citep{o2013real}.
-The same network initially implemented on a FPGA achieved a CA of 92.0\% (cite Minitaur), while a later implementation on SpiNNaker scored 95.0\%~\citep{Stromatias2015scalable}.
+The same network initially implemented on a FPGA achieved a CA of 92.0\%~\citep{neil2014minitaur}, while a later implementation on SpiNNaker scored 95.0\%~\citep{Stromatias2015scalable}.
 %The performance was increased from 92.0\% to 95.0\%~\citep{Stromatias2015scalable} by implementing the model on SpiNNaker instead of the earlier FPGA version.
 Recent attempts have contributed to better translation by utilising modified units in a ConvNet~\citep{cao2015spiking} and tuning the weights and thresholds~\citep{Diehl2015fast}).
 The later paper claims a state-of-the-art performance (99.1\% on the MNIST dataset) comparing to original ConvNet.

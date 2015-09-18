@@ -136,7 +136,7 @@ It is essential to state the type of neural and synaptic model (e.g. current-bas
 %%}
 Thirdly, the learning procedure determines the recognition capability of a network model.
 A clear distinction has always been made between supervised, semi-supervised and unsupervised learning.
-A detailed description of new proposed spike-based learning rules will be a great contribution to the field due to the lack of spatial-temporal learning algorithms.
+A detailed description of new proposed spike-based learning rules will be a great contribution to the field due to the lack of spatio-temporal learning algorithms.
 Most publications reflect the use of adaptations to existing learning rules, details on the modifications are highly desired.
 In conventional computer vision, iterations of training images presented to the network play an important role.
 Similarly, the biological time of training decides the amount of information provided.
@@ -189,7 +189,7 @@ Work on SNN-based classifications of MNIST are listed in Table~\ref{tb:software_
 %       \begin{minipage}{1.2cm}\centering Energy per SE \end{minipage} & 
 %       \begin{minipage}{1.4cm}\centering Synaptic ops per Watt \end{minipage} & 
        \begin{mycell}{2.0cm} Simulation\\Time \end{mycell} & 
-       \begin{mycell}{2.0cm} Energy Use \end{mycell} 
+       \begin{mycell}{2.0cm} Energy/Power \\Usage \end{mycell} 
 %       \begin{minipage}{1.7cm}\centering Programming front-end \end{minipage}  
 	   \\
        \hline
@@ -326,7 +326,6 @@ Work on SNN-based classifications of MNIST are listed in Table~\ref{tb:software_
 %  \label{tb:hardware_comparison}
 %\end{table*}
 Depending on how neurons, synapses and spike transmission are implemented neuromorphic systems can be categorised as either analogue, digital, or mixed-mode analogue/digital VLSI circuits. Some analogue implementations exploit sub-threshold transistor dynamics to emulate neurons and synapses directly on hardware~\citep{indiveri2011neuromorphic} and are more energy-efficient while requiring less area than their digital counterparts~\citep{joubert2012hardware}. However, the behaviour of analogue circuits is largely determined during the fabrication process due to transistor mismatch~\citep{indiveri2011neuromorphic,pedram2006thermal,linares2003compact}, while their wiring densities render them impractical for large-scale systems. The majority of mixed-mode analogue/digital neuromorphic platforms, such as the High Input Count Analog Neural Network (HI-CANN)~\citep{schemmel2010wafer}, Neurogrid~\citep{benjamin2014neurogrid}, HiAER-IFAT~\citep{yu201265k}, use analogue circuits to emulate neurons and digital packet-based technology to communicate spikes as AER events. This enables reconfigurable connectivity patterns, while the time of spikes is expressed implicitly since typically a spike reaches its destination in less than a millisecond, thus fulfilling the real-time requirement. Digital neuromorphic platforms such as TrueNorth~\citep{merolla2014million} use digital circuits with finite precision to simulate neurons in an event driven manner to minimise the active power dissipation. Neuromorphic systems suffer from model flexibility, since neurons and synapses are fabricated directly on hardware with only a small subset of parameters exposed to the researcher. 
-
 SpiNNaker is a biologically inspired, massively-parallel, scalable computing architecture designed by the Advanced Processor Technologies (APT) group at the University of Manchester. SpiNNaker has been optimised to simulate very large-scale spiking neural networks in real-time~\citep{furber2014spinnaker}. SpiNNaker aims to combine the advantages of conventional computers and neuromorphic hardware by utilising low-power programmable cores and scalable event-driven communications hardware.
 %\textit{\textbf{[ADD AS MUCH DETAILS ABOUT THE SPINNAKER ARCHITECTURE AND SOFTWARE HERE. Qian Liu: only hardware is ok?]}}. 
 
