@@ -139,19 +139,23 @@ proj_stdp = p.Projection(
     pop_input, pop_output, p.AllToAllConnector(weights = 0.0),
     synapse_dynamics=p.SynapseDynamics(slow=stdp_model))
 
-start = time.time()
-p.run(len(index_train)*(dur_train+silence))
-end = time.time()
-b_time = len(index_train)*(dur_train+silence)
-sim_str = 'training time:%.4f s, biology time:%d ms\n'%(end-start, b_time)
-f=open('log_t5.txt','a')
-f.write(sim_str)
-f.close()
+#start = time.time()
+sim_time = np.ceil(len(index_train)*(dur_train+silence))
+p.run(sim_time)
+#p.run(len(index_train)*(dur_train+silence))
+#end = time.time()
+#b_time = len(index_train)*(dur_train+silence)
+#sim_str = 'training time:%.4f s, biology time:%d ms\n'%(end-start, b_time)
+#f=open('log_6.3_1.txt','a')
+#f.write(sim_str)
+#f.close()
 # save trained weights into a folder
+post = proj_stdp.getWeights(format='array',gather=False)
 directory = 'cluster_weights_%d_%s'%(num_cluster,sim)
 if not os.path.exists(directory):
     os.makedirs(directory)
-post = proj_stdp.getWeights(format='array',gather=False)
+else:
+    print 'save trained weights to %s/weight_%d_%d.npy'%(directory,digit,cluster)
 np.save('%s/weight_%d_%d.npy'%(directory,digit,cluster),post)
 
 p.end()

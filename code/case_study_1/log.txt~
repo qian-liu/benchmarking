@@ -1,0 +1,1277 @@
+--Start training with nest num_of_cluster: 50  clusters per digit
+Thu Sep 17 15:30:48 BST 2015
+-Done: Digit 0, Subclass 0
+Thu Sep 17 15:30:56 BST 2015
+-Done: Digit 0, Subclass 1
+Thu Sep 17 15:31:04 BST 2015
+-Done: Digit 0, Subclass 2
+Thu Sep 17 15:31:12 BST 2015
+-Done: Digit 0, Subclass 3
+Thu Sep 17 15:31:20 BST 2015
+-Done: Digit 0, Subclass 4
+Thu Sep 17 15:31:28 BST 2015
+-Done: Digit 0, Subclass 5
+Thu Sep 17 15:31:35 BST 2015
+-Done: Digit 0, Subclass 6
+Thu Sep 17 15:31:43 BST 2015
+-Done: Digit 0, Subclass 7
+Thu Sep 17 15:31:51 BST 2015
+-Done: Digit 0, Subclass 8
+Thu Sep 17 15:31:59 BST 2015
+-Done: Digit 0, Subclass 9
+Thu Sep 17 15:32:07 BST 2015
+-Done: Digit 0, Subclass 10
+Thu Sep 17 15:32:16 BST 2015
+-Done: Digit 0, Subclass 11
+Thu Sep 17 15:32:24 BST 2015
+-Done: Digit 0, Subclass 12
+Thu Sep 17 15:32:32 BST 2015
+-Done: Digit 0, Subclass 13
+Thu Sep 17 15:32:39 BST 2015
+-Done: Digit 0, Subclass 14
+Thu Sep 17 15:32:47 BST 2015
+-Done: Digit 0, Subclass 15
+Thu Sep 17 15:32:55 BST 2015
+-Done: Digit 0, Subclass 16
+Thu Sep 17 15:33:04 BST 2015
+-Done: Digit 0, Subclass 17
+Thu Sep 17 15:33:12 BST 2015
+-Done: Digit 0, Subclass 18
+Thu Sep 17 15:33:20 BST 2015
+-Done: Digit 0, Subclass 19
+Thu Sep 17 15:33:28 BST 2015
+-Done: Digit 0, Subclass 20
+Thu Sep 17 15:33:36 BST 2015
+-Done: Digit 0, Subclass 21
+Thu Sep 17 15:33:44 BST 2015
+-Done: Digit 0, Subclass 22
+Thu Sep 17 15:33:52 BST 2015
+-Done: Digit 0, Subclass 23
+Thu Sep 17 15:34:00 BST 2015
+-Done: Digit 0, Subclass 24
+Thu Sep 17 15:34:09 BST 2015
+-Done: Digit 0, Subclass 25
+Thu Sep 17 15:34:16 BST 2015
+-Done: Digit 0, Subclass 26
+Thu Sep 17 15:34:24 BST 2015
+-Done: Digit 0, Subclass 27
+Thu Sep 17 15:34:32 BST 2015
+-Done: Digit 0, Subclass 28
+Thu Sep 17 15:34:40 BST 2015
+-Done: Digit 0, Subclass 29
+Thu Sep 17 15:34:48 BST 2015
+-Done: Digit 0, Subclass 30
+Thu Sep 17 15:34:56 BST 2015
+-Done: Digit 0, Subclass 31
+Thu Sep 17 15:35:04 BST 2015
+-Done: Digit 0, Subclass 32
+Thu Sep 17 15:35:12 BST 2015
+-Done: Digit 0, Subclass 33
+Thu Sep 17 15:35:20 BST 2015
+-Done: Digit 0, Subclass 34
+Thu Sep 17 15:35:28 BST 2015
+-Done: Digit 0, Subclass 35
+Thu Sep 17 15:35:36 BST 2015
+-Done: Digit 0, Subclass 36
+Thu Sep 17 15:35:44 BST 2015
+-Done: Digit 0, Subclass 37
+Thu Sep 17 15:35:52 BST 2015
+-Done: Digit 0, Subclass 38
+Thu Sep 17 15:36:00 BST 2015
+-Done: Digit 0, Subclass 39
+Thu Sep 17 15:36:07 BST 2015
+-Done: Digit 0, Subclass 40
+Thu Sep 17 15:36:15 BST 2015
+-Done: Digit 0, Subclass 41
+Thu Sep 17 15:36:23 BST 2015
+-Done: Digit 0, Subclass 42
+Thu Sep 17 15:36:31 BST 2015
+-Done: Digit 0, Subclass 43
+Thu Sep 17 15:36:39 BST 2015
+-Done: Digit 0, Subclass 44
+Thu Sep 17 15:36:47 BST 2015
+-Done: Digit 0, Subclass 45
+Thu Sep 17 15:36:55 BST 2015
+-Done: Digit 0, Subclass 46
+Thu Sep 17 15:37:03 BST 2015
+-Done: Digit 0, Subclass 47
+Thu Sep 17 15:37:10 BST 2015
+-Done: Digit 0, Subclass 48
+Thu Sep 17 15:37:19 BST 2015
+-Done: Digit 0, Subclass 49
+Thu Sep 17 15:37:27 BST 2015
+-Done: Digit 1, Subclass 0
+Thu Sep 17 15:37:34 BST 2015
+-Done: Digit 1, Subclass 1
+Thu Sep 17 15:37:41 BST 2015
+-Done: Digit 1, Subclass 2
+Thu Sep 17 15:37:49 BST 2015
+-Done: Digit 1, Subclass 3
+Thu Sep 17 15:37:56 BST 2015
+-Done: Digit 1, Subclass 4
+Thu Sep 17 15:38:03 BST 2015
+-Done: Digit 1, Subclass 5
+Thu Sep 17 15:38:11 BST 2015
+-Done: Digit 1, Subclass 6
+Thu Sep 17 15:38:18 BST 2015
+-Done: Digit 1, Subclass 7
+Thu Sep 17 15:38:25 BST 2015
+-Done: Digit 1, Subclass 8
+Thu Sep 17 15:38:32 BST 2015
+-Done: Digit 1, Subclass 9
+Thu Sep 17 15:38:39 BST 2015
+-Done: Digit 1, Subclass 10
+Thu Sep 17 15:38:46 BST 2015
+-Done: Digit 1, Subclass 11
+Thu Sep 17 15:38:54 BST 2015
+-Done: Digit 1, Subclass 12
+Thu Sep 17 15:39:01 BST 2015
+-Done: Digit 1, Subclass 13
+Thu Sep 17 15:39:08 BST 2015
+-Done: Digit 1, Subclass 14
+Thu Sep 17 15:39:15 BST 2015
+-Done: Digit 1, Subclass 15
+Thu Sep 17 15:39:22 BST 2015
+-Done: Digit 1, Subclass 16
+Thu Sep 17 15:39:30 BST 2015
+-Done: Digit 1, Subclass 17
+Thu Sep 17 15:39:37 BST 2015
+-Done: Digit 1, Subclass 18
+Thu Sep 17 15:39:44 BST 2015
+-Done: Digit 1, Subclass 19
+Thu Sep 17 15:39:53 BST 2015
+-Done: Digit 1, Subclass 20
+Thu Sep 17 15:40:00 BST 2015
+-Done: Digit 1, Subclass 21
+Thu Sep 17 15:40:07 BST 2015
+-Done: Digit 1, Subclass 22
+Thu Sep 17 15:40:15 BST 2015
+-Done: Digit 1, Subclass 23
+Thu Sep 17 15:40:22 BST 2015
+-Done: Digit 1, Subclass 24
+Thu Sep 17 15:40:29 BST 2015
+-Done: Digit 1, Subclass 25
+Thu Sep 17 15:40:37 BST 2015
+-Done: Digit 1, Subclass 26
+Thu Sep 17 15:40:43 BST 2015
+-Done: Digit 1, Subclass 27
+Thu Sep 17 15:40:51 BST 2015
+-Done: Digit 1, Subclass 28
+Thu Sep 17 15:40:58 BST 2015
+-Done: Digit 1, Subclass 29
+Thu Sep 17 15:41:05 BST 2015
+-Done: Digit 1, Subclass 30
+Thu Sep 17 15:41:13 BST 2015
+-Done: Digit 1, Subclass 31
+Thu Sep 17 15:41:20 BST 2015
+-Done: Digit 1, Subclass 32
+Thu Sep 17 15:41:28 BST 2015
+-Done: Digit 1, Subclass 33
+Thu Sep 17 15:41:35 BST 2015
+-Done: Digit 1, Subclass 34
+Thu Sep 17 15:41:42 BST 2015
+-Done: Digit 1, Subclass 35
+Thu Sep 17 15:41:49 BST 2015
+-Done: Digit 1, Subclass 36
+Thu Sep 17 15:41:56 BST 2015
+-Done: Digit 1, Subclass 37
+Thu Sep 17 15:42:03 BST 2015
+-Done: Digit 1, Subclass 38
+Thu Sep 17 15:42:10 BST 2015
+-Done: Digit 1, Subclass 39
+Thu Sep 17 15:42:17 BST 2015
+-Done: Digit 1, Subclass 40
+Thu Sep 17 15:42:24 BST 2015
+-Done: Digit 1, Subclass 41
+Thu Sep 17 15:42:31 BST 2015
+-Done: Digit 1, Subclass 42
+Thu Sep 17 15:42:38 BST 2015
+-Done: Digit 1, Subclass 43
+Thu Sep 17 15:42:45 BST 2015
+-Done: Digit 1, Subclass 44
+Thu Sep 17 15:42:52 BST 2015
+-Done: Digit 1, Subclass 45
+Thu Sep 17 15:43:00 BST 2015
+-Done: Digit 1, Subclass 46
+Thu Sep 17 15:43:07 BST 2015
+-Done: Digit 1, Subclass 47
+Thu Sep 17 15:43:14 BST 2015
+-Done: Digit 1, Subclass 48
+Thu Sep 17 15:43:21 BST 2015
+-Done: Digit 1, Subclass 49
+Thu Sep 17 15:43:28 BST 2015
+-Done: Digit 2, Subclass 0
+Thu Sep 17 15:43:37 BST 2015
+-Done: Digit 2, Subclass 1
+Thu Sep 17 15:43:44 BST 2015
+-Done: Digit 2, Subclass 2
+Thu Sep 17 15:43:52 BST 2015
+-Done: Digit 2, Subclass 3
+Thu Sep 17 15:44:00 BST 2015
+-Done: Digit 2, Subclass 4
+Thu Sep 17 15:44:09 BST 2015
+-Done: Digit 2, Subclass 5
+Thu Sep 17 15:44:17 BST 2015
+-Done: Digit 2, Subclass 6
+Thu Sep 17 15:44:25 BST 2015
+-Done: Digit 2, Subclass 7
+Thu Sep 17 15:44:33 BST 2015
+-Done: Digit 2, Subclass 8
+Thu Sep 17 15:44:42 BST 2015
+-Done: Digit 2, Subclass 9
+Thu Sep 17 15:44:50 BST 2015
+-Done: Digit 2, Subclass 10
+Thu Sep 17 15:44:58 BST 2015
+-Done: Digit 2, Subclass 11
+Thu Sep 17 15:45:07 BST 2015
+-Done: Digit 2, Subclass 12
+Thu Sep 17 15:45:15 BST 2015
+-Done: Digit 2, Subclass 13
+Thu Sep 17 15:45:23 BST 2015
+-Done: Digit 2, Subclass 14
+Thu Sep 17 15:45:31 BST 2015
+-Done: Digit 2, Subclass 15
+Thu Sep 17 15:45:40 BST 2015
+-Done: Digit 2, Subclass 16
+Thu Sep 17 15:45:48 BST 2015
+-Done: Digit 2, Subclass 17
+Thu Sep 17 15:45:56 BST 2015
+-Done: Digit 2, Subclass 18
+Thu Sep 17 15:46:04 BST 2015
+-Done: Digit 2, Subclass 19
+Thu Sep 17 15:46:13 BST 2015
+-Done: Digit 2, Subclass 20
+Thu Sep 17 15:46:21 BST 2015
+-Done: Digit 2, Subclass 21
+Thu Sep 17 15:46:29 BST 2015
+-Done: Digit 2, Subclass 22
+Thu Sep 17 15:46:37 BST 2015
+-Done: Digit 2, Subclass 23
+Thu Sep 17 15:46:46 BST 2015
+-Done: Digit 2, Subclass 24
+Thu Sep 17 15:46:54 BST 2015
+-Done: Digit 2, Subclass 25
+Thu Sep 17 15:47:02 BST 2015
+-Done: Digit 2, Subclass 26
+Thu Sep 17 15:47:11 BST 2015
+-Done: Digit 2, Subclass 27
+Thu Sep 17 15:47:19 BST 2015
+-Done: Digit 2, Subclass 28
+Thu Sep 17 15:47:28 BST 2015
+-Done: Digit 2, Subclass 29
+Thu Sep 17 15:47:36 BST 2015
+-Done: Digit 2, Subclass 30
+Thu Sep 17 15:47:44 BST 2015
+-Done: Digit 2, Subclass 31
+Thu Sep 17 15:47:53 BST 2015
+-Done: Digit 2, Subclass 32
+Thu Sep 17 15:48:01 BST 2015
+-Done: Digit 2, Subclass 33
+Thu Sep 17 15:48:09 BST 2015
+-Done: Digit 2, Subclass 34
+Thu Sep 17 15:48:17 BST 2015
+-Done: Digit 2, Subclass 35
+Thu Sep 17 15:48:26 BST 2015
+-Done: Digit 2, Subclass 36
+Thu Sep 17 15:48:34 BST 2015
+-Done: Digit 2, Subclass 37
+Thu Sep 17 15:48:42 BST 2015
+-Done: Digit 2, Subclass 38
+Thu Sep 17 15:48:50 BST 2015
+-Done: Digit 2, Subclass 39
+Thu Sep 17 15:48:59 BST 2015
+-Done: Digit 2, Subclass 40
+Thu Sep 17 15:49:07 BST 2015
+-Done: Digit 2, Subclass 41
+Thu Sep 17 15:49:15 BST 2015
+-Done: Digit 2, Subclass 42
+Thu Sep 17 15:49:23 BST 2015
+-Done: Digit 2, Subclass 43
+Thu Sep 17 15:49:32 BST 2015
+-Done: Digit 2, Subclass 44
+Thu Sep 17 15:49:40 BST 2015
+-Done: Digit 2, Subclass 45
+Thu Sep 17 15:49:48 BST 2015
+-Done: Digit 2, Subclass 46
+Thu Sep 17 15:49:57 BST 2015
+-Done: Digit 2, Subclass 47
+Thu Sep 17 15:50:05 BST 2015
+-Done: Digit 2, Subclass 48
+Thu Sep 17 15:50:13 BST 2015
+-Done: Digit 2, Subclass 49
+Thu Sep 17 15:50:21 BST 2015
+-Done: Digit 3, Subclass 0
+Thu Sep 17 15:50:30 BST 2015
+-Done: Digit 3, Subclass 1
+Thu Sep 17 15:50:38 BST 2015
+-Done: Digit 3, Subclass 2
+Thu Sep 17 15:50:46 BST 2015
+-Done: Digit 3, Subclass 3
+Thu Sep 17 15:50:54 BST 2015
+-Done: Digit 3, Subclass 4
+Thu Sep 17 15:51:02 BST 2015
+-Done: Digit 3, Subclass 5
+Thu Sep 17 15:51:10 BST 2015
+-Done: Digit 3, Subclass 6
+Thu Sep 17 15:51:18 BST 2015
+-Done: Digit 3, Subclass 7
+Thu Sep 17 15:51:27 BST 2015
+-Done: Digit 3, Subclass 8
+Thu Sep 17 15:51:35 BST 2015
+-Done: Digit 3, Subclass 9
+Thu Sep 17 15:51:43 BST 2015
+-Done: Digit 3, Subclass 10
+Thu Sep 17 15:51:51 BST 2015
+-Done: Digit 3, Subclass 11
+Thu Sep 17 15:52:00 BST 2015
+-Done: Digit 3, Subclass 12
+Thu Sep 17 15:52:08 BST 2015
+-Done: Digit 3, Subclass 13
+Thu Sep 17 15:52:16 BST 2015
+-Done: Digit 3, Subclass 14
+Thu Sep 17 15:52:24 BST 2015
+-Done: Digit 3, Subclass 15
+Thu Sep 17 15:52:32 BST 2015
+-Done: Digit 3, Subclass 16
+Thu Sep 17 15:52:41 BST 2015
+-Done: Digit 3, Subclass 17
+Thu Sep 17 15:52:49 BST 2015
+-Done: Digit 3, Subclass 18
+Thu Sep 17 15:52:57 BST 2015
+-Done: Digit 3, Subclass 19
+Thu Sep 17 15:53:05 BST 2015
+-Done: Digit 3, Subclass 20
+Thu Sep 17 15:53:13 BST 2015
+-Done: Digit 3, Subclass 21
+Thu Sep 17 15:53:20 BST 2015
+-Done: Digit 3, Subclass 22
+Thu Sep 17 15:53:29 BST 2015
+-Done: Digit 3, Subclass 23
+Thu Sep 17 15:53:36 BST 2015
+-Done: Digit 3, Subclass 24
+Thu Sep 17 15:53:44 BST 2015
+-Done: Digit 3, Subclass 25
+Thu Sep 17 15:53:53 BST 2015
+-Done: Digit 3, Subclass 26
+Thu Sep 17 15:54:01 BST 2015
+-Done: Digit 3, Subclass 27
+Thu Sep 17 15:54:09 BST 2015
+-Done: Digit 3, Subclass 28
+Thu Sep 17 15:54:17 BST 2015
+-Done: Digit 3, Subclass 29
+Thu Sep 17 15:54:26 BST 2015
+-Done: Digit 3, Subclass 30
+Thu Sep 17 15:54:34 BST 2015
+-Done: Digit 3, Subclass 31
+Thu Sep 17 15:54:42 BST 2015
+-Done: Digit 3, Subclass 32
+Thu Sep 17 15:54:50 BST 2015
+-Done: Digit 3, Subclass 33
+Thu Sep 17 15:54:57 BST 2015
+-Done: Digit 3, Subclass 34
+Thu Sep 17 15:55:05 BST 2015
+-Done: Digit 3, Subclass 35
+Thu Sep 17 15:55:13 BST 2015
+-Done: Digit 3, Subclass 36
+Thu Sep 17 15:55:21 BST 2015
+-Done: Digit 3, Subclass 37
+Thu Sep 17 15:55:29 BST 2015
+-Done: Digit 3, Subclass 38
+Thu Sep 17 15:55:37 BST 2015
+-Done: Digit 3, Subclass 39
+Thu Sep 17 15:55:45 BST 2015
+-Done: Digit 3, Subclass 40
+Thu Sep 17 15:55:53 BST 2015
+-Done: Digit 3, Subclass 41
+Thu Sep 17 15:56:02 BST 2015
+-Done: Digit 3, Subclass 42
+Thu Sep 17 15:56:10 BST 2015
+-Done: Digit 3, Subclass 43
+Thu Sep 17 15:56:18 BST 2015
+-Done: Digit 3, Subclass 44
+Thu Sep 17 15:56:26 BST 2015
+-Done: Digit 3, Subclass 45
+Thu Sep 17 15:56:34 BST 2015
+-Done: Digit 3, Subclass 46
+Thu Sep 17 15:56:42 BST 2015
+-Done: Digit 3, Subclass 47
+Thu Sep 17 15:56:50 BST 2015
+-Done: Digit 3, Subclass 48
+Thu Sep 17 15:56:58 BST 2015
+-Done: Digit 3, Subclass 49
+Thu Sep 17 15:57:06 BST 2015
+-Done: Digit 4, Subclass 0
+Thu Sep 17 15:57:14 BST 2015
+-Done: Digit 4, Subclass 1
+Thu Sep 17 15:57:22 BST 2015
+-Done: Digit 4, Subclass 2
+Thu Sep 17 15:57:30 BST 2015
+-Done: Digit 4, Subclass 3
+Thu Sep 17 15:57:38 BST 2015
+-Done: Digit 4, Subclass 4
+Thu Sep 17 15:57:46 BST 2015
+-Done: Digit 4, Subclass 5
+Thu Sep 17 15:57:54 BST 2015
+-Done: Digit 4, Subclass 6
+Thu Sep 17 15:58:02 BST 2015
+-Done: Digit 4, Subclass 7
+Thu Sep 17 15:58:10 BST 2015
+-Done: Digit 4, Subclass 8
+Thu Sep 17 15:58:18 BST 2015
+-Done: Digit 4, Subclass 9
+Thu Sep 17 15:58:26 BST 2015
+-Done: Digit 4, Subclass 10
+Thu Sep 17 15:58:34 BST 2015
+-Done: Digit 4, Subclass 11
+Thu Sep 17 15:58:42 BST 2015
+-Done: Digit 4, Subclass 12
+Thu Sep 17 15:58:50 BST 2015
+-Done: Digit 4, Subclass 13
+Thu Sep 17 15:58:58 BST 2015
+-Done: Digit 4, Subclass 14
+Thu Sep 17 15:59:06 BST 2015
+-Done: Digit 4, Subclass 15
+Thu Sep 17 15:59:14 BST 2015
+-Done: Digit 4, Subclass 16
+Thu Sep 17 15:59:22 BST 2015
+-Done: Digit 4, Subclass 17
+Thu Sep 17 15:59:30 BST 2015
+-Done: Digit 4, Subclass 18
+Thu Sep 17 15:59:38 BST 2015
+-Done: Digit 4, Subclass 19
+Thu Sep 17 15:59:46 BST 2015
+-Done: Digit 4, Subclass 20
+Thu Sep 17 15:59:54 BST 2015
+-Done: Digit 4, Subclass 21
+Thu Sep 17 16:00:02 BST 2015
+-Done: Digit 4, Subclass 22
+Thu Sep 17 16:00:10 BST 2015
+-Done: Digit 4, Subclass 23
+Thu Sep 17 16:00:18 BST 2015
+-Done: Digit 4, Subclass 24
+Thu Sep 17 16:00:26 BST 2015
+-Done: Digit 4, Subclass 25
+Thu Sep 17 16:00:34 BST 2015
+-Done: Digit 4, Subclass 26
+Thu Sep 17 16:00:42 BST 2015
+-Done: Digit 4, Subclass 27
+Thu Sep 17 16:00:50 BST 2015
+-Done: Digit 4, Subclass 28
+Thu Sep 17 16:00:58 BST 2015
+-Done: Digit 4, Subclass 29
+Thu Sep 17 16:01:05 BST 2015
+-Done: Digit 4, Subclass 30
+Thu Sep 17 16:01:13 BST 2015
+-Done: Digit 4, Subclass 31
+Thu Sep 17 16:01:21 BST 2015
+-Done: Digit 4, Subclass 32
+Thu Sep 17 16:01:29 BST 2015
+-Done: Digit 4, Subclass 33
+Thu Sep 17 16:01:37 BST 2015
+-Done: Digit 4, Subclass 34
+Thu Sep 17 16:01:46 BST 2015
+-Done: Digit 4, Subclass 35
+Thu Sep 17 16:01:54 BST 2015
+-Done: Digit 4, Subclass 36
+Thu Sep 17 16:02:02 BST 2015
+-Done: Digit 4, Subclass 37
+Thu Sep 17 16:02:09 BST 2015
+-Done: Digit 4, Subclass 38
+Thu Sep 17 16:02:17 BST 2015
+-Done: Digit 4, Subclass 39
+Thu Sep 17 16:02:25 BST 2015
+-Done: Digit 4, Subclass 40
+Thu Sep 17 16:02:34 BST 2015
+-Done: Digit 4, Subclass 41
+Thu Sep 17 16:02:42 BST 2015
+-Done: Digit 4, Subclass 42
+Thu Sep 17 16:02:49 BST 2015
+-Done: Digit 4, Subclass 43
+Thu Sep 17 16:02:57 BST 2015
+-Done: Digit 4, Subclass 44
+Thu Sep 17 16:03:06 BST 2015
+-Done: Digit 4, Subclass 45
+Thu Sep 17 16:03:13 BST 2015
+-Done: Digit 4, Subclass 46
+Thu Sep 17 16:03:21 BST 2015
+-Done: Digit 4, Subclass 47
+Thu Sep 17 16:03:29 BST 2015
+-Done: Digit 4, Subclass 48
+Thu Sep 17 16:03:37 BST 2015
+-Done: Digit 4, Subclass 49
+Thu Sep 17 16:03:45 BST 2015
+-Done: Digit 5, Subclass 0
+Thu Sep 17 16:03:53 BST 2015
+-Done: Digit 5, Subclass 1
+Thu Sep 17 16:04:01 BST 2015
+-Done: Digit 5, Subclass 2
+Thu Sep 17 16:04:09 BST 2015
+-Done: Digit 5, Subclass 3
+Thu Sep 17 16:04:17 BST 2015
+-Done: Digit 5, Subclass 4
+Thu Sep 17 16:04:24 BST 2015
+-Done: Digit 5, Subclass 5
+Thu Sep 17 16:04:33 BST 2015
+-Done: Digit 5, Subclass 6
+Thu Sep 17 16:04:41 BST 2015
+-Done: Digit 5, Subclass 7
+Thu Sep 17 16:04:49 BST 2015
+-Done: Digit 5, Subclass 8
+Thu Sep 17 16:04:57 BST 2015
+-Done: Digit 5, Subclass 9
+Thu Sep 17 16:05:05 BST 2015
+-Done: Digit 5, Subclass 10
+Thu Sep 17 16:05:12 BST 2015
+-Done: Digit 5, Subclass 11
+Thu Sep 17 16:05:20 BST 2015
+-Done: Digit 5, Subclass 12
+Thu Sep 17 16:05:28 BST 2015
+-Done: Digit 5, Subclass 13
+Thu Sep 17 16:05:36 BST 2015
+-Done: Digit 5, Subclass 14
+Thu Sep 17 16:05:44 BST 2015
+-Done: Digit 5, Subclass 15
+Thu Sep 17 16:05:52 BST 2015
+-Done: Digit 5, Subclass 16
+Thu Sep 17 16:06:00 BST 2015
+-Done: Digit 5, Subclass 17
+Thu Sep 17 16:06:08 BST 2015
+-Done: Digit 5, Subclass 18
+Thu Sep 17 16:06:16 BST 2015
+-Done: Digit 5, Subclass 19
+Thu Sep 17 16:06:25 BST 2015
+-Done: Digit 5, Subclass 20
+Thu Sep 17 16:06:32 BST 2015
+-Done: Digit 5, Subclass 21
+Thu Sep 17 16:06:40 BST 2015
+-Done: Digit 5, Subclass 22
+Thu Sep 17 16:06:49 BST 2015
+-Done: Digit 5, Subclass 23
+Thu Sep 17 16:06:56 BST 2015
+-Done: Digit 5, Subclass 24
+Thu Sep 17 16:07:05 BST 2015
+-Done: Digit 5, Subclass 25
+Thu Sep 17 16:07:13 BST 2015
+-Done: Digit 5, Subclass 26
+Thu Sep 17 16:07:21 BST 2015
+-Done: Digit 5, Subclass 27
+Thu Sep 17 16:07:29 BST 2015
+-Done: Digit 5, Subclass 28
+Thu Sep 17 16:07:37 BST 2015
+-Done: Digit 5, Subclass 29
+Thu Sep 17 16:07:45 BST 2015
+-Done: Digit 5, Subclass 30
+Thu Sep 17 16:07:53 BST 2015
+-Done: Digit 5, Subclass 31
+Thu Sep 17 16:08:01 BST 2015
+-Done: Digit 5, Subclass 32
+Thu Sep 17 16:08:09 BST 2015
+-Done: Digit 5, Subclass 33
+Thu Sep 17 16:08:17 BST 2015
+-Done: Digit 5, Subclass 34
+Thu Sep 17 16:08:25 BST 2015
+-Done: Digit 5, Subclass 35
+Thu Sep 17 16:08:33 BST 2015
+-Done: Digit 5, Subclass 36
+Thu Sep 17 16:08:41 BST 2015
+-Done: Digit 5, Subclass 37
+Thu Sep 17 16:08:49 BST 2015
+-Done: Digit 5, Subclass 38
+Thu Sep 17 16:08:56 BST 2015
+-Done: Digit 5, Subclass 39
+Thu Sep 17 16:09:05 BST 2015
+-Done: Digit 5, Subclass 40
+Thu Sep 17 16:09:13 BST 2015
+-Done: Digit 5, Subclass 41
+Thu Sep 17 16:09:21 BST 2015
+-Done: Digit 5, Subclass 42
+Thu Sep 17 16:09:28 BST 2015
+-Done: Digit 5, Subclass 43
+Thu Sep 17 16:09:36 BST 2015
+-Done: Digit 5, Subclass 44
+Thu Sep 17 16:09:44 BST 2015
+-Done: Digit 5, Subclass 45
+Thu Sep 17 16:09:53 BST 2015
+-Done: Digit 5, Subclass 46
+Thu Sep 17 16:10:01 BST 2015
+-Done: Digit 5, Subclass 47
+Thu Sep 17 16:10:09 BST 2015
+-Done: Digit 5, Subclass 48
+Thu Sep 17 16:10:17 BST 2015
+-Done: Digit 5, Subclass 49
+Thu Sep 17 16:10:25 BST 2015
+-Done: Digit 6, Subclass 0
+Thu Sep 17 16:10:32 BST 2015
+-Done: Digit 6, Subclass 1
+Thu Sep 17 16:10:40 BST 2015
+-Done: Digit 6, Subclass 2
+Thu Sep 17 16:10:48 BST 2015
+-Done: Digit 6, Subclass 3
+Thu Sep 17 16:10:56 BST 2015
+-Done: Digit 6, Subclass 4
+Thu Sep 17 16:11:04 BST 2015
+-Done: Digit 6, Subclass 5
+Thu Sep 17 16:11:11 BST 2015
+-Done: Digit 6, Subclass 6
+Thu Sep 17 16:11:19 BST 2015
+-Done: Digit 6, Subclass 7
+Thu Sep 17 16:11:26 BST 2015
+-Done: Digit 6, Subclass 8
+Thu Sep 17 16:11:34 BST 2015
+-Done: Digit 6, Subclass 9
+Thu Sep 17 16:11:42 BST 2015
+-Done: Digit 6, Subclass 10
+Thu Sep 17 16:11:50 BST 2015
+-Done: Digit 6, Subclass 11
+Thu Sep 17 16:11:57 BST 2015
+-Done: Digit 6, Subclass 12
+Thu Sep 17 16:12:05 BST 2015
+-Done: Digit 6, Subclass 13
+Thu Sep 17 16:12:12 BST 2015
+-Done: Digit 6, Subclass 14
+Thu Sep 17 16:12:20 BST 2015
+-Done: Digit 6, Subclass 15
+Thu Sep 17 16:12:27 BST 2015
+-Done: Digit 6, Subclass 16
+Thu Sep 17 16:12:35 BST 2015
+-Done: Digit 6, Subclass 17
+Thu Sep 17 16:12:43 BST 2015
+-Done: Digit 6, Subclass 18
+Thu Sep 17 16:12:51 BST 2015
+-Done: Digit 6, Subclass 19
+Thu Sep 17 16:12:59 BST 2015
+-Done: Digit 6, Subclass 20
+Thu Sep 17 16:13:07 BST 2015
+-Done: Digit 6, Subclass 21
+Thu Sep 17 16:13:14 BST 2015
+-Done: Digit 6, Subclass 22
+Thu Sep 17 16:13:22 BST 2015
+-Done: Digit 6, Subclass 23
+Thu Sep 17 16:13:30 BST 2015
+-Done: Digit 6, Subclass 24
+Thu Sep 17 16:13:38 BST 2015
+-Done: Digit 6, Subclass 25
+Thu Sep 17 16:13:46 BST 2015
+-Done: Digit 6, Subclass 26
+Thu Sep 17 16:13:53 BST 2015
+-Done: Digit 6, Subclass 27
+Thu Sep 17 16:14:01 BST 2015
+-Done: Digit 6, Subclass 28
+Thu Sep 17 16:14:09 BST 2015
+-Done: Digit 6, Subclass 29
+Thu Sep 17 16:14:17 BST 2015
+-Done: Digit 6, Subclass 30
+Thu Sep 17 16:14:25 BST 2015
+-Done: Digit 6, Subclass 31
+Thu Sep 17 16:14:33 BST 2015
+-Done: Digit 6, Subclass 32
+Thu Sep 17 16:14:40 BST 2015
+-Done: Digit 6, Subclass 33
+Thu Sep 17 16:14:48 BST 2015
+-Done: Digit 6, Subclass 34
+Thu Sep 17 16:14:56 BST 2015
+-Done: Digit 6, Subclass 35
+Thu Sep 17 16:15:04 BST 2015
+-Done: Digit 6, Subclass 36
+Thu Sep 17 16:15:12 BST 2015
+-Done: Digit 6, Subclass 37
+Thu Sep 17 16:15:19 BST 2015
+-Done: Digit 6, Subclass 38
+Thu Sep 17 16:15:27 BST 2015
+-Done: Digit 6, Subclass 39
+Thu Sep 17 16:15:35 BST 2015
+-Done: Digit 6, Subclass 40
+Thu Sep 17 16:15:43 BST 2015
+-Done: Digit 6, Subclass 41
+Thu Sep 17 16:15:50 BST 2015
+-Done: Digit 6, Subclass 42
+Thu Sep 17 16:15:58 BST 2015
+-Done: Digit 6, Subclass 43
+Thu Sep 17 16:16:06 BST 2015
+-Done: Digit 6, Subclass 44
+Thu Sep 17 16:16:14 BST 2015
+-Done: Digit 6, Subclass 45
+Thu Sep 17 16:16:22 BST 2015
+-Done: Digit 6, Subclass 46
+Thu Sep 17 16:16:29 BST 2015
+-Done: Digit 6, Subclass 47
+Thu Sep 17 16:16:37 BST 2015
+-Done: Digit 6, Subclass 48
+Thu Sep 17 16:16:45 BST 2015
+-Done: Digit 6, Subclass 49
+Thu Sep 17 16:16:52 BST 2015
+-Done: Digit 7, Subclass 0
+Thu Sep 17 16:17:01 BST 2015
+-Done: Digit 7, Subclass 1
+Thu Sep 17 16:17:08 BST 2015
+-Done: Digit 7, Subclass 2
+Thu Sep 17 16:17:16 BST 2015
+-Done: Digit 7, Subclass 3
+Thu Sep 17 16:17:24 BST 2015
+-Done: Digit 7, Subclass 4
+Thu Sep 17 16:17:32 BST 2015
+-Done: Digit 7, Subclass 5
+Thu Sep 17 16:17:40 BST 2015
+-Done: Digit 7, Subclass 6
+Thu Sep 17 16:17:48 BST 2015
+-Done: Digit 7, Subclass 7
+Thu Sep 17 16:17:56 BST 2015
+-Done: Digit 7, Subclass 8
+Thu Sep 17 16:18:04 BST 2015
+-Done: Digit 7, Subclass 9
+Thu Sep 17 16:18:13 BST 2015
+-Done: Digit 7, Subclass 10
+Thu Sep 17 16:18:21 BST 2015
+-Done: Digit 7, Subclass 11
+Thu Sep 17 16:18:29 BST 2015
+-Done: Digit 7, Subclass 12
+Thu Sep 17 16:18:37 BST 2015
+-Done: Digit 7, Subclass 13
+Thu Sep 17 16:18:45 BST 2015
+-Done: Digit 7, Subclass 14
+Thu Sep 17 16:18:53 BST 2015
+-Done: Digit 7, Subclass 15
+Thu Sep 17 16:19:01 BST 2015
+-Done: Digit 7, Subclass 16
+Thu Sep 17 16:19:09 BST 2015
+-Done: Digit 7, Subclass 17
+Thu Sep 17 16:19:17 BST 2015
+-Done: Digit 7, Subclass 18
+Thu Sep 17 16:19:25 BST 2015
+-Done: Digit 7, Subclass 19
+Thu Sep 17 16:19:33 BST 2015
+-Done: Digit 7, Subclass 20
+Thu Sep 17 16:19:41 BST 2015
+-Done: Digit 7, Subclass 21
+Thu Sep 17 16:19:49 BST 2015
+-Done: Digit 7, Subclass 22
+Thu Sep 17 16:19:57 BST 2015
+-Done: Digit 7, Subclass 23
+Thu Sep 17 16:20:05 BST 2015
+-Done: Digit 7, Subclass 24
+Thu Sep 17 16:20:14 BST 2015
+-Done: Digit 7, Subclass 25
+Thu Sep 17 16:20:22 BST 2015
+-Done: Digit 7, Subclass 26
+Thu Sep 17 16:20:30 BST 2015
+-Done: Digit 7, Subclass 27
+Thu Sep 17 16:20:38 BST 2015
+-Done: Digit 7, Subclass 28
+Thu Sep 17 16:20:45 BST 2015
+-Done: Digit 7, Subclass 29
+Thu Sep 17 16:20:53 BST 2015
+-Done: Digit 7, Subclass 30
+Thu Sep 17 16:21:01 BST 2015
+-Done: Digit 7, Subclass 31
+Thu Sep 17 16:21:09 BST 2015
+-Done: Digit 7, Subclass 32
+Thu Sep 17 16:21:17 BST 2015
+-Done: Digit 7, Subclass 33
+Thu Sep 17 16:21:25 BST 2015
+-Done: Digit 7, Subclass 34
+Thu Sep 17 16:21:33 BST 2015
+-Done: Digit 7, Subclass 35
+Thu Sep 17 16:21:41 BST 2015
+-Done: Digit 7, Subclass 36
+Thu Sep 17 16:21:49 BST 2015
+-Done: Digit 7, Subclass 37
+Thu Sep 17 16:21:57 BST 2015
+-Done: Digit 7, Subclass 38
+Thu Sep 17 16:22:05 BST 2015
+-Done: Digit 7, Subclass 39
+Thu Sep 17 16:22:13 BST 2015
+-Done: Digit 7, Subclass 40
+Thu Sep 17 16:22:22 BST 2015
+-Done: Digit 7, Subclass 41
+Thu Sep 17 16:22:30 BST 2015
+-Done: Digit 7, Subclass 42
+Thu Sep 17 16:22:37 BST 2015
+-Done: Digit 7, Subclass 43
+Thu Sep 17 16:22:46 BST 2015
+-Done: Digit 7, Subclass 44
+Thu Sep 17 16:22:54 BST 2015
+-Done: Digit 7, Subclass 45
+Thu Sep 17 16:23:02 BST 2015
+-Done: Digit 7, Subclass 46
+Thu Sep 17 16:23:10 BST 2015
+-Done: Digit 7, Subclass 47
+Thu Sep 17 16:23:17 BST 2015
+-Done: Digit 7, Subclass 48
+Thu Sep 17 16:23:25 BST 2015
+-Done: Digit 7, Subclass 49
+Thu Sep 17 16:23:33 BST 2015
+-Done: Digit 8, Subclass 0
+Thu Sep 17 16:23:41 BST 2015
+-Done: Digit 8, Subclass 1
+Thu Sep 17 16:23:49 BST 2015
+-Done: Digit 8, Subclass 2
+Thu Sep 17 16:23:57 BST 2015
+-Done: Digit 8, Subclass 3
+Thu Sep 17 16:24:05 BST 2015
+-Done: Digit 8, Subclass 4
+Thu Sep 17 16:24:13 BST 2015
+-Done: Digit 8, Subclass 5
+Thu Sep 17 16:24:20 BST 2015
+-Done: Digit 8, Subclass 6
+Thu Sep 17 16:24:28 BST 2015
+-Done: Digit 8, Subclass 7
+Thu Sep 17 16:24:36 BST 2015
+-Done: Digit 8, Subclass 8
+Thu Sep 17 16:24:44 BST 2015
+-Done: Digit 8, Subclass 9
+Thu Sep 17 16:24:52 BST 2015
+-Done: Digit 8, Subclass 10
+Thu Sep 17 16:25:01 BST 2015
+-Done: Digit 8, Subclass 11
+Thu Sep 17 16:25:09 BST 2015
+-Done: Digit 8, Subclass 12
+Thu Sep 17 16:25:16 BST 2015
+-Done: Digit 8, Subclass 13
+Thu Sep 17 16:25:24 BST 2015
+-Done: Digit 8, Subclass 14
+Thu Sep 17 16:25:32 BST 2015
+-Done: Digit 8, Subclass 15
+Thu Sep 17 16:25:40 BST 2015
+-Done: Digit 8, Subclass 16
+Thu Sep 17 16:25:48 BST 2015
+-Done: Digit 8, Subclass 17
+Thu Sep 17 16:25:56 BST 2015
+-Done: Digit 8, Subclass 18
+Thu Sep 17 16:26:04 BST 2015
+-Done: Digit 8, Subclass 19
+Thu Sep 17 16:26:12 BST 2015
+-Done: Digit 8, Subclass 20
+Thu Sep 17 16:26:20 BST 2015
+-Done: Digit 8, Subclass 21
+Thu Sep 17 16:26:28 BST 2015
+-Done: Digit 8, Subclass 22
+Thu Sep 17 16:26:35 BST 2015
+-Done: Digit 8, Subclass 23
+Thu Sep 17 16:26:43 BST 2015
+-Done: Digit 8, Subclass 24
+Thu Sep 17 16:26:51 BST 2015
+-Done: Digit 8, Subclass 25
+Thu Sep 17 16:26:59 BST 2015
+-Done: Digit 8, Subclass 26
+Thu Sep 17 16:27:07 BST 2015
+-Done: Digit 8, Subclass 27
+Thu Sep 17 16:27:15 BST 2015
+-Done: Digit 8, Subclass 28
+Thu Sep 17 16:27:22 BST 2015
+-Done: Digit 8, Subclass 29
+Thu Sep 17 16:27:30 BST 2015
+-Done: Digit 8, Subclass 30
+Thu Sep 17 16:27:38 BST 2015
+-Done: Digit 8, Subclass 31
+Thu Sep 17 16:27:46 BST 2015
+-Done: Digit 8, Subclass 32
+Thu Sep 17 16:27:54 BST 2015
+-Done: Digit 8, Subclass 33
+Thu Sep 17 16:28:02 BST 2015
+-Done: Digit 8, Subclass 34
+Thu Sep 17 16:28:10 BST 2015
+-Done: Digit 8, Subclass 35
+Thu Sep 17 16:28:17 BST 2015
+-Done: Digit 8, Subclass 36
+Thu Sep 17 16:28:25 BST 2015
+-Done: Digit 8, Subclass 37
+Thu Sep 17 16:28:33 BST 2015
+-Done: Digit 8, Subclass 38
+Thu Sep 17 16:28:41 BST 2015
+-Done: Digit 8, Subclass 39
+Thu Sep 17 16:28:49 BST 2015
+-Done: Digit 8, Subclass 40
+Thu Sep 17 16:28:56 BST 2015
+-Done: Digit 8, Subclass 41
+Thu Sep 17 16:29:04 BST 2015
+-Done: Digit 8, Subclass 42
+Thu Sep 17 16:29:12 BST 2015
+-Done: Digit 8, Subclass 43
+Thu Sep 17 16:29:20 BST 2015
+-Done: Digit 8, Subclass 44
+Thu Sep 17 16:29:28 BST 2015
+-Done: Digit 8, Subclass 45
+Thu Sep 17 16:29:36 BST 2015
+-Done: Digit 8, Subclass 46
+Thu Sep 17 16:29:43 BST 2015
+-Done: Digit 8, Subclass 47
+Thu Sep 17 16:29:51 BST 2015
+-Done: Digit 8, Subclass 48
+Thu Sep 17 16:29:59 BST 2015
+-Done: Digit 8, Subclass 49
+Thu Sep 17 16:30:07 BST 2015
+-Done: Digit 9, Subclass 0
+Thu Sep 17 16:30:16 BST 2015
+-Done: Digit 9, Subclass 1
+Thu Sep 17 16:30:23 BST 2015
+-Done: Digit 9, Subclass 2
+Thu Sep 17 16:30:31 BST 2015
+-Done: Digit 9, Subclass 3
+Thu Sep 17 16:30:39 BST 2015
+-Done: Digit 9, Subclass 4
+Thu Sep 17 16:30:46 BST 2015
+-Done: Digit 9, Subclass 5
+Thu Sep 17 16:30:54 BST 2015
+-Done: Digit 9, Subclass 6
+Thu Sep 17 16:31:01 BST 2015
+-Done: Digit 9, Subclass 7
+Thu Sep 17 16:31:09 BST 2015
+-Done: Digit 9, Subclass 8
+Thu Sep 17 16:31:17 BST 2015
+-Done: Digit 9, Subclass 9
+Thu Sep 17 16:31:24 BST 2015
+-Done: Digit 9, Subclass 10
+Thu Sep 17 16:31:32 BST 2015
+-Done: Digit 9, Subclass 11
+Thu Sep 17 16:31:40 BST 2015
+-Done: Digit 9, Subclass 12
+Thu Sep 17 16:31:47 BST 2015
+-Done: Digit 9, Subclass 13
+Thu Sep 17 16:31:55 BST 2015
+-Done: Digit 9, Subclass 14
+Thu Sep 17 16:32:02 BST 2015
+-Done: Digit 9, Subclass 15
+Thu Sep 17 16:32:10 BST 2015
+-Done: Digit 9, Subclass 16
+Thu Sep 17 16:32:18 BST 2015
+-Done: Digit 9, Subclass 17
+Thu Sep 17 16:32:26 BST 2015
+-Done: Digit 9, Subclass 18
+Thu Sep 17 16:32:33 BST 2015
+-Done: Digit 9, Subclass 19
+Thu Sep 17 16:32:41 BST 2015
+-Done: Digit 9, Subclass 20
+Thu Sep 17 16:32:49 BST 2015
+-Done: Digit 9, Subclass 21
+Thu Sep 17 16:32:57 BST 2015
+-Done: Digit 9, Subclass 22
+Thu Sep 17 16:33:04 BST 2015
+-Done: Digit 9, Subclass 23
+Thu Sep 17 16:33:12 BST 2015
+-Done: Digit 9, Subclass 24
+Thu Sep 17 16:33:19 BST 2015
+-Done: Digit 9, Subclass 25
+Thu Sep 17 16:33:27 BST 2015
+-Done: Digit 9, Subclass 26
+Thu Sep 17 16:33:34 BST 2015
+-Done: Digit 9, Subclass 27
+Thu Sep 17 16:33:42 BST 2015
+-Done: Digit 9, Subclass 28
+Thu Sep 17 16:33:50 BST 2015
+-Done: Digit 9, Subclass 29
+Thu Sep 17 16:33:57 BST 2015
+-Done: Digit 9, Subclass 30
+Thu Sep 17 16:34:05 BST 2015
+-Done: Digit 9, Subclass 31
+Thu Sep 17 16:34:13 BST 2015
+-Done: Digit 9, Subclass 32
+Thu Sep 17 16:34:20 BST 2015
+-Done: Digit 9, Subclass 33
+Thu Sep 17 16:34:28 BST 2015
+-Done: Digit 9, Subclass 34
+Thu Sep 17 16:34:36 BST 2015
+-Done: Digit 9, Subclass 35
+Thu Sep 17 16:34:44 BST 2015
+-Done: Digit 9, Subclass 36
+Thu Sep 17 16:34:52 BST 2015
+-Done: Digit 9, Subclass 37
+Thu Sep 17 16:34:59 BST 2015
+-Done: Digit 9, Subclass 38
+Thu Sep 17 16:35:07 BST 2015
+-Done: Digit 9, Subclass 39
+Thu Sep 17 16:35:15 BST 2015
+-Done: Digit 9, Subclass 40
+Thu Sep 17 16:35:22 BST 2015
+-Done: Digit 9, Subclass 41
+Thu Sep 17 16:35:29 BST 2015
+-Done: Digit 9, Subclass 42
+Thu Sep 17 16:35:37 BST 2015
+-Done: Digit 9, Subclass 43
+Thu Sep 17 16:35:45 BST 2015
+-Done: Digit 9, Subclass 44
+Thu Sep 17 16:35:52 BST 2015
+-Done: Digit 9, Subclass 45
+Thu Sep 17 16:36:00 BST 2015
+-Done: Digit 9, Subclass 46
+Thu Sep 17 16:36:08 BST 2015
+-Done: Digit 9, Subclass 47
+Thu Sep 17 16:36:16 BST 2015
+-Done: Digit 9, Subclass 48
+Thu Sep 17 16:36:24 BST 2015
+-Done: Digit 9, Subclass 49
+Thu Sep 17 16:36:31 BST 2015
+--Finish training with  nest num_of_cluster:  50  clusters per digit
+Thu Sep 17 16:36:31 BST 2015
+--Start testing with  nest , dur_test: 1000 num_cluster:, 50 ,sum_rate:5000 , 1000 per test
+Thu Sep 17 16:36:32 BST 2015
+-Done: test 0
+Thu Sep 17 16:40:24 BST 2015
+-Done: test 1000
+Thu Sep 17 16:44:15 BST 2015
+-Done: test 2000
+Thu Sep 17 16:48:03 BST 2015
+-Done: test 3000
+Thu Sep 17 16:51:46 BST 2015
+-Done: test 4000
+Thu Sep 17 16:55:35 BST 2015
+-Done: test 5000
+Thu Sep 17 16:59:14 BST 2015
+-Done: test 6000
+Thu Sep 17 17:02:49 BST 2015
+-Done: test 7000
+Thu Sep 17 17:06:30 BST 2015
+-Done: test 8000
+Thu Sep 17 17:10:00 BST 2015
+-Done: test 9000
+Thu Sep 17 17:13:39 BST 2015
+--Finish testing with nest
+Thu Sep 17 17:13:39 BST 2015
+found weights file weights_50_nest.npy
+prediction file found: predict_50_nest_nest_max.npy
+The accuracy over MNIST tested with nest (MAX) is 93.23%
+prediction file found: predict_50_nest_nest_sum.npy
+The accuracy over MNIST tested with nest (SUM) is 75.27%
+respond file not found: respond_50_nest_nest_rate5000_dur1000.npy
+--Start testing with  nest , dur_test: 1000 num_cluster:, 50 ,sum_rate:5000 , 100 per test
+Thu Sep 17 18:47:32 BST 2015
+-Done: test 0
+Thu Sep 17 18:47:40 BST 2015
+-Done: test 100
+Thu Sep 17 18:47:42 BST 2015
+found weights file weights_50_nest.npy
+The accuracy over MNIST tested with linear neurons (MAX) is 93.83%
+The accuracy over MNIST tested with linear neurons (SUM) is 68.46%
+--Start testing with  nest , dur_test: 1000 num_cluster:, 50 ,sum_rate:5000 , 100 per test
+Thu Sep 17 18:49:31 BST 2015
+-Done: test 0
+Thu Sep 17 18:49:47 BST 2015
+-Done: test 100
+Thu Sep 17 18:50:04 BST 2015
+-Done: test 200
+Thu Sep 17 18:50:20 BST 2015
+-Done: test 300
+Thu Sep 17 18:50:36 BST 2015
+-Done: test 400
+Thu Sep 17 18:50:52 BST 2015
+-Done: test 500
+Thu Sep 17 18:51:08 BST 2015
+-Done: test 600
+Thu Sep 17 18:51:24 BST 2015
+-Done: test 700
+Thu Sep 17 18:51:40 BST 2015
+-Done: test 800
+Thu Sep 17 18:51:56 BST 2015
+-Done: test 900
+Thu Sep 17 18:52:12 BST 2015
+-Done: test 1000
+Thu Sep 17 18:52:30 BST 2015
+-Done: test 1100
+Thu Sep 17 18:52:47 BST 2015
+-Done: test 1200
+Thu Sep 17 18:53:04 BST 2015
+-Done: test 1300
+Thu Sep 17 18:53:21 BST 2015
+-Done: test 1400
+Thu Sep 17 18:53:37 BST 2015
+-Done: test 1500
+Thu Sep 17 18:53:55 BST 2015
+-Done: test 1600
+Thu Sep 17 18:54:12 BST 2015
+-Done: test 1700
+Thu Sep 17 18:54:29 BST 2015
+-Done: test 1800
+Thu Sep 17 18:54:46 BST 2015
+-Done: test 1900
+Thu Sep 17 18:55:03 BST 2015
+-Done: test 2000
+Thu Sep 17 18:55:20 BST 2015
+-Done: test 2100
+Thu Sep 17 18:55:36 BST 2015
+-Done: test 2200
+Thu Sep 17 18:55:54 BST 2015
+-Done: test 2300
+Thu Sep 17 18:56:11 BST 2015
+-Done: test 2400
+Thu Sep 17 18:56:28 BST 2015
+-Done: test 2500
+Thu Sep 17 18:56:45 BST 2015
+-Done: test 2600
+Thu Sep 17 18:57:02 BST 2015
+-Done: test 2700
+Thu Sep 17 18:57:19 BST 2015
+-Done: test 2800
+Thu Sep 17 18:57:36 BST 2015
+-Done: test 2900
+Thu Sep 17 18:57:54 BST 2015
+-Done: test 3000
+Thu Sep 17 18:58:11 BST 2015
+-Done: test 3100
+Thu Sep 17 18:58:28 BST 2015
+-Done: test 3200
+Thu Sep 17 18:58:47 BST 2015
+-Done: test 3300
+Thu Sep 17 18:59:04 BST 2015
+-Done: test 3400
+Thu Sep 17 18:59:21 BST 2015
+-Done: test 3500
+Thu Sep 17 18:59:37 BST 2015
+-Done: test 3600
+Thu Sep 17 18:59:53 BST 2015
+-Done: test 3700
+Thu Sep 17 19:00:09 BST 2015
+-Done: test 3800
+Thu Sep 17 19:00:26 BST 2015
+-Done: test 3900
+Thu Sep 17 19:00:42 BST 2015
+-Done: test 4000
+Thu Sep 17 19:00:59 BST 2015
+-Done: test 4100
+Thu Sep 17 19:01:16 BST 2015
+-Done: test 4200
+Thu Sep 17 19:01:32 BST 2015
+-Done: test 4300
+Thu Sep 17 19:01:48 BST 2015
+-Done: test 4400
+Thu Sep 17 19:02:05 BST 2015
+-Done: test 4500
+Thu Sep 17 19:02:21 BST 2015
+-Done: test 4600
+Thu Sep 17 19:02:38 BST 2015
+-Done: test 4700
+Thu Sep 17 19:02:54 BST 2015
+-Done: test 4800
+Thu Sep 17 19:03:11 BST 2015
+-Done: test 4900
+Thu Sep 17 19:03:28 BST 2015
+-Done: test 5000
+Thu Sep 17 19:03:44 BST 2015
+-Done: test 5100
+Thu Sep 17 19:04:00 BST 2015
+-Done: test 5200
+Thu Sep 17 19:04:17 BST 2015
+-Done: test 5300
+Thu Sep 17 19:04:34 BST 2015
+-Done: test 5400
+Thu Sep 17 19:04:50 BST 2015
+-Done: test 5500
+Thu Sep 17 19:05:06 BST 2015
+-Done: test 5600
+Thu Sep 17 19:05:22 BST 2015
+-Done: test 5700
+Thu Sep 17 19:05:38 BST 2015
+-Done: test 5800
+Thu Sep 17 19:05:53 BST 2015
+-Done: test 5900
+Thu Sep 17 19:06:10 BST 2015
+-Done: test 6000
+Thu Sep 17 19:06:24 BST 2015
+-Done: test 6100
+Thu Sep 17 19:06:38 BST 2015
+-Done: test 6200
+Thu Sep 17 19:06:54 BST 2015
+-Done: test 6300
+Thu Sep 17 19:07:09 BST 2015
+-Done: test 6400
+Thu Sep 17 19:07:24 BST 2015
+-Done: test 6500
+Thu Sep 17 19:07:40 BST 2015
+-Done: test 6600
+Thu Sep 17 19:07:56 BST 2015
+-Done: test 6700
+Thu Sep 17 19:08:09 BST 2015
+-Done: test 6800
+Thu Sep 17 19:08:25 BST 2015
+-Done: test 6900
+Thu Sep 17 19:08:42 BST 2015
+-Done: test 7000
+Thu Sep 17 19:08:59 BST 2015
+-Done: test 7100
+Thu Sep 17 19:09:14 BST 2015
+-Done: test 7200
+Thu Sep 17 19:09:30 BST 2015
+-Done: test 7300
+Thu Sep 17 19:09:46 BST 2015
+-Done: test 7400
+Thu Sep 17 19:10:01 BST 2015
+-Done: test 7500
+Thu Sep 17 19:10:17 BST 2015
+-Done: test 7600
+Thu Sep 17 19:10:33 BST 2015
+-Done: test 7700
+Thu Sep 17 19:10:47 BST 2015
+-Done: test 7800
+Thu Sep 17 19:11:01 BST 2015
+-Done: test 7900
+Thu Sep 17 19:11:15 BST 2015
+-Done: test 8000
+Thu Sep 17 19:11:30 BST 2015
+-Done: test 8100
+Thu Sep 17 19:11:44 BST 2015
+-Done: test 8200
+Thu Sep 17 19:11:58 BST 2015
+-Done: test 8300
+Thu Sep 17 19:12:12 BST 2015
+-Done: test 8400
+Thu Sep 17 19:12:26 BST 2015
+-Done: test 8500
+Thu Sep 17 19:12:41 BST 2015
+-Done: test 8600
+Thu Sep 17 19:12:56 BST 2015
+-Done: test 8700
+Thu Sep 17 19:13:12 BST 2015
+-Done: test 8800
+Thu Sep 17 19:13:27 BST 2015
+-Done: test 8900
+Thu Sep 17 19:13:41 BST 2015
+-Done: test 9000
+Thu Sep 17 19:13:55 BST 2015
+-Done: test 9100
+Thu Sep 17 19:14:11 BST 2015
+-Done: test 9200
+Thu Sep 17 19:14:26 BST 2015
+-Done: test 9300
+Thu Sep 17 19:14:42 BST 2015
+-Done: test 9400
+Thu Sep 17 19:14:57 BST 2015
+-Done: test 9500
+Thu Sep 17 19:15:13 BST 2015
+-Done: test 9600
+Thu Sep 17 19:15:28 BST 2015
+-Done: test 9700
+Thu Sep 17 19:15:43 BST 2015
+-Done: test 9800
+Thu Sep 17 19:16:00 BST 2015
+-Done: test 9900
+Thu Sep 17 19:16:16 BST 2015
+--Finish testing with nest
+Thu Sep 17 19:16:16 BST 2015
+found weights file weights_50_nest.npy
+prediction file found: predict_50_nest_nest_max.npy
+The accuracy over MNIST tested with nest (MAX) is 92.98%
+prediction file found: predict_50_nest_nest_sum.npy
+The accuracy over MNIST tested with nest (SUM) is 75.25%
+respond file not found: respond_50_nest_nest_rate5000_dur1000.npy
+found weights file weights_50_nest.npy
+
+
+
+
+
+
+
+
+
+
+
+
+found weights file weights_50_nest.npy
+The accuracy over MNIST tested with linear neurons (MAX) is 93.83%
+The accuracy over MNIST tested with linear neurons (SUM) is 68.46%
+--Start testing with nest, dur_test: 1000, num_cluster: 50, sum_rate: 5000, 100 per test
+Mon Sep 28 13:40:04 BST 2015
+-Done: test 0
+Mon Sep 28 13:40:21 BST 2015
+-Done: test 100
+Mon Sep 28 13:40:38 BST 2015
+-Done: test 200
+Mon Sep 28 13:40:47 BST 2015

@@ -5,9 +5,11 @@ LIF neurons with nest
 LIF neurons with spinnaker
 Typical Usage:
 number of clusters per digit: 10
-training sim: nest
-test sim: nest
-python test_analysis.py 10 nest linear
+training simulator: nest
+test simulator: nest
+duration per test: 1000 (ms)
+firing rate for the whole image: 5000 (Hz)
+python test_analysis.py $num_cluster $sim_train $sim_test $dur $sum_rate
 '''
 
 import numpy as np
@@ -123,18 +125,19 @@ if sim_test in ['spin', 'nest']:
         print 'The accuracy over MNIST tested with %s (MAX) is %.2f%%'%(sim_test, accuracy)
     else:
         print 'prediction file not found:', result_file_max
-
-    if os.path.exists(result_file_sum):
-        predict_label=np.load(result_file_sum)
-        print 'prediction file found:', result_file_sum
-        accuracy = np.sum(predict_label == test_y)/100.
-        print 'The accuracy over MNIST tested with %s (SUM) is %.2f%%'%(sim_test, accuracy)
-    else:
-        print 'prediction file not found:', result_file_sum
+    
+    # sum instead of sum
+    #if os.path.exists(result_file_sum):
+    #    predict_label=np.load(result_file_sum)
+    #    print 'prediction file found:', result_file_sum
+    #    accuracy = np.sum(predict_label == test_y)/100.
+    #    print 'The accuracy over MNIST tested with %s (SUM) is %.2f%%'%(sim_test, accuracy)
+    #else:
+    #    print 'prediction file not found:', result_file_sum
         
     if os.path.exists(respond_file):
         latency=np.load(respond_file)
-        print 'respond file found:', result_file_sum
+        print 'respond file found:', respond_file
         respond_time = np.average(latency)
         print 'The average latency is %.2fms'%(respond_time)
     else:
@@ -151,18 +154,18 @@ elif sim_test == 'linear':
         test_x[i] = test_x[i]/sum(test_x[i])*Max_rate
         
     score = np.zeros((len(test_x), num_digit*num_cluster))
-    score_sum = np.zeros((len(test_x), num_digit))
+    #score_sum = np.zeros((len(test_x), num_digit))
     for i in range(len(test_x)):
         for j in range(num_digit):
             for k in range(num_cluster):
                 ind = j*num_cluster+k
                 score[i][ind] = np.sum(test_x[i] * trained_weights[:,ind])
-                score_sum[i][j] += score[i][ind]
+                #score_sum[i][j] += score[i][ind]
     result = np.ceil(np.argmax(score, axis = 1)/num_cluster)
     accuracy = np.sum(result == test_y)/100.
     print 'The accuracy over MNIST tested with linear neurons (MAX) is %.2f%%'%(accuracy)
-    result_sum = np.argmax(score_sum, axis = 1)
-    accuracy = np.sum(result_sum == test_y)/100.
-    print 'The accuracy over MNIST tested with linear neurons (SUM) is %.2f%%'%(accuracy)
+    #result_sum = np.argmax(score_sum, axis = 1)
+    #accuracy = np.sum(result_sum == test_y)/100.
+    #print 'The accuracy over MNIST tested with linear neurons (SUM) is %.2f%%'%(accuracy)
     #print score_sum, result, result_sum, test_y
 

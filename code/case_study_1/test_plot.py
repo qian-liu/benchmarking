@@ -26,14 +26,14 @@ def plot_spikes(spikes, title):
     if spikes is not None:
         fig, ax = plt.subplots()
         #plt.figure(figsize=(15, 5))
-        ax.plot([i[1] for i in spikes], [i[0] for i in spikes], ".")
-        plt.xlabel('Time/ms')
-        plt.ylabel('spikes')
+        ax.plot([i[1] for i in spikes], [i[0] for i in spikes], ".", markersize=3.0)
+        plt.xlabel('Time (ms)')
+        plt.ylabel('Neuron ID')
         ax.set_xticks(range(0,12000,1200)) 
         ax.xaxis.grid(True)
         ax.set_yticks(range(0,100,10)) 
         ax.yaxis.grid(True)
-        plt.title(title)
+        #plt.title(title)
 
     else:
         print "No spikes received"
@@ -103,12 +103,14 @@ else:
     np.save(weights_all, trained_weights)
     print 'Created weights file', weights_all
     
-  
+'''
 weight_sum = np.max(trained_weights,axis=0)
 weight_max = np.max(weight_sum)
+
 for i in range(num_cluster*num_digit):
     if weight_sum[i] > 2.:
         trained_weights[:,i] = trained_weights[:,i]*weight_max/weight_sum[i]#*2.0
+'''
 
 negtive_weights=np.copy(trained_weights)
 neg_thr = 0.1
@@ -139,8 +141,10 @@ if sim_test == 'nest':
     pop_output = p.Population(num_output, p.IF_curr_exp, cell_params_lif)
     p.Projection(pop_input, pop_output, p.AllToAllConnector(weights = trained_weights), target='excitatory')
     p.Projection(pop_input, pop_output, p.AllToAllConnector(weights = negtive_weights), target='inhibitory')
+
     
 elif sim_test == 'spin':
+    p.set_number_of_neurons_per_core("IF_curr_exp", 127)
     pop_poisson = p.Population(input_size*input_size, p.SpikeSourceArray, {'spike_times' : spike_source_data})
     ee_connector = p.OneToOneConnector(weights=3.0)
     pop_input = p.Population(input_size*input_size, p.IF_curr_exp, cell_params_lif)
@@ -150,28 +154,31 @@ elif sim_test == 'spin':
     conn_list_inhi = allToall2ConnectList(negtive_weights, 1.0)
     p.Projection(pop_input, pop_output, p.FromListConnector(conn_list_exci), target='excitatory')
     p.Projection(pop_input, pop_output, p.FromListConnector(conn_list_inhi), target='inhibitory')
-'''
+    
+
+
+
 for i in range(num_output):
     conn_list = list()
     for j in range(num_output):
-        #if np.ceil(i/num_digit) != np.ceil(j/num_digit):
-        if i!= j:
-            conn_list.append((i, j, -1.1, 1.0)) #-1.1
+        if np.ceil(i/num_digit) != np.ceil(j/num_digit):
+        #if i!= j:
+            conn_list.append((i, j, -5.1, 1.0)) #-1.1
     p.Projection(pop_output, pop_output, p.FromListConnector(conn_list), target='inhibitory')
-    print 'WTA:, ', i
-'''
+
 pop_output.record()
-print strftime("------%Y-%m-%d %H:%M:%S", gmtime()), test_offset
+#print strftime("------%Y-%m-%d %H:%M:%S", gmtime()), test_offset
 start = time.time()
 p.run(num_test*(dur_test+silence))
 end = time.time()
 b_time = num_test*(dur_test+silence)
 sim_str = 'test time:%.4f s, biology time:%d ms\n'%(end-start, b_time)
-f=open('log_t5.txt','a')
-f.write(sim_str)
-f.close()
+print sim_str
+#f=open('log_nest.txt','a')
+#f.write(sim_str)
+#f.close()
 spikes = pop_output.getSpikes(compatible_output=True)
-#plot_spikes(spikes, "output")
+plot_spikes(spikes,'Output Spikes of Decision Neurons')
 p.end()
 
 
@@ -192,16 +199,15 @@ for i in range(num_digit):
 
 result_file_max = 'predict_%d_%s_%s_max.npy'%(num_cluster, sim_train, sim_test)
 result_file_sum = 'predict_%d_%s_%s_sum.npy'%(num_cluster, sim_train, sim_test)
-#respond_file = 'respond_%d_%s_%s_rate%d.npy'%(num_cluster, sim_train, sim_test, SUM_rate)
-respond_file = 'respond_%d_%s_%s_rate%d_dur%d.npy'%(num_cluster, sim_train, sim_test, SUM_rate, dur_test)
+#respond_file = 'respond_%d_%s_%s_rate%d_dur%d.npy'%(num_cluster, sim_train, sim_test, SUM_rate, dur_test)
 if test_offset==0:
     predict_max = -1*np.ones(10000)
     predict_sum = -1*np.ones(10000)
-    respond_time = 1000*np.ones(10000)
+    #respond_time = 1000*np.ones(10000)
 else:
     predict_max = np.load(result_file_max)
     predict_sum = np.load(result_file_sum)
-    respond_time = np.load(respond_file)
+    #respond_time = np.load(respond_file)
 spike_count = np.array(spike_count)
 spike_group = np.array(spike_group)
 spike_source = np.sort(np.ceil(np.concatenate(spike_source_data))).astype(int)
@@ -219,8 +225,10 @@ for i in range(num_test):
                 resp_ind = resp_train[0]
                 source_ind = np.where(spike_source>i*(dur_test+silence))[0][0]
                 latency = spikes[resp_ind, 1] - spike_source[source_ind]
-                respond_time[i+test_offset] = latency
+                #respond_time[i+test_offset] = latency
+print predict_sum[test_offset:test_offset+num_test], test_y[test_offset:test_offset+num_test]
 np.save(result_file_max,predict_max)
 np.save(result_file_sum,predict_sum)
-np.save(respond_file,respond_time)
-#print np.average(latency)
+#np.save(respond_file,respond_time)
+np.save('spikes.npy',spike_count)
+np.save('groups.npy',spike_group)

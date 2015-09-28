@@ -1,0 +1,45 @@
+#!/bin/bash
+
+num_digit=10
+sim_train=nest
+num_cluster=50
+#source ~/apt/spin_1408/virtualenv/bin/activate
+source ~/env/nest_pynn0.7/bin/activate
+
+echo '--Start training with' $sim_train 'num_of_cluster:' $num_cluster ' clusters per digit' >> log.txt
+date >> log.txt
+
+for i in `seq 0 $((num_digit-1))`;
+do
+    for j in `seq 0 $((num_cluster-1))`;
+    do
+        python train_mnist.py $num_cluster $i $j $sim_train
+        echo '-Done: Digit' $i', Subclass' $j >> log.txt
+        date >> log.txt
+    done
+done
+echo '--Finish training with ' $sim_train 'num_of_cluster: ' $num_cluster ' clusters per digit' >> log.txt
+date >> log.txt
+
+
+sum_rate=5000
+python test_analysis.py $num_cluster $sim_train linear 0 $sum_rate >> log.txt
+
+sim_test=nest
+num_test=1000
+dur=1000
+
+echo '--Start testing with ' $sim_test ', dur_test:' $dur 'num_cluster:', $num_cluster ',sum_rate:'$sum_rate ', '$num_test 'per test' >> log.txt
+date >> log.txt
+        
+for i in `seq 0 $num_test 9999`;
+do
+    python test_mnist.py  $num_cluster $sim_train $sim_test $num_test $i $dur $sum_rate
+    echo '-Done: test' $i >> log.txt
+    date >> log.txt
+done
+        
+echo '--Finish testing with' $sim_test >> log.txt
+date >> log.txt
+python test_analysis.py $num_cluster $sim_train $sim_test $dur $sum_rate>> log.txt
+
