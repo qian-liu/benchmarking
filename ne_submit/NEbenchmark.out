@@ -1,0 +1,29 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Related Work}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{MNIST}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{ImageNet deng2009imagenet}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Microsoft COCO lin2014microsoft}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.4}{Action Datasets}{section.2}% 6
+\BOOKMARK [1][-]{section.3}{Guiding Principles}{}% 7
+\BOOKMARK [1][-]{section.4}{The Dataset: NE15-MNIST}{}% 8
+\BOOKMARK [2][-]{subsection.4.1}{File Formats}{section.4}% 9
+\BOOKMARK [2][-]{subsection.4.2}{Data Description}{section.4}% 10
+\BOOKMARK [3][-]{subsubsection.4.2.1}{Poissonian}{subsection.4.2}% 11
+\BOOKMARK [3][-]{subsubsection.4.2.2}{Rank-Order-Encoding}{subsection.4.2}% 12
+\BOOKMARK [3][-]{subsubsection.4.2.3}{DVS Sensor Output with Flashing Input}{subsection.4.2}% 13
+\BOOKMARK [3][-]{subsubsection.4.2.4}{DVS Sensor Output with Moving Input}{subsection.4.2}% 14
+\BOOKMARK [1][-]{section.5}{Performance Evaluation}{}% 15
+\BOOKMARK [2][-]{subsection.5.1}{Hardware-Independent}{section.5}% 16
+\BOOKMARK [2][-]{subsection.5.2}{Hardware-Specific}{section.5}% 17
+\BOOKMARK [1][-]{section.6}{Case Studies}{}% 18
+\BOOKMARK [2][-]{subsection.6.1}{Case Study I}{section.6}% 19
+\BOOKMARK [3][-]{subsubsection.6.1.1}{Training}{subsection.6.1}% 20
+\BOOKMARK [3][-]{subsubsection.6.1.2}{Testing}{subsection.6.1}% 21
+\BOOKMARK [3][-]{subsubsection.6.1.3}{Evaluation}{subsection.6.1}% 22
+\BOOKMARK [2][-]{subsection.6.2}{Case Study II}{section.6}% 23
+\BOOKMARK [3][-]{subsubsection.6.2.1}{Training}{subsection.6.2}% 24
+\BOOKMARK [3][-]{subsubsection.6.2.2}{Testing}{subsection.6.2}% 25
+\BOOKMARK [3][-]{subsubsection.6.2.3}{Evaluation}{subsection.6.2}% 26
+\BOOKMARK [1][-]{section.7}{Conclusion}{}% 27
+\BOOKMARK [2][-]{subsection.7.1}{What we have said and done}{section.7}% 28
+\BOOKMARK [2][-]{subsection.7.2}{The future direction of an evolving database}{section.7}% 29

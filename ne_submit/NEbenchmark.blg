@@ -1,0 +1,13 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: NEbenchmark.aux
+Case mismatch error between cite keys deng2009imagenet and DENG2009IMAGENET
+---line 57 of file NEbenchmark.aux
+ : \citation{deng2009imagenet
+ :                           }
+I'm skipping whatever remains of this command
+The style file: frontiersinSCNS&ENG.bst
+Database file #1: bench_ref.bib
+Warning--entry type for "MIT_TechReview" isn't style-file defined
+--line 224 of file bench_ref.bib
+Warning--empty pages in Jug_etal_2012
+Warning--can't use both volume and number fields in liu2014real
+(There was 1 error message)
