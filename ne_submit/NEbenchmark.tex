@@ -19,6 +19,7 @@
 \usepackage{makecell}
 \usepackage{mathptmx}
 \usepackage{amsmath}
+\usepackage{footnote}
 \linenumbers
 %define some own functions
 \newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}} 
@@ -320,7 +321,7 @@ A different way of encoding spikes is using a rank-order code; this means
 keeping just the order in which those spikes were fired and disregarding the exact timing. Rank-ordered spike trains have been used in vision tasks under a biological plausibility constraint, making them a viable way of image encoding for neural applications~\citep{van2001rate,sen2009evaluating,masmoudi2010novel}.
 
 Rank-ordered encoding can be performed using an algorithm known as the
-{Filter overlap Correction algorithm} or FoCal~\citep{sen2009evaluating}. It models the foveal pit region, the highest resolution area of the retina, with four ganglion cell layers that show a centre-surround behaviour~\citep{kolb2003retina}. In order to simulate these layers, four discrete 2D convolutions are performed. The centre-surround behaviour of the ganglion cells is modelled using Differences of Gaussians~(DoG). 
+{Filter overlap Correction algorithm} (FoCal;~\citealp*{sen2009evaluating}). It models the foveal pit region, the highest resolution area of the retina, with four ganglion cell layers that show a centre-surround behaviour~\citep{kolb2003retina}. In order to simulate these layers, four discrete 2D convolutions are performed. The centre-surround behaviour of the ganglion cells is modelled using Differences of Gaussians~(DoG). 
 \begin{equation}
 \label{eq-dog}
 DoG_w(x,y) = \pm\frac{1}{2\pi\sigma_{w,c}^2}e^{\frac{-(x^2 + y^2)}{2\sigma_{w,c}^2}}
@@ -372,7 +373,7 @@ scale $w$.
 \end{table}
 
 Every pixel value in the convolved images (Fig. \ref{fig-convolution-results}) 
-is inversely proportional to a spike emission time (i.e. the higher the pixel value, the sooner the spike will be sent out.)
+is inversely proportional to a spike emission time with respect to the presentation of the image (i.e. the higher the pixel value, the sooner the spike will be sent out.)
 
 \begin{figure}[hbt]
 	\centering
@@ -399,11 +400,11 @@ is inversely proportional to a spike emission time (i.e. the higher the pixel va
 	\caption{Results of correcting the spikes from the simulated ganglion cell layers using the FoCal algorithms.}
 	\label{fig-convolution-results}
 \end{figure}
-The algorithm also performs a redundancy correction step, it does so by 
+Since DoGs where used as a means to encode the image, and they are not an orthogonal basis, the algorithm also performs a redundancy correction step, it does so by 
 adjusting the convolved image's pixel value according to the correlation 
 between convolution kernels (Alg.~\ref{code-focal-corr}).
 \begin{algorithm}[h]
-	\caption{FoCal, Part 2}
+	\caption{FoCal, redundancy correction}
 	\label{code-focal-corr}
 	\begin{algorithmic}
 		\Procedure{Correction}{coeffs $C$, correlations $Q$}
@@ -536,9 +537,9 @@ A complementary evaluation methodology is essential to provide common metrics an
 			%
 			\begin{mycell}{2.5cm}~\cite{Diehl2015fast}\end{mycell}  & 
 			\begin{mycell}{1.9cm} None \end{mycell} & % preprocessing
-			\begin{mycell}{3.5cm} ConvNet or \\FCnet, LIF neurons \end{mycell}& % network
+			\begin{mycell}{3.5cm} ConvNet or \\Fully Connected (FC) net,\\ LIF neurons \end{mycell}& % network
 			\begin{mycell}{3.5cm} Off-line trained with ReLU, weight normalization \end{mycell}&   % training
-			\begin{mycell}{3.5cm} 99.1\% (ConvNet), \\ 98.6\% (FCnet);\\0.5~s per test\end{mycell}\\ % recognition    
+			\begin{mycell}{3.5cm} 99.1\% (ConvNet), \\ 98.6\% (FC net);\\0.5~s per test\end{mycell}\\ % recognition    
 			%
 			\begin{mycell}{2.5cm}~\cite{zhao2014feedforward}\end{mycell}  & 
 			\begin{mycell}{1.9cm} Thresholding\\ or DVS \end{mycell}& % preprocessing 
@@ -595,79 +596,90 @@ Work on SNN-based classifications of MNIST are listed in Table~\ref{tb:software_
 
 \subsection{Hardware-Specific}
 \label{subsec:hw}
-\begin{table*}[thb!]
-	\caption{Hardware dependent comparison}
-	\begin{center}
-		\bgroup
-		\def\arraystretch{1.4}
-		\begin{tabular}{l c c c c c c}
-			$ $ & 
-			\begin{mycell}{2.0cm} System \end{mycell} & 
-			%       \begin{minipage}{1.3cm}\centering Simulation type \end{minipage} & 
-			
-			\begin{mycell}{2.0cm} Neuron Model \end{mycell} & 
-			\begin{mycell}{2.0cm}Synaptic\\Plasticity\end{mycell} &
-			%       \begin{minipage}{1cm}\centering Axonal delays \end{minipage} & 
-			%       \begin{minipage}{1cm}\centering Synaptic model \end{minipage} & 
-			\begin{mycell}{2.0cm} Precision \end{mycell} &  
-			%       \begin{minipage}{1.2cm}\centering Synaptic precision \end{minipage} & 
-			%       \begin{minipage}{1.2cm}\centering Energy per SE \end{minipage} & 
-			%       \begin{minipage}{1.4cm}\centering Synaptic ops per Watt \end{minipage} & 
-			\begin{mycell}{2.0cm} Simulation\\Time \end{mycell} & 
-			\begin{mycell}{2.0cm} Energy/Power \\Usage \end{mycell} 
-			%       \begin{minipage}{1.7cm}\centering Programming front-end \end{minipage}  
-			\\
-			\hline
-			% contents!
-			
-			\begin{mycell}{1.8cm} SpiNNaker \citep{stromatias2013power} \end{mycell} &
-			\begin{mycell}{2.0cm} Digital, \\Scalable \end{mycell} & 
-			\begin{mycell}{2.1cm}Programmable\\Neuron/Synapse,\\Axonal delay \end{mycell}& 
-			\begin{mycell}{2.1cm}Programmable\\learning rule\end{mycell}& 
-			\begin{mycell}{2.0cm}11- to 14-bit synapses\end{mycell} & 
-			\begin{mycell}{2.0cm} Real-time \\ Flexible time resolution \end{mycell}  &
-			\begin{mycell}{2.5cm} 8~nJ/SE \\54.27 MSops/W \end{mycell} \\
-			%
-			\begin{mycell}{1.8cm} TrueNorth \citep{merolla2014million}\end{mycell} & \begin{mycell}{2.0cm}Digital, \\Scalable \end{mycell}& 
-			\begin{mycell}{2.0cm}Fixed models,\\Config params,\\Axonal delay\end{mycell}& 
-			\begin{mycell}{2.0cm}No plasticity\end{mycell}& 
-			\begin{mycell}{2.2cm}122 bits \\params \& states,
-				%       	 per neuron
-				\\ 4-bit synapse 
-				\\(4 signed int + on/off state)
-			\end{mycell}& 
-			\begin{mycell}{2.0cm}Real-time\end{mycell}& 
-			\begin{mycell}{2.0cm}46 GSops/W\end{mycell} \\
-			
-			%
-			\begin{mycell}{1.8cm} Neurogrid \citep{benjamin2014neurogrid}\end{mycell} &
-			\begin{mycell}{2.0cm}Mixed-mode,\\Scalable\end{mycell} & 
-			\begin{mycell}{2.0cm}Fixed models,\\Config params\end{mycell} & 
-			\begin{mycell}{2.0cm}Fixed rule\end{mycell} & 
-			\begin{mycell}{2.0cm}13-bit shared \\ synapses\end{mycell} &
-			\begin{mycell}{2.0cm}Real-time\end{mycell} &
-			\begin{mycell}{2.0cm}941 pJ/SE\end{mycell} \\
-			%
-			\begin{mycell}{1.8cm} HI-CANN \citep{schemmel2010wafer}  \end{mycell} & \begin{mycell}{2.0cm}Mixed-mode,\\Scalable\end{mycell} &
-			\begin{mycell}{2.0cm}Fixed models,\\Config params\end{mycell}& 
-			\begin{mycell}{2.0cm}Fixed rule\end{mycell}& 
-			\begin{mycell}{2.0cm}4-bit synapses\end{mycell}& 
-			\begin{mycell}{2.0cm}Faster than\\ real-time\end{mycell}&
-			\begin{mycell}{2.0cm}198 pJ/SE \\ 13.5 MSops/W \\(network only) \end{mycell}\\
-			%
-			\begin{mycell}{1.8cm} iAER-IFAT \citep{yu201265k}\end{mycell} & 
-			\begin{mycell}{2.0cm}Mixed-mode,\\Scalable\end{mycell} &
-			\begin{mycell}{2.0cm}Fixed models,\\Config params\end{mycell}& 
-			\begin{mycell}{2.0cm}No plasticity\end{mycell} &  
-			\begin{mycell}{2.0cm}Analogue neuron/synapse\end{mycell} & 
-			Real-time& 
-			20GSops/W
-			%dummy update text
-		\end{tabular}
-		\egroup
-	\end{center}
-	\label{tb:hardware_comparison}
-\end{table*}
+
+  \begin{table*}[thb!]
+  	\caption{Hardware dependent comparison}
+  	\begin{center}
+      \begin{minipage}{\textwidth}
+        
+        \begin{savenotes}
+  		\bgroup
+  		\def\arraystretch{1.4}
+  		\begin{tabular}{l c c c c c c}
+  			$ $ & 
+  			\begin{mycell}{2.0cm} System \end{mycell} & 
+  			%       \begin{minipage}{1.3cm}\centering Simulation type \end{minipage} & 
+  			
+  			\begin{mycell}{2.0cm} Neuron Model \end{mycell} & 
+  			\begin{mycell}{2.0cm}Synaptic\\Plasticity\end{mycell} &
+  			%       \begin{minipage}{1cm}\centering Axonal delays \end{minipage} & 
+  			%       \begin{minipage}{1cm}\centering Synaptic model \end{minipage} & 
+  			\begin{mycell}{2.0cm} Precision \end{mycell} &  
+  			%       \begin{minipage}{1.2cm}\centering Synaptic precision \end{minipage} & 
+  			%       \begin{minipage}{1.2cm}\centering Energy per SE \end{minipage} & 
+  			%       \begin{minipage}{1.4cm}\centering Synaptic ops per Watt \end{minipage} & 
+  			\begin{mycell}{2.0cm} Simulation\\Time \end{mycell} & 
+  			\begin{mycell}{2.0cm} Energy/Power \\Usage \end{mycell} 
+  			%       \begin{minipage}{1.7cm}\centering Programming front-end \end{minipage}  
+  			\\
+  			\hline
+  			% contents!
+  			
+  			\begin{mycell}{1.8cm} SpiNNaker \citep{stromatias2013power} \end{mycell} &
+  			\begin{mycell}{2.0cm} Digital, \\Scalable \end{mycell} & 
+  			\begin{mycell}{2.1cm}Programmable\\Neuron/Synapse,\\Axonal delay \end{mycell}& 
+  			\begin{mycell}{2.1cm}Programmable\\learning rule\end{mycell}& 
+  			\begin{mycell}{2.0cm}11- to 14-bit synapses\end{mycell} & 
+  			\begin{mycell}{2.0cm} Real-time \\ Flexible time resolution \end{mycell}  &
+  			\begin{mycell}{2.5cm} 8~nJ/SE \\54.27 MSops/W \end{mycell} \\
+  			%
+  			\begin{mycell}{1.8cm} TrueNorth \citep{merolla2014million}\end{mycell} & \begin{mycell}{2.0cm}Digital, \\Scalable \end{mycell}& 
+  			\begin{mycell}{2.0cm}Fixed models,\\Config params,\\Axonal delay\end{mycell}& 
+  			\begin{mycell}{2.0cm}No plasticity\end{mycell}& 
+  			\begin{mycell}{2.2cm}122 bits \\params \& states,
+  				%       	 per neuron
+  				\\ 4-bit synapse 
+  				%\\(4 signed int + on/off state)
+          \footnote[1]{We consider them 4-bit synapses because it is only possible to choose between 4 different signed integers and whether the synapse is active or not.}
+  			\end{mycell}& 
+  			\begin{mycell}{2.0cm}Real-time\end{mycell}& 
+  			\begin{mycell}{2.0cm}46 GSops/W\end{mycell} \\
+  			
+  			%
+  			\begin{mycell}{1.8cm} Neurogrid \citep{benjamin2014neurogrid}\end{mycell} &
+  			\begin{mycell}{2.0cm}Mixed-mode,\\Scalable\end{mycell} & 
+  			\begin{mycell}{2.0cm}Fixed models,\\Config params\end{mycell} & 
+  			\begin{mycell}{2.0cm}Fixed rule\end{mycell} & 
+  			\begin{mycell}{2.0cm}13-bit shared \\ synapses\end{mycell} &
+  			\begin{mycell}{2.0cm}Real-time\end{mycell} &
+  			\begin{mycell}{2.0cm}941 pJ/SE\end{mycell} \\
+  			%
+  			\begin{mycell}{1.8cm} HI-CANN \citep{schemmel2010wafer}  \end{mycell} & \begin{mycell}{2.0cm}Mixed-mode,\\Scalable\end{mycell} &
+  			\begin{mycell}{2.0cm}Fixed models,\\Config params\end{mycell}& 
+  			\begin{mycell}{2.0cm}Fixed rule\end{mycell}& 
+  			\begin{mycell}{2.0cm}4-bit synapses\end{mycell}& 
+  			\begin{mycell}{2.0cm}Faster than\\ real-time
+                             \footnote[2]{A speed-up of up to $10^5$ times real time has been reported.}
+        \end{mycell}&
+  			\begin{mycell}{2.0cm}198 pJ/SE \\ 13.5 MSops/W \\(network only) \end{mycell}\\
+  			%
+  			\begin{mycell}{1.8cm} HiAER-IFAT \citep{yu201265k}\end{mycell} & 
+  			\begin{mycell}{2.0cm}Mixed-mode,\\Scalable\end{mycell} &
+  			\begin{mycell}{2.0cm}Fixed models,\\Config params\end{mycell}& 
+  			\begin{mycell}{2.0cm}No plasticity\end{mycell} &  
+  			\begin{mycell}{2.0cm}Analogue neuron/synapse\end{mycell} & 
+  			Real-time& 
+  			20GSops/W
+  			%dummy update text
+  		\end{tabular}
+  		\egroup
+
+\end{savenotes}
+\end{minipage}
+  	\end{center}
+  	\label{tb:hardware_comparison}
+  \end{table*}
+
 
 Depending on how neurons, synapses and spike transmission are implemented neuromorphic systems can be categorised as either analogue, digital, or mixed-mode analogue/digital VLSI circuits. Some analogue implementations exploit sub-threshold transistor dynamics to emulate neurons and synapses directly on hardware~\citep{indiveri2011neuromorphic} and are more energy-efficient while requiring less area than their digital counterparts~\citep{joubert2012hardware}. However, the behaviour of analogue circuits is largely determined during the fabrication process due to transistor mismatch~\citep{indiveri2011neuromorphic,pedram2006thermal,linares2003compact}, while their wiring densities render them impractical for large-scale systems. The majority of mixed-mode analogue/digital neuromorphic platforms, such as the High Input Count Analog Neural Network (HI-CANN)~\citep{schemmel2010wafer}, Neurogrid~\citep{benjamin2014neurogrid}, HiAER-IFAT~\citep{yu201265k}, use analogue circuits to emulate neurons and digital packet-based technology to communicate spikes as AER events. This enables reconfigurable connectivity patterns, while the time of spikes is expressed implicitly since typically a spike reaches its destination in less than a millisecond, thus fulfilling the real-time requirement. Digital neuromorphic platforms such as TrueNorth~\citep{merolla2014million} use digital circuits with finite precision to simulate neurons in an event driven manner to minimise the active power dissipation. Neuromorphic systems suffer from model flexibility, since neurons and synapses are fabricated directly on hardware with only a small subset of parameters exposed to the researcher. 
 SpiNNaker is a biologically inspired, massively-parallel, scalable computing architecture designed by the Advanced Processor Technologies (APT) group at the University of Manchester. SpiNNaker has been optimised to simulate very large-scale spiking neural networks in real-time~\citep{furber2014spinnaker}. SpiNNaker aims to combine the advantages of conventional computers and neuromorphic hardware by utilising low-power programmable cores and scalable event-driven communications hardware.
@@ -702,7 +714,7 @@ Meanwhile, as tentative benchmarks the models are implemented on SpiNNaker to as
 Presenting proper benchmarks for vision recognition systems is still under investigation, the case studies only make first attempt.
 
 \subsection{Case Study I}
-The first case study is a simple two-layered network where the input neurons receive Poissonian presented spike trains from the dataset and form an FC network with the decision neurons.
+The first case study is a simple two-layered network where the input neurons receive Poissonian presented spike trains from the dataset and form a fully connected (FC) network with the decision neurons.
 The model utilises LIF neurons, and the parameters are all with biological means, see the listed values in Table~\ref{tbl:pynnSetting}.
 The LIF neuron model follows the membrane potential
 dynamics:
@@ -772,14 +784,14 @@ The trained weights are plotted in accordance with the positions of the decision
 	\centering
 	\subfloat[Training model of a single decision neuron.]{
 		\label{Fig:train}
-		\includegraphics[width=0.48\textwidth]{images/training.pdf}
+		\includegraphics[width=0.48\textwidth]{training}
 	} \\
 	
 	\centering
 	
 	\subfloat[Testing model of the spiking neural network.]{
 		\label{Fig:test}
-		\includegraphics[width=0.48\textwidth]{images/testing.pdf}
+		\includegraphics[width=0.48\textwidth]{testing}
 	}
 	
 	\caption{The training and testing model of the two-layered spiking neural network.}
@@ -882,7 +894,7 @@ The network achieved a CA of 92.98\% and average latency of 10.70~ms, and the si
 
 \begin{figure}[hbt!]
 	\centering
-	\includegraphics[width=0.48\textwidth]{images/energy.pdf}
+	\includegraphics[width=0.48\textwidth]{energy}
 	\caption{Energy usages of different network size both using NEST (blue) on a PC and SpiNNaker (black).}
 	\label{fig:energy}
 \end{figure}
