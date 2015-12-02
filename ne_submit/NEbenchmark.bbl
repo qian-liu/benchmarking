@@ -1,4 +1,4 @@
-\begin{thebibliography}{64}
+\begin{thebibliography}{66}
 \providecommand{\natexlab}[1]{#1}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
@@ -294,6 +294,13 @@ Lyons, M., Akamatsu, S., Kamachi, M., and Gyoba, J. (1998).
   Third IEEE International Conference on}. 200--205
 \bibAnnoteFile{lyons1998coding}
 
+\bibitem[{Mahowald(1992)}]{mahowald1992vlsi}
+Mahowald, M. (1992).
+\newblock \emph{"VLSI analogs of neuronal visual processing: a synthesis of
+  form and function"}.
+\newblock Ph.D. thesis, California Institute of Technology
+\bibAnnoteFile{mahowald1992vlsi}
+
 \bibitem[{Masmoudi et~al.(2010)Masmoudi, Antonini, Kornprobst, and
   Perrinet}]{masmoudi2010novel}
 Masmoudi, K., Antonini, M., Kornprobst, P., and Perrinet, L. (2010).
@@ -350,6 +357,15 @@ O'Connor, P., Neil, D., Liu, S.-C., Delbruck, T., and Pfeiffer, M. (2013).
   network.
 \newblock \emph{Frontiers in neuroscience} 7
 \bibAnnoteFile{o2013real}
+
+\bibitem[{Park et~al.(2014)Park, Ha, Yu, Neftci, and
+  Cauwenberghs}]{park201465k}
+Park, J., Ha, S., Yu, T., Neftci, E., and Cauwenberghs, G. (2014).
+\newblock "a 65k-neuron 73-mevents/s 22-pj/event asynchronous micro-pipelined
+  integrate-and-fire array transceiver".
+\newblock In \emph{Biomedical Circuits and Systems Conference (BioCAS), 2014
+  IEEE} (IEEE), 675--678
+\bibAnnoteFile{park201465k}
 
 \bibitem[{Pedram and Nazarian(2006)}]{pedram2006thermal}
 Pedram, M. and Nazarian, S. (2006).
