@@ -1,4 +1,4 @@
-\begin{thebibliography}{66}
+\begin{thebibliography}{65}
 \providecommand{\natexlab}[1]{#1}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
@@ -101,12 +101,12 @@ Delorme, A. and Thorpe, S.~J. (2001).
 \bibAnnoteFile{delorme2001face}
 
 \bibitem[{Deng et~al.(2009)Deng, Dong, Socher, Li, Li, and
-  Fei-Fei}]{DENG2009IMAGENET}
+  Fei-Fei}]{deng2009imagenet}
 Deng, J., Dong, W., Socher, R., Li, L.-J., Li, K., and Fei-Fei, L. (2009).
 \newblock {Imagenet: a large-scale hierarchical image database}.
 \newblock In \emph{Computer Vision and Pattern Recognition, 2009. CVPR 2009.
   IEEE Conference on}. 248--255
-\bibAnnoteFile{DENG2009IMAGENET}
+\bibAnnoteFile{deng2009imagenet}
 
 \bibitem[{DiCarlo et~al.(2012)DiCarlo, Zoccolan, and Rust}]{dicarlo2012does}
 DiCarlo, J.~J., Zoccolan, D., and Rust, N.~C. (2012).
@@ -253,14 +253,6 @@ LeCun, Y., Huang, F.~J., and Bottou, L. (2004).
 \newblock In \emph{Computer Vision and Pattern Recognition, 2004. CVPR 2004.
   Proceedings of the 2004 IEEE Computer Society Conference on}. vol.~2, II--97
 \bibAnnoteFile{lecun2004learning}
-
-\bibitem[{Lin et~al.(2014)Lin, Maire, Belongie, Hays, Perona, Ramanan
-  et~al.}]{LIN2014MICROSOFT}
-Lin, T.-Y., Maire, M., Belongie, S., Hays, J., Perona, P., Ramanan, D., et~al.
-  (2014).
-\newblock {Microsoft COCO: Common Objects in COntext}.
-\newblock In \emph{Computer Vision--ECCV 2014} (Springer). 740--755
-\bibAnnoteFile{LIN2014MICROSOFT}
 
 \bibitem[{Linares-Barranco et~al.(2003)Linares-Barranco, Serrano-Gotarredona,
   and Serrano-Gotarredona}]{linares2003compact}

@@ -8,45 +8,45 @@ Warning--entry type for "MIT_TechReview" isn't style-file defined
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Warning--empty pages in Jug_etal_2012
 Warning--can't use both volume and number fields in liu2014real
-You've used 66 entries,
+You've used 65 entries,
             3027 wiz_defined-function locations,
-            977 strings with 18804 characters,
-and the built_in function-call counts, 49784 in all, are:
-= -- 4243
-> -- 2745
+            970 strings with 18528 characters,
+and the built_in function-call counts, 48648 in all, are:
+= -- 4147
+> -- 2668
 < -- 27
-+ -- 1353
-- -- 736
-* -- 3503
-:= -- 7053
-add.period$ -- 144
-call.type$ -- 66
-change.case$ -- 614
-chr.to.int$ -- 67
-cite$ -- 134
-duplicate$ -- 3241
-empty$ -- 3357
-format.name$ -- 957
-if$ -- 10319
++ -- 1313
+- -- 715
+* -- 3427
+:= -- 6899
+add.period$ -- 141
+call.type$ -- 65
+change.case$ -- 600
+chr.to.int$ -- 66
+cite$ -- 132
+duplicate$ -- 3172
+empty$ -- 3286
+format.name$ -- 933
+if$ -- 10075
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 706
-newline$ -- 407
-num.names$ -- 264
-pop$ -- 1706
+missing$ -- 691
+newline$ -- 401
+num.names$ -- 260
+pop$ -- 1674
 preamble$ -- 1
-purify$ -- 509
+purify$ -- 498
 quote$ -- 0
-skip$ -- 2007
+skip$ -- 1941
 stack$ -- 0
-substring$ -- 2116
-swap$ -- 1663
+substring$ -- 2073
+swap$ -- 1627
 text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 588
+type$ -- 579
 warning$ -- 2
-while$ -- 310
+while$ -- 304
 width$ -- 0
-write$ -- 938
+write$ -- 923
 (There were 3 warnings)

@@ -3,7 +3,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \documentclass{frontiersENG} % for Engineering articles
-\usepackage[justification=centering]{subfig}
+%\usepackage[justification=centering]{subfig}
+\usepackage[subrefformat=parens,labelformat=parens]{subfig}
 \usepackage{array}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -23,6 +24,7 @@
 \linenumbers
 %define some own functions
 \newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}} 
+%\renewcommand\thesubfigure{(\alph{subfigure})}
 \def\D{\mathrm{d}}
 \hypersetup{
 	hypertexnames=true, 
@@ -161,6 +163,18 @@ In the studies listed above, all the vision data used are in one of the followin
 (1) the grey-scale raw values of images;
 (2) rate-based spike trains according to pixel intensities created by various Poissonian generators;
 (3) unpublished DVS recorded spike-based videos.
+However in the field of conventional non-spiking computer vision, there are a few datasets playing important roles at different times and with various objectives.
+The MNIST~\citep{lecun1998gradient} dataset is a subset of the NIST hand written digits dataset.
+Due to its straightforward target of classifying real-world images, the plain format of binary data and the simple patterns, MNIST has been one of the most popular datasets in computer vision for over 20 years.
+ImageNet~\citep{deng2009imagenet} was put forward to provide researchers with a large-scale image database, which currently contains 14,197,122 images.
+The dataset is a well-recognised benchmark test for the deep learning community, and many attempts have been made to improve the performance of machine learning algorithms on this dataset, for example~\citep{krizhevsky2012imagenet}.
+As a good example of a database catching up with state-of-the-art technologies, Microsoft COCO aims to solve three problems: objects categorisation, context understanding and spatial labelling, in scene understanding by providing large-scale datasets (300,000+ images).
+Similar examples could be found in video datasets.
+Two early benchmarks, the KTH ~\citep{schuldt2004recognizing} and Weizmann~\citep{blank2005actions} datasets, have been used extensively in the past decade. 
+These videos were produced with scripted behaviours in a controlled environment (``in the lab'').
+The YouTube Action Dataset~\citep{liu2009recognizing} targets recognising realistic actions from videos ``in the wild''.
+The main challenge relies on the massive variations due to the moving camera, background clutter, viewing angles, illuminations and so on.
+
 As a consequence, a new series of spike-based vision datasets is now needed to quantitatively measure progress within this rapidly advancing field and to provide fair competition resources for researchers.
 Apart from using spikes instead of the frame-based data of conventional computer vision, there are new concerns of evaluating neuromorphic vision in tasks other than recognition accuracy.
 Therefore a common metric of performance evaluation on spike-based vision is also required to specify the measurements of algorithms and models. 
@@ -169,61 +183,62 @@ Thus benchmarking neuromorphic hardware with various network models will reveal 
 In this paper we propose a large dataset of spike-based visual stimuli, NE, and its complementary evaluation methodology.
 The dataset expands and evolves as research develops and new problems are introduced.
 
-In Section~\ref{sec:Related}, some example datasets of conventional non-spiking computer vision are introduced.
-Section~\ref{sec:guide} defines the purpose and protocols of the proposed dataset.
-The sub-datasets and their generation methods are described in detail in Section~\ref{sec:data}.
-In accordance with the dataset, its evaluation methodology is demonstrated in Section~\ref{sec:eval}.
+%In Section~\ref{sec:Related}, some example datasets of conventional non-spiking computer vision are introduced.
+Section~\ref{sec:method} defines the purpose and protocols of the proposed dataset, describes the sub-datasets and their generation methods, and demonstrates the evaluation methodology in accordance with the dataset.
+%The sub-datasets and their generation methods are described in detail in Section~\ref{sec:data}.
+%In accordance with the dataset, its evaluation methodology is demonstrated in Section~\ref{sec:eval}.
 Moreover, two SNN models are provided as examples of benchmarking hardware platforms in Section~\ref{sec:test}.
 Section~\ref{sec:summ} summarises the paper and discusses future work.
 
-\section{Related Work}
-\label{sec:Related}
-In conventional computer vision, there are a few datasets playing important roles at different times and with various objectives.
-\subsection{MNIST}
-The MNIST~\citep{lecun1998gradient} dataset is a subset of the NIST hand written digits dataset.
-The training set contains 60,000 patterns collected from approximately 250 writers.
-The testing set is composed of 10,000 patterns written by disjoint individuals which were not listed in the training set.
-All the digits in the dataset are of similar scale centring in a 28$ \times $28 image.
-Due to its straightforward target of classifying real-world images, the plain format of binary data and the simple patterns, MNIST has been one of the most popular datasets in computer vision for over 20 years.
+%\section{Related Work}
+%\label{sec:Related}
+%In conventional computer vision, there are a few datasets playing important roles at different times and with various objectives.
+%\subsection{MNIST}
+%The MNIST~\citep{lecun1998gradient} dataset is a subset of the NIST hand written digits dataset.
+%The training set contains 60,000 patterns collected from approximately 250 writers.
+%The testing set is composed of 10,000 patterns written by disjoint individuals which were not listed in the training set.
+%All the digits in the dataset are of similar scale centring in a 28$ \times $28 image.
+%Due to its straightforward target of classifying real-world images, the plain format of binary data and the simple patterns, MNIST has been one of the most popular datasets in computer vision for over 20 years.
+%
+%Many methods have been verified on this dataset: K-means, SVM, ConvNets, etc.
+%The descending recognition error rate makes it nearly a solved problem, however some modifications, such as position shifts, scaling and noise, bring new challenges.
+%Certainly, a spiking version of the dataset will be an interesting artificial distortion and draw attention to new methods and algorithms on the challenge. 
+%
+%\subsection{ImageNet~\citep{deng2009imagenet}}
+%Since the new era of the 4th generation ANN, the DNN, a flow of successful applications have been reported.
+%Meanwhile, training the deeper network triggers a huge demand for sample data.
+%The purpose of putting forward ImageNet was to provide researchers with a large-scale image database, which matches nicely with DNN data requirements.
+%Currently there are 14,197,122 images and 21,841 synsets indexed in the dataset\footnote{http://www.image-net.org/}.
+%Synsets are meaningful concepts described with a few words or phrases, and they are organised in a hierarchy as in WordNet.%~\citep{deng2009imagenet}.
+%The final goal of ImageNet is to provide about 1000 images for each of the 80,000 synsets in WordNet.
+%In other words, there will be tens of millions of images tidily structured, accurately labelled and human annotated.
+%The dataset is a well-recognised benchmark test for the deep learning community, and many attempts have been made to improve the performance of machine learning algorithms on this dataset, for example~\citep{krizhevsky2012imagenet}.
+%
+%\subsection{Microsoft COCO~\citep{lin2014microsoft}}
+%As a good example of a database catching up with state-of-the-art technologies, Microsoft COCO aims to solve three problems in scene understanding by providing large-scale datasets.
+%First is to categorise objects in their non-iconic views, such as being small, ambiguous or partially occluded.
+%Secondly, understanding the context (contextual reasoning) of multiple objects in an image is necessary.
+%Lastly, spatial labelling of the objects is a core analysis in scene understanding.
+%Up to date, the dataset contains 300,000+ images, 2 million instances and 5 captions per image.
+%
+%\subsection{Action Datasets}
+%Similar examples could be found in video datasets.
+%Two early benchmarks, the KTH ~\citep{schuldt2004recognizing} and Weizmann~\citep{blank2005actions} datasets, have been used extensively in the past decade. 
+%These videos were produced with scripted behaviours in a controlled environment (``in the lab'').
+%They contain single atomic actions, which are simple and neat: walking, running, sitting, etc.
+%
+%Taking the advantages of continuous spiking trains instead of frames of videos, spiking versions of such action datasets will be provided in our future work.
+%A DVS simulation may be needed to convert frames of images into spikes.
+%
+%The YouTube Action Dataset~\citep{liu2009recognizing} targets recognising realistic actions from videos ``in the wild''.
+%Thanks to the digital era, unconstrained videos are abundant on the Internet, e.g. YouTube.
+%This YouTube Action dataset is composed of 1,168 videos in 11 categories.
+%The main challenge relies on the massive variations due to the moving camera, background clutter, viewing angles, illuminations and so on.
+%It also aims to detect complex action (non-atomic), e.g. long jump, which consists of several continuous atomic actions.
 
-Many methods have been verified on this dataset: K-means, SVM, ConvNets, etc.
-The descending recognition error rate makes it nearly a solved problem, however some modifications, such as position shifts, scaling and noise, bring new challenges.
-Certainly, a spiking version of the dataset will be an interesting artificial distortion and draw attention to new methods and algorithms on the challenge. 
-
-\subsection{ImageNet~\citep{deng2009imagenet}}
-Since the new era of the 4th generation ANN, the DNN, a flow of successful applications have been reported.
-Meanwhile, training the deeper network triggers a huge demand for sample data.
-The purpose of putting forward ImageNet was to provide researchers with a large-scale image database, which matches nicely with DNN data requirements.
-Currently there are 14,197,122 images and 21,841 synsets indexed in the dataset\footnote{http://www.image-net.org/}.
-Synsets are meaningful concepts described with a few words or phrases, and they are organised in a hierarchy as in WordNet.%~\citep{deng2009imagenet}.
-The final goal of ImageNet is to provide about 1000 images for each of the 80,000 synsets in WordNet.
-In other words, there will be tens of millions of images tidily structured, accurately labelled and human annotated.
-The dataset is a well-recognised benchmark test for the deep learning community, and many attempts have been made to improve the performance of machine learning algorithms on this dataset, for example~\citep{krizhevsky2012imagenet}.
-
-\subsection{Microsoft COCO~\citep{lin2014microsoft}}
-As a good example of a database catching up with state-of-the-art technologies, Microsoft COCO aims to solve three problems in scene understanding by providing large-scale datasets.
-First is to categorise objects in their non-iconic views, such as being small, ambiguous or partially occluded.
-Secondly, understanding the context (contextual reasoning) of multiple objects in an image is necessary.
-Lastly, spatial labelling of the objects is a core analysis in scene understanding.
-Up to date, the dataset contains 300,000+ images, 2 million instances and 5 captions per image.
-
-\subsection{Action Datasets}
-Similar examples could be found in video datasets.
-Two early benchmarks, the KTH ~\citep{schuldt2004recognizing} and Weizmann~\citep{blank2005actions} datasets, have been used extensively in the past decade. 
-These videos were produced with scripted behaviours in a controlled environment (``in the lab'').
-They contain single atomic actions, which are simple and neat: walking, running, sitting, etc.
-
-Taking the advantages of continuous spiking trains instead of frames of videos, spiking versions of such action datasets will be provided in our future work.
-A DVS simulation may be needed to convert frames of images into spikes.
-
-The YouTube Action Dataset~\citep{liu2009recognizing} targets recognising realistic actions from videos ``in the wild''.
-Thanks to the digital era, unconstrained videos are abundant on the Internet, e.g. YouTube.
-This YouTube Action dataset is composed of 1,168 videos in 11 categories.
-The main challenge relies on the massive variations due to the moving camera, background clutter, viewing angles, illuminations and so on.
-It also aims to detect complex action (non-atomic), e.g. long jump, which consists of several continuous atomic actions.
-
-\section{Guiding Principles}
-\label{sec:guide}
+\section{Materials and Methods}
+\label{sec:method}
+\subsection{Guiding Principles}
 The NE database we propose here is a developing and evolving dataset consisting of various spike-based representations of images and videos.
 The spikes are either generated from spike encoding methods which covert images or frames of videos into spike trains, or recorded from DVS silicon retinas.
 The spike trains are in the format of AER~\citep{mahowald1992vlsi} data, which could easily be used in both event-driven computer simulations and neuromorphic systems.
@@ -249,7 +264,7 @@ With the NE dataset we hope:
 \end{itemize}
 
 
-\section{The Dataset: NE15-MNIST}
+\subsection{The Dataset: NE15-MNIST}
 \label{sec:data}
 %Experiment setup/ collection method/ properties of each class/ etc.
 The name of the first proposed dataset in the benchmarking system is NE15-MNIST which stands for Neuromorphic Engineering 2015 on MNIST.
@@ -266,7 +281,7 @@ The NE15-MNIST is converted into a spiking version of the original dataset consi
 	to trigger the study of algorithms targeting on continuous input from real-world sensors and to implement them on mobile neuromorphic robots.
 \end{itemize}
 The dataset can be found in the GitHub repository at: https://github.com/qian-liu/benchmarking.
-\subsection{File~Formats}
+\subsection{Data Description}
 
 Two file formats are supported in the dataset: jAER format~\citep{delbruck2008frame} (.dat or .aedat), and binary file in NumPy .npy format.
 The AER interface has been widely used in neuromorphic systems, especially for vision sensors.
@@ -300,7 +315,7 @@ The duration of artificially generated data could be configured using the Python
 	\label{fig:zero}
 \end{figure}
 
-\subsection{Data Description}	
+%\subsubsection{Data Description}	
 \subsubsection{Poissonian}
 
 In the cortex, the timing of spikes is highly irregular~\citep{squire1998findings}.
@@ -315,8 +330,8 @@ Every recognition system may require different spiking rates and various lengths
 The generated Poissonian spikes can be in the formats of both jAER and PyNN spike source array.
 Thus, it is easy to visualise the digits and also to build spiking neural networks.
 Because different simulators generate random Poissonian spike trains with various mechanisms, languages and codes, using the same dataset enables performance evaluation on different simulators without the interference created by non-unified input.
-The same digit displayed in Fig.~\ref{Fig:jaer} is converted to Poissonian spike trains, see Fig.~\ref{Fig:poisson}.
-The raster plot can be found in Fig.~\ref{Fig:raster}, indicating the intensities of the pixels.
+The same digit displayed in Figure~\subref*{Fig:jaer} is converted to Poissonian spike trains, see Figure~\subref*{Fig:poisson}.
+The raster plot can be found in Figure~\subref*{Fig:raster}, indicating the intensities of the pixels.
 
 
 
@@ -377,7 +392,7 @@ scale $w$.
 	\label{tab-kernel-specs}
 \end{table}
 
-Every pixel value in the convolved images (Fig. \ref{fig-convolution-results}) 
+Every pixel value in the convolved images (Figure~\ref{fig-convolution-results}) 
 is inversely proportional to a spike emission time with respect to the presentation of the image (i.e. the higher the pixel value, the sooner the spike will be sent out.)
 
 \begin{figure}[hbt]
@@ -430,7 +445,7 @@ between convolution kernels (Alg.~\ref{code-focal-corr}).
 \end{algorithm}
 
 
-After the correction step, the most important information can be recovered using only the first 30\% of the spikes~\citep{sen2009evaluating}. These significant spikes are shown in Fig.~\ref{fig-raster-plot-30pc}, assuming that each spike will be generated 1~ms apart. Neurons in Layer 1 emit spikes faster and in larger quantities than any other layer, making it the most important one. Layers 2 and 3 have few spikes, this is due to the large convolution kernels used to simulate the ganglion cells. One of the main advantages of ROC is that neurons will only spike once, this can be seen particularly well in these two layers. Layers 0 and 1 encode fine details, while layers 2 and 3 result in blob like features.
+After the correction step, the most important information can be recovered using only the first 30\% of the spikes~\citep{sen2009evaluating}. These significant spikes are shown in Figure~\ref{fig-raster-plot-30pc}, assuming that each spike will be generated 1~ms apart. Neurons in Layer 1 emit spikes faster and in larger quantities than any other layer, making it the most important one. Layers 2 and 3 have few spikes, this is due to the large convolution kernels used to simulate the ganglion cells. One of the main advantages of ROC is that neurons will only spike once, this can be seen particularly well in these two layers. Layers 0 and 1 encode fine details, while layers 2 and 3 result in blob like features.
 \begin{figure}[hbt]
 	\centering
 	\includegraphics[width=0.475\textwidth]{raster-plot-21-0-30pc}
@@ -438,7 +453,7 @@ After the correction step, the most important information can be recovered using
 	\label{fig-raster-plot-30pc}
 \end{figure}
 
-Figure \ref{fig-reconstruction-results} shows the reconstruction results for the two stages of the algorithm. On Fig. \ref{pic-lena-reconstructed-raw} the reconstruction was applied after the convolution but without the FoCal correction, a blurry image is the result of redundancy in the spike representation. A better reconstruction can be obtained after Algorithm \ref{code-focal-corr} has been applied, the result is shown in Figure \ref{pic-lena-reconstructed-focal}.
+Figure~\ref{fig-reconstruction-results} shows the reconstruction results for the two stages of the algorithm. On Figure~\subref*{pic-lena-reconstructed-raw} the reconstruction was applied after the convolution but without the FoCal correction, a blurry image is the result of redundancy in the spike representation. A better reconstruction can be obtained after Algorithm~\ref{code-focal-corr} has been applied, the result is shown in Figure~\subref*{pic-lena-reconstructed-focal}.
 
 
 \begin{figure}[hbt]
@@ -467,7 +482,7 @@ The purpose of including the subset of DVS recorded flashing digits is to promot
 Each digit and a blank image was shown alternately and each display lasted one second.
 The digits were displayed on an LCD monitor in front of the DVS retina~\citep{serrano2013128} and were placed in the centre of the visual field of the camera.
 Since there are two polarities of the spikes: 'ON' indicates the increase of the intensity while 'OFF' reflects the opposite, there are 'ON' and 'OFF' flashing recordings respectively per digit.
-In Fig.~\ref{fig:flash}, the burstiness of the spikes is illustrated where most of the spikes occur in a 30~ms slot. 
+In Figure~\ref{fig:flash}, the burstiness of the spikes is illustrated where most of the spikes occur in a 30~ms slot. 
 In total, the subset of the database contains 2$\times$$60,000$ recordings for training and 2$\times$$10,000$ for testing.
 
 \begin{figure}[b!]
@@ -493,7 +508,7 @@ MNIST digits were scaled to three different sizes, by using smooth interpolation
 The same DVS~\citep{serrano2013128} used in Section~\ref{subsec_flash} captured the movements of the digits and generated spike trains for each pixel of its 128$\times$128 resolution.
 A total of 30,000 recordings were made: 10 digits, at 3 different scales, 1000 different handwritten samples for each.
 
-\section{Performance Evaluation}
+\subsection{Performance Evaluation}
 \label{sec:eval}
 A complementary evaluation methodology is essential to provide common metrics and assess both the model-level and hardware-level performance.
 
@@ -542,9 +557,9 @@ A complementary evaluation methodology is essential to provide common metrics an
 			%
 			\begin{mycell}{2.5cm}~\cite{Diehl2015fast}\end{mycell}  & 
 			\begin{mycell}{1.9cm} None \end{mycell} & % preprocessing
-			\begin{mycell}{3.5cm} ConvNet or \\Fully Connected (FC) net,\\ LIF neurons \end{mycell}& % network
+			\begin{mycell}{3.5cm} ConvNet or \\Fully connected,\\ LIF neurons \end{mycell}& % network
 			\begin{mycell}{3.5cm} Off-line trained with ReLU, weight normalization \end{mycell}&   % training
-			\begin{mycell}{3.5cm} 99.1\% (ConvNet), \\ 98.6\% (FC net);\\0.5~s per test\end{mycell}\\ % recognition    
+			\begin{mycell}{3.5cm} 99.1\% (ConvNet), \\ 98.6\% (Fully connected);\\0.5~s per test\end{mycell}\\ % recognition    
 			%
 			\begin{mycell}{2.5cm}~\cite{zhao2014feedforward}\end{mycell}  & 
 			\begin{mycell}{1.9cm} Thresholding\\ or DVS \end{mycell}& % preprocessing 
@@ -562,7 +577,7 @@ A complementary evaluation methodology is essential to provide common metrics an
 			%
 			\begin{mycell}{2.5cm} This paper \end{mycell}  & 
 			\begin{mycell}{1.9cm} None \end{mycell}& % preprocessing 
-			\begin{mycell}{3.5cm} FC decision layer, \\ LIF neurons \end{mycell}& % network
+			\begin{mycell}{3.5cm} Fully connected decision layer, \\ LIF neurons \end{mycell}& % network
 			\begin{mycell}{3.5cm} K-means clusters,\\Supervised STDP\\$18,000$~s of training \end{mycell}& % training
 			\begin{mycell}{3.5cm} 92.98\%\\1~s per test\\10.70~ms latency\end{mycell}\\ % recognition
 		\end{tabular}
@@ -571,7 +586,7 @@ A complementary evaluation methodology is essential to provide common metrics an
 	\label{tb:software_comparison}
 \end{table*}
 
-\subsection{Hardware-Independent}
+\subsubsection{Hardware-Independent Evaluation}
 \label{subsec:model}
 
 
@@ -599,7 +614,7 @@ A faster model is more suitable for real-time recognition systems such as neurom
 A commonly reported characteristic is the accuracy of the network, perhaps adding remarks on how these scores are obtained could help to unify criteria and ease comparison.
 Work on SNN-based classifications of MNIST are listed in Table~\ref{tb:software_comparison} and evaluated on the proposed metrics.
 
-\subsection{Hardware-Specific}
+\subsubsection{Hardware-Specific Evaluation}
 \label{subsec:hw}
 
   \begin{table*}[thb!]
@@ -711,7 +726,7 @@ For a particular SNN application or benchmark, the scalability and programmabili
 The system performance will be assessed on the accuracy, simulation time and energy use running the network. 
 Table~\ref{tb:hardware_comparison} aims to summarise the aforementioned hardware comparison metrics.
 
-\section{Case Studies}
+\section{Results}
 \label{sec:test}
 In this section, we present two recognition SNN models working on the Poissonian subset of the NE15-MNIST dataset.
 Their network components, training and testing methods are described according to the evaluation methodology stated above.
@@ -720,7 +735,9 @@ Meanwhile, as tentative benchmarks the models are implemented on SpiNNaker to as
 Presenting proper benchmarks for vision recognition systems is still under investigation, the case studies only make first attempt.
 
 \subsection{Case Study I}
-The first case study is a simple two-layered network where the input neurons receive Poissonian presented spike trains from the dataset and form a fully connected (FC) network with the decision neurons.
+The first case study is a simple two-layered network where the input neurons receive Poissonian presented spike trains from the dataset and form a fully connected network with the decision neurons.
+There is at least one decision neuron per digit to classify a test input.
+The neuron with highest output firing rate classifies a test image into the digit it represents.
 The model utilises LIF neurons, and the parameters are all with biological means, see the listed values in Table~\ref{tbl:pynnSetting}.
 The LIF neuron model follows the membrane potential
 dynamics:
@@ -779,13 +796,16 @@ There are two layers in the model: 28$\times$28 input neurons fully connect to 1
 Each decision neuron responds to a certain template of a digit.
 In the standard configuration, there are 10 decision neurons answering to the same digit with slightly different templates.
 Those templates are embedded in the connection weights between the two layers.
-Fig.~\ref{Fig:train} shows how the connections to a single decision neuron are tuned.
+Figure~\subref*{Fig:train} shows how the connections to a single decision neuron are tuned.
 
 The training set of $60,000$ hand written digits are firstly classified into 100 classes, 10 subclasses per digit, using K-means clusters.
-So the images in a certain subclass are used to train one corresponding decision neuron.
+K-means clustering separates a set of data points into K subsets (clusters) according to the Euclidean distance.
+Therefore each cluster tends to form a boundary within which the data points are near each other.
+In this case, all the images of a same digit (a class) are divided into 10 subclasses by assigning K=10.
+Then the images in a certain subclass are used to train a template embedded in the synaptic weights to the corresponding decision neuron.
 The firing rates of the input neurons are assigned linearly according to their intensities and the total firing rate of all the 28$\times$28 input neurons is normalised with $2,000$~Hz, e.g. the summation of the firing rate of all the input neurons is $2,000$~Hz.
 All the images together are presented for $18,000$~s (about 300~ms per image) during training and at the same time a teaching signal of 50~Hz is conveyed to the decision neuron to trigger STDP learning.
-The trained weights are plotted in accordance with the positions of the decision neurons in Fig.~\ref{Fig:test}.
+The trained weights are plotted in accordance with the positions of the decision neurons in Figure~\subref*{Fig:test}.
 \begin{figure}[thb!]
 	\centering
 	\subfloat[Training model of a single decision neuron.]{
@@ -809,7 +829,7 @@ The trained weights are plotted in accordance with the positions of the decision
 \subsubsection{Testing}
 After training the weights of the plastic synapses are set to static, keeping the state of the weights at the last moment of training.
 The weak weights were set to inhibitory connections with an identical strength.
-The feed-forward testing network is shown in Fig.~\ref{Fig:test} where Poissonion spike trains are generated the same way as in the training with a total firing rate of $2,000$~Hz per image.
+The feed-forward testing network is shown in Figure~\subref*{Fig:test} where Poissonion spike trains are generated the same way as in the training with a total firing rate of $2,000$~Hz per image.
 The input neurons convey the same spike trains to every decision neuron through its responding trained synaptic weights. 
 Every testing image ($10,000$ images in total) is presented once and lasts 1~s with a silence of 200~ms between them.
 The output neuron with the highest firing rate decides what digit was recognized.
@@ -822,20 +842,23 @@ As mentioned in Section~\ref{subsec:model}, CA and response time (latency) are t
 In our experiment, two sets of weights were applied: the original STDP trained weights and scaled-up weights which are 10 times stronger.
 The spiking rates of the testing samples were also modified, ranging from 10 to $5,000$~Hz.
 
-We found that accuracy depends largely on the time each sample is exposed to the network and the sample spiking rate (Fig.~\ref{fig:assess}.)
+We found that accuracy depends largely on the time each sample is exposed to the network and the sample spiking rate (Figure~\ref{fig:assess}.)
 Furthermore, the latency of the output of the decision neurons is affected by both the spiking rate and connection weights.
-Fig.~\ref{fig:acc_time} shows that the CA is better as exposure time increases. The longer an image is presented, the more information is gathered by the network, so the accuracy climbs.
-Classification accuracy also increases when input spiking rates are augmented (Fig.~\ref{fig:acc_rate}.) Given that the spike trains injected into the network are more intense, the decision neurons become more active and so does the output disparity among them.
+Figure~\subref*{fig:acc_time} shows that the CA is better as exposure time increases. The longer an image is presented, the more information is gathered by the network, so the accuracy climbs.
+Classification accuracy also increases when input spiking rates are augmented (Figure~\subref*{fig:acc_rate}).
+Given that the spike trains injected into the network are more intense, the decision neurons become more active and so does the output disparity among them.
 Nonetheless, it is important to know that these increments in CA have a limit, as is shown in the aforementioned figures.
 With stronger weights, the accuracy is much higher when the input firing rate is less than $2,000$~Hz.
 
 
 The latency of an SNN model is the result of the input rates and synaptic weights.
+We calculate the latency of each test by getting the time difference of the first spike generated by the output layer and the first spike of the input layer.
 As the input rates grow, there are more spikes arriving at the decision neurons, triggering them to spike sooner.
-A similar idea applies to the influence of synaptic weights. If stronger weights are taken, then the membrane potential of a neuron reaches its threshold earlier.
-Fig.~\ref{fig:lat_rate} indicates that the latency is shortened with increasing input rates with both the original and scaled-up weights.
+A similar idea applies to the influence of synaptic weights.
+If stronger weights are taken, then the membrane potential of a neuron reaches its threshold earlier.
+Figure~\subref*{fig:lat_rate} indicates that the latency is shortened with increasing input rates with both the original and scaled-up weights.
 When the spiking rate is less than $2,000$~Hz, the network with stronger weights has a much shorter latency.
-As long as there are enough spikes to trigger the decision neurons to spike, increasing the test time will not make the network respond sooner~(Fig.~\ref{fig:lat_time}.)
+As long as there are enough spikes to trigger the decision neurons to spike, increasing the test time will not make the network respond sooner~(Figure~\subref*{fig:lat_time}).
 \begin{figure}[htb!]
 	\centering
 	\subfloat[Accuracy changes against test time.]{
@@ -855,7 +878,9 @@ As long as there are enough spikes to trigger the decision neurons to spike, inc
 		\label{fig:lat_rate}
 		\includegraphics[width=0.25\textwidth]{lat_rate}
 	}
-	\caption{Accuracy and response time (latency) change over test time and input firing rate per testing image. Original trained weights are used (circles in blue) as well as the scaled up ($\times10$) weights (triangles in black). }
+	\caption{Accuracy and response time (latency) change over test time and input firing rate per test image.
+	The test time is the duration of the presence of a single test image, and the input firing rate is the summation of all the input neurons.
+	Original trained weights are used (circles in blue) as well as the scaled up ($\times10$) weights (triangles in black). }
 	\label{fig:assess}
 \end{figure}
 
@@ -863,6 +888,7 @@ Regarding the network size, it not only influences the accuracy of a model but a
 For the purpose of comparing the accuracy, simulation time and energy usage, different configurations have been tested on NEST (working on a PC with CPU: i5-4570 and 8G memory) and SpiNNaker, see Table~\ref{tbl:compare}.
 The input rates in all of the tests are $5,000$~Hz, and each image is presented for 1~s.
 The configurations only differ in the number of templates (subclasses/clusters) per digit.
+Thus the network size vary according to the number of neurons in the decision layer where each neuron represents a subclass of a digit and the template is embedded in the synaptic weights connecting from the input layer to the decision neuron.
 The recognition accuracies differ in a range of $\pm0.5\%$ between NEST and SpiNNaker due to the limited fast memory and the necessity for fixed-point arithmetic on SpiNNaker to ensure real-time operation.
 It is inevitable that numerical precision will be below IEEE double precision at various points in the processing chain from synaptic input to membrane potential.
 The main bottleneck is currently in the ring buffer where the total precision for accumulated spike inputs is 16-bit, meaning that individual spikes are realistically going to be limited to 11- to 14-bit depending upon the probabilistic headroom calculated as necessary from the network configuration and spike throughput~\citep{Hopkins2015Accuracy}.
@@ -871,7 +897,7 @@ On the other hand, SpiNNaker works in real (biologically real) time and the simu
 The Thermal Design Power (TDP) usage of all four processors of i5-4570 actively operating at base frequency is 84~W\footnote{\url{http://ark.intel.com/products/75043/Intel-Core-i5-4570-Processor-6M-Cache-up-to-3_60-GHz}}.
 NEST was run fully active on a single core which cost 21~W of power usage.
 The energy use can be calculated as the product of the simulation time and the power use.
-Even with the smallest network, SpiNNaker wins in the energy cost comparison, see Fig.~\ref{fig:energy}.
+Even with the smallest network, SpiNNaker wins in the energy cost comparison, see Figure~\ref{fig:energy}.
 Among different network configurations, the network of 500 decision neurons (50 clusters per digit) reaches the highest recognition rate.
 %The recognition accuracy reaches the highest (92.98\%) when 50 patterns are trained per digit.
 The network achieved a CA of 92.98\% and average latency of 10.70~ms, and the simulation costs SpiNNaker 0.41~W on power use and $4,920$~J on energy use.
@@ -1012,9 +1038,9 @@ Finally, this particular spiking DBN ran on a single SpiNNaker chip (16 ARM9 cor
 	\label{Fig:spinnchipPower}
 \end{figure} 
 
-\section{Conclusion}
+\section{Discussion}
 \label{sec:summ}
-\subsection{What we have said and done}
+\subsection{Summery of the work}
 This paper puts forward the NE dataset as a baseline for comparisons on vision based SNNs.
 It contains converted spike representations of existing widely-used databases in the vision recognition field.
 Since new problems will be introduced continuously before vision becomes a solved question, the dataset will evolve as research develops. 
