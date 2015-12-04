@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.10.6)  4 DEC 2015 18:33
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.10.6)  4 DEC 2015 20:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1212,50 +1212,47 @@ sion: multiple pdfs with page group included in a single page
 Overfull \vbox (2.151pt too high) has occurred while \output is active []
 
  [20 <./images/powerspinnaker.pdf>]
-Underfull \hbox (badness 1163) in paragraph at lines 1084--1087
+Underfull \hbox (badness 1163) in paragraph at lines 1088--1091
 []\OT1/ptm/m/n/12 Each encounter of an object on the retina is completely uniqu
 e, because of the illumination
  []
 
-(./NEbenchmark.bbl
+
 Overfull \vbox (2.151pt too high) has occurred while \output is active []
 
  [21]
+(./NEbenchmark.bbl
 Overfull \vbox (2.151pt too high) has occurred while \output is active []
 
  [22]
 Overfull \vbox (2.151pt too high) has occurred while \output is active []
 
- [23])
+ [23]
 Overfull \vbox (2.151pt too high) has occurred while \output is active []
 
- [24]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1109.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1109.
+ [24])
+Overfull \vbox (2.151pt too high) has occurred while \output is active []
+
+ [25]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1116.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1116.
 
 (./NEbenchmark.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1109.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1109.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1116.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1116.
 
-
-
-Package rerunfilecheck Warning: File `NEbenchmark.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `NEbenchmark.out':
-(rerunfilecheck)             Before: 2CC68493CEB6786A69A1EAF6111C0BCB;1685
-(rerunfilecheck)             After:  09264C648B08FC9714CB8CDD3906BA49;1678.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1109.
+Package rerunfilecheck Info: File `NEbenchmark.out' has not changed.
+(rerunfilecheck)             Checksum: 09264C648B08FC9714CB8CDD3906BA49;1678.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1116.
  ) 
 Here is how much of TeX's memory you used:
- 11827 strings out of 495028
- 175461 string characters out of 6181497
- 293121 words of memory out of 5000000
- 14490 multiletter control sequences out of 15000+600000
+ 11833 strings out of 495028
+ 175597 string characters out of 6181497
+ 293188 words of memory out of 5000000
+ 14493 multiletter control sequences out of 15000+600000
  82874 words of font info for 164 fonts, out of 8000000 for 9000
  18 hyphenation exceptions out of 8191
- 44i,18n,50p,1729b,585s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 44i,18n,50p,1729b,605s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exi
 st, replaced by a fixed one
 
@@ -1270,10 +1267,10 @@ are/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb></usr/share/texlive
 /texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/share/texlive/texmf-dist/font
 s/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/tim
 es/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on NEbenchmark.pdf (24 pages, 1986239 bytes).
+Output written on NEbenchmark.pdf (25 pages, 1988149 bytes).
 PDF statistics:
- 1649 PDF objects out of 1728 (max. 8388607)
- 1031 compressed objects within 11 object streams
- 160 named destinations out of 1000 (max. 500000)
+ 1659 PDF objects out of 1728 (max. 8388607)
+ 1040 compressed objects within 11 object streams
+ 162 named destinations out of 1000 (max. 500000)
  318 words of extra memory for PDF output out of 10000 (max. 10000000)
 

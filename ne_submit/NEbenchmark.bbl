@@ -1,4 +1,4 @@
-\begin{thebibliography}{65}
+\begin{thebibliography}{66}
 \providecommand{\natexlab}[1]{#1}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
@@ -85,6 +85,13 @@ Davison, A.~P., Br{\"u}derle, D., Eppler, J., Kremkow, J., Muller, E.,
 \newblock {PyNN: a common interface for neuronal network simulators}.
 \newblock \emph{Frontiers in neuroinformatics} 2
 \bibAnnoteFile{davison2008pynn}
+
+\bibitem[{Deger et~al.(2012)Deger, Helias, Boucsein, and
+  Rotter}]{deger2012statistical}
+Deger, M., Helias, M., Boucsein, C., and Rotter, S. (2012).
+\newblock Statistical properties of superimposed stationary spike trains.
+\newblock \emph{Journal of computational neuroscience} 32, 443--463
+\bibAnnoteFile{deger2012statistical}
 
 \bibitem[{Delbruck(2008)}]{delbruck2008frame}
 Delbruck, T. (2008).

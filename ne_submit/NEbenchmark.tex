@@ -1068,8 +1068,8 @@ They provide a baseline for comparisons and encourage improved algorithms and mo
 
 Although spike-based algorithms have not surpassed their non-spiking counterparts in terms of recognition accuracy, they have shown great performance in response time and energy efficiency.
 The dataset makes the comparison of SNNs with conventional recognition methods possible by using converted spike presentations of the same vision databases.
+As far as we know, it is the first attempt to benchmarking neuromorphic vision recognition by providing public spike-based dataset and the evaluation metrics.
 As the dataset grows, it will allow new problems to be investigated by researchers, which should allow the identification of future directions and, in consequence, advance the field.
-
 %\subsection{The future direction of a developing database}
 \subsection{The future direction of an evolving database}
 The database will expand by converting more popular vision datasets to spike representations.
@@ -1079,6 +1079,10 @@ While viewing an image,  saccades direct high-acuity visual analysis to a partic
 It is possible to measure the scan path or trajectory of the eyeball and the trajectories showed particular interest in eyes, nose and mouth while viewing a human face~\citep{yarbus1967eye}.
 Therefore, our plan is also to embed modulated trajectory information to direct the recording using DVS sensors to simulate human saccades.
 
+There will be more methods and algorithms of converting images to spikes.
+Although Poisson spikes are the most commonly used external input of an SNN system, there are several \textit{in-vivo} recordings in different cortical areas showing that the inter-spike intervals (ISI) are not Poissonian~\citep{deger2012statistical}. 
+Thus~\citet{deger2012statistical} proposed new algorithms to generate superposition spike trains of Poisson process with dead-time (PPD) and of Gamma process.
+Including novel spike generation algorithms to the dataset is one of the future work to satisfy the large varieties of research.
 
 %While the major stumbling crux of the computer object recognition systems lies in the invariance problem.
 Each encounter of an object on the retina is completely unique, because of the illumination (lighting conditions), position (projection locations on the retina), scale (distances and sizes), pose (viewing angles), and clutter (visual contexts) variabilities.
@@ -1090,7 +1094,10 @@ The initial plan is to use the DVS retina to convert KTH and Weizmann benchmarks
 Meanwhile, providing a software DVS retina simulator to transform  frames into spike trains is also on the schedule.
 By doing this, huge number of videos, such as in YouTube, can automatically be converted to spikes, therefore providing researchers more time to work on their own applications.
 
-
+In all, it is impossible to provide enough datasets, converting methods or benchmarking results by the dataset proposers ourselves, thus we encourage researchers contribute to the dataset.
+In another word, people could public their data in the dataset allowing future comparisons on the same data source;
+researchers could share the spike converting algorithms by generating dataset to promote the corresponding recognition methods;
+and neuromorphic hardware owners are welcome to provide benchmarking results to compare the system performance.
 
 \section*{Acknowledgments}
 
