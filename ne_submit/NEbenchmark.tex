@@ -341,7 +341,7 @@ keeping just the order in which those spikes were fired and disregarding the exa
 
 Rank-ordered encoding can be performed using an algorithm known as the
 {FoCal algorithm~\citep{sen2009evaluating}}.
-It models the foveal pit region, the highest resolution area of the retina, with four ganglion cell layers that show a centre-surround behaviour~\citep{kolb2003retina}. In order to simulate these layers, four discrete 2D convolutions are performed. The centre-surround behaviour of the ganglion cells is modelled using Differences of Gaussians~(DoG). 
+It models the foveal pit region, the highest resolution area of the retina, with four ganglion cell layers that show a centre-surround behaviour~\citep{kolb2003retina}. In order to simulate these layers two steps are required, the first one consists of four discrete 2D convolutions; the second one removes redundant information produced by the first step. During the first step, the centre-surround behaviour of the ganglion cells is modelled using Differences of Gaussians~(DoG) kernels for convolution. 
 \begin{equation}
 \label{eq-dog}
 DoG_w(x,y) = \pm\frac{1}{2\pi\sigma_{w,c}^2}e^{\frac{-(x^2 + y^2)}{2\sigma_{w,c}^2}}
