@@ -1,52 +1,8 @@
-This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
-Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
-The top-level auxiliary file: NEbenchmark.aux
+This is BibTeX, Version 0.99dThe top-level auxiliary file: NEbenchmark.aux
 The style file: frontiersinSCNS&ENG.bst
 Database file #1: bench_ref.bib
 Warning--entry type for "MIT_TechReview" isn't style-file defined
 --line 224 of file bench_ref.bib
-Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Warning--empty pages in Jug_etal_2012
 Warning--can't use both volume and number fields in liu2014real
-You've used 66 entries,
-            3027 wiz_defined-function locations,
-            975 strings with 18728 characters,
-and the built_in function-call counts, 49402 in all, are:
-= -- 4211
-> -- 2713
-< -- 27
-+ -- 1335
-- -- 727
-* -- 3485
-:= -- 7007
-add.period$ -- 143
-call.type$ -- 66
-change.case$ -- 609
-chr.to.int$ -- 67
-cite$ -- 134
-duplicate$ -- 3218
-empty$ -- 3335
-format.name$ -- 948
-if$ -- 10227
-int.to.chr$ -- 2
-int.to.str$ -- 1
-missing$ -- 702
-newline$ -- 407
-num.names$ -- 264
-pop$ -- 1701
-preamble$ -- 1
-purify$ -- 506
-quote$ -- 0
-skip$ -- 1965
-stack$ -- 0
-substring$ -- 2109
-swap$ -- 1651
-text.length$ -- 5
-text.prefix$ -- 0
-top$ -- 0
-type$ -- 588
-warning$ -- 2
-while$ -- 309
-width$ -- 0
-write$ -- 937
 (There were 3 warnings)
