@@ -898,7 +898,8 @@ The main bottleneck is currently in the ring buffer where the total precision fo
 As the network size grows there are more decision neurons and synapses connecting to them, thus the simulation time on NEST increases.
 On the other hand, SpiNNaker works in real (biologically real) time and the simulation time becomes shorter than NEST simulation when $1,000$ patterns per digit are used.
 The Thermal Design Power (TDP) usage of all four processors of i5-4570 actively operating at base frequency is 84~W\footnote{\url{http://ark.intel.com/products/75043/Intel-Core-i5-4570-Processor-6M-Cache-up-to-3_60-GHz}}.
-NEST was run fully active on a single core which cost 21~W of power usage.
+NEST was run fully active on a single core, and only OS related operations were on the other cores.
+The power usage was estimated by subtracting the power usage running the simulation and cost by idle operations.
 The energy use can be calculated as the product of the simulation time and the power use.
 Even with the smallest network, SpiNNaker wins in the energy cost comparison, see Figure~\ref{fig:energy}.
 Among different network configurations, the network of 500 decision neurons (50 clusters per digit) reaches the highest recognition rate.
@@ -916,11 +917,11 @@ The network achieved a CA of 92.98\% and average latency of 10.70~ms, and the si
 			per digit
 			& N & S & N & S & N & S\\
 			\hline
-			1 & 79.62 & 79.50 & 554.77 & \multirow{5}{*}{$12,000$} & \multirow{5}{*}{ 21.0 } & 0.38 \\
-			10 & 91.29 & 91.43 & 621.74 &   &   & 0.38 \\
-			50 & 92.98 & 92.92 & $1,125.12$ &   &   & 0.41 \\
-			100 & 87.27 & 86.83 & $1,406.01$ &   &   & 0.44 \\
-			1000 & 89.65 & 89.74 & $30,316.88$ &   &   & 1.50 \\
+			1 & 79.62 & 79.50 & 554.77 & \multirow{5}{*}{$12,000$} & $\sim$20 & 0.38 \\
+			10 & 91.29 & 91.43 & 621.74 &   & $\sim$20  & 0.38 \\
+			50 & 92.98 & 92.92 & $1,125.12$ &   & $\sim$20  & 0.41 \\
+			100 & 87.27 & 86.83 & $1,406.01$ &   &   $\sim$19 & 0.44 \\
+			1000 & 89.65 & 89.74 & $30,316.88$ &   &  $\sim$17  & 1.50 \\
 			
 		\end{tabular}
 		\label{tbl:compare}
