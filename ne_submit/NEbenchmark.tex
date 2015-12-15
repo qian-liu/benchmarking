@@ -96,7 +96,7 @@
 To gain a better understanding of the brain and build biologically-inspired computers, increasing attention is being paid to research into spike-based neural computation.
 Inside the field, the visual pathway and its hierarchical organisation have been extensively studied within the primate brain.
 Spiking Neural Networks (SNNs) inspired by the understanding of observed biological structure and function have been successfully applied to visual recognition/classification tasks.
-In addition, implementations on neuromorhpic hardware have enabled large-scale networks to run in (or even faster than) real-time, and made it accessible on mobile robots.
+In addition, implementations on neuromorphic hardware have enabled large-scale networks to run in (or even faster than) real-time, and made it accessible on mobile robots.
 Neuromorphic sensors, e.g. silicon retinas, are able to feed such a mobile system with real-time visual stimuli.
 A new series of vision benchmarks for spike-based neural processing are now needed to quantitatively measure progress within this rapidly advancing field.
 We propose that a large dataset of spike-based visual stimuli is needed to provide a baseline for comparisons on SNN models and algorithms, and some benchmarking network models are also required to validate the accuracy and cost of these neuromorphic hardware platforms.
@@ -317,7 +317,7 @@ The duration of artificially generated data could be configured using the Python
 
 %\subsubsection{Data Description}	
 \subsubsection{Poissonian}
-
+\label{sec:poissonian}
 The timing of spikes in the cortex is highly irregular~\citep{squire1998findings}.
 %In the cortex, the timing of spikes is highly irregular~\citep{squire1998findings}.
 It can be interpreted that the inter-spike interval reflects a random process driven by the instantaneous firing rate.
@@ -943,11 +943,11 @@ However, state-of-the-art deep networks comprise a large number of layers, neuro
 
 
 % about oneils model 
-\citet{o2013real} proposed a method to map off-line trained DBNs into a spiking neural networks and take advantage of the real-time performance and energy efficiency of neuromorphic platforms. This led initially to an implementation on an event-driven Field-Programmable Gate Array (FPGA) called Minitaur~\citep{neil2014minitaur} and then on the SpiNNaker platform~\citep{Stromatias2015scalable}. For this work we used an off-line trained\footnote{\url{https://github.com/dannyneil/edbn/}} spiking DBN with a 784-500-500-10 network topology. Simulations take place on a software spiking neural network simulator named Brian~\citep{goodman2008brian} and results are verified on the SpiNNaker platform.
+\citet{o2013real} proposed a method to map off-line trained DBNs into a spiking neural networks and take advantage of the real-time performance and energy efficiency of neuromorphic platforms. This led initially to an implementation on an event-driven Field-Programmable Gate Array (FPGA) called Minitaur~\citep{neil2014minitaur} and then on the SpiNNaker platform~\citep{Stromatias2015scalable}. For this work we used the identical off-line trained\footnote{\url{https://github.com/dannyneil/edbn/}} spiking DBN as presented by \citet{o2013real}, which comprises 784 neurons for the input layer, two hidden layers with 500 neurons each, and an output layer with 10 neurons. This is abbreviated as 784-500-500-10 architecture. Simulations take place on a software spiking neural network simulator named Brian~\citep{goodman2008brian} and results are verified on the SpiNNaker platform.
 
 \subsubsection{Training}
 
-DBNs consist of stacked Restricted Boltzmann Machines (RBMs), which are fully connected recurrent networks but without any connections between neurons of the same layer. Training is performed unsupervised using the standard CD rule~\citep{hinton2006fast} and only the output layer is trained in a supervised manner. The main difference between spiking DBNs and traditional DBNs is the activation function used for the neurons.~\cite{o2013real} proposed the use of the Siegert approximation~\citep{Jug_etal_2012} as the activation function, which returns the expected firing rate of a LIF neuron (Equation~\ref{eq:LIF}) given input firing rates, input weights, and standard neuron parameters.
+DBNs consist of stacked Restricted Boltzmann Machines (RBMs), which are fully connected recurrent networks but without any connections between neurons of the same layer. Training is performed unsupervised using the standard CD rule~\citep{hinton2006fast} and only the output layer is trained in a supervised manner. The main difference between spiking DBNs and traditional DBNs is the activation function used for the neurons.~\cite{o2013real} proposed the use of the Siegert approximation~\citep{Jug_etal_2012} as the activation function, which returns the expected firing rate of a LIF neuron (Equation~\ref{eq:LIF}) given input firing rates, input weights, and standard neuron parameters. Further details regarding the training process can be found in \citet{o2013real}.
 
 \subsubsection{Testing}
 After the training process the learnt synaptic weights can be used in a spiking neural network which consists of LIF neurons with delta-current synapses. Table~\ref{Tab:NeuralParams} shows the LIF parameters used in the simulations.
@@ -975,8 +975,7 @@ After the training process the learnt synaptic weights can be used in a spiking 
 	\egroup
 \end{table}
 
-The pixels of each MNIST digit from the testing set are converted into Poisson spike trains with a rate proportional to the intensity of their pixel, while their firing rates are scaled so that the total firing rate of the input population is constant~\citep{o2013real}.
-
+The pixels of each MNIST digit from the testing set are converted into Poisson spike trains as described in Section~\ref{sec:poissonian}. %with a rate proportional to the intensity of their pixel, while their firing rates are scaled so that the total firing rate of the input population is constant~\citep{o2013real}.
 The CA was chosen as the performance metric of the spiking DBN, which is the percentage of the correctly classified digits over the whole MNIST testing set.
 
 \subsubsection{Evaluation}
