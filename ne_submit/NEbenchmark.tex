@@ -148,7 +148,7 @@ Deep Neural Networks (DNNs) together with deep learning are the most exciting re
 The spiking deep network has great potential to combine remarkable performance with the energy efficient training and running.
 In the initial stage of the research, the study was focused on converting off-line trained deep network to SNNs~\citep{o2013real}.
 The same network initially implemented on a FPGA achieved a CA of 92.0\%~\citep{neil2014minitaur}, while a later implementation on SpiNNaker scored 95.0\%~\citep{Stromatias2015scalable}.
-Recent attempts have contributed to better translation by utilising modified units in a ConvNet~\citep{cao2015spiking} and tuning the weights and thresholds~\citep{Diehl2015fast}).
+Recent attempts have contributed to better translation by utilising modified units in a ConvNet~\citep{cao2015spiking} and tuning the weights and thresholds~\citep{Diehl2015fast}.
 The later paper claims a state-of-the-art performance (99.1\% on the MNIST dataset) comparing to original ConvNet.
 The current trend of training Spiking DNNs on-line using biologically-plausible learning methods is also promising.
 An event driven Contrastive Divergence (CD) training algorithm for RBMs (Restricted Boltzmann Machines) was proposed for Deep Belief Networks (DBN) using LIF neurons with STDP (Spike-Timing-Dependent Plasticity) synapses and verified on MNIST (91.9\%)~\citep{neftci2013event}.
@@ -287,7 +287,7 @@ Two file formats are supported in the dataset: jAER format~\citep{delbruck2008fr
 The AER interface has been widely used in neuromorphic systems, especially for vision sensors.
 The spikes are encoded as time events with corresponding addresses to convey information.
 The spikes in jAER format, both recorded from a DVS retina and artificially generated, can be displayed in jAER software.
-Figure~\ref{Fig:jaer} is a snapshot of the software displaying an .aedat file which is recorded by a DVS retina~\citep{serrano2013128}.
+Figure~\ref{fig:zero}(b) is a snapshot of the software displaying an .aedat file which is recorded by a DVS retina~\citep{serrano2013128}.
 The resolution of the DVS recorded data is 128$\times$128.
 The other format of spikes used is a list of spike source arrays in PyNN~\citep{davison2008pynn}, a description language for building spiking neuronal network models.
 Python code for converting one file format to and from the other is also provided.
