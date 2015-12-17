@@ -241,9 +241,10 @@ Section~\ref{sec:test} provides two SNN models as examples of benchmarking hardw
 \subsection{Guiding Principles}
 The NE database we propose here is a developing and evolving dataset consisting of various spike-based representations of images and videos.
 The spikes are either generated from spike encoding methods which covert images or frames of videos into spike trains, or recorded from DVS silicon retinas.
-The spike trains are in the format of AER~\citep{mahowald1992vlsi} data, which could easily be used in both event-driven computer simulations and neuromorphic systems.
+The spike trains are in the format of Address-Event Representation~(AER)~\citep{mahowald1992vlsi} data, which could easily be used in both event-driven computer simulations and neuromorphic systems.
 The AER was originally proposed as a communication protocol using time-multiplexing to replace the connection wires for each connected neuron pair.
-The AER data contains two columns, and each row consists of the time stamp of a spike and the address of the neuron which generated the spike.
+The idea was that each time a neuron produces an spike an event is generated that codes the spiking neuron address in a fast time-multiplexed digital bus.
+The recorded AER data contains consists on a list of events, each one containing the time stamp of a spike and the address of the neuron which generated the spike.
 With the NE dataset we hope:
 \begin{itemize}
 	\item \textit{to promote meaningful comparisons of algorithms in the field of spiking neural computation.}
@@ -284,14 +285,14 @@ The dataset can be found in the GitHub repository at: https://github.com/qian-li
 \subsection{Data Description}
 
 Two file formats are supported in the dataset: jAER format~\citep{delbruck2008frame} (.dat or .aedat), and binary file in NumPy~\citep{numpyPython} .npy format.
-The AER interface has been widely used in neuromorphic systems, especially for vision sensors.
+The AER interface has been widely used in neuromorphtwo columns, and each row consists of theic systems, especially for vision sensors.
 The spikes are encoded as time events with corresponding addresses to convey information.
 The spikes in jAER format, both recorded from a DVS retina and artificially generated, can be displayed in jAER software.
-Figure~\ref{fig:zero}(b) is a snapshot of the software displaying an .aedat file which is recorded by a DVS retina~\citep{serrano2013128}.
+Figure~\ref{fig:zero}(a) is a snapshot of the software displaying an .aedat file which is recorded by a DVS retina~\citep{serrano2013128}.
 The resolution of the DVS recorded data is 128$\times$128.
 The second spike-based format used is a list of spike source arrays in PyNN~\citep{davison2008pynn}, a description language for building spiking neuronal network models.
-Python code for converting from one file format to the other and vice versa.
-The duration of artificially generated data could be configured using the Python code provided, while the recorded data aiming at different tasks vary in duration: 1~s for the flashing input, and 2.5~s for the moving input.
+Python code for converting from one file format to the other and vice versa is provided.
+The duration of artificially generated data could be configured using the Python code provided, while the recorded data aiming at different tasks vary in duration: 1~s for the flashing input, and 3.2 to 3.4~s for the moving input.
 
 \begin{figure}[hbt]
 	\centering
@@ -582,7 +583,7 @@ A complementary evaluation methodology is essential to provide common metrics an
 			\begin{mycell}{1.9cm} None \end{mycell}& % preprocessing 
 			\begin{mycell}{3.5cm} Fully connected decision layer, \\ LIF neurons \end{mycell}& % network
 			\begin{mycell}{3.5cm} K-means clusters,\\Supervised STDP\\$18,000$~s of training \end{mycell}& % training
-			\begin{mycell}{3.5cm} 92.98\%\\1~s per test\\10.70~ms latency\end{mycell}\\ % recognition
+			\begin{mycell}{3.5cm} 93.06\%\\1~s per test\\13.82~ms latency\end{mycell}\\ % recognition
 		\end{tabular}
 		\egroup
 	\end{center}
@@ -721,8 +722,8 @@ Running faster than real time is attractive for large/long simulations.
 However, due to the limitation of hardware resources simulation time may accelerate or slow down according to the network topology and spike dynamics.
 Also finer time resolution plays an important role in precision sensitive neural models or in sub-millisecond tasks~\citep{lagorce2015breaking}.
 %Qian Liu done
-Comparing the performance of each platform in terms of energy requirements is an interesting comparison metric especially if targeted for mobile applications and robotics. Some researchers have suggested the use of energy per synaptic event (J/SE)~\citep{sharp2012power,stromatias2013power} as an energy metric because the large fan in and out of a neuron tend to dominate the total energy dissipation during a simulation. Merolla et al. proposed the number of synaptic operations per Watt (Sops/W)~\citep{merolla2014million}.
-These two measurements are the same presentations of energy use of synaptic events, since J/SE$\times$Sops/W = 1 s. 
+Comparing the performance of each platform in terms of energy requirements is an interesting comparison metric especially if targeted for mobile applications and robotics. Some researchers have suggested the use of energy per synaptic event (J/SE)~\citep{sharp2012power,stromatias2013power} as an energy metric because the large fan in and out of a neuron tend to dominate the total energy dissipation during a simulation. Merolla et al. proposed the number of synaptic operations per second per Watt (Sops/W)~\citep{merolla2014million}.
+These two measurements are the same presentations of energy use of synaptic events, since J/SE$\times$Sops/W = 1. 
 
 %Qian Liu modified
 For a particular SNN application or benchmark, the scalability and programmability will determine whether the network is able to run on a platform.
@@ -889,7 +890,8 @@ As long as there are enough spikes to trigger the decision neurons to spike, inc
 \end{figure}
 
 Regarding the network size, it not only influences the accuracy of a model but also the time taken for simulation on specific platforms thus impacting the energy usage on the hardware.
-For the purpose of comparing the accuracy, simulation time and energy usage, different configurations have been tested on NEST (working on a PC with CPU: i5-4570 and 8G memory) and SpiNNaker, see Table~\ref{tbl:compare}.
+For the purpose of comparing the accuracy, simulation time and energy usage, different configurations have been tested on NEST (working on a PC with CPU: i5-4570 and 8G memory) and SpiNNaker.
+The same experiment has been run 10 times with different random seeds, the average performance estimation is listed in Table~\ref{tbl:compare}.
 The input rates in all of the tests are $5,000$~Hz, and each image is presented for 1~s.
 The configurations only differ in the number of templates (subclasses/clusters) per digit.
 Thus the network size vary according to the number of neurons in the decision layer where each neuron represents a subclass of a digit and the template is embedded in the synaptic weights connecting from the input layer to the decision neuron.
@@ -899,16 +901,15 @@ The main bottleneck is currently in the ring buffer where the total precision fo
 As the network size grows there are more decision neurons and synapses connecting to them, thus the simulation time on NEST increases.
 On the other hand, SpiNNaker works in real (biologically real) time and the simulation time becomes shorter than NEST simulation when $1,000$ patterns per digit are used.
 The Thermal Design Power (TDP) usage of all four processors of i5-4570 actively operating at base frequency is 84~W\footnote{\url{http://ark.intel.com/products/75043/Intel-Core-i5-4570-Processor-6M-Cache-up-to-3_60-GHz}}.
-NEST was run fully active on a single core, and only OS related operations were on the other cores.
-The power usage was estimated by subtracting the power usage running the simulation and cost by idle operations.
+%NEST was run fully active on a single core, and only OS related operations were on the other cores.
+The power usage is estimated by subtracting the power usage running the simulation and cost by idle OS operations.
 The energy use can be calculated as the product of the simulation time and the power use.
 Even with the smallest network, SpiNNaker wins in the energy cost comparison, see Figure~\ref{fig:energy}.
-Among different network configurations, the network of 500 decision neurons (50 clusters per digit) reaches the highest recognition rate.
-%The recognition accuracy reaches the highest (92.98\%) when 50 patterns are trained per digit.
-The network achieved a CA of 92.98\% and average latency of 10.70~ms, and the simulation costs SpiNNaker 0.41~W on power use and $4,920$~J on energy use.
+Among different network configurations, the model of 500 decision neurons (50 clusters per digit) reaches the highest recognition rate of 93.06\% in average having the latency of about 13.82~ms.
+The NEST simulation costs only 766.96~s in average for the entire $12,000$~s biological-time test, 20~W in power use on the PC and $15.3$~KJ of energy, while SpiNNaker works in real time using $4.9$~KJ of energy on the power of 0.41~W.
 
 \begin{table}[h]
-	\caption{Comparisons of NEST (N) on a PC and SpiNNaker (S) performances.}
+	\caption{Comparisons of NEST (N) on a PC and SpiNNaker (S) performances over 10 trials in average.}
 	\begin{center}
 		\begin{tabular} {r|c|c|c|c|c|c}
 			Subclasses
@@ -918,11 +919,11 @@ The network achieved a CA of 92.98\% and average latency of 10.70~ms, and the si
 			per digit
 			& N & S & N & S & N & S\\
 			\hline
-			1 & 79.62 & 79.50 & 446.52 & \multirow{5}{*}{$12,000$} & $\sim$20 & 0.38 \\
-			10 & 91.29 & 91.43 & 503.91 &   & $\sim$20  & 0.38 \\
-			50 & 92.98 & 92.92 & $772.70$ &   & $\sim$20  & 0.41 \\
-			100 & 87.27 & 86.83 & $1,142.39$ &   &   $\sim$19 & 0.44 \\
-			1000 & 89.65 & 89.74 & $12,585.28$ &   &  $\sim$17  & 1.50 \\
+			1 & 79.63 & 79.50 & 445.14 & \multirow{5}{*}{$12,000$} &20 & 0.38 \\
+			10 & 91.42 & 91.43 & 502.77 &   & 20  & 0.38 \\
+			50 & 93.06 & 92.92 & $766.96$ &   & 20  & 0.41 \\
+			100 & 87.04 & 86.83 & $1,131.67$ &   &  19 & 0.44 \\
+			1000 & 89.63 & 89.74 & $12,249.84$ &   &  17  & 1.50 \\
 			
 		\end{tabular}
 		\label{tbl:compare}
