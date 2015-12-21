@@ -17,6 +17,7 @@
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \usepackage[colorlinks]{hyperref} % in order to operate correctly, hyperref must be the last package declared
+\usepackage{changes}
 \usepackage{multirow}
 \usepackage{makecell}
 \usepackage{mathptmx}
@@ -99,14 +100,16 @@ Spiking Neural Networks (SNNs) inspired by the understanding of observed biologi
 In addition, implementations on neuromorphic hardware have enabled large-scale networks to run in (or even faster than) real-time, and made it accessible on mobile robots.
 Neuromorphic sensors, e.g. silicon retinas, are able to feed such a mobile system with real-time visual stimuli.
 A new series of vision benchmarks for spike-based neural processing are now needed to quantitatively measure progress within this rapidly advancing field.
-We propose that a large dataset of spike-based visual stimuli is needed to provide a baseline for comparisons on SNN models and algorithms, and some benchmarking network models are also required to validate the accuracy and cost of these neuromorphic hardware platforms.
+We propose that a large dataset of spike-based visual stimuli is needed to provide meaningful comparisons with unified data, and its corresponding evaluation method is also required to estimate the performance of SNN models and their hardware implementations.
+%\replaced{We propose that a large dataset of spike-based visual stimuli is needed to provide meaningful comparisons with unified data, and its corresponding evaluation method is also required to estimate the performance of SNN models and their hardware implementations.}{We propose that a large dataset of spike-based visual stimuli is needed to provide a baseline for comparisons on SNN models and algorithms, and some benchmarking network models are also required to validate the accuracy and cost of these neuromorphic hardware platforms.}
+%We propose that a large dataset of spike-based visual stimuli is needed to provide a baseline for comparisons on SNN models and algorithms, and some benchmarking network models are also required to validate the accuracy and cost of these neuromorphic hardware platforms.
 
 First of all, an initial NE (Neuromorphic Engineering) dataset is presented, which is based on standard computer vision benchmarks and consists of digits from the MNIST database. This dataset is in accordance to the current research on spike-based image recognition.
 %First of all, an initial NE (Neuromorphic Engineering) dataset of input stimuli based on standard computer vision benchmarks consisting of digits (from the MNIST database) is presented according to the current research on spike-based image recognition.
-Within this dataset, all images are centre aligned and have similar scale.
-We describe how we intend to expand this dataset to fulfil the needs of upcoming research problems.
-For instance, the data should provide cases to measure position-, scale-, and viewing-angle invariance.
-The data are in Address-Event Representation (AER) format which is widely used in the neuromorphic engineering field unlike conventional images.
+%Within this dataset, all images are centre aligned and have similar scale.
+%We describe how we intend to expand this dataset to fulfil the needs of upcoming research problems.
+%For instance, the data should provide cases to measure position-, scale-, and viewing-angle invariance.
+%The data are in Address-Event Representation (AER) format which is widely used in the neuromorphic engineering field unlike conventional images.
 These spike trains are produced by various techniques: rate-based Poisson spike generation, rank order encoding and recorded output from a silicon retina with both flashing and oscillating input stimuli.
 Furthermore a complementary evaluation methodology is also presented to assess both model-level and hardware-level performance.
 Finally, we provide two SNN models to validate their classification capabilities and to assess the performances of their hardware implementations as tentative benchmarks.
@@ -181,14 +184,17 @@ As a consequence, a new series of spike-based vision datasets is now needed to q
 Apart from using spikes instead of the frame-based data of conventional computer vision, there are new concerns of evaluating neuromorphic vision in tasks other than recognition accuracy.
 Therefore a set of common metrics for performance evaluation on spike-based vision is also required to specify the measurements of algorithms and models. 
 Different assessments should be taken into consideration when implementing models on neuromorphic hardware, especially the trade-offs between simulation time, precision and power consumption.
-Benchmarking neuromorphic hardware with various network models will reveal the advantages and disadvantages of different platforms.
-In this paper we propose a large dataset of spike-based visual stimuli, NE, and its complementary evaluation methodology. Just as research is an expanding and evolving activity, the dataset will be adapted and extended to fit new requirements presented by advances in the field.
+%Benchmarking neuromorphic hardware with various network models will reveal the advantages and disadvantages of different platforms.
+Running various SNN benchmarks reveals the design features of a hardware platform with model-specific configurations on network size, topology, neural and synaptic models, learning algorithms and etc.
+In this paper we propose a large dataset of spike-based visual stimuli, NE, and its complementary evaluation methodology.
+Just as research is an expanding and evolving activity, the dataset will be adapted and extended to fit new requirements presented by advances in the field.
 
 %In Section~\ref{sec:Related}, some example datasets of conventional non-spiking computer vision are introduced.
 The rest of this paper is structured as follows: Section~\ref{sec:method} elaborates on the purpose and protocols of the proposed dataset, describes the sub-datasets and the methods employed to generate them; it also demonstrates the suggested evaluation methodology in accordance with the dataset.
 %The sub-datasets and their generation methods are described in detail in Section~\ref{sec:data}.
 %In accordance with the dataset, its evaluation methodology is demonstrated in Section~\ref{sec:eval}.
-Section~\ref{sec:test} provides two SNN models as examples of benchmarking hardware platforms. Finally, Section~\ref{sec:summ} summarises the paper and discusses future work.
+Section~\ref{sec:test} provides two SNN networks as examples of assessing model performance and benchmarking hardware platforms.
+Finally, Section~\ref{sec:summ} summarises the paper and discusses future work.
 
 %\section{Related Work}
 %\label{sec:Related}
@@ -285,9 +291,9 @@ The dataset can be found in the GitHub repository at: https://github.com/qian-li
 \subsection{Data Description}
 
 Two file formats are supported in the dataset: jAER format~\citep{delbruck2008frame} (.dat or .aedat), and binary file in NumPy~\citep{numpyPython} .npy format.
-The AER interface has been widely used in neuromorphtwo columns, and each row consists of theic systems, especially for vision sensors.
-The spikes are encoded as time events with corresponding addresses to convey information.
-The spikes in jAER format, both recorded from a DVS retina and artificially generated, can be displayed in jAER software.
+%The AER interface has been widely used in neuromorphic systems, especially for vision sensors.
+%The spikes are encoded as time events with corresponding addresses to convey information.
+The spikes in jAER format, both recorded from a DVS retina and artificially generated, can be displayed by jAER software.
 Figure~\ref{fig:zero}(a) is a snapshot of the software displaying an .aedat file which is recorded by a DVS retina~\citep{serrano2013128}.
 The resolution of the DVS recorded data is 128$\times$128.
 The second spike-based format used is a list of spike source arrays in PyNN~\citep{davison2008pynn}, a description language for building spiking neuronal network models.
@@ -514,10 +520,12 @@ A total of 30,000 recordings were made: 10 digits, at 3 different scales, 1000 d
 
 \subsection{Performance Evaluation}
 \label{sec:eval}
+Due to the spike-based processing of SNN models, there are new concerns of performance evaluation on network models other than recognition accuracy.
+Once implemented on neuromorphic platforms, the hardware performance can be evaluated by running the same models.
+This model-specific assessment provides a more robust comparison on the feasibility, flexibility, simulation time and energy cost of hardware platforms.
 A complementary evaluation methodology is essential to provide common metrics and assess both the model-level and hardware-level performance.
-
 \begin{table*}[hbt!]
-	\caption{Hardware independent comparison}
+	\caption{Model-level comparison}
 	\begin{center}
 		\bgroup
 		\def\arraystretch{1.5}
@@ -590,7 +598,7 @@ A complementary evaluation methodology is essential to provide common metrics an
 	\label{tb:software_comparison}
 \end{table*}
 
-\subsubsection{Hardware-Independent Evaluation}
+\subsubsection{Model-Level Evaluation}
 \label{subsec:model}
 
 
@@ -618,11 +626,11 @@ A faster model is more suitable for real-time recognition systems such as neurom
 A commonly reported characteristic is the accuracy of the network, perhaps adding remarks on how these scores are obtained could help to unify criteria and ease comparison.
 Work on SNN-based classifications of MNIST are listed in Table~\ref{tb:software_comparison} and evaluated on the proposed metrics.
 
-\subsubsection{Hardware-Specific Evaluation}
+\subsubsection{Hardware-Level Evaluation}
 \label{subsec:hw}
 
   \begin{table*}[thb!]
-  	\caption{Hardware dependent comparison}
+  	\caption{Hardware-level comparison}
   	\begin{center}
       \begin{minipage}{\textwidth}
         
@@ -643,7 +651,7 @@ Work on SNN-based classifications of MNIST are listed in Table~\ref{tb:software_
   			%       \begin{minipage}{1.2cm}\centering Energy per SE \end{minipage} & 
   			%       \begin{minipage}{1.4cm}\centering Synaptic ops per Watt \end{minipage} & 
   			\begin{mycell}{2.0cm} Simulation\\Time \end{mycell} & 
-  			\begin{mycell}{2.0cm} Energy/Power \\Usage \end{mycell} 
+  			\begin{mycell}{2.0cm} Energy \\Usage \end{mycell} 
   			%       \begin{minipage}{1.7cm}\centering Programming front-end \end{minipage}  
   			\\
   			\hline
