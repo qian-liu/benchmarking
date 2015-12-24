@@ -109,7 +109,7 @@
 To gain a better understanding of the brain and build biologically-inspired computers, increasing attention is being paid to research into spike-based neural computation.
 Inside the field, the visual pathway and its hierarchical organisation have been extensively studied within the primate brain.
 Spiking Neural Networks (SNNs) inspired by the understanding of observed biological structure and function have been successfully applied to visual recognition/classification tasks.
-In addition, implementations on neuromorphic hardware have enabled large-scale networks to run in (or even faster than) real-time, and made it accessible on mobile robots.
+In addition, implementations on neuromorphic hardware have enabled large-scale networks to run in (or even faster than) real time, and made it accessible on mobile robots.
 Neuromorphic sensors, e.g. silicon retinas, are able to feed such a mobile system with real-time visual stimuli.
 A new series of vision benchmarks for spike-based neural processing are now needed to quantitatively measure progress within this rapidly advancing field.
 We propose that a large dataset of spike-based visual stimuli is needed to provide meaningful comparisons with unified data, and its corresponding evaluation method is also required to estimate the performance of SNN models and their hardware implementations.
@@ -287,12 +287,12 @@ With the NE dataset we hope:
 \label{sec:data}
 %Experiment setup/ collection method/ properties of each class/ etc.
 The name of the first proposed dataset in the benchmarking system is NE15-MNIST which stands for Neuromorphic Engineering 2015 on MNIST.
-The original MNIST dataset is downloaded from the website\footnote{http://yann.lecun.com/exdb/mnist/} of THE MNIST DATABASE of handwritten digits~\citep{lecun1998gradient}.
-The NE15-MNIST is converted into a spiking version of the original dataset consisting of four subsets which were generated for different purposes:
+The original dataset was downloaded from the MNIST Database of Handwritten Digits~\citep{lecun1998gradient}  website\footnote{http://yann.lecun.com/exdb/mnist/}.
+The NE15-MNIST is the spiking version of the original dataset, the converted set consists of four subsets which were generated for different purposes:
 \begin{itemize}
 	\item \textit{Poissonian}
 	to benchmarking existing methods of rate-based spiking models.
-	\item \textit{FoCal~(Filter overlap Correction)}
+	\item \textit{FoCal~(Filter Overlap Correction ALgorithm)}
 	to promote the study of spatio-temporal algorithms applied to recognition tasks using few input spikes.
 	\item \textit{DVS recorded flashing input}
 	to encourage research on fast recognition methods which are found in the primate visual pathway.
@@ -302,7 +302,7 @@ The NE15-MNIST is converted into a spiking version of the original dataset consi
 The dataset can be found in the GitHub repository at: https://github.com/qian-liu/benchmarking.
 \subsection{Data Description}
 
-Two file formats are supported in the dataset: jAER format~\citep{delbruck2008frame} (.dat or .aedat), and binary file in NumPy~\citep{numpyPython} .npy format.
+Two file formats are supported in the dataset: jAER format~\citep{delbruck2008frame} (.dat or .aedat), and binary file in NumPy~\citep{numpyPython} (.npy) format.
 %The AER interface has been widely used in neuromorphic systems, especially for vision sensors.
 %The spikes are encoded as time events with corresponding addresses to convey information.
 The spikes in jAER format, both recorded from a DVS retina and artificially generated, can be displayed by jAER software.
@@ -361,7 +361,7 @@ keeping just the order in which those spikes were fired and disregarding the exa
 
 Rank-ordered encoding can be performed using an algorithm known as the
 {FoCal algorithm~\citep{sen2009evaluating}}.
-It models the foveal pit region, the highest resolution area of the retina, with four ganglion cell layers that show a centre-surround behaviour~\citep{kolb2003retina}. In order to simulate these layers two steps are required, the first one consists of four discrete 2D convolutions; the second one removes redundant information produced by the first step. During the first step, the centre-surround behaviour of the ganglion cells is modelled using Differences of Gaussians~(DoG) kernels for convolution. 
+It models the foveal pit region, the highest resolution area of the retina, with four ganglion cell layers that present a centre-surround behaviour~\citep{kolb2003retina}. In order to simulate these layers two steps are required, the first one consists of four discrete 2D convolutions; the second one removes redundant information produced by the first step. During the first step, the centre-surround behaviour of the ganglion cells is modelled using Differences of Gaussians~(DoG) kernels for convolution. 
 \begin{equation}
 \label{eq-dog}
 DoG_w(x,y) = \pm\frac{1}{2\pi\sigma_{w,c}^2}e^{\frac{-(x^2 + y^2)}{2\sigma_{w,c}^2}}
@@ -466,7 +466,7 @@ between convolution kernels (Alg.~\ref{code-focal-corr}).
 \end{algorithm}
 
 
-After the correction step, the most important information can be recovered using only the first 30\% of the spikes~\citep{sen2009evaluating}. These significant spikes are shown in Figure~\ref{fig-raster-plot-30pc}, assuming that each spike will be generated 1~ms apart. Neurons in Layer 1 emit spikes faster and in larger quantities than any other layer, making it the most important one. Layers 2 and 3 have few spikes, this is due to the large convolution kernels used to simulate the ganglion cells. One of the main advantages of ROC is that neurons will only spike once, this can be seen particularly well in these two layers. Layers 0 and 1 encode fine details, while layers 2 and 3 result in blob like features.
+After the correction step, the most important information can be recovered using only the first 30\% of the spikes~\citep{sen2009evaluating}. These significant spikes are shown in Figure~\ref{fig-raster-plot-30pc}, assuming that each spike will be generated 1~ms apart. Neurons in Layer 1 emit spikes faster and in larger quantities than any other layer, making it the most important one. Layers 2 and 3 have few spikes, this is due to the large convolution kernels used to simulate the ganglion cells. One of the main advantages of ROC is that neurons will only spike once, this can be seen particularly well in these two layers. Layers 0 and 1 encode fine details which could be used to identify what's in the image, while layers 2 and 3 result in blob-like features that should prove useful to location problems.
 \begin{figure}[hbt]
 	\centering
 	\includegraphics[width=0.48\textwidth]{fig3}
@@ -625,7 +625,7 @@ A spike event is a synaptic operation evoked when one action potential hitting o
 Fewer spike events means quieter neural activities and lower energy consumption.
 The event number can be measured as Sops, synaptic operations per second.
 
-Besides of the SNN evaluation metrics, a sufficient description of a network model is required that other researchers can reproduce it and compare with other models.
+Besides of the SNN evaluation metrics, a sufficient description of a network model is required so that other researchers can reproduce it and compare with other models.
 First of all, the input of a SNN should be specified.
 The description includes the transformation method of converting raw images to spike trains, and the preprocessing either to images or spikes.
 Filtering the raw image may ease the classification/recognition task while adding noise may require stronger robustness of the model.
@@ -740,7 +740,7 @@ Most of the reports did not provide sufficient description of the networks and t
   			\begin{mycell}{2.0cm}Fixed rule\end{mycell}& 
   			\begin{mycell}{2.0cm}4-bit synapses\end{mycell}& 
   			\begin{mycell}{2.0cm}Faster than\\ real-time
-                             \footnote[2]{A speed-up of up to $10^5$ times real time has been reported.}
+                             \footnote[2]{A maximum speed-up of up to $10^5$ times real time has been reported.}
         \end{mycell}&
   			\begin{mycell}{2.0cm} 7.41 nJ/SE\\(network only) \end{mycell}\\
   			%
@@ -763,7 +763,8 @@ Most of the reports did not provide sufficient description of the networks and t
   \end{table*}
 
 
-Depending on how neurons, synapses and spike transmission are implemented neuromorphic systems can be categorised as either analogue, digital, or mixed-mode analogue/digital VLSI circuits. Some analogue implementations exploit sub-threshold transistor dynamics to emulate neurons and synapses directly on hardware~\citep{indiveri2011neuromorphic} and are more energy-efficient while requiring less area than their digital counterparts~\citep{joubert2012hardware}. However, the behaviour of analogue circuits is largely determined during the fabrication process due to transistor mismatch~\citep{indiveri2011neuromorphic,pedram2006thermal,linares2003compact}, while their wiring densities render them impractical for large-scale systems. The majority of mixed-mode analogue/digital neuromorphic platforms, such as the High Input Count Analog Neural Network (HI-CANN)~\citep{schemmel2010wafer}, Neurogrid~\citep{benjamin2014neurogrid}, HiAER-IFAT~\citep{yu201265k}, use analogue circuits to emulate neurons and digital packet-based technology to communicate spikes as AER events. This enables reconfigurable connectivity patterns, while the time of spikes is expressed implicitly since typically a spike reaches its destination in less than a millisecond, thus fulfilling the real-time requirement. Digital neuromorphic platforms such as TrueNorth~\citep{merolla2014million} use digital circuits with finite precision to simulate neurons in an event driven manner to minimise the active power dissipation. Neuromorphic systems suffer from model flexibility, since neurons and synapses are fabricated directly on hardware with only a small subset of parameters exposed to the researcher. 
+Depending on how neurons, synapses and spike transmission are implemented, neuromorphic systems can be categorised as either analogue, digital, or mixed-mode analogue/digital. %VLSI circuits. 
+Some analogue implementations exploit sub-threshold transistor dynamics to emulate neurons and synapses directly on hardware~\citep{indiveri2011neuromorphic} and are more energy-efficient while requiring less area than their digital counterparts~\citep{joubert2012hardware}. However, the behaviour of analogue circuits is largely determined during the fabrication process due to transistor mismatch~\citep{indiveri2011neuromorphic,pedram2006thermal,linares2003compact}, while their wiring densities render them impractical for large-scale systems. The majority of mixed-mode analogue/digital neuromorphic platforms, such as the High Input Count Analog Neural Network (HI-CANN)~\citep{schemmel2010wafer}, Neurogrid~\citep{benjamin2014neurogrid}, HiAER-IFAT~\citep{yu201265k}, use analogue circuits to emulate neurons and digital packet-based technology to communicate spikes as AER events. This enables reconfigurable connectivity patterns, while the time of spikes is expressed implicitly since typically a spike reaches its destination in less than a millisecond, thus fulfilling the real-time requirement. Digital neuromorphic platforms such as TrueNorth~\citep{merolla2014million} use digital circuits with finite precision to simulate neurons in an event driven manner to minimise the active power dissipation. Neuromorphic systems suffer from model flexibility, since neurons and synapses are fabricated directly on hardware with only a small subset of parameters exposed to the researcher. 
 SpiNNaker is a biologically inspired, massively-parallel, scalable computing architecture designed by the Advanced Processor Technologies (APT) group at the University of Manchester. SpiNNaker has been optimised to simulate very large-scale spiking neural networks in real-time~\citep{furber2014spinnaker}, while it aims to combine the advantages of conventional computers and neuromorphic hardware by utilising low-power programmable cores and scalable event-driven communications hardware.
 
 A direct comparison between neuromorphic platforms is a non-trivial task due to the different hardware implementation technologies as mentioned above.
@@ -1151,7 +1152,7 @@ The case studies provide baselines for robust comparisons among SNN models and t
 As the dataset grows, it will allow new problems to be investigated by researchers, which should allow the identification of future directions and, in consequence, advance the field.
 %\subsection{The future direction of a developing database}
 \subsection{The future direction of an evolving database}
-The database will expand by converting more popular vision datasets to spike representations.
+The database will be expanded by converting more popular vision datasets to spike representations.
 As mentioned in Section~\ref{sec:intro}, face recognition has become a hot topic in SNN approaches, however there is no unified spike-based dataset to benchmark theses networks.
 Thus, the next development step for our dataset is to include face recognition databases.
 While viewing an image,  saccades direct high-acuity visual analysis to a particular object or a region of interest and useful information is gathered during the fixation of several saccades in a second.
