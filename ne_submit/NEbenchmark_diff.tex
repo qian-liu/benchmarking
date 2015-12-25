@@ -24,6 +24,28 @@
 \usepackage{amsmath}
 \usepackage{footnote}
 \linenumbers
+
+
+%DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
+%DIF UNDERLINE PREAMBLE %DIF PREAMBLE
+\RequirePackage[normalem]{ulem} %DIF PREAMBLE
+\RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1} %DIF PREAMBLE
+\providecommand{\DIFadd}[1]{{\protect\color{blue}\uwave{#1}}} %DIF PREAMBLE
+\providecommand{\DIFdel}[1]{{\protect\color{red}\sout{#1}}}                      %DIF PREAMBLE
+%DIF SAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddbegin}{} %DIF PREAMBLE
+\providecommand{\DIFaddend}{} %DIF PREAMBLE
+\providecommand{\DIFdelbegin}{} %DIF PREAMBLE
+\providecommand{\DIFdelend}{} %DIF PREAMBLE
+%DIF FLOATSAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddFL}[1]{\DIFadd{#1}} %DIF PREAMBLE
+\providecommand{\DIFdelFL}[1]{\DIFdel{#1}} %DIF PREAMBLE
+\providecommand{\DIFaddbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFaddendFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelendFL}{} %DIF PREAMBLE
+
+
 %define some own functions
 \newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}} 
 %\renewcommand\thesubfigure{(\alph{suimagesbfigure})}
@@ -107,14 +129,28 @@
 \begin{abstract}
 
 To gain a better understanding of the brain and build biologically-inspired computers, increasing attention is being paid to research into spike-based neural computation.
-Inside the field, the visual pathway and its hierarchical organisation have been extensively studied within the primate brain.
+\DIFdelbegin \DIFdel{Within }\DIFdelend \DIFaddbegin \DIFadd{Inside }\DIFaddend the field, the visual pathway and its hierarchical organisation have been extensively studied within the primate brain.
 Spiking Neural Networks (SNNs) inspired by the understanding of observed biological structure and function have been successfully applied to visual recognition/classification tasks.
-In addition, implementations on neuromorphic hardware have enabled large-scale networks to run in (or even faster than) real time, and made it accessible on mobile robots.
+In addition, implementations on \DIFdelbegin \DIFdel{neuromorhpic hardware have made }\DIFdelend \DIFaddbegin \DIFadd{neuromorphic hardware have enabled }\DIFaddend large-scale networks \DIFaddbegin \DIFadd{to }\DIFaddend run in (or even faster than) real time, and \DIFaddbegin \DIFadd{made it }\DIFaddend accessible on mobile robots.
 Neuromorphic sensors, e.g. silicon retinas, are able to feed such a mobile system with real-time visual stimuli.
 A new series of vision benchmarks for spike-based neural processing are now needed to quantitatively measure progress within this rapidly advancing field.
-We propose that a large dataset of spike-based visual stimuli is needed to provide meaningful comparisons with unified data, and its corresponding evaluation method is also required to estimate the performance of SNN models and their hardware implementations.
+We propose that a large dataset of spike-based visual stimuli is needed to provide \DIFdelbegin \DIFdel{a baseline for comparisons on SNN models and algorithms, and some benchmarking network models are }\DIFdelend \DIFaddbegin \DIFadd{meaningful comparisons with unified data, and its corresponding evaluation method is }\DIFaddend also required to \DIFdelbegin \DIFdel{validate the accuracy and cost of these neuromorphic hardware platforms.
+}\DIFdelend \DIFaddbegin \DIFadd{estimate the performance of SNN models and their hardware implementations.}\DIFaddend 
+%DIF > \replaced{We propose that a large dataset of spike-based visual stimuli is needed to provide meaningful comparisons with unified data, and its corresponding evaluation method is also required to estimate the performance of SNN models and their hardware implementations.}{We propose that a large dataset of spike-based visual stimuli is needed to provide a baseline for comparisons on SNN models and algorithms, and some benchmarking network models are also required to validate the accuracy and cost of these neuromorphic hardware platforms.}
+%DIF > We propose that a large dataset of spike-based visual stimuli is needed to provide a baseline for comparisons on SNN models and algorithms, and some benchmarking network models are also required to validate the accuracy and cost of these neuromorphic hardware platforms.
 
-First of all, an initial NE (Neuromorphic Engineering) dataset is presented, which is based on standard computer vision benchmarks and consists of digits from the MNIST database. This dataset is in accordance to the current research on spike-based image recognition.
+
+
+First of all, an initial NE (Neuromorphic Engineering) dataset \DIFdelbegin \DIFdel{of input stimuli }\DIFdelend \DIFaddbegin \DIFadd{is presented, which is }\DIFaddend based on standard computer vision benchmarks \DIFdelbegin \DIFdel{consisting of digits (}\DIFdelend \DIFaddbegin \DIFadd{and consists of digits }\DIFaddend from the MNIST database\DIFdelbegin \DIFdel{) is presented according }\DIFdelend \DIFaddbegin \DIFadd{. This dataset is in accordance }\DIFaddend to the current research on spike-based image recognition.
+\DIFdelbegin \DIFdel{Within this dataset, all images are centre aligned and having similar scale.
+	We describe how we intend to expand this dataset to fulfil the needs of upcoming research problems.
+	For instance, the data should provide cases to measure position-, scale-, and viewing-angle invariance.
+	The data are in Address-Event Representation (AER) format which is widely used in the neuromorphic engineering field unlike conventional images.
+}\DIFdelend %DIF > First of all, an initial NE (Neuromorphic Engineering) dataset of input stimuli based on standard computer vision benchmarks consisting of digits (from the MNIST database) is presented according to the current research on spike-based image recognition.
+%DIF > Within this dataset, all images are centre aligned and have similar scale.
+%DIF > We describe how we intend to expand this dataset to fulfil the needs of upcoming research problems.
+%DIF > For instance, the data should provide cases to measure position-, scale-, and viewing-angle invariance.
+%DIF > The data are in Address-Event Representation (AER) format which is widely used in the neuromorphic engineering field unlike conventional images.
 These spike trains are produced by various techniques: rate-based Poisson spike generation, rank order encoding and recorded output from a silicon retina with both flashing and oscillating input stimuli.
 Furthermore a complementary evaluation methodology is also presented to assess both model-level and hardware-level performance.
 Finally, we provide two SNN models to validate their classification capabilities and to assess the performances of their hardware implementations as tentative benchmarks.
@@ -186,20 +222,25 @@ The YouTube Action Dataset~\citep{liu2009recognizing} targets recognising realis
 The main challenge relies on the massive variations due to the moving camera, background clutter, viewing angles, illuminations and so on.
 
 As a consequence, a new series of spike-based vision datasets is now needed to quantitatively measure progress within this rapidly advancing field and to provide fair competition resources for researchers.
-Apart from using spikes instead of the frame-based data of conventional computer vision, there are new concerns of evaluating neuromorphic vision in tasks other than recognition accuracy.
-Therefore a set of common metrics for performance evaluation on spike-based vision is also required to specify the measurements of algorithms and models.
-Different assessments should be taken into consideration when implementing models on neuromorphic hardware, especially the trade-offs between simulation time, accuracy and power consumption.
-%Benchmarking neuromorphic hardware with various network models will reveal the advantages and disadvantages of different platforms.
-Running various SNN benchmarks reveals the feasibility of a hardware platform to support model-specific configurations on network size, topology, neural and synaptic models, learning algorithms and etc.
-In this paper we propose a large dataset of spike-based visual stimuli, NE, and its complementary evaluation methodology.
-Just as research is an expanding and evolving activity, the dataset will be adapted and extended to fit new requirements presented by advances in the field.
+	Apart from using spikes instead of the frame-based data of conventional computer vision, there are new concerns of evaluating neuromorphic vision in tasks other than recognition accuracy.
+	Therefore a set of common metrics for performance evaluation on spike-based vision is also required to specify the measurements of algorithms and models.
+	Different assessments should be taken into consideration when implementing models on neuromorphic hardware, especially the trade-offs between simulation time, accuracy and power consumption.
+	%DIF > Benchmarking neuromorphic hardware with various network models will reveal the advantages and disadvantages of different platforms.
+	\DIFaddbegin \DIFadd{Running various SNN benchmarks reveals the feasibility of a hardware platform to support model-specific configurations on network size, topology, neural and synaptic models, learning algorithms and etc.
+	In this paper we propose a large dataset of spike-based visual stimuli, NE, and its complementary evaluation methodology.
+	Just as research is an expanding and evolving activity, the dataset will be adapted and extended to fit new requirements presented by advances in the field.}
+	\DIFdelbegin \DIFdel{
+	Thus benchmarking neuromorphic hardware with various network models will reveal the advantages and disadvantages of different platforms.
+	In this paper we propose a large dataset of spike-based visual stimuli, NE, and its complementary evaluation methodology.
+	The dataset expands and evolves as research develops and new problems are introduced.}%DIFDELCMD < 
 
-%In Section~\ref{sec:Related}, some example datasets of conventional non-spiking computer vision are introduced.
-The rest of this paper is structured as follows: Section~\ref{sec:method} elaborates on the purpose and protocols of the proposed dataset, describes the sub-datasets and the methods employed to generate them; it also demonstrates the suggested evaluation methodology in accordance with the dataset.
-%The sub-datasets and their generation methods are described in detail in Section~\ref{sec:data}.
-%In accordance with the dataset, its evaluation methodology is demonstrated in Section~\ref{sec:eval}.
-Section~\ref{sec:test} provides two SNN networks as examples of assessing model performance and benchmarking hardware platforms.
-Finally, Section~\ref{sec:summ} summarises the paper and discusses future work.
+	The rest of this paper is structured as follows: Section~\ref{sec:method} elaborates on the purpose and protocols of the proposed dataset, describes the sub-datasets and the methods employed to generate them; it also demonstrates the suggested evaluation methodology in accordance with the dataset.
+	\DIFdelbegin \DIFdel{The sub-datasets and their generation methods are described in detail in Section~\ref{sec:data}.
+	In accordance with the dataset, its evaluation methodology is demonstrated in Section~\ref{sec:eval}.}
+	Section~\ref{sec:test} provides two SNN networks as examples of assessing model performance and benchmarking hardware platforms.
+	Finally, Section~\ref{sec:summ} summarises the paper and discusses future work.
+
+
 
 %\section{Related Work}
 %\label{sec:Related}
@@ -252,11 +293,13 @@ Finally, Section~\ref{sec:summ} summarises the paper and discusses future work.
 \subsection{Guiding Principles}
 The NE database we propose here is a developing and evolving dataset consisting of various spike-based representations of images and videos.
 The spikes are either generated from spike encoding methods which covert images or frames of videos into spike trains, or recorded from DVS silicon retinas.
-The spike trains are in the format of Address-Event Representation~(AER)~\citep{mahowald1992vlsi} data, which could easily be used in both event-driven computer simulations and neuromorphic systems.
-The AER was originally proposed as a communication protocol using time-multiplexing to replace the connection wires for each connected neuron pair.
-The idea was that each time a neuron produces an spike an event is generated that codes the spiking neuron address in a fast time-multiplexed digital bus.
-The recorded AER data contains consists on a list of events, each one containing the time stamp of a spike and the address of the neuron which generated the spike.
-With the NE dataset we hope:
+The spike trains are in the format of \DIFdelbegin \DIFdel{AER }\DIFdelend \DIFaddbegin \DIFadd{Address-Event Representation~(AER)~\mbox{%DIFAUXCMD
+		\citep{mahowald1992vlsi} }%DIFAUXCMD
+}\DIFaddend data, which could easily be used in both event-driven computer simulations and neuromorphic systems.
+\DIFaddbegin \DIFadd{The AER was originally proposed as a communication protocol using time-multiplexing to replace the connection wires for each connected neuron pair.
+	The idea was that each time a neuron produces an spike an event is generated that codes the spiking neuron address in a fast time-multiplexed digital bus.
+	The recorded AER data contains consists on a list of events, each one containing the time stamp of a spike and the address of the neuron which generated the spike.
+}\DIFaddend With the NE dataset we hope:
 \begin{itemize}
 	\item \textit{to promote meaningful comparisons of algorithms in the field of spiking neural computation.}
 	The NE dataset provides a unified format of AER data to meet the demands of spike-based visual stimuli.
@@ -280,12 +323,16 @@ With the NE dataset we hope:
 \label{sec:data}
 %Experiment setup/ collection method/ properties of each class/ etc.
 The name of the first proposed dataset in the benchmarking system is NE15-MNIST which stands for Neuromorphic Engineering 2015 on MNIST.
-The original dataset was downloaded from the MNIST Database of Handwritten Digits~\citep{lecun1998gradient}  website\footnote{http://yann.lecun.com/exdb/mnist/}.
-The NE15-MNIST is the spiking version of the original dataset, the converted set consists of four subsets which were generated for different purposes:
+The original \DIFdelbegin \DIFdel{MNIST dataset is }\DIFdelend \DIFaddbegin \DIFadd{dataset was }\DIFaddend downloaded from the \DIFaddbegin \DIFadd{MNIST Database of Handwritten Digits~\mbox{%DIFAUXCMD
+		\citep{lecun1998gradient}  }%DIFAUXCMD
+}\DIFaddend website\footnote{http://yann.lecun.com/exdb/mnist/}\DIFdelbegin \DIFdel{of THE MNIST DATABASE of handwritten digits~\mbox{%DIFAUXCMD
+	\citep{lecun1998gradient}  }%DIFAUXCMD
+}\DIFdelend .
+The NE15-MNIST is \DIFdelbegin \DIFdel{converted into a }\DIFdelend \DIFaddbegin \DIFadd{the }\DIFaddend spiking version of the original dataset\DIFdelbegin \DIFdel{consisting }\DIFdelend \DIFaddbegin \DIFadd{, the converted set consists }\DIFaddend of four subsets which were generated for different purposes:
 \begin{itemize}
 	\item \textit{Poissonian}
 	to benchmarking existing methods of rate-based spiking models.
-	\item \textit{FoCal~(Filter Overlap Correction ALgorithm)}
+	\item \textit{FoCal\DIFaddbegin \DIFadd{~(Filter Overlap Correction ALgorithm)}\DIFaddend }
 	to promote the study of spatio-temporal algorithms applied to recognition tasks using few input spikes.
 	\item \textit{DVS recorded flashing input}
 	to encourage research on fast recognition methods which are found in the primate visual pathway.
@@ -294,16 +341,23 @@ The NE15-MNIST is the spiking version of the original dataset, the converted set
 \end{itemize}
 The dataset can be found in the GitHub repository at: https://github.com/qian-liu/benchmarking.
 \subsection{Data Description}
+	
 
-Two file formats are supported in the dataset: jAER format~\citep{delbruck2008frame} (.dat or .aedat), and binary file in NumPy~\citep{numpyPython} (.npy) format.
-%The AER interface has been widely used in neuromorphic systems, especially for vision sensors.
-%The spikes are encoded as time events with corresponding addresses to convey information.
-The spikes in jAER format, both recorded from a DVS retina and artificially generated, can be displayed by jAER software.
+Two file formats are supported in the dataset: jAER format~\citep{delbruck2008frame} (.dat or .aedat), and binary file in NumPy\DIFdelbegin \DIFdel{.npy format.
+	The  address event representation (AER) interface has been widely used in neuromorphic systems, especially for vision sensors.
+	The spikes are encoded as time events with corresponding addresses to convey information.
+	The spikes }\DIFdelend \DIFaddbegin \DIFadd{~\mbox{%DIFAUXCMD
+		\citep{numpyPython} }%DIFAUXCMD
+	(.npy) format.
+	%DIF > The AER interface has been widely used in neuromorphic systems, especially for vision sensors.
+	%DIF > The spikes are encoded as time events with corresponding addresses to convey information.
+	The spikes }\DIFaddend in jAER format, both recorded from a DVS retina and artificially generated, can be displayed \DIFdelbegin \DIFdel{in }\DIFdelend \DIFaddbegin \DIFadd{by }\DIFaddend jAER software.
 Figure~\ref{fig:zero}(a) is a snapshot of the software displaying an .aedat file which is recorded by a DVS retina~\citep{serrano2013128}.
 The resolution of the DVS recorded data is 128$\times$128.
-The second spike-based format used is a list of spike source arrays in PyNN~\citep{davison2008pynn}, a description language for building spiking neuronal network models.
-Python code for converting from one file format to the other and vice versa is provided.
-The duration of artificially generated data could be configured using the Python code provided, while the recorded data aiming at different tasks vary in duration: 1~s for the flashing input, and 3.2 to 3.4~s for the moving input.
+The \DIFdelbegin \DIFdel{other format of spikes }\DIFdelend \DIFaddbegin \DIFadd{second spike-based format }\DIFaddend used is a list of spike source arrays in PyNN~\citep{davison2008pynn}, a description language for building spiking neuronal network models.
+Python code for converting \DIFaddbegin \DIFadd{from }\DIFaddend one file format to \DIFdelbegin \DIFdel{and from the other is also provided.
+}\DIFdelend \DIFaddbegin \DIFadd{the other and vice versa is provided.
+The duration of artificially generated data could be configured using the Python code provided, while the recorded data aiming at different tasks vary in duration: 1~s for the flashing input, and 3.2 to 3.4~s for the moving input.}\DIFaddend 
 
 \begin{figure}[hbt]
 	\centering
@@ -353,8 +407,12 @@ A different way of encoding spikes is using a rank-order code; this means
 keeping just the order in which those spikes were fired and disregarding the exact timing. Rank-ordered spike trains have been used in vision tasks under a biological plausibility constraint, making them a viable way of image encoding for neural applications~\citep{van2001rate,sen2009evaluating,masmoudi2010novel}.
 
 Rank-ordered encoding can be performed using an algorithm known as the
-{FoCal algorithm~\citep{sen2009evaluating}}.
-It models the foveal pit region, the highest resolution area of the retina, with four ganglion cell layers that present a centre-surround behaviour~\citep{kolb2003retina}. In order to simulate these layers two steps are required, the first one consists of four discrete 2D convolutions; the second one removes redundant information produced by the first step. During the first step, the centre-surround behaviour of the ganglion cells is modelled using Differences of Gaussians~(DoG) kernels for convolution. 
+{\DIFdelbegin \DIFdel{Filter overlap Correction algorithm}\DIFdelend \DIFaddbegin \DIFadd{FoCal algorithm~\mbox{%DIFAUXCMD
+			\citep{sen2009evaluating}}%DIFAUXCMD
+	}\DIFaddend }\DIFdelbegin \DIFdel{or FoCal ~\mbox{%DIFAUXCMD
+	\citep{sen2009evaluating}}%DIFAUXCMD
+}\DIFdelend .
+It models the foveal pit region, the highest resolution area of the retina, with four ganglion cell layers that \DIFdelbegin \DIFdel{show }\DIFdelend \DIFaddbegin \DIFadd{present }\DIFaddend a centre-surround behaviour~\citep{kolb2003retina}. In order to simulate these layers \DIFdelbegin \DIFdel{, }\DIFdelend \DIFaddbegin \DIFadd{two steps are required, the first one consists of }\DIFaddend four discrete 2D convolutions\DIFdelbegin \DIFdel{are performed. The }\DIFdelend \DIFaddbegin \DIFadd{; the second one removes redundant information produced by the first step. During the first step, the }\DIFaddend centre-surround behaviour of the ganglion cells is modelled using Differences of Gaussians~(DoG) \DIFaddbegin \DIFadd{kernels for convolution}\DIFaddend . 
 \begin{equation}
 \label{eq-dog}
 DoG_w(x,y) = \pm\frac{1}{2\pi\sigma_{w,c}^2}e^{\frac{-(x^2 + y^2)}{2\sigma_{w,c}^2}}
@@ -406,7 +464,7 @@ scale $w$.
 \end{table}
 
 Every pixel value in the convolved images (Figure~\ref{fig-convolution-results}) 
-is inversely proportional to a spike emission time with respect to the presentation of the image (i.e. the higher the pixel value, the sooner the spike will be sent out.)
+is inversely proportional to a spike emission time \DIFaddbegin \DIFadd{with respect to the presentation of the image }\DIFaddend (i.e. the higher the pixel value, the sooner the spike will be sent out.)
 
 \begin{figure}[hbt]
 	\centering
@@ -434,11 +492,11 @@ is inversely proportional to a spike emission time with respect to the presentat
 	\caption{Results of correcting the spikes from the simulated ganglion cell layers using the FoCal algorithms.}
 	\label{fig-convolution-results}
 \end{figure}
-Since DoGs where used as a means to encode the image, and they are not an orthogonal basis, the algorithm also performs a redundancy correction step, it does so by 
+\DIFdelbegin \DIFdel{The }\DIFdelend \DIFaddbegin \DIFadd{Since DoGs where used as a means to encode the image, and they are not an orthogonal basis, the }\DIFaddend algorithm also performs a redundancy correction step, it does so by 
 adjusting the convolved image's pixel value according to the correlation 
-between convolution kernels (Alg.~\ref{code-focal-corr}).
+between convolution kerne	ls (Alg.~\ref{code-focal-corr}).
 \begin{algorithm}[h]
-	\caption{FoCal, redundancy correction}
+	\caption{FoCal, \DIFdelbegin \DIFdel{Part 2}\DIFdelend \DIFaddbegin \DIFadd{redundancy correction}\DIFaddend }
 	\label{code-focal-corr}
 	\begin{algorithmic}
 		\Procedure{Correction}{coeffs $C$, correlations $Q$}
@@ -459,7 +517,7 @@ between convolution kernels (Alg.~\ref{code-focal-corr}).
 \end{algorithm}
 
 
-After the correction step, the most important information can be recovered using only the first 30\% of the spikes~\citep{sen2009evaluating}. These significant spikes are shown in Figure~\ref{fig-raster-plot-30pc}, assuming that each spike will be generated 1~ms apart. Neurons in Layer 1 emit spikes faster and in larger quantities than any other layer, making it the most important one. Layers 2 and 3 have few spikes, this is due to the large convolution kernels used to simulate the ganglion cells. One of the main advantages of ROC is that neurons will only spike once, this can be seen particularly well in these two layers. Layers 0 and 1 encode fine details which could be used to identify what's in the image, while layers 2 and 3 result in blob-like features that should prove useful to location problems.
+After the correction step, the most important information can be recovered using only the first 30\% of the spikes~\citep{sen2009evaluating}. These significant spikes are shown in Figure~\ref{fig-raster-plot-30pc}, assuming that each spike will be generated 1~ms apart. Neurons in Layer 1 emit spikes faster and in larger quantities than any other layer, making it the most important one. Layers 2 and 3 have few spikes, this is due to the large convolution kernels used to simulate the ganglion cells. One of the main advantages of ROC is that neurons will only spike once, this can be seen particularly well in these two layers. Layers 0 and 1 encode fine details \DIFaddbegin \DIFadd{which could be used to identify what's in the image}\DIFaddend , while layers 2 and 3 result in \DIFdelbegin \DIFdel{blob like features }\DIFdelend \DIFaddbegin \DIFadd{blob-like features that should prove useful to location problems}\DIFaddend .
 \begin{figure}[hbt]
 	\centering
 	\includegraphics[width=0.48\textwidth]{fig3}
@@ -525,11 +583,11 @@ A total of 30,000 recordings were made: 10 digits, at 3 different scales, 1000 d
 
 \subsection{Performance Evaluation}
 \label{sec:eval}
-Due to the spike-based processing of SNN models, there are new concerns over the performance assessment.
-Therefore we propose the corresponding evaluation metrics and suggest a sufficient description of SNN models in this section.
-Once a model is implemented on a neuromorphic platform, the hardware performance can be evaluated by running the particular model.
-This model-specific assessment provides more robust comparisons among hardware platforms thanks to the same network topology, neuron and synaptic models, and learning rules. 
-A complementary evaluation methodology is essential to provide common metrics and assess both the model-level and hardware-level performance.
+\DIFaddbegin \DIFadd{Due to the spike-based processing of SNN models, there are new concerns over the performance assessment.
+	Therefore we propose the corresponding evaluation metrics and suggest a sufficient description of SNN models in this section.
+	Once a model is implemented on a neuromorphic platform, the hardware performance can be evaluated by running the particular model.
+	This model-specific assessment provides more robust comparisons among hardware platforms thanks to the same network topology, neuron and synaptic models, and learning rules. 
+}\DIFaddend A complementary evaluation methodology is essential to provide common metrics and assess both the model-level and hardware-level performance.
 \begin{table*}[hbt!]
 	\caption{Model-level comparison}
 	\begin{center}
@@ -597,71 +655,83 @@ A complementary evaluation methodology is essential to provide common metrics an
 			\begin{mycell}{1.9cm} Poisson \end{mycell}& % preprocessing 
 			\begin{mycell}{3.5cm} Fully connected decision layer, \\ LIF neurons \end{mycell}& % network
 			\begin{mycell}{3.5cm} K-means clusters,\\Supervised STDP\\$18,000$~s of training \end{mycell}& % training
-			\begin{mycell}{3.5cm} 92.99\%\\1~s per test\\13.82~ms latency\\$5.01$M Sopbs\end{mycell}\\ % recognition
+			\begin{mycell}{3.5cm}  \DIFaddbegin \DIFadd{92.99\%\\1~s per test\\13.82~ms latency\\$5.01$M Sopbs}\DIFaddend\end{mycell}\\ % recognition
 		\end{tabular}
 		\egroup
 	\end{center}
 	\label{tb:software_comparison}
 \end{table*}
 
-\subsubsection{Model-Level Evaluation}
+\subsubsection{\textcolor{blue}{Model-Level Evaluation}}
 \label{subsec:model}
 
-Because of the use of time dimension and the spike-based processing of SNN, there are more performance evaluation metrics involved except for classification accuracy: recognition latency and number of events.
-%Both of the metrics are proposed according to the biological aspects.
-The recognition latency measures how fast spikes are conveyed through layers of network to trigger recognition neurons.
-\cite{dicarlo2012does} considers the rapid ($<$200~ms) and accurate vision recognition in the brain as the essential problem of object recognition.
-Regarding real-time systems with live visual inputs, e.g. robotic systems, a short response latency helps robots make fast decisions and actions.
-The latency is measured as the time difference between the first spike generated by the output layer and the first spike of the input layer.
-The number of total spike events generated by a recognition task demonstrates the efficiency of a SNN model.
-A spike event is a synaptic operation evoked when one action potential hitting one synapse~\citep{sharp2012power}.
-Fewer spike events means quieter neural activities and lower energy consumption.
-The number of events can be measured as Sopbs, synaptic operations per biological second.
+\DIFdelbegin \DIFdel{First of all it is desirable for researchers to specify whether they add any }\DIFdelend \DIFaddbegin \DIFadd{Because of the use of time dimension and the spike-based processing of SNN, there are more performance evaluation metrics involved except for classification accuracy: recognition latency and number of events.
+	%DIF > Both of the metrics are proposed according to the biological aspects.
+	The recognition latency measures how fast spikes are conveyed through layers of network to trigger recognition neurons.
+	\mbox{%DIFAUXCMD
+		\cite{dicarlo2012does} }%DIFAUXCMD
+	considers the rapid ($<$200~ms) and accurate vision recognition in the brain as the essential problem of object recognition.
+	Regarding real-time systems with live visual inputs, e.g. robotic systems, a short response latency helps robots make fast decisions and actions.
+	The latency is measured as the time difference between the first spike generated by the output layer and the first spike of the input layer.
+	The number of total spike events generated by a recognition task demonstrates the efficiency of a SNN model.
+	A spike event is a synaptic operation evoked when one action potential hitting one synapse~\mbox{%DIFAUXCMD
+		\citep{sharp2012power}}%DIFAUXCMD
+	.
+	Fewer spike events means quieter neural activities and lower energy consumption.
+	The number of events can be measured as Sopbs, synaptic operations per biological second.}
 
-Besides of the SNN evaluation metrics, a sufficient description of a network model is required so that other researchers can reproduce it and compare with other models.
-First of all, the input of a SNN should be specified.
-The description includes the transformation method of converting raw images to spike trains, and the preprocessing either to images or spikes.
-Filtering the raw image may ease the classification/recognition task while adding noise may require stronger robustness of the model.
-Secondly, as with the evaluation on conventional artificial neural networks, a description of the network characteristics is supposed to be provided since it is the basis for the overall performance.
-Sharing the designs not only makes the model reproducible but also inspires fellow scientists to bring new points of view to the problem and generate a positive feedback loop where everybody wins.
-The main characteristics include the topology, and the neural and synaptic models.
+\DIFadd{Besides of the SNN evaluation metrics, a sufficient description of a network model is required so that other researchers can reproduce it and compare with other models.
+	First of all, the input of a SNN should be specified.
+	The description includes the transformation method of converting raw images to spike trains, and the }\DIFaddend preprocessing either to images or spikes.
+Filtering the raw \DIFdelbegin \DIFdel{input }\DIFdelend \DIFaddbegin \DIFadd{image }\DIFaddend may ease the classification/recognition task while adding noise may require stronger robustness of the model.
+Secondly, as with the evaluation on conventional artificial neural networks, a description of the network characteristics is \DIFdelbegin \DIFdel{most welcome }\DIFdelend \DIFaddbegin \DIFadd{supposed to be provided }\DIFaddend since it is the basis for the overall performance.
+\DIFdelbegin \DIFdel{Furthermore, sharing the designs may inspire }\DIFdelend \DIFaddbegin \DIFadd{Sharing the designs not only makes the model reproducible but also inspires }\DIFaddend fellow scientists to bring new points of view to the problem and generate a positive feedback loop where everybody wins.
+The \DIFdelbegin \DIFdel{network description should }\DIFdelend \DIFaddbegin \DIFadd{main characteristics }\DIFaddend include the topology, and the neural and synaptic models.
 The network topology defines the number of neurons used for each layer, and the connections between layers and neurons.
-It is essential to state the types of neural and synaptic models (e.g. current-based LIF neuron) utilised in the network and the parameters configuring them, because neural activities differ greatly between various configurations.
-Any extra non-neural classifier, sometimes to aid the design, others to enhance the output of the network, is also required to represent the model.
+\DIFdelbegin \DIFdel{Some researchers make use of extra non-neural classifiers, sometimes to aid the design, others to enhance the output of the network.
+	Any particulars on this subject are greatly appreciated.
+}\DIFdelend It is essential to state the \DIFdelbegin \DIFdel{type }\DIFdelend \DIFaddbegin \DIFadd{types }\DIFaddend of neural and synaptic \DIFdelbegin \DIFdel{model }\DIFdelend \DIFaddbegin \DIFadd{models }\DIFaddend (e.g. current-based LIF neuron) \DIFdelbegin \DIFdel{exploited }\DIFdelend \DIFaddbegin \DIFadd{utilised }\DIFaddend in the network and the parameters configuring them, because neural activities differ greatly between various configurations.
+\DIFaddbegin \DIFadd{Any extra non-neural classifier, sometimes to aid the design, others to enhance the output of the network, is also required to represent the model.}
 
-Thirdly, the learning procedure determines the recognition capability of a network model.
+\DIFaddend Thirdly, the learning procedure determines the recognition capability of a network model.
 A clear distinction has always been made between supervised, semi-supervised and unsupervised learning.
 A detailed description of new proposed spike-based learning rules will be a great contribution to the field due to the lack of spatio-temporal learning algorithms.
 Most publications reflect the use of adaptations to existing learning rules, details on the modifications are highly desired.
 In conventional computer vision, iterations of training images presented to the network play an important role.
-Similarly, the biological time of training decides the amount of information provided for training a SNN.
-Finally in the testing phase, besides the performance evaluation metrics stated above, specific configurations of the input spikes are also essential.
-It should include details of the way samples were presented: spiking rates, and biological time per testing sample.
+Similarly, the biological time of training decides the amount of information provided \DIFdelbegin \DIFdel{.}
+\DIFdelend \DIFaddbegin \DIFadd{for training a SNN.
+}\DIFaddend Finally in the testing phase\DIFdelbegin \DIFdel{where performance evaluation takes place, specific measurements of SNN models are essential in addition to recognition accuracy}\DIFdelend \DIFaddbegin \DIFadd{, besides the performance evaluation metrics stated above, specific configurations of the input spikes are also essential}\DIFaddend .
+It should include details of the way samples were presented: \DIFdelbegin \DIFdel{event }\DIFdelend \DIFaddbegin \DIFadd{spiking }\DIFaddend rates, and biological time per testing sample.
 The combination of these two factors determines how much information is presented to the network.
-%An important performance metric is the response time (latency) of an SNN model.
-%A faster model is more suitable for real-time recognition systems such as neuromorphic robotics.
-%A commonly reported characteristic is the accuracy of the network, perhaps adding remarks on how these scores are obtained could help to unify criteria and ease comparison.
+\DIFdelbegin \DIFdel{An important performance metric is the response time (latency) of an SNN model .
+	A faster model is more suitable for real-time recognition systems such as neuromorphic robotics.
+	A commonly reported characteristic is the accuracy of the network, perhaps adding remarks on how these scores are obtained could help to unify criteria and ease comparison.
+	Work }\DIFdelend %DIF > An important performance metric is the response time (latency) of an SNN model.
+%DIF > A faster model is more suitable for real-time recognition systems such as neuromorphic robotics.
+%DIF > A commonly reported characteristic is the accuracy of the network, perhaps adding remarks on how these scores are obtained could help to unify criteria and ease comparison.
 
-As a summery, the description of a SNN model is suggested as Table~\ref{tb:model_eval} where the specific description for SNN is written with italic and the performance evaluation metrics are in bold.
-Some works on SNN-based classifications of MNIST are listed in Table~\ref{tb:software_comparison}.
-Most of the reports did not provide sufficient description of the networks and the models were not completely evaluated as we propose.
+\DIFaddbegin 
 
-\begin{table*}[hbt!]
-	\caption{SNN descriptions in model level}
+\DIFadd{As a summery, the description of a SNN model is suggested as Table~\ref{tb:model_eval} where the specific description for SNN is written with italic and the performance evaluation metrics are in bold.
+	Some works }\DIFaddend on SNN-based classifications of MNIST are listed in Table~\ref{tb:software_comparison}\DIFdelbegin \DIFdel{and evaluated on the proposed metrics}\DIFdelend \DIFaddbegin \DIFadd{.
+	Most of the reports did not provide sufficient description of the networks and the models were not completely evaluated as we propose}\DIFaddend .
+
+\DIFaddbegin \begin{table*}[hbt!]
+	\caption{\DIFaddFL{SNN descriptions in model level}}
 	\begin{center}
 		\bgroup
 		\def\arraystretch{1.5}
 		\begin{tabular}{ l l l l }
-			\begin{mycell}{3.7cm}Input\end{mycell} & 
-			\begin{mycell}{2.5cm} Network\end{mycell} & 
-			\begin{mycell}{4cm} Training \end{mycell} & 
-			\begin{mycell}{4.5cm} Recognition \end{mycell} \\
+			\begin{mycell}{3.7cm}\DIFaddFL{Input}\end{mycell} & 
+			\begin{mycell}{2.5cm} \DIFaddFL{Network}\end{mycell} & 
+			\begin{mycell}{4cm} \DIFaddFL{Training }\end{mycell} & 
+			\begin{mycell}{4.5cm} \DIFaddFL{Recognition }\end{mycell} \\
 			\hline
 			
-			\begin{leftcell}{3.7cm} - \textit{converting methods}\\- preprocessing \end{leftcell} & % preprocessing
-			\begin{leftcell}{2.5cm} - topology\\- \textit{neuron and synaptic type} \end{leftcell}&  % network
-			\begin{leftcell}{4cm} - supervised or not\\- \textit{learning rule} \\ - \textit{biological training time}\end{leftcell}&  % training
-			\begin{leftcell}{4.5cm} - \textbf{classification accuracy}\\ - \textbf{\textit{response latency}}\\ - \textbf{\textit{number of events}} \\ - \textit{biological testing time}\\ - \textit{input spiking rate}  \end{leftcell}% recognition
+			\begin{leftcell}{3.7cm} \DIFaddFL{- }\textit{\DIFaddFL{converting methods}}\\\DIFaddFL{- preprocessing }\end{leftcell} & %DIF >  preprocessing
+			\begin{leftcell}{2.5cm} \DIFaddFL{- topology}\\\DIFaddFL{- }\textit{\DIFaddFL{neuron and synaptic type}} \end{leftcell}&  %DIF >  network
+			\begin{leftcell}{4cm} \DIFaddFL{- supervised or not}\\\DIFaddFL{- }\textit{\DIFaddFL{learning rule}} \\ \DIFaddFL{- }\textit{\DIFaddFL{biological training time}}\end{leftcell}&  %DIF >  training
+			\begin{leftcell}{4.5cm} \DIFaddFL{- }\textbf{\DIFaddFL{classification accuracy}}\\ \DIFaddFL{- }\textbf{\textit{\DIFaddFL{response latency}}}\\ \DIFaddFL{- }\textbf{\textit{\DIFaddFL{number of events}}} \\ \DIFaddFL{- }\textit{\DIFaddFL{biological testing time}}\\ \DIFaddFL{- }\textit{\DIFaddFL{input spiking rate}}  \end{leftcell}%DIF >  recognition
 		\end{tabular}
 		\egroup
 	\end{center}
@@ -714,7 +784,7 @@ Most of the reports did not provide sufficient description of the networks and t
   				%       	 per neuron
   				\\ 4-bit synapse 
   				%\\(4 signed int + on/off state)
-          \footnote[1]{We consider them 4-bit synapses because it is only possible to choose between 4 different signed integers and whether the synapse is active or not.}
+          \DIFaddbegin \DIFadd{\footnote[1]{We consider them 4-bit synapses because it is only possible to choose between 4 different signed integers and whether the synapse is active or not.}}\DIFaddend
   			\end{mycell}& 
   			\begin{mycell}{2.0cm}Real-time\end{mycell}& 
   			\begin{mycell}{2.0cm}26 pJ/SE\end{mycell} \\
@@ -733,11 +803,11 @@ Most of the reports did not provide sufficient description of the networks and t
   			\begin{mycell}{2.0cm}Fixed rule\end{mycell}& 
   			\begin{mycell}{2.0cm}4-bit synapses\end{mycell}& 
   			\begin{mycell}{2.0cm}Faster than\\ real-time
-                             \footnote[2]{A maximum speed-up of up to $10^5$ times real time has been reported.}
+                             \DIFaddbegin \DIFadd{\footnote[2]{A maximum speed-up of up to $10^5$ times real time has been reported.}}\DIFaddend
         \end{mycell}&
   			\begin{mycell}{2.0cm} 7.41 nJ/SE\\(network only) \end{mycell}\\
   			%
-  			\begin{mycell}{1.8cm} HiAER-IFAT \citep{yu201265k}\end{mycell} & 
+  			\begin{mycell}{1.8cm}\DIFaddbegin \DIFadd{(HiAER-\\IFAT)}\DIFaddend   \citep{yu201265k}\end{mycell} & 
   			\begin{mycell}{2.0cm}Mixed-mode,\\Scalable\end{mycell} &
   			\begin{mycell}{2.0cm}Fixed models,\\Config params\end{mycell}& 
   			\begin{mycell}{2.0cm}No plasticity\end{mycell} &  
@@ -756,52 +826,60 @@ Most of the reports did not provide sufficient description of the networks and t
   \end{table*}
 
 
-Depending on how neurons, synapses and spike transmission are implemented, neuromorphic systems can be categorised as either analogue, digital, or mixed-mode analogue/digital. %VLSI circuits. 
-Some analogue implementations exploit sub-threshold transistor dynamics to emulate neurons and synapses directly on hardware~\citep{indiveri2011neuromorphic} and are more energy-efficient while requiring less area than their digital counterparts~\citep{joubert2012hardware}. However, the behaviour of analogue circuits is largely determined during the fabrication process due to transistor mismatch~\citep{indiveri2011neuromorphic,pedram2006thermal,linares2003compact}, while their wiring densities render them impractical for large-scale systems. The majority of mixed-mode analogue/digital neuromorphic platforms, such as the High Input Count Analog Neural Network (HI-CANN)~\citep{schemmel2010wafer}, Neurogrid~\citep{benjamin2014neurogrid}, HiAER-IFAT~\citep{yu201265k}, use analogue circuits to emulate neurons and digital packet-based technology to communicate spikes as AER events. This enables reconfigurable connectivity patterns, while the time of spikes is expressed implicitly since typically a spike reaches its destination in less than a millisecond, thus fulfilling the real-time requirement. Digital neuromorphic platforms such as TrueNorth~\citep{merolla2014million} use digital circuits with finite precision to simulate neurons in an event driven manner to minimise the active power dissipation. Neuromorphic systems suffer from model flexibility, since neurons and synapses are fabricated directly on hardware with only a small subset of parameters exposed to the researcher. 
-SpiNNaker is a biologically inspired, massively-parallel, scalable computing architecture designed by the Advanced Processor Technologies (APT) group at the University of Manchester. SpiNNaker has been optimised to simulate very large-scale spiking neural networks in real-time~\citep{furber2014spinnaker}, while it aims to combine the advantages of conventional computers and neuromorphic hardware by utilising low-power programmable cores and scalable event-driven communications hardware.
+Depending on how neurons, synapses and spike transmission are implemented\DIFaddbegin \DIFadd{, }\DIFaddend neuromorphic systems can be categorised as either analogue, digital, or mixed-mode analogue/digital\DIFdelbegin \DIFdel{VLSI circuits. }\DIFdelend \DIFaddbegin \DIFadd{. %DIF > VLSI circuits. 
+}\DIFaddend Some analogue implementations exploit sub-threshold transistor dynamics to emulate neurons and synapses directly on hardware~\citep{indiveri2011neuromorphic} and are more energy-efficient while requiring less area than their digital counterparts~\citep{joubert2012hardware}. However, the behaviour of analogue circuits is largely determined during the fabrication process due to transistor mismatch~\citep{indiveri2011neuromorphic,pedram2006thermal,linares2003compact}, while their wiring densities render them impractical for large-scale systems. The majority of mixed-mode analogue/digital neuromorphic platforms, such as the High Input Count Analog Neural Network (HI-CANN)~\citep{schemmel2010wafer}, Neurogrid~\citep{benjamin2014neurogrid}, HiAER-IFAT~\citep{yu201265k}, use analogue circuits to emulate neurons and digital packet-based technology to communicate spikes as AER events. This enables reconfigurable connectivity patterns, while the time of spikes is expressed implicitly since typically a spike reaches its destination in less than a millisecond, thus fulfilling the real-time requirement. Digital neuromorphic platforms such as TrueNorth~\citep{merolla2014million} use digital circuits with finite precision to simulate neurons in an event driven manner to minimise the active power dissipation. Neuromorphic systems suffer from model flexibility, since neurons and synapses are fabricated directly on hardware with only a small subset of parameters exposed to the researcher. 
+SpiNNaker is a biologically inspired, massively-parallel, scalable computing architecture designed by the Advanced Processor Technologies (APT) group at the University of Manchester. SpiNNaker has been optimised to simulate very large-scale spiking neural networks in real-time~\citep{furber2014spinnaker}\DIFdelbegin \DIFdel{. SpiNNaker }\DIFdelend \DIFaddbegin \DIFadd{, while it }\DIFaddend aims to combine the advantages of conventional computers and neuromorphic hardware by utilising low-power programmable cores and scalable event-driven communications hardware.
 
 A direct comparison between neuromorphic platforms is a non-trivial task due to the different hardware implementation technologies as mentioned above.
 %Qian Liu modified
-Table~\ref{tb:hardware_comparison} attempts to describe the neuromorphic hardware platforms in different aspects of SNN simulation.
+\DIFdelbegin \DIFdel{The metric proposed in }\DIFdelend Table~\ref{tb:hardware_comparison} attempts to \DIFdelbegin \DIFdel{expose the advantages and disadvantages of different neuromorphic hardware thus to find out the network properties each platform is suited to}\DIFdelend \DIFaddbegin \DIFadd{describe the neuromorphic hardware platforms in different aspects of SNN simulation}\DIFaddend .
 The scalability of a hardware platform determines the network size limit of a neural application running on it.
 Considering the various neural, synaptic models, plasticity learning rules and lengths of axonal delays, a programmable platform is flexible for diverse SNNs while a hard-wired system supporting only specific models wins for its simpler design and implementation.
-The classification accuracy of a SNN running on a hardware system can be different from the software simulation, since hardware implementations may impose limits on the precision used for the membrane potential of neurons (for the digital platforms) and the synaptic weights.
-%Thus comparison metrics is supposed to include precision as a major assessment of the system performance.
+The classification accuracy of a SNN running on a hardware system can be different from the software simulation, since hardware \DIFdelbegin \DIFdel{implementation }\DIFdelend \DIFaddbegin \DIFadd{implementations may impose }\DIFaddend limits on the precision used for the membrane potential of neurons (for the digital platforms) and the synaptic weights.
+\DIFdelbegin \DIFdel{Thus comparison metrics is supposed to include precision as a major assessment of the system performance.
+}\DIFdelend %DIF > Thus comparison metrics is supposed to include precision as a major assessment of the system performance.
 Simulation time is another important measure of running large-scale networks on hardware.
 Real-time implementation is an essential requirement for robotic systems because of the real-time input from the neuromorphic sensors.
 Running faster than real time is attractive for large/long simulations.
-Also finer time resolution plays an important role in precision sensitive neural models or in sub-millisecond tasks~\citep{lagorce2015breaking}.
+\DIFdelbegin \DIFdel{However, due to the limitation of hardware resources simulation time may accelerate or slow down according to the network topology and spike dynamics.
+}\DIFdelend Also finer time resolution plays an important role in precision sensitive neural models or in sub-millisecond tasks~\citep{lagorce2015breaking}.
 %Qian Liu done
 Comparing the performance of each platform in terms of energy requirements is an interesting comparison metric especially if targeted for mobile applications and robotics.
 Some researchers have suggested the use of energy per synaptic event (J/SE)~\citep{sharp2012power,stromatias2013power} as an energy metric because the large fan in and out of a neuron tend to dominate the total energy dissipation during a simulation.
-Merolla et al. proposed the number of synaptic operations per second per Watt (Sops/W)~\citep{merolla2014million}.
-These two measurements are the same presentations of energy use of synaptic events, since J/SE$\times$Sops/W = 1.
+Merolla et al. proposed the number of synaptic operations per \DIFaddbegin \DIFadd{second per }\DIFaddend Watt (Sops/W)~\citep{merolla2014million}.
+These two measurements are the same presentations of energy use of synaptic events, since J/SE$\times$Sops/W = \DIFdelbegin \DIFdel{1 s. 
+}\DIFdelend \DIFaddbegin \DIFadd{1.}\DIFaddend 
 
 %Qian Liu modified
-However, the reported simulation time and energy use is under different SNN models making the comparisons fragile.
-Therefore model-specific hardware metrics provide robust comparisons among platforms and expose how different networks influence the simulation on a particular hardware.
-The proposed evaluation metrics consist of the feasibility, classification accuracy, simulation time and energy use.
+\DIFdelbegin \DIFdel{For a particular SNN application or benchmark, the scalability and programmability will determine whether the network is able to run on a platform.
+	The system performance will be assessed on the }\DIFdelend \DIFaddbegin \DIFadd{However, the reported simulation time and energy use is under different SNN models making the comparisons fragile.
+	Therefore model-specific hardware metrics provide robust comparisons among platforms and expose how different networks influence the simulation on a particular hardware.
+	The proposed evaluation metrics consist of the feasibility, classification }\DIFaddend accuracy, simulation time and energy use\DIFdelbegin \DIFdel{running the  network . 
+	Table~\ref{tb:hardware_comparison} aims to summarise the aforementioned hardware comparison metrics.
+}\DIFdelend \DIFaddbegin \DIFadd{.
 A particular SNN model is feasible to run on a hardware platform only when the  network size is under the limit, the neural and synaptic models are supported and the learning rule is implemented.
 CA also plays a role in hardware evaluation because of the precision limits.
 Due to the limitation of hardware resources simulation time may, likewise, accelerate or slow down according to the network topology and spike dynamics.
-Similarly, energy cost varies with different networks and even neural and synaptic models.
-%The system performance will be assessed on the accuracy, simulation time and energy use running the network. 
-%Table~\ref{tb:hardware_comparison} aims to summarise the aforementioned hardware comparison metrics.
+Similarly, energy cost varies with different networks and even neural and synaptic models.}\DIFaddend 
+%DIF > The system performance will be assessed on the accuracy, simulation time and energy use running the network. 
+%DIF > Table~\ref{tb:hardware_comparison} aims to summarise the aforementioned hardware comparison metrics.
 
 \section{Results}
 \label{sec:test}
 In this section, we present two recognition SNN models working on the Poissonian subset of the NE15-MNIST dataset.
-Their network components, training and testing methods are described according to Section~\ref{subsec:model}.
-The recognition result is evaluated on (all/some of) the metrics proposed: classification accuracy, response latency and number of events.
-%The specific spike-based evaluations on input event rates and/or responding latency are also provided. 
-Meanwhile, as tentative benchmarks the models are implemented on SpiNNaker to assess the hard-level performance against software simulators.
+Their network components, training and testing methods are described according to \DIFdelbegin \DIFdel{the evaluation methodology stated above.
+	The specific spike-based evaluations on input event rates and}\DIFdelend \DIFaddbegin \DIFadd{Section~\ref{subsec:model}.
+	The recognition result is evaluated on (all}\DIFaddend /\DIFdelbegin \DIFdel{or responding latency are also provided.
+}\DIFdelend \DIFaddbegin \DIFadd{some of) the metrics proposed: classification accuracy, response latency and number of events.
+%DIF > The specific spike-based evaluations on input event rates and/or responding latency are also provided. 
+}\DIFaddend Meanwhile, as tentative benchmarks the models are implemented on SpiNNaker to assess the \DIFaddbegin \DIFadd{hard-level }\DIFaddend performance against software simulators.
 Presenting proper benchmarks for vision recognition systems is still under investigation, the case studies only make first attempt.
 
 \subsection{Case Study I}
-The first case study is a simple two-layered network where the input neurons receive Poissonian presented spike trains from the dataset and form a fully connected network with the decision neurons.
-There is at least one decision neuron per digit to classify a test input.
-The neuron with highest output firing rate classifies a test image into the digit it represents.
-The model utilises LIF neurons, and the parameters are all with biological means, see the listed values in Table~\ref{tbl:pynnSetting}.
+The first case study is a simple two-layered network where the input neurons receive Poissonian presented spike trains from the dataset and form \DIFdelbegin \DIFdel{an FC }\DIFdelend \DIFaddbegin \DIFadd{a fully connected }\DIFaddend network with the decision neurons.
+\DIFdelbegin \DIFdel{The }\DIFdelend \DIFaddbegin \DIFadd{There is at least one decision neuron per digit to classify a test input.
+	The neuron with highest output firing rate classifies a test image into the digit it represents.
+	The }\DIFaddend model utilises LIF neurons, and the parameters are all with biological means, see the listed values in Table~\ref{tbl:pynnSetting}.
 The LIF neuron model follows the membrane potential
 dynamics:
 \begin{equation}
@@ -862,11 +940,11 @@ Those templates are embedded in the connection weights between the two layers.
 Figure~\ref{fig:model}(a) shows how the connections to a single decision neuron are tuned.
 
 The training set of $60,000$ hand written digits are firstly classified into 100 classes, 10 subclasses per digit, using K-means clusters.
-K-means clustering separates a set of data points into K subsets (clusters) according to the Euclidean distance.
-Therefore each cluster tends to form a boundary within which the data points are near each other.
-In this case, all the images of a same digit (a class) are divided into 10 subclasses by assigning K=10.
-Then the images in a certain subclass are used to train a template embedded in the synaptic weights to the corresponding decision neuron.
-The firing rates of the input neurons are assigned linearly according to their intensities and the total firing rate of all the 28$\times$28 input neurons is normalised with $2,000$~Hz, e.g. the summation of the firing rate of all the input neurons is $2,000$~Hz.
+\DIFdelbegin \DIFdel{So the images }\DIFdelend \DIFaddbegin \DIFadd{K-means clustering separates a set of data points into K subsets (clusters) according to the Euclidean distance.
+	Therefore each cluster tends to form a boundary within which the data points are near each other.
+	In this case, all the images of a same digit (a class) are divided into 10 subclasses by assigning K=10.
+	Then the images }\DIFaddend in a certain subclass are used to train \DIFdelbegin \DIFdel{one }\DIFdelend \DIFaddbegin \DIFadd{a template embedded in the synaptic weights to the }\DIFaddend corresponding decision neuron.
+The firing rates of the input neurons are assigned linearly according to their intensities and \DIFdelbegin \DIFdel{normalised with a total }\DIFdelend \DIFaddbegin \DIFadd{the total firing rate of all the 28$\times$28 input neurons is normalised with $2,000$~Hz, e.g. the summation of the }\DIFaddend firing rate of \DIFaddbegin \DIFadd{all the input neurons is }\DIFaddend $2,000$~Hz.
 All the images together are presented for $18,000$~s (about 300~ms per image) during training and at the same time a teaching signal of 50~Hz is conveyed to the decision neuron to trigger STDP learning.
 The trained weights are plotted in accordance with the positions of the decision neurons in Figure~\ref{fig:model}(b).
 \begin{figure}[thb!]
@@ -942,34 +1020,38 @@ As long as there are enough spikes to trigger the decision neurons to spike, inc
 %		\includegraphics[width=0.25\textwidth]{lat_rate}
 %	}
 	\includegraphics[width=0.48\textwidth]{fig7}
-	\caption{Accuracy and response time (latency) change over test time and input firing rate per test image.
-	The test time is the duration of the presence of a single test image, and the input firing rate is the summation of all the input neurons.
-	Original trained weights are used (circles in blue) as well as the scaled up ($\times10$) weights (triangles in black). }
+	\DIFaddendFL \caption{Accuracy and response time (latency) change over test time and input firing rate per \DIFdelbeginFL \DIFdelFL{testing }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{test }\DIFaddendFL image.
+		\DIFaddbeginFL \DIFaddFL{The test time is the duration of the presence of a single test image, and the input firing rate is the summation of all the input neurons.
+		}\DIFaddendFL Original trained weights are used (circles in blue) as well as the scaled up ($\times10$) weights (triangles in black). }
 	\label{fig:assess}
 \end{figure}
 
 Regarding the network size, it not only influences the accuracy of a model but also the time taken for simulation on specific platforms thus impacting the energy usage on the hardware.
-For the purpose of comparing the accuracy, simulation time, number of events and energy usage, different configurations have been tested on NEST (working on a PC with CPU: i5-4570 and 8G memory) and SpiNNaker.
-The same experiment has been run 4~times with different random seeds, the average performance estimation is listed in Table~\ref{tbl:compare}.
+For the purpose of comparing the accuracy, simulation time\DIFaddbegin \DIFadd{, number of events }\DIFaddend and energy usage, different configurations have been tested on NEST (working on a PC with CPU: i5-4570 and 8G memory) and SpiNNaker\DIFdelbegin \DIFdel{, see }\DIFdelend \DIFaddbegin \DIFadd{.
+	The same experiment has been run 4~times with different random seeds, the average performance estimation is listed in }\DIFaddend Table~\ref{tbl:compare}.
 The input rates in all of the tests are $5,000$~Hz, and each image is presented for 1~s.
 The configurations only differ in the number of templates (subclasses/clusters) per digit.
-Thus the network size vary according to the number of neurons in the decision layer where each neuron represents a subclass of a digit and the template is embedded in the synaptic weights connecting from the input layer to the decision neuron.
-The CA drops less than $0.06\%$ on SpiNNaker comparing to NEST due to the limited fast memory and the necessity for fixed-point arithmetic on SpiNNaker to ensure real-time operation.
+\DIFdelbegin \DIFdel{The recognition accuracies differ in a range of $\pm0.5\%$ between NEST and SpiNNaker }\DIFdelend \DIFaddbegin \DIFadd{Thus the network size vary according to the number of neurons in the decision layer where each neuron represents a subclass of a digit and the template is embedded in the synaptic weights connecting from the input layer to the decision neuron.
+	The CA drops less than $0.06\%$ on SpiNNaker comparing to NEST }\DIFaddend due to the limited fast memory and the necessity for fixed-point arithmetic on SpiNNaker to ensure real-time operation.
 It is inevitable that numerical precision will be below IEEE double precision at various points in the processing chain from synaptic input to membrane potential.
 The main bottleneck is currently in the ring buffer where the total precision for accumulated spike inputs is 16-bit, meaning that individual spikes are realistically going to be limited to 11- to 14-bit depending upon the probabilistic headroom calculated as necessary from the network configuration and spike throughput~\citep{Hopkins2015Accuracy}.
 As the network size grows there are more decision neurons and synapses connecting to them, thus the simulation time on NEST increases.
 On the other hand, SpiNNaker works in real (biologically real) time and the simulation time becomes shorter than NEST simulation when $1,000$ patterns per digit are used.
 The Thermal Design Power (TDP) usage of all four processors of i5-4570 actively operating at base frequency is 84~W\footnote{\url{http://ark.intel.com/products/75043/Intel-Core-i5-4570-Processor-6M-Cache-up-to-3_60-GHz}}.
-%NEST was run fully active on a single core, and only OS related operations were on the other cores.
-The power usage is estimated by subtracting the power usage running the simulation and cost by idle OS operations.
+\DIFdelbegin \DIFdel{NEST was run fully active on a single core which cost 21~W of power usage }\DIFdelend %DIF > NEST was run fully active on a single core, and only OS related operations were on the other cores.
+\DIFaddbegin \DIFadd{The power usage is estimated by subtracting the power usage running the simulation and cost by idle OS operations}\DIFaddend .
 The energy use can be calculated as the product of the simulation time and the power use.
-Even with the smallest network, SpiNNaker wins in the energy cost comparison, see Figure~\ref{fig:energy}.
-Among different network configurations, the model of 500 decision neurons (50 clusters per digit) reaches the highest recognition rate of 92.99\% in average having the latency of about 13.82~ms.
+Even with the smallest network, SpiNNaker wins in the energy cost comparison, see \DIFdelbegin \DIFdel{Fig.}\DIFdelend \DIFaddbegin \DIFadd{Figure}\DIFaddend ~\ref{fig:energy}.
+Among different network configurations, the \DIFdelbegin \DIFdel{network }\DIFdelend \DIFaddbegin \DIFadd{model }\DIFaddend of 500 decision neurons (50 clusters per digit) reaches the highest recognition rate \DIFdelbegin \DIFdel{.
+	%DIF < The recognition accuracy reaches the highest (92.98\%) when 50 patterns are trained per digit.
+	The network achieved a CA of 92.98\% and average latency }\DIFdelend of \DIFdelbegin \DIFdel{10.70~ms, and the simulation costs SpiNNaker 0.41~W on power use and $4,920$~J on energy use.
+} \DIFdelend \DIFaddbegin \DIFadd{92.99\% in average having the latency of about 13.82~ms.
 The total number of events is around $5.01$M Sopbs, where only 0.01M spikes generated by the output layer. 
 The NEST simulation costs 767.67~s in average for the entire $12,000$~s biological-time test, 20~W in power use on the PC and $15.35$~KJ of energy, while SpiNNaker works in real time using $4.92$~KJ of energy on the power of 0.41~W.
 Given the number of events (Sopbs) and the simulation time, the energy per synaptic event on a hardware platform can be calculated (see Table~\ref{tbl:compare}): 
 255~nJ/SE running NEST on a PC, and 82~nJ/SE on SpiNNaker.
 The result provides a baseline for comparisons with other SNN models and neuromorphic hardwares, and no optimisation is applied.
+}\DIFaddend
 \begin{table}[h]
 	\caption{Comparisons of NEST (N) on a PC and SpiNNaker (S) performances over 10 trials in average.}
 	\begin{center}
@@ -1007,11 +1089,14 @@ However, state-of-the-art deep networks comprise a large number of layers, neuro
 
 
 % about oneils model 
-\citet{o2013real} proposed a method to map off-line trained DBNs into a spiking neural networks and take advantage of the real-time performance and energy efficiency of neuromorphic platforms. This led initially to an implementation on an event-driven Field-Programmable Gate Array (FPGA) called Minitaur~\citep{neil2014minitaur} and then on the SpiNNaker platform~\citep{Stromatias2015scalable}. For this work we used the identical off-line trained\footnote{\url{https://github.com/dannyneil/edbn/}} spiking DBN as presented by \citet{o2013real}, which comprises 784 neurons for the input layer, two hidden layers with 500 neurons each, and an output layer with 10 neurons. This is abbreviated as 784-500-500-10 architecture. Simulations take place on a software spiking neural network simulator named Brian~\citep{goodman2008brian} and results are verified on the SpiNNaker platform.
+\citet{o2013real} proposed a method to map off-line trained DBNs into a spiking neural networks and take advantage of the real-time performance and energy efficiency of neuromorphic platforms. This led initially to an implementation on an event-driven Field-Programmable Gate Array (FPGA) called Minitaur~\citep{neil2014minitaur} and then on the SpiNNaker platform~\citep{Stromatias2015scalable}. For this work we used \DIFdelbegin \DIFdel{an }\DIFdelend \DIFaddbegin \DIFadd{the identical }\DIFaddend off-line trained\footnote{\url{https://github.com/dannyneil/edbn/}} spiking DBN \DIFdelbegin \DIFdel{with a }\DIFdelend \DIFaddbegin \DIFadd{as presented by \mbox{%DIFAUXCMD
+		\citet{o2013real}}%DIFAUXCMD
+	, which comprises 784 neurons for the input layer, two hidden layers with 500 neurons each, and an output layer with 10 neurons. This is abbreviated as }\DIFaddend 784-500-500-10 \DIFdelbegin \DIFdel{network topology}\DIFdelend \DIFaddbegin \DIFadd{architecture}\DIFaddend . Simulations take place on a software spiking neural network simulator named Brian~\citep{goodman2008brian} and results are verified on the SpiNNaker platform.
 
 \subsubsection{Training}
 
-DBNs consist of stacked Restricted Boltzmann Machines (RBMs), which are fully connected recurrent networks but without any connections between neurons of the same layer. Training is performed unsupervised using the standard CD rule~\citep{hinton2006fast} and only the output layer is trained in a supervised manner. The main difference between spiking DBNs and traditional DBNs is the activation function used for the neurons.~\cite{o2013real} proposed the use of the Siegert approximation~\citep{Jug_etal_2012} as the activation function, which returns the expected firing rate of a LIF neuron (Equation~\ref{eq:LIF}) given input firing rates, input weights, and standard neuron parameters. Further details regarding the training process can be found in \citet{o2013real}.
+DBNs consist of stacked Restricted Boltzmann Machines (RBMs), which are fully connected recurrent networks but without any connections between neurons of the same layer. Training is performed unsupervised using the standard CD rule~\citep{hinton2006fast} and only the output layer is trained in a supervised manner. The main difference between spiking DBNs and traditional DBNs is the activation function used for the neurons.~\cite{o2013real} proposed the use of the Siegert approximation~\citep{Jug_etal_2012} as the activation function, which returns the expected firing rate of a LIF neuron \DIFaddbegin \DIFadd{(Equation~\ref{eq:LIF}) }\DIFaddend given input firing rates, input weights, and standard neuron parameters. \DIFaddbegin \DIFadd{Further details regarding the training process can be found in \mbox{%DIFAUXCMD
+\citet{o2013real}}.}\DIFaddend 
 
 \subsubsection{Testing}
 After the training process the learnt synaptic weights can be used in a spiking neural network which consists of LIF neurons with delta-current synapses. Table~\ref{Tab:NeuralParams} shows the LIF parameters used in the simulations.
@@ -1039,8 +1124,10 @@ After the training process the learnt synaptic weights can be used in a spiking 
 	\egroup
 \end{table}
 
-The pixels of each MNIST digit from the testing set are converted into Poisson spike trains as described in Section~\ref{sec:poissonian}. %with a rate proportional to the intensity of their pixel, while their firing rates are scaled so that the total firing rate of the input population is constant~\citep{o2013real}.
-The CA was chosen as the performance metric of the spiking DBN, which is the percentage of the correctly classified digits over the whole MNIST testing set.
+The pixels of each MNIST digit from the testing set are converted into Poisson spike trains \DIFdelbegin \DIFdel{with a rate proportional to the intensity of their pixel, while their firing rates are scaled so that the total firing rate of the input population is constant~\mbox{%DIFAUXCMD
+\citep{o2013real}}.}
+\DIFdelend \DIFaddbegin \DIFadd{as described in Section~\ref{sec:poissonian}.
+}\DIFaddend The CA was chosen as the performance metric of the spiking DBN, which is the percentage of the correctly classified digits over the whole MNIST testing set.
 
 \subsubsection{Evaluation}
 Neuromorphic platforms may have limited hardware resources to store the synaptic weights~\citep{schemmel2010wafer,merolla2014million}. In order to investigate how the precision of the weights affects the CA of a spiking DBN the double floating point weights of the offline trained network were converted to different fixed-point representations. The following notation will be used throughout this paper, Q\textit{m.f}, where \textit{m} signifies the number of bits for the integer part (including the sign bit) and \textit{f} the number of bits used for the fractional part.
@@ -1083,7 +1170,7 @@ The input rates were varied from 500~Hz to $2,000$~Hz and the results are summar
 \begin{figure}[hbt!]
 	\centering
 	\includegraphics[width=0.48\textwidth]{fig10}
-	\caption{Mean classification latency (black) and classification accuracy (blue) as a function of the input firing rate for the spiking DBN. Results are averaged over 4 trials, error bars show standard deviations.}
+	\DIFaddendFL \caption{Mean classification latency (black) and classification accuracy (blue) as a function of the input \DIFdelbeginFL \DIFdelFL{spikes per second }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{firing rate }\DIFaddendFL for the spiking DBN. Results are averaged over 4 trials, error bars show standard deviations.}
 	\label{Fig:brianLatency}
 \end{figure} 
 
@@ -1102,63 +1189,66 @@ Finally, this particular spiking DBN ran on a single SpiNNaker chip (16 ARM9 cor
 \begin{figure}[hbt!]
 	\centering
 	\includegraphics[width=0.48\textwidth]{fig12}
-	\caption{Power dissipation of a spiking DBN running on a single SpiNNaker chip as a function of the total input firing rate.}
+\DIFaddendFL \caption{Power dissipation of a spiking DBN running on a single SpiNNaker chip as a function of the total \DIFdelbeginFL \DIFdelFL{number of }\DIFdelendFL input \DIFdelbeginFL \DIFdelFL{spikes per second}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{firing rate}\DIFaddendFL .}
 	\label{Fig:spinnchipPower}
 \end{figure} 
 
 \section{Discussion}
 \label{sec:summ}
-\subsection{Summary of the work}
+\subsection{\textcolor{blue}{Summary of the work}}
 This paper puts forward the NE dataset as a baseline for comparisons on vision based SNNs.
 It contains converted spike representations of existing widely-used databases in the vision recognition field.
-Since new problems will continuously arise before vision becomes a solved question, the dataset will keep evolving as research develops. 
+Since new problems will \DIFdelbegin \DIFdel{be introduced continuously }\DIFdelend \DIFaddbegin \DIFadd{continuously arise }\DIFaddend before vision becomes a solved question, the dataset will \DIFdelbegin \DIFdel{evolve }\DIFdelend \DIFaddbegin \DIFadd{keep evolving }\DIFaddend as research develops. 
 The conversion methods transforming images and videos to spike trains will advance. The number of vision databases included will increase and the corresponding evaluation methodology will evolve as well.
 The dataset aims to provide a unified spike-based vision database and complementary evaluation methodologies to assess the performance of various SNN algorithms.
 
-The first version of the dataset is published as NE15-MNIST, which contains four different spike presentations of the stationary hand-written digit database.
+The first \DIFdelbegin \DIFdel{launch }\DIFdelend \DIFaddbegin \DIFadd{version }\DIFaddend of the dataset is published as NE15-MNIST, which contains four different spike presentations of the stationary hand-written digit database.
 The Poissonian subset aims at benchmarking the existing rate-based recognition methods.
 The rank-order-encoded subset, FoCal, encourages research into spatio-temporal algorithms on recognition applications using only small numbers of input spikes.
 Fast recognition can be verified on the subset of DVS recorded flashing input, since merely 30~ms of useful spike trains are recorded for each image.
 As a step forward, the continuous spike trains captured from the DVS recorded moving input can be a good test on mobile neuromorphic robots.
 
-The complementary evaluation methodology is essential to assess both the model-level and hardware-level performances for SNNs.
-Except for classification accuracy, the response latency and number of events are the other specific evaluation metrics for spike-based processing.
-Moreover, to describe a SNN model in a sufficient way is also important to share a network design and the particular SNN characteristics are highlighted in the paper.  
-%For a neural network model, its topology, neuron and synapse models, and training methods are major descriptions for any kind of neural networks, including SNNs.
-%While the recognition accuracy, network latency and also the biological time taken for both training and testing are specific performance measurements of a spike-based model.
-To build any SNN model on a hardware platform, its network size will be constrained by the scalability of the hardware.
+The complementary evaluation methodology is essential to assess both the model-level and hardware-level performances \DIFdelbegin \DIFdel{.
+	For a network model, its topology, neuron and synapse models, and training methods are major descriptions for any kind of neural networks, including SNNs.
+	While the recognition accuracy, network latency and also the biological time taken for both training and testing are specific performance measurements of a spike-based model}\DIFdelend \DIFaddbegin \DIFadd{for SNNs}\DIFaddend .
+\DIFaddbegin \DIFadd{Except for classification accuracy, the response latency and number of events are the other specific evaluation metrics for spike-based processing.
+	Moreover, to describe a SNN model in a sufficient way is also important to share a network design and the particular SNN characteristics are highlighted in the paper. }\DIFaddend To build any SNN model on a hardware platform, its network size will be constrained by the scalability of the hardware.
 Neural and synaptic models are limited to the ones that are physically implemented, unless the hardware platform supports programmability.
-Any attempt to implement an on-line learning algorithm on neuromorphic hardware must be backed by synaptic plasticity support.
-Therefore running an identical SNN model on different neuromorphic hardware exposes the feasibility of such platforms.
-If the model runs smoothly on a hardware platform, it then can benchmark the performance of the hardware simulator on simulation time and energy usage.
-CA is also a metric on hardware evaluation because of the precision limit of the membrane potential and synaptic weights.
-
-
+\DIFdelbegin \DIFdel{The accuracy of the results (e.g. CA) are naturally affected by the precision of the variable representing the membrane potential and synaptic weights.
+}\DIFdelend Any attempt to implement an on-line learning algorithm on neuromorphic hardware must be backed by synaptic plasticity support.
+\DIFdelbegin \DIFdel{Running }\DIFdelend \DIFaddbegin \DIFadd{Therefore running }\DIFaddend an identical SNN model on different neuromorphic hardware \DIFdelbegin \DIFdel{platforms can not only expose if any of }\DIFdelend \DIFaddbegin \DIFadd{exposes the feasibility of such platforms.
+	If the model runs smoothly on a hardware platform, it then can benchmark }\DIFaddend the \DIFdelbegin \DIFdel{previously mentioned capacities are supported, but also benchmark their performance on simulation time and energy usage.}
+\DIFdel{Using the Poissonian subset of the NE15-MNIST dataset, two benchmark systems were proposed. 
+	The models were described and their performance on accuracy, network latency, }\DIFdelend \DIFaddbegin \DIFadd{performance of the hardware simulator on }\DIFaddend simulation time and energy usage\DIFdelbegin \DIFdel{were presented.
+	These example benchmarking systems provided a recommended way of using the dataset and evaluating system performance.
+	They provide a baseline for comparisons and encourage improved algorithms and models to make use of the dataset}\DIFdelend .
+\DIFaddbegin \DIFadd{CA is also a metric on hardware evaluation because of the precision limit of the membrane potential and synaptic weights.}\DIFaddend 
 
 Although spike-based algorithms have not surpassed their non-spiking counterparts in terms of recognition accuracy, they have shown great performance in response time and energy efficiency.
 The dataset makes the comparison of SNNs with conventional recognition methods possible by using converted spike presentations of the same vision databases.
-As far as we know, it is the first attempt benchmarking neuromorphic vision recognition by providing public spike-based dataset and the evaluation metrics.
+As \DIFdelbegin \DIFdel{the dataset }\DIFdelend \DIFaddbegin \DIFadd{far as we know, it is the first attempt benchmarking neuromorphic vision recognition by providing public spike-based dataset and the evaluation metrics.
 Using the Poissonian subset of the NE15-MNIST dataset, two benchmark systems were proposed. 
-%The models were described and their performance on accuracy, network latency, simulation time and energy usage were presented.
 These example benchmarking systems provided a recommended way of using the dataset, describing SNN models and evaluating system performance.
-%They provide a baseline for comparisons and encourage improved algorithms and models to make use of the dataset.
 The case studies provide baselines for robust comparisons among SNN models and their hardware implementations.
-As the dataset grows, it will allow new problems to be investigated by researchers, which should allow the identification of future directions and, in consequence, advance the field.
-%\subsection{The future direction of a developing database}
+As the dataset }\DIFaddend grows, it will allow new problems to be investigated by researchers, which should allow the identification of future directions and, in consequence, advance the field.
+
 \subsection{The future direction of an evolving database}
-The database will be expanded by converting more popular vision datasets to spike representations.
+The database will \DIFdelbegin \DIFdel{expand }\DIFdelend \DIFaddbegin \DIFadd{be expanded }\DIFaddend by converting more popular vision datasets to spike representations.
 As mentioned in Section~\ref{sec:intro}, face recognition has become a hot topic in SNN approaches, however there is no unified spike-based dataset to benchmark theses networks.
 Thus, the next development step for our dataset is to include face recognition databases.
 While viewing an image,  saccades direct high-acuity visual analysis to a particular object or a region of interest and useful information is gathered during the fixation of several saccades in a second.
 It is possible to measure the scan path or trajectory of the eyeball and the trajectories showed particular interest in eyes, nose and mouth while viewing a human face~\citep{yarbus1967eye}.
 Therefore, our plan is also to embed modulated trajectory information to direct the recording using DVS sensors to simulate human saccades.
 
-There will be more methods and algorithms of converting images to spikes.
-Although Poisson spikes are the most commonly used external input of an SNN system, there are several \textit{in-vivo} recordings in different cortical areas showing that the inter-spike intervals (ISI) are not Poissonian~\citep{deger2012statistical}. 
-Thus~\citet{deger2012statistical} proposed new algorithms to generate superposition spike trains of Poisson process with dead-time (PPD) and of Gamma process.
-Including novel spike generation algorithms to the dataset is one of the future work to satisfy the large varieties of research.
+\DIFaddbegin \DIFadd{There will be more methods and algorithms of converting images to spikes.
+	Although Poisson spikes are the most commonly used external input of an SNN system, there are several }\textit{\DIFadd{in-vivo}} \DIFadd{recordings in different cortical areas showing that the inter-spike intervals (ISI) are not Poissonian~\mbox{%DIFAUXCMD
+		\citep{deger2012statistical}}%DIFAUXCMD
+	. 
+	Thus~\mbox{%DIFAUXCMD
+		\citet{deger2012statistical} }%DIFAUXCMD
+	proposed new algorithms to generate superposition spike trains of Poisson process with dead-time (PPD) and of Gamma process.
+	Including novel spike generation algorithms to the dataset is one of the future work to satisfy the large varieties of research.}\DIFaddend
 
-%While the major stumbling crux of the computer object recognition systems lies in the invariance problem.
 Each encounter of an object on the retina is completely unique, because of the illumination (lighting conditions), position (projection locations on the retina), scale (distances and sizes), pose (viewing angles), and clutter (visual contexts) variabilities.
 But the brain recognises a huge number of objects rapidly and effortlessly even in cluttered and natural scenes.
 In order to explore invariant object recognition, the dataset is going to include the NORB (NYU Object Recognition Benchmark) dataset~\citep{lecun2004learning}, which contains images of objects that are first photographed in ideal conditions and then moved and placed in front of natural scene images.
@@ -1166,12 +1256,12 @@ In order to explore invariant object recognition, the dataset is going to includ
 Action recognition will be the first problem of video processing to be introduced in the dataset.
 The initial plan is to use the DVS retina to convert KTH and Weizmann benchmarks to spiking versions.
 Meanwhile, providing a software DVS retina simulator to transform  frames into spike trains is also on the schedule.
-By doing this, huge number of videos, such as in YouTube, can automatically be converted to spikes, therefore providing researchers more time to work on their own applications.
+By doing this, huge number of videos, such as in YouTube, can automatically be converted to spikes, therefore providing researchers more time to work on their own applications\DIFaddbegin \DIFadd{.}
 
-In all, it is impossible to provide enough datasets, converting methods or benchmarking results by the dataset proposers ourselves, thus we encourage researchers contribute to the dataset.
-In another word, people could public their data in the dataset allowing future comparisons on the same data source;
-researchers could share the spike converting algorithms by generating dataset to promote the corresponding recognition methods;
-and neuromorphic hardware owners are welcome to provide benchmarking results to compare the system performance.
+\DIFadd{In all, it is impossible to provide enough datasets, converting methods or benchmarking results by the dataset proposers ourselves, thus we encourage researchers contribute to the dataset.
+	In another word, people could public their data in the dataset allowing future comparisons on the same data source;
+	researchers could share the spike converting algorithms by generating dataset to promote the corresponding recognition methods;
+	and neuromorphic hardware owners are welcome to provide benchmarking results to compare the system performance}\DIFaddend .
 
 \section*{Acknowledgments}
 
