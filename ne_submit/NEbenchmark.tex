@@ -900,13 +900,13 @@ Taken the trained weights from the NEST simulation, the accuracy of the recognit
 In comparison, both trained and tested on SpiNNaker the recognition accuracy is 87.41\%, and with the same weights applied to NEST the result turns out to be 87.25\%. 
 
 \subsubsection{Evaluation}
-The evaluation starts from the hardware-independent side, focusing on the spike-based recognition analysis.
-As mentioned in Section~\ref{subsec:model}, CA and response time (latency) are the main concerns when assessing the recognition capability.
+The evaluation starts from the model-level side, focusing on the spike-based recognition analysis.
+As mentioned in Section~\ref{subsec:model}, CA, response time (latency) and total number of synaptic events are the main concerns when assessing the recognition performance.
 In our experiment, two sets of weights were applied: the original STDP trained weights and scaled-up weights which are 10 times stronger.
 The spiking rates of the testing samples were also modified, ranging from 10 to $5,000$~Hz.
 
 We found that accuracy depends largely on the time each sample is exposed to the network and the sample spiking rate (Figure~\ref{fig:assess}).
-Furthermore, the latency of the output of the decision neurons is affected by both the spiking rate and connection weights.
+%Furthermore, the latency of the output of the decision neurons is affected by both the spiking rate and connection weights.
 Figure~\ref{fig:assess}(a) shows that the CA is better as exposure time increases. The longer an image is presented, the more information is gathered by the network, so the accuracy climbs.
 Classification accuracy also increases when input spiking rates are augmented (Figure~\ref{fig:assess}(b)).
 Given that the spike trains injected into the network are more intense, the decision neurons become more active and so does the output disparity among them.
@@ -922,27 +922,44 @@ If stronger weights are taken, then the membrane potential of a neuron reaches i
 Figure~\ref{fig:assess}(d) indicates that the latency is shortened with increasing input rates with both the original and scaled-up weights.
 When the spiking rate is less than $2,000$~Hz, the network with stronger weights has a much shorter latency.
 As long as there are enough spikes to trigger the decision neurons to spike, increasing the test time will not make the network respond sooner~(Figure~\ref{fig:assess}(c)).
+
+As the default configuration of the SNN model, each input neuron connects to all of the 100 decision (output) neurons with both excitatory and inhibitory projections.
+Thus the synaptic events happening in the inter layer connections are 200 times of the total input firing rate.
+Figure~\ref{fig:assess}(e) shows the stable Sopbs of the entire network when the input firing rate sticks to 2000~Hz and the test time increases.
+The firing rates of the output layer are relatively small, which are 0.1\% and 1.5\% of the total Sopbs using original and scaled-up weights respectively.
+The difference of the total Sopbs lies in the firing rate of the output layers only, and the stronger connections lead to the higher firing rates.
+Likewise, the output neurons are more active with stronger connection weights, and the gap widens as input firing rate increases, see Figure~\ref{fig:assess}(f).
+Although the difference of the Sopbs climbs to around 8~kHz, it is not obvious in the figure because the output firing rate are relatively low and so are the difference.
 \begin{figure}[htb!]
 	\centering
-%	\subfloat[Accuracy changes against test time.]{
-%		\label{fig:acc_time}
-%		\includegraphics[width=0.25\textwidth]{acc_dur}
-%	}
-%	\subfloat[Accuracy changes against firing rate.]{
-%		\label{fig:acc_rate}
-%		\includegraphics[width=0.25\textwidth]{acc_rate}
-%	}
-%	\\
-%	\subfloat[Latency stablises against test time.]{
-%		\label{fig:lat_time}
-%		\includegraphics[width=0.25\textwidth]{lat_dur}
-%	}
-%	\subfloat[Latency changes against firing rate.]{
-%		\label{fig:lat_rate}
-%		\includegraphics[width=0.25\textwidth]{lat_rate}
-%	}
-	\includegraphics[width=0.48\textwidth]{fig7}
-	\caption{Accuracy and response time (latency) change over test time and input firing rate per test image.
+	\subfloat[Accuracy changes against test time.]{
+		\label{fig:acc_time}
+		\includegraphics[width=0.25\textwidth]{images/acc_dur}
+	}
+	\subfloat[Accuracy changes against firing rate.]{
+		\label{fig:acc_rate}
+		\includegraphics[width=0.25\textwidth]{images/acc_rate}
+	}
+	\\
+	\subfloat[Latency stablises against test time.]{
+		\label{fig:lat_time}
+		\includegraphics[width=0.25\textwidth]{images/lat_dur}
+	}
+	\subfloat[Latency changes against firing rate.]{
+		\label{fig:lat_rate}
+		\includegraphics[width=0.25\textwidth]{images/lat_rate}
+	}
+	\\
+	\subfloat[Event rate stablises against test time.]{
+		\label{fig:eve_time}
+		\includegraphics[width=0.25\textwidth]{images/time-event}
+	}
+	\subfloat[Event rate against firing rate.]{
+		\label{fig:eve_rate}
+		\includegraphics[width=0.25\textwidth]{images/rate-event}
+	}
+%	\includegraphics[width=0.48\textwidth]{fig7}
+	\caption{Accuracy, response time (latency) and synaptic event rate (Sopbs) change over test time and input firing rate per test image.
 	The test time is the duration of the presence of a single test image, and the input firing rate is the summation of all the input neurons.
 	Original trained weights are used (circles in blue) as well as the scaled up ($\times10$) weights (triangles in black). }
 	\label{fig:assess}
