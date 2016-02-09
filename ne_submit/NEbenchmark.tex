@@ -608,7 +608,7 @@ A complementary evaluation methodology is essential to provide common metrics an
 			\begin{mycell}{1.9cm} Poisson \end{mycell} & % preprocessing
 			\begin{mycell}{3.5cm} Four layer RBM, \\ LIF neurons \end{mycell}&  % network
 			\begin{mycell}{3.5cm} Off-line trained, unsupervised \end{mycell}&  % training
-			\begin{mycell}{3.5cm} 94.94\%\\16 ms latency \end{mycell} \\% recognition
+			\begin{mycell}{3.5cm} 94.94\%\\16 ms latency \\ 1.44M Sopbs\end{mycell} \\% recognition
 			%
 			\begin{mycell}{2.5cm} This paper \end{mycell}  & 
 			\begin{mycell}{1.9cm} Poisson \end{mycell}& % preprocessing 
@@ -1237,7 +1237,7 @@ The input rates were varied from 500~Hz to $2,000$~Hz and the results are summar
 	\label{Fig:spinnLatency1500hz}
 \end{figure} 
 
-Finally, this particular spiking DBN ran on a single SpiNNaker chip (16 ARM9 cores) and dissipated less than 0.3~W when $2,000$ spikes per second per digit were used, as seen in Figure~\ref{Fig:spinnchipPower}. The identical network ran on Minitaur~\citep{neil2014minitaur}, an event-driven FPGA implementation, and consumed 1.5~W when $1,000$ spikes per image were used.  
+Finally, this particular spiking DBN ran on a single SpiNNaker chip (16 ARM9 cores) and dissipated less than 0.3~W when $2,000$ spikes per second per digit were used, $1,441,723$~Sopbs were generated and 214~nJ/SE of energy was cost, as seen in Figure~\ref{Fig:spinnchipPower}. The identical network ran on Minitaur~\citep{neil2014minitaur}, an event-driven FPGA implementation, and consumed 1.5~W when $1,000$ spikes per image were used.  
 
 
 \begin{figure}[hbt!]
