@@ -27,19 +27,19 @@ The resolution of the DVS recorded data is 128$\times$128.
 The other format of spikes used is a list of spike source arrays in PyNN~\citep{davison2008pynn}, a description language for building spiking neuronal network models.
 Python code for converting one file format to and from the other is also provided.
 
-\begin{figure}[hbt]
+\begin{figure*}[hbt]
   \centering
   \subfloat[A snapshot of jAER playing the DVS recorded spikes.]{
     \label{Fig:jaer}
-    \includegraphics[width=0.22\textwidth]{images/dvs-128.pdf}
+    \includegraphics[width=0.36\textwidth]{images/dvs-128.pdf}
   }
   \subfloat[A snapshot of jAER playing Poissonian spike trains.]{
     \label{Fig:poisson}
-    \includegraphics[width=0.22\textwidth]{images/zero-28-2.pdf}
+    \includegraphics[width=0.36\textwidth]{images/zero-28-2.pdf}
   }\\
   \subfloat[The raster plot of the Poissonian spike trains.]{
     \label{Fig:raster}
-    \includegraphics[width=0.48\textwidth]{images/zero.pdf}
+    \includegraphics[width=0.75\textwidth]{images/zero.pdf}
   }
   
   \caption{
@@ -47,7 +47,7 @@ Python code for converting one file format to and from the other is also provide
   The same image of digit ``0'' is transformed to spikes by DVS recording and the Poissonian generation respectively.
   A raster plot of the Poissonian spike trains is also provided.}
   \label{fig:zero}
-\end{figure}
+\end{figure*}
 
 \subsection{Data Description}	
 	\subsubsection{Poissonian}
@@ -83,16 +83,16 @@ Python code for converting one file format to and from the other is also provide
 	In total, the subset of the database contains 2$\times$$60,000$ recordings for training and 2$\times$$10,000$ for testing.
 %	Due to the size limit of online repositories, only the third of every sequence of flashes is published.
 
-	\begin{figure}[b!]
+	\begin{figure*}[b!]
 	  \centering
-	  \subfloat[Spikes recorded in the order of neuron ID during 1s of time.]{
+	  \subfloat[The raster plot of the spike trains of a flashing digit.]{
 	  	    \label{fig:flash_all}
-	  	    \includegraphics[width=0.48\textwidth]{flash_full.pdf}
+	  	    \includegraphics[width=0.55\textwidth]{flash_full.pdf}
 	  	  }
 	  	  \\
-	  \subfloat[Spikes plotted in the sequence of appearing time during 1s of time. Bursty spikes apeer in slots less than 30~ms. ]{
+	  \subfloat[The same spike trains ordered by the spike sequence.]{
 	    \label{fig:flash_a}
-	    \includegraphics[width=0.48\textwidth]{flash_full_order.pdf}
+	    \includegraphics[width=0.55\textwidth]{flash_full_order.pdf}
 	  }
 %	  \\
 %	  \subfloat[Bursty spikes appearing in a 30~ms slot.]{
@@ -100,9 +100,12 @@ Python code for converting one file format to and from the other is also provide
 %	  	\includegraphics[width=0.48\textwidth]{flash_100.png}
 %	  }
 
-	  \caption{The bursty of spikes is illustrated where most of the spikes occur in a 30~ms slot. Blue for 'ON' events and green for 'OFF'.}
+	  \caption{DVS sensor with flashing input.
+	  	Blue is used for `ON' events and green for `OFF' events.
+	  	(a) The raster plot.
+	  	(b) The bursty nature of the resulting spikes is illustrated, where most of the spikes occur in a 30~ms time slot.}
 	  \label{fig:flash}
-	\end{figure}
+	\end{figure*}
 %	\subsubsection{DVS Sensor Output with Oscillating Input}
 	\subsubsection{DVS Sensor Output with Moving Input}
 	In order to address the problems of position- and scale- invariance, a subset of DVS recorded moving digits is presented.
