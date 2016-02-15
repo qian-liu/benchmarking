@@ -300,18 +300,7 @@ NE15-MNIST is the spiking version of an original non-spiking dataset which was d
 \end{itemize}
 The dataset can be found in the GitHub repository at: https://github.com/qian-liu/benchmarking.
 \subsection{Data Description}
-
-Two file formats are supported in the dataset: the jAER format~\citep{delbruck2008frame} (.dat or .aedat), and binary files in NumPy~\citep{numpyPython} (.npy) format.
-%The AER interface has been widely used in neuromorphic systems, especially for vision sensors.
-%The spikes are encoded as time events with corresponding addresses to convey information.
-The spikes in jAER format, whether recorded from a DVS retina or artificially generated, can be displayed by the jAER software.
-Figure~\ref{fig:zero}(a) is a snapshot of the software displaying a .aedat file which was recorded from a DVS retina~\citep{serrano2013128}.
-The resolution of the DVS recorded data is 128$\times$128.
-The second spike-based format used is a list of spike source arrays in PyNN~\citep{davison2008pynn}, a description language for building spiking neuronal network models.
-Python code is provided for converting from either file format to the other.
-The duration of the artificially-generated data can be configured using the Python code provided, while the recorded data varies in duration: 1~s for the flashing input, and 3.2 to 3.4~s for the moving input.
-
-\begin{figure}[hbt]
+\begin{figure}[bt!]
 	\centering
 %	\subfloat[A snapshot of jAER playing the DVS recorded spikes.]{
 %		\label{Fig:jaer}
@@ -325,13 +314,24 @@ The duration of the artificially-generated data can be configured using the Pyth
 %		\label{Fig:raster}
 %		\includegraphics[width=0.48\textwidth]{zero}
 %	}
-	\includegraphics[width=0.7\textwidth]{fig1}
+	\includegraphics[width=0.75\textwidth]{fig1}
 	\caption{
 		Snapshots of the jAER software displaying spike-encoded videos.
 		The same image of digit ``0'' is transformed into spikes by (a) DVS recording and (b) Poisson generation.
 		(c) A raster plot of the Poisson spike trains.}
 	\label{fig:zero}
 \end{figure}
+Two file formats are supported in the dataset: the jAER format~\citep{delbruck2008frame} (.dat or .aedat), and binary files in NumPy~\citep{numpyPython} (.npy) format.
+%The AER interface has been widely used in neuromorphic systems, especially for vision sensors.
+%The spikes are encoded as time events with corresponding addresses to convey information.
+The spikes in jAER format, whether recorded from a DVS retina or artificially generated, can be displayed by the jAER software.
+Figure~\ref{fig:zero}(a) is a snapshot of the software displaying a .aedat file which was recorded from a DVS retina~\citep{serrano2013128}.
+The resolution of the DVS recorded data is 128$\times$128.
+The second spike-based format used is a list of spike source arrays in PyNN~\citep{davison2008pynn}, a description language for building spiking neuronal network models.
+Python code is provided for converting from either file format to the other.
+The duration of the artificially-generated data can be configured using the Python code provided, while the recorded data varies in duration: 1~s for the flashing input, and 3.2 to 3.4~s for the moving input.
+
+
 
 %\subsubsection{Data Description}	
 \subsubsection{Poissonian}
@@ -444,7 +444,7 @@ is inversely proportional to the spike emission time relative to the presentatio
 %		\label{pic-lena-P-ON}
 %		\includegraphics[width=0.15\textwidth]{filtered-21-0-layer-3}
 %	}
-	\includegraphics[width=0.48\textwidth]{fig2}
+	\includegraphics[width=0.6\textwidth]{fig2}
 	\caption{Results of convolving the image spikes with the simulated ganglion cell layers using the FoCal algorithm before correcting for filter overlap. (a) The original image. (b-e) the result of convolving the image with the layer 1 (smallest) OFF-centre to layer 4 (largest) ON-centre kernels respectively.}
 	\label{fig-convolution-results}
 \end{figure}
@@ -500,7 +500,7 @@ Figure~\ref{fig-reconstruction-results} shows the reconstruction results for the
 %		\label{pic-lena-reconstructed-focal}
 %		\includegraphics[width=0.15\textwidth]{reconstructed_21-0_100pc}
 %	}
-	\includegraphics[width=0.48\textwidth]{fig4}
+	\includegraphics[width=0.6\textwidth]{fig4}
 	\caption{Reconstruction result comparison. (a) The original image. (b) Reconstruction without overlap correction. (c) Reconstruction with overlap correction.}
 	\label{fig-reconstruction-results}
 \end{figure}
@@ -509,7 +509,7 @@ The source Python scripts to transform images to ROC spike trains, and to conver
 
 \subsubsection{DVS Sensor Output with Flashing Input}
 \label{subsec_flash}
-The purpose of including the subset with DVS-recorded flashing digits is to promote the research on rapid and accurate ``core recognition'', thus to encourage applying non-rate-based algorithms, for example ROC, to short DVS output spike trains.
+The purpose of including the subset with DVS-recorded flashing digits is to promote research into rapid and accurate ``core recognition'', thus to encourage applying non-rate-based algorithms, for example ROC, to short DVS output spike trains.
 
 Each digit was shown alternating with a blank image and each display lasted one second.
 The digits were displayed on an LCD monitor in front of the DVS retina~\citep{serrano2013128} and were placed in the centre of the visual field of the camera.
@@ -528,7 +528,7 @@ In total, this subset of the database contains 2$\times$$60,000$ recordings for 
 %		\label{fig:flash_a}
 %		\includegraphics[width=0.48\textwidth]{flash_full_order}
 %	}
-	\includegraphics[width=0.48\textwidth]{fig5}	
+	\includegraphics[width=0.7\textwidth]{fig5}	
 	\caption{DVS sensor with flashing input.
 	Blue is used for `ON' events and green for `OFF' events.
 	(a) The raster plot.
@@ -906,7 +906,7 @@ The trained weights are plotted in accordance with the positions of the decision
 %		\label{Fig:test}
 %		\includegraphics[width=0.48\textwidth]{testing}
 %	}
-	\includegraphics[width=0.48\textwidth]{fig6}
+	\includegraphics[width=0.6\textwidth]{fig6}
 	\caption{The (a) training and (b) testing model of the two-layered spiking neural network.}
 	\label{fig:model}
 \end{figure} 
@@ -985,7 +985,7 @@ Although the variations in the Sopbs climbs to around 8~kHz, it is not obvious i
 %		\label{fig:eve_rate}
 %		\includegraphics[width=0.25\textwidth]{images/rate-event}
 %	}
-	\includegraphics[width=0.48\textwidth]{fig7}
+	\includegraphics[width=0.6\textwidth]{fig7}
 	\caption{Accuracy, response time (latency) and synaptic event rate (Sopbs) change over test time and input firing rate per test image.
 	The test time is the duration of the presence of a single test image, and the input firing rate is the summation of all the input neurons.
 	Original trained weights are used (circles in blue) as well as the scaled up ($\times10$) weights (triangles in black). }
