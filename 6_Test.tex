@@ -157,28 +157,37 @@ A similar idea applies to the influence of synaptic weights. If stronger weights
 Fig.~\ref{fig:lat_rate} indicates that the latency is shortened with increasing input rates with both the original and scaled-up weights.
 When the spiking rate is less than $2,000$~Hz, the network with stronger weights has a much shorter latency.
 As long as there are enough spikes to trigger the decision neurons to spike, increasing the test time will not make the network respond sooner~(Fig.~\ref{fig:lat_time}.)
-	\begin{figure}[htb!]
+	\begin{figure*}[htb!]
 	  \centering
 	  \subfloat[Accuracy changes against test time.]{
 	  	    \label{fig:acc_time}
-	  	    \includegraphics[width=0.25\textwidth]{acc_dur.pdf}
+	  	    \includegraphics[width=0.35\textwidth]{acc_dur.pdf}
 	  	  }
 	  \subfloat[Accuracy changes against firing rate.]{
 	  	    \label{fig:acc_rate}
-	  	    \includegraphics[width=0.25\textwidth]{acc_rate.pdf}
+	  	    \includegraphics[width=0.35\textwidth]{acc_rate.pdf}
 	  	  }
 	  	  \\
 	  \subfloat[Latency stablises against test time.]{
 	  	    \label{fig:lat_time}
-	  	    \includegraphics[width=0.25\textwidth]{lat_dur.pdf}
+	  	    \includegraphics[width=0.35\textwidth]{lat_dur.pdf}
 	  	  }
 	  \subfloat[Latency changes against firing rate.]{
 	  	    \label{fig:lat_rate}
-	  	    \includegraphics[width=0.25\textwidth]{lat_rate.pdf}
+	  	    \includegraphics[width=0.35\textwidth]{lat_rate.pdf}
 	  	  }
+	  	  \\
+	  \subfloat[Event rate stablises against test time.]{
+	  	    \label{fig:event_time}
+	  	    \includegraphics[width=0.35\textwidth]{time-event.pdf}
+	  	  }
+	  \subfloat[Event rate changes against firing rate.]{
+	  	    \label{fig:event_rate}
+	  	    \includegraphics[width=0.35\textwidth]{rate-event.pdf}
+	  	  }	  	  
 	  \caption{Accuracy and response time (latency) change over test time and input firing rate per testing image. Original trained weights are used (circles in blue) as well as the scaled up ($\times10$) weights (triangles in black). }
 	  \label{fig:assess}
-	\end{figure}
+	\end{figure*}
 
 Regarding the network size, it not only influences the accuracy of a model but also the time taken for simulation on specific platforms thus impacting the energy usage on the hardware.
 For the purpose of comparing the accuracy, simulation time and energy usage, different configurations have been tested on NEST (working on a PC with CPU: i5-4570 and 8G memory) and SpiNNaker, see Table~\ref{tbl:compare}.
