@@ -140,7 +140,7 @@ With this dataset we hope to (1) promote meaningful comparison between algorithm
 %\subsection{What Is the Problem}
 Researchers are using the capabilities created by rapid developments in neuromorphic engineering to address the dual aims of understanding brain functions and building brain-like machines~\citep{furber2007neural}.
 Neuromorphic engineering has delivered biologically-inspired sensors such as DVS~(Dynamic Vision Sensor) silicon retinas~\citep{serrano2013128, delbruck2008frame, yang2015dynamic, posch2014retinomorphic}, which offer the prospect of low-cost visual processing thanks to their event-driven and redundancy-reducing style of information representation.
-Moreover, SNN simulation tools~\citep{davison2008pynn, gewaltig2007nest, goodman2008brian} and neuromorphic hardware platforms~\citep{furber2014spinnaker,  schemmel2010wafer, merolla2014million} have been developed to allow exploration of the brain by mimicking its functions and developing large-scale practical applications~\citep{eliasmith2012large}.
+Moreover, SNN simulation tools~\citep{davison2008pynn, gewaltig2007nest, goodman2008brian} and neuromorphic hardware platforms~\citep{furber2014spinnaker,  schemmel2010wafer,benjamin2014neurogrid,merolla2014million} have been developed to allow exploration of the brain by mimicking its functions and developing large-scale practical applications~\citep{eliasmith2012large}.
 In the case of visual processing, the central visual system consists of several cortical areas which, according to anatomical experiments, are placed in a hierarchical structure ~\citep{felleman1991distributed}.
 Fast object recognition takes place in the feed-forward hierarchy of one of the two central visual pathways, the ventral pathway, which mainly handles the ``What'' tasks.
 Biological studies have revealed that the information is unfolded along the ventral stream to the IT (Inferior Temporal) cortex~\citep{dicarlo2012does}.
@@ -648,7 +648,7 @@ Sharing the designs not only makes the model reproducible but also inspires fell
 The main characteristics include the topology and the neural and synaptic models.
 The network topology defines the number of neurons used for each layer and the connections between layers and neurons.
 It is essential to state the types of neural and synaptic model (e.g. current-based LIF neuron) utilised in the network and the parameters configuring them, because neural activities differ greatly between configurations.
-Any non-neural classifier, sometimes added to aid the design, sometimes to enhance the output of the network, must also be specified.
+Any non-neural classifier, sometimes added to aid the design enhance the output of the network, must also be specified.
 
 Thirdly, the training procedure determines the recognition capability of a network model.
 A clear distinction should be made between supervised, semi-supervised and unsupervised learning.
@@ -665,7 +665,7 @@ The combination of these two factors determines how much information is presente
 
 In summary, the description of an SNN model is suggested as shown in Table~\ref{tb:model_eval} where the specific description for SNNs is written in italics and the performance evaluation metrics are in bold.
 Some work on SNN-based classifications of MNIST is listed in Table~\ref{tb:software_comparison}.
-Most of these reports did not provide sufficiently detailed descriptions of the networks and the models were not completely evaluated in the way that we propose.
+%Most of these reports did not provide sufficiently detailed descriptions of the networks and the models were not completely evaluated in the way that we propose.
 
 \begin{table*}[hbt!]
 	\caption{SNN descriptions at the model level}
@@ -733,7 +733,7 @@ Most of these reports did not provide sufficiently detailed descriptions of the 
   			\begin{mycell}{2.0cm}No plasticity\end{mycell}& 
   			\begin{mycell}{2.2cm}122 bits \\params \& states,
   				%       	 per neuron
-  				\\ 4-bit synapse 
+  				\\4-bit/\\4 values\\synapse 
   				%\\(4 signed int + on/off state)
           \footnote[1]{We consider them 4-bit synapses because it is only possible to choose between 4 different signed integers and whether the synapse is active or not.}
   			\end{mycell}& 
@@ -752,7 +752,7 @@ Most of these reports did not provide sufficiently detailed descriptions of the 
   			\begin{mycell}{1.8cm} HI-CANN \citep{schemmel2010wafer}  \end{mycell} & \begin{mycell}{2.0cm}Mixed-mode,\\Scalable\end{mycell} &
   			\begin{mycell}{2.0cm}Fixed models,\\Config params\end{mycell}& 
   			\begin{mycell}{2.0cm}Fixed rule\end{mycell}& 
-  			\begin{mycell}{2.0cm}4-bit synapses\end{mycell}& 
+  			\begin{mycell}{2.0cm}4-bit/\\16 values\\synapses\end{mycell}& 
   			\begin{mycell}{2.0cm}Faster than\\ real-time
                              \footnote[2]{A maximum speed-up of up to $10^5$ times real time has been reported.}
         \end{mycell}&
@@ -780,6 +780,7 @@ Most of these reports did not provide sufficiently detailed descriptions of the 
 Neuromorphic systems can be categorised as analogue, digital, or mixed-mode analogue/digital, depending on how neurons, synapses and spike transmission are implemented. %VLSI circuits. 
 Some analogue implementations exploit sub-threshold transistor dynamics to emulate neurons and synapses directly in hardware~\citep{indiveri2011neuromorphic} and are more energy-efficient while requiring less area than their digital counterparts~\citep{joubert2012hardware}. However, the behaviour of analogue circuits is hard to control through the fabrication process due to transistor mismatch~\citep{indiveri2011neuromorphic,pedram2006thermal,linares2003compact}, and achievable wiring densities render direct point-to-point connections impractical for large-scale systems. The majority of mixed-mode analogue/digital neuromorphic platforms, such as the High Input Count Analog Neural Network (HI-CANN)~\citep{schemmel2010wafer}, Neurogrid~\citep{benjamin2014neurogrid}, HiAER-IFAT~\citep{yu201265k}, use analogue circuits to emulate neurons and digital packet-based technology to communicate spikes as AER events. This enables reconfigurable connectivity patterns, while spike timing is expressed implicitly since typically a spike reaches its destination in less than a millisecond, thus fulfilling the real-time requirement. Digital neuromorphic platforms such as TrueNorth~\citep{merolla2014million} use digital circuits with finite precision to simulate neurons in an event-driven manner to minimise the active power dissipation. Such systems suffer from limited model flexibility, since neurons and synapses are fabricated directly in hardware with only a small subset of parameters under the control of the researcher. 
 The SpiNNaker many-core neuromorphic architecture~\citep{furber2014spinnaker} uses low-power programmable cores and scalable event-driven communications hardware allowing neural and synaptic models to be implemented in software.
+While software modelling provides great flexibility, digital platforms have reduced precision (due to the inherent discretization) and higher energy consumption, when compared to analogue platforms.
 
 A direct comparison between neuromorphic platforms is a non-trivial task due to the different hardware implementation technologies as mentioned above.
 %Qian Liu modified
