@@ -152,6 +152,9 @@ Recently~\cite{fu2012spiking} reported that their SNN implementation was capable
 They employed simple integrate-and-fire neurons with rank order coding (ROC) where the earliest pre-synaptic spikes have the strongest impact on the post-synaptic potentials.
 According to~\cite{vanrullen2002surfing}, the first wave of spikes carry explicit information through the ventral stream and in each stage meaningful information is extracted and spikes are regenerated. 
 Using one spike per neuron,~\cite{delorme2001face} reported 100\% and 97.5\% accuracies on the face identification task over changing  contrast and luminance training (40 individuals $\times$ 8 images) and testing data (40 individuals $\times$ 2 images) respectively.
+In terms of vision recognition on neuromorphic hardware, TrueNorth~\citep{merolla2014million} is applicable to detect and classify five classes of objects in the video clips of the Neovision2 Tower dataset.
+\cite{Qiao2015re} presented an analogue on-line learning neuromorphic classification system which responds selectively to images of cars and motorbikes selected from the Caltech 101 dataset.
+Generic training algorithms for patter recognition~\citep{schmuker2014neuromorphic} and regression/classification tasks~\citep{thakur2016low} have been implemented on neuromorphic platforms.
 
 The Convolutional Neural Network (CNN), also known as the \textit{ConvNet}, developed by~\cite{lecun1998gradient}, is a widely-used model based on a cortex-like framework.
 An early Convolutional Spiking Neural Network (CSNN) model identified the faces of 35 persons with a CA of 98.3\% exploiting simple integrate and fire neurons~\citep{matsugu2002convolutional}.
@@ -1030,7 +1033,10 @@ On the other hand, SpiNNaker works in real (biologically real) time and the simu
 The power usage is estimated by subtracting the power usage of idle OS operation from the usage running the simulation.
 The energy use is calculated as the product of the simulation time and the power use.
 Even with the smallest network, SpiNNaker wins in the energy cost comparison, see Figure~\ref{fig:energy}.
-Among different network configurations, the model with 500 decision neurons (50 clusters per digit) reaches the highest recognition rate of 92.99\% on average having a latency of about 13.82~ms.
+Among different network configurations, the model with 500 decision neurons (50 clusters per digit) reaches the highest recognition rate of 92.99\% on average having a latency of 13.82~ms mean and 2.96~ms standard deviation.
+And there are standard deviations of 2.57\% on CA and of 1.17~ms on the latency over 10 testing digits.
+%Except for the model latency which measures the time difference between the first input spike and the first spike of any decision neuron, we also estimated the time difference for every digit.
+%The average of each digit's mean latency is 15.55~ms with a 0.39~ms standard deviation over digits.
 The total number of synaptic events is around $4.17$M Sopbs, where only 7K spikes are generated in the output layer. 
 The NEST simulation costs 767.67~s on average for the entire $12,000$~s biological-time test, 20~W in power use on the PC and $15.35$~KJ of energy, while SpiNNaker works in real time using $4.92$~KJ of energy at a power of 0.41~W.
 %Providing the number of synaptic events (Sopbs) respectively for all the configurations and the simulation time, the energy per synaptic event on a hardware platform can be calculated (see Table~\ref{tbl:compare}): 
@@ -1309,6 +1315,9 @@ The Poissonian subset is intended for benchmarking existing rate-based recogniti
 The rank-order-encoded subset, FoCal, encourages research into spatio-temporal algorithms on recognition applications using only small numbers of input spikes.
 Fast recognition can be verified on the DVS recorded flashing input subset, since just 30~ms of useful spike trains are recorded for each image.
 Looking forward, the continuous spike trains captured from the DVS recorded moving input can be used to test mobile neuromorphic robots.
+\cite{orchard2015convert} have presented a neuromorphic dataset using similar approach, but the spike trains were obtained with micro-saccade.
+This dataset aims of converting static images to neuromorphic vision input, while the recordings of moving input in this paper intends to promote position-invariant recognition.
+Therefore, both datasets complements each other.
 
 The complementary evaluation methodology is essential to assess both the model-level and hardware-level performance of SNNs.
 In addition to classification accuracy, response latency and the number of synaptic events are specific evaluation metrics for spike-based processing.
@@ -1325,6 +1334,7 @@ Classification accuracy (CA) is also a useful metric for hardware evaluation bec
 Although spike-based algorithms have not surpassed their non-spiking counterparts in terms of recognition accuracy, they have shown great performance in response time and energy efficiency.
 This dataset makes the comparison of SNNs with conventional recognition methods possible by using converted spike representations of the same vision databases.
 As far as we know, this is the first attempt at benchmarking neuromorphic vision recognition by providing public a spike-based dataset and evaluation metrics.
+In accordance with the suggestions from~\cite{tan2015bench}, the evaluation metrics highlight the strengths of spike-based vision tasks and the dataset design also promotes the research on rapid and low energy recognition (e.g. flashing digits).
 Two benchmark systems were evaluated using the Poissonian subset of the NE15-MNIST dataset.
 %The models were described and their performance on accuracy, network latency, simulation time and energy usage were presented.
 These example benchmarking systems demonstrated a recommended way of using the dataset, describing the SNN models and evaluating the system performance.
