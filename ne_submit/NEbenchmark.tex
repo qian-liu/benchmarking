@@ -23,6 +23,8 @@
 \usepackage{mathptmx}
 \usepackage{amsmath}
 \usepackage{footnote}
+\definecolor{mypink2}{RGB}{255, 0, 0}
+
 \linenumbers
 %define some own functions
 \newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}} 
@@ -1201,7 +1203,7 @@ However, state-of-the-art deep networks comprise a large number of layers, neuro
 
 
 % about oneils model 
-\citet{o2013real} proposed a method to map off-line trained DBNs into a spiking neural network and take advantage of the real-time performance and energy efficiency of neuromorphic platforms. This led initially to an implementation on an event-driven Field-Programmable Gate Array (FPGA) called Minitaur~\citep{neil2014minitaur} and then on the SpiNNaker platform~\citep{Stromatias2015scalable}. For this work we used the identical off-line trained\footnote{\url{https://github.com/dannyneil/edbn/}} spiking DBN as presented by \citet{o2013real}, which comprises 784 neurons for the input layer, two hidden layers with 500 neurons each, and an output layer with 10 neurons. This is abbreviated as a 784-500-500-10 architecture. Simulations take place on a software spiking neural network simulator [Brian~\citep{goodman2008brian}] and results are verified on the SpiNNaker platform.
+\citet{o2013real} proposed a method to map off-line trained DBNs into a spiking neural network and take advantage of the real-time performance and energy efficiency of neuromorphic platforms. This led initially to an implementation on an event-driven Field-Programmable Gate Array (FPGA) called Minitaur~\citep{neil2014minitaur} and then on the SpiNNaker platform~\citep{Stromatias2015scalable}. \textcolor{mypink2}{This section aims to review and reinterpret  results from previously published studies} \citep{Stromatias2015LiveDemo,Stromatias2015scalable,stromatias2015robustness}\textcolor{mypink2}{, which utilised} the identical off-line trained\footnote{\url{https://github.com/dannyneil/edbn/}} spiking DBN as presented by \citet{o2013real}. \textcolor{mypink2}{This particular DBN} comprises 784 neurons for the input layer, two hidden layers with 500 neurons each, and an output layer with 10 neurons. This is abbreviated as a 784-500-500-10 architecture. Simulations take place on a software spiking neural network simulator [Brian~\citep{goodman2008brian}] and results are verified on the SpiNNaker platform.
 
 \subsubsection{Training}
 
