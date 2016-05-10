@@ -8,7 +8,7 @@ Created on Mon Jan 26 17:28:27 2015
 import numpy as np
 import pylab as plt
 
-sim_time=30 #seconds
+sim_time=10000. #seconds
 
 f3=plt.figure()
 ax=f3.add_subplot(111)
@@ -42,11 +42,11 @@ for se in meanFiringRates_perlayer:
 	num_of_SE.append( se[0]*784*500+se[1]*500*500+se[2]*500*10 )
 
 
-b1=ax.bar([x-0.1 for x in range(0,len(expresults))],expresults,width=0.2,
+b1=ax.bar([x-0.1 for x in range(0,len(expresults))],expresults/1000,width=0.2,
     color='k',label="Experimental",align="center")
 
 #ax.set_ylabel("Power (w)", size=20)
-ax.set_ylabel("Energy (J)", size=20)
+ax.set_ylabel("Energy (KJ)", size=20)
 
 ax.set_xlabel("Input firing rate (Hz)", size=20)
 
@@ -56,19 +56,19 @@ b2=ax2.bar(
     [x+0.1 for x in range(0,len(expresults))],
     np.asarray(num_of_SE)/1000,width=0.2,color='b',label="Experimental",align="center")
 
-ax2.set_ylabel("# of kSE", size=20, color='b')
+ax2.set_ylabel("Sobps", size=20, color='b')
 ax2.tick_params(axis='y', labelsize=15)
 for tl in ax2.get_yticklabels():
     tl.set_color('b')
 
-ax.set_ylim((0.0,10))
+ax.set_ylim((2.7,3.2))
 ax2.set_ylim((0,(max(np.asarray(num_of_SE)/1000))+100))
+ax2.set_yticklabels(['0','0.5M','1.0M','1.5M','2.0M','2.5M'])
 ax.set_xlim((-0.5,len((lbl))-0.5))
 ax.set_xticks(range(len(lbl)))
 ax.set_xticklabels(lbl)
 ax.tick_params(axis='y', labelsize=15)
 ax.tick_params(axis='x', labelsize=15)
 ax2.yaxis.labelpad=10
-
-
+print num_of_SE
 plt.show()

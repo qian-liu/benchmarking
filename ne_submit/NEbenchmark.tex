@@ -23,7 +23,6 @@
 \usepackage{mathptmx}
 \usepackage{amsmath}
 \usepackage{footnote}
-\definecolor{mypink2}{RGB}{255, 0, 0}
 
 \linenumbers
 %define some own functions
@@ -1013,7 +1012,7 @@ Although the variations in the Sopbs climbs to around 8~kHz, it is not obvious i
 %		\label{fig:eve_rate}
 %		\includegraphics[width=0.25\textwidth]{images/rate-event}
 %	}
-	\includegraphics[width=0.8\textwidth]{fig7}
+	\includegraphics[width=0.8\textwidth]{fig7_m}
 	\caption{Accuracy, response time (latency) and synaptic event rate (Sopbs) change over test time and input firing rate per test image.
 	The test time is the duration of the presence of a single test image, and the input firing rate is the summation of all the input neurons.
 	Original trained weights are used (circles in blue) as well as the scaled up ($\times10$) weights (triangles in black). }
@@ -1203,7 +1202,10 @@ However, state-of-the-art deep networks comprise a large number of layers, neuro
 
 
 % about oneils model 
-\citet{o2013real} proposed a method to map off-line trained DBNs into a spiking neural network and take advantage of the real-time performance and energy efficiency of neuromorphic platforms. This led initially to an implementation on an event-driven Field-Programmable Gate Array (FPGA) called Minitaur~\citep{neil2014minitaur} and then on the SpiNNaker platform~\citep{Stromatias2015scalable}. \textcolor{mypink2}{This section aims to review and reinterpret  results from previously published studies} \citep{Stromatias2015LiveDemo,Stromatias2015scalable,stromatias2015robustness}\textcolor{mypink2}{, which utilised} the identical off-line trained\footnote{\url{https://github.com/dannyneil/edbn/}} spiking DBN as presented by \citet{o2013real}. \textcolor{mypink2}{This particular DBN} comprises 784 neurons for the input layer, two hidden layers with 500 neurons each, and an output layer with 10 neurons. This is abbreviated as a 784-500-500-10 architecture. Simulations take place on a software spiking neural network simulator [Brian~\citep{goodman2008brian}] and results are verified on the SpiNNaker platform.
+\citet{o2013real} proposed a method to map off-line trained DBNs into a spiking neural network and take advantage of the real-time performance and energy efficiency of neuromorphic platforms. This led initially to an implementation on an event-driven Field-Programmable Gate Array (FPGA) called Minitaur~\citep{neil2014minitaur} and then on the SpiNNaker platform~\citep{Stromatias2015scalable}.
+This section aims to review and reinterpret results from previously published studies  \citep{Stromatias2015LiveDemo,Stromatias2015scalable,stromatias2015robustness}, which utilised the identical off-line trained\footnote{\url{https://github.com/dannyneil/edbn/}} spiking DBN as presented by \citet{o2013real}.
+This particular DBN comprises 784 neurons for the input layer, two hidden layers with 500 neurons each, and an output layer with 10 neurons. This is abbreviated as a 784-500-500-10 architecture.
+Simulations take place on a software spiking neural network simulator [Brian~\citep{goodman2008brian}] and results are verified on the SpiNNaker platform.
 
 \subsubsection{Training}
 
@@ -1245,7 +1247,7 @@ Figure~\ref{Fig:brianCAfiringrate} shows the effect of reduced weight bit precis
 %To validate the results of the software simulator simulations ran on SpiNNaker for a weight resolution of Q3.8.
 Using the same weight precision of Q3.8, SpiNNaker achieved a CA of 94.94\% when $1,500$~Hz was used for the input population~\citep{Stromatias2015scalable}. With the same firing rates and weight precision, Brian achieved a CA of 94.955\%. Results are summarised in Table~\ref{tab:casimulators}.
 The slightly lower CA of the SpiNNaker simulation indicates that not only the weight precision but also the precision of the membrane potential affects the overall classification performance.    
-
+\citet{stromatias2015robustness} showed that spiking DBNs are capable of maintaining a high CA even for weight precisions down to Q3.3, while they are also remarkably robust to high levels of input noise regardless of the weight precision. 
 \begin{figure}[hbt!]
 	\centering
 	\includegraphics[width=0.48\textwidth]{fig9}
@@ -1273,8 +1275,6 @@ The slightly lower CA of the SpiNNaker simulation indicates that not only the we
 	\end{center}
 \end{table}
 
-\citet{stromatias2015robustness} showed that spiking DBNs are capable of maintaining a high CA even for weight precisions down to Q3.3, while they are also remarkably robust to high levels of input noise regardless of the weight precision. 
-
 A similar experiment to the one presented for Case Study I was performed; its purpose was to establish the relation that input spike rates hold with latency and classification accuracy.
 The input rates were varied from 500~Hz to $2,000$~Hz and the results are summarised in Figure~\ref{Fig:brianLatency}. Simulations ran in Brian for all $10,000$ MNIST digits of the testing set and for 4 trials. Figure~\ref{Fig:spinnLatency1500hz} shows a histogram of the classification latencies on SpiNNaker when the input rates are $1,500$~Hz. The mean classification latency for the particular spiking DBN on SpiNNaker is 16~ms which is identical to the Brian simulation seen in Figure~\ref{Fig:brianLatency}.
 
@@ -1295,14 +1295,14 @@ The input rates were varied from 500~Hz to $2,000$~Hz and the results are summar
 	\label{Fig:spinnLatency1500hz}
 \end{figure} 
 
-\textcolor{mypink2}{Finally, this particular spiking DBN ran on a single SpiNNaker chip (16 ARM9 cores) and dissipated less than 0.3~W when $1,000$ spikes per second per digit were used. The number of generated Sopbs was $1,300,804$ and less than 9~J of energy was consumed, as seen in Figure~\ref{Fig:spinnchipPower}. The identical network executed on Minitaur~\citep{neil2014minitaur}, an event-driven FPGA implementation, dissipated 1.5~W when $1,000$ spikes per image were used, and achieved a CA of 92.0\%.}
-
+Finally, this particular spiking DBN ran on a single SpiNNaker chip (16 ARM9 cores) and dissipated about 0.3~W when $1,500$ spikes per second per digit were used.
+The number of generated synaptic events was $1.88$M~Sopbs and less than 2.97~KJ of energy was consumed running the whole testing set with $10,000$~s, as seen in Figure~\ref{Fig:spinnchipPower}. The identical network executed on Minitaur~\citep{neil2014minitaur}, an event-driven FPGA implementation, dissipated 1.5~W when $1,000$ spikes per image were used, and achieved a CA of 92.0\%.
 
 \begin{figure}[hbt!]
 	\centering
-	\includegraphics[width=0.48\textwidth]{newfig12.pdf}
+	\includegraphics[width=0.48\textwidth]{fig12_m}
 	\caption{
-\textcolor{mypink2}{Energy consumption and total number of SE of} a spiking DBN running on a single SpiNNaker chip as a function of the total input firing rate \citep{Stromatias2015scalable}.}
+	Total energy consumption and number of SE per second of a spiking DBN running on a single SpiNNaker chip as a function of the total input firing rate.}
 	\label{Fig:spinnchipPower}
 \end{figure} 
 
