@@ -1027,14 +1027,15 @@ The input rates in all of the tests are $5,000$~Hz, and each image is presented 
 The configurations only differ in the number of templates (subclasses/clusters) per digit.
 %Thus the network size varies according to the number of neurons in the decision layer where each neuron represents a subclass of a digit and the template is embedded in the synaptic weights connecting from the input layer to the decision neuron.
 
-A complete SNN simulation contains three main stages: pre-processing (such as network building and input data generation), simulation and post-processing (for example, extracting recorded data).
-\citet{Diamond2016comparing} compared the power usage on three hardware platform in detail of all the stages while this paper focuses on the simulation part.
-Thanks to PyNN we can accurately get the start and the end of the simulation slot thus to measure the simulation time and its energy use.
+
 As the network size grows there are more decision neurons and synapses connecting to them, thus the simulation time on NEST increases.
 On the other hand, SpiNNaker works in real (biologically real) time and the simulation time becomes shorter than the NEST simulation when $1,000$ patterns per digit ($1,000$ decision neurons per digit) are used.
 %The Thermal Design Power (TDP) usage of all four processors of i5-4570 actively operating at base frequency is 84~W\footnote{\url{http://ark.intel.com/products/75043/Intel-Core-i5-4570-Processor-6M-Cache-up-to-3_60-GHz}}.
 %NEST was run fully active on a single core, and only OS related operations were on the other cores.
 The power usage is estimated by subtracting the power usage of idle OS operation from the usage running the simulation.
+A complete SNN simulation contains three main stages: pre-processing (such as network building and input data generation), simulation and post-processing (for example, extracting recorded data).
+\citet{Diamond2016comparing} compared the power usage on three hardware platform in detail of all the stages while this paper focuses on the simulation part.
+%Thanks to PyNN we can accurately get the start and the end of the simulation slot thus to measure the simulation time and its energy use.
 The energy use is calculated as the product of the simulation time and the power use.
 Even with the smallest network, SpiNNaker wins in the energy cost comparison, see Figure~\ref{fig:energy}.
 Among different network configurations, the model with 500 decision neurons (50 clusters per digit) reaches the highest recognition rate of 92.99\% on average having a latency of 13.82~ms mean and 2.96~ms standard deviation.

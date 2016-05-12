@@ -662,7 +662,8 @@ This \DIFdelbegin \DIFdel{should }\DIFdelend includes details of the way samples
 The combination of these two factors determines how much information is presented to the network.
 %Some work on SNN-based classifications of MNIST is listed in Table~\ref{tb:software_comparison}.
 \DIFaddbegin \DIFadd{Following to the formatted evaluation as in Table~\ref{tb:model_eval}, Table~\ref{tb:software_comparison} lists a few SNN models of MNIST classification, although some detailed description is missing. }\DIFaddend 
-%Most of these reports did not provide sufficiently detailed descriptions of the networks and the models were not completely evaluated in the way that we propose.
+\DIFdelbegin \DIFdel{Most of these reports did not provide sufficiently detailed descriptions of the networks and the models were not completely evaluated in the way that we propose. }
+
 \begin{table*}[hbt!]
 	\caption{Model-level comparison}
 	\begin{center}
@@ -1069,14 +1070,16 @@ The input rates in all of the tests are $5,000$~Hz, and each image is presented 
 The configurations only differ in the number of templates (subclasses/clusters) per digit.
 %Thus the network size varies according to the number of neurons in the decision layer where each neuron represents a subclass of a digit and the template is embedded in the synaptic weights connecting from the input layer to the decision neuron.
 
-A complete SNN simulation contains three main stages: pre-processing (such as network building and input data generation), simulation and post-processing (for example, extracting recorded data).
-\citet{Diamond2016comparing} compared the power usage on three hardware platform in detail of all the stages while this paper focuses on the simulation part.
-Thanks to PyNN we can accurately get the start and the end of the simulation slot thus to measure the simulation time and its energy use.
+
 As the network size grows there are more decision neurons and synapses connecting to them, thus the simulation time on NEST increases.
 On the other hand, SpiNNaker works in real (biologically real) time and the simulation time becomes shorter than the NEST simulation when $1,000$ patterns per digit\DIFaddbegin \DIFadd{ ($1,000$ decision neurons per digit) }\DIFaddend are used.
 %The Thermal Design Power (TDP) usage of all four processors of i5-4570 actively operating at base frequency is 84~W\footnote{\url{http://ark.intel.com/products/75043/Intel-Core-i5-4570-Processor-6M-Cache-up-to-3_60-GHz}}.
 %NEST was run fully active on a single core, and only OS related operations were on the other cores.
 The power usage is estimated by subtracting the power usage of idle OS operation from the usage running the simulation.
+\DIFaddbegin \DIFadd{A complete SNN simulation contains three main stages: pre-processing (such as network building and input data generation), simulation and post-processing (for example, extracting recorded data).
+\mbox{\citet{Diamond2016comparing}} compared the power usage on three hardware platforms in all the stages while this paper focuses on the simulation part.
+%Thanks to PyNN we can accurately get the start and the end of the simulation slot thus to measure the simulation time and its energy use.
+ }\DIFaddend
 The energy use is calculated as the product of the simulation time and the power use.
 Even with the smallest network, SpiNNaker wins in the energy cost comparison, see Figure~\ref{fig:energy}.
 Among different network configurations, the model with 500 decision neurons (50 clusters per digit) reaches the highest recognition rate of 92.99\% on average having a latency of \DIFdelbegin \DIFdel{about }\DIFdelend 13.82~ms \DIFaddbegin \DIFadd{mean and 2.96~ms standard deviation.
@@ -1295,7 +1298,8 @@ The slightly lower CA of the SpiNNaker simulation indicates that not only the we
 \begin{figure}[hbt!]
 	\centering
 	\includegraphics[width=0.48\textwidth]{fig9}
-	\caption{DBN classification accuracy (CA) as a function of the weight bit precision for different input firing rates.}
+	\caption{DBN classification accuracy (CA) as a function of the weight bit precision for different input firing rates.
+	\citep{stromatias2015robustness}.}
 	\label{Fig:brianCAfiringrate}
 \end{figure} 
 
@@ -1325,7 +1329,7 @@ The input rates were varied from 500~Hz to $2,000$~Hz and the results are summar
 \begin{figure}[hbt!]
 	\centering
 	\includegraphics[width=0.48\textwidth]{fig10}
-	\caption{Mean classification latency (black) and classification accuracy (blue) as a function of the input firing rate for the spiking DBN. Results are averaged over 4 trials, error bars show standard deviations.}
+	\caption{Mean classification latency (black) and classification accuracy (blue) as a function of the input firing rate for the spiking DBN. Results are averaged over 4 trials, error bars show standard deviations. \citep{Stromatias2015scalable}.}
 	\label{Fig:brianLatency}
 \end{figure} 
 
@@ -1334,7 +1338,8 @@ The input rates were varied from 500~Hz to $2,000$~Hz and the results are summar
 \begin{figure}[hbt!]
 	\centering
 	\includegraphics[width=0.48\textwidth]{fig11}
-	\caption{Histogram of the classification latencies for the MNIST digits of the testing set when the input rates are set to $1,500$~Hz. The mean classification latency of the spiking DBN on SpiNNaker is 16 ms.}
+	\caption{Histogram of the classification latencies for the MNIST digits of the testing set when the input rates are set to $1,500$~Hz. The mean classification latency of the spiking DBN on SpiNNaker is 16 ms.
+	\citep{Stromatias2015scalable}.}
 	\label{Fig:spinnLatency1500hz}
 \end{figure} 
 
