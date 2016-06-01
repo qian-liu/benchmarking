@@ -652,15 +652,22 @@ Following to the formatted evaluation as in Table~\ref{tb:model_eval}, Table~\re
 			\begin{mycell}{2.5cm}~\cite{neftci2013event} \end{mycell} & 
 			\begin{mycell}{1.9cm} Thresholding,\\ Synaptic current\end{mycell} & % preprocessing
 			\begin{mycell}{3.5cm} Two layer RBM, \\ LIF neurons \end{mycell}&  % network
-			\begin{mycell}{3.5cm} Event-driven contrastive divergence, supervised \end{mycell}&  % training
+			\begin{mycell}{3.5cm} Event-driven contrastive divergence (eCD), unsupervised \end{mycell}&  % training
 			\begin{mycell}{3.5cm} 91.9\% \\ 1~s per test\end{mycell} \\% recognition
+
+			\begin{mycell}{2.5cm}~\cite{neftci2016stochastic} \end{mycell} & 
+			\begin{mycell}{1.9cm} Thresholding,\\ Synaptic current\end{mycell} & % preprocessing
+			\begin{mycell}{3.5cm} Two layer RBM, \\ LIF neurons \end{mycell}&  % network
+			\begin{mycell}{3.5cm} Synaptic Sampling Machine + eCD, unsupervised \end{mycell}&  % training
+			\begin{mycell}{3.5cm} 95.8\% \\ 250~ms per test\end{mycell} \\% recognition
 			
 			%
 			\begin{mycell}{2.5cm}~\cite{diehl2015unsupervised} \end{mycell} & 
 			\centering Poisson &
 			\begin{mycell}{3.5cm} Two layers, LIF neurons, inhibitory feedback  \end{mycell}& 
-			\begin{mycell}{3.5cm} Unsupervised, exp. STDP, %adaptive membrane potential, 
-				$3,000,000$~s of training\\ $200,000$~s per iteration\end{mycell} & 
+			\begin{mycell}{3.5cm} Unsupervised, STDP,\\ %adaptive membrane potential, 
+%				$3,000,000$~s of training\\ 
+			$200,000$~s per iteration\\ 15 iterations\end{mycell} & 
 			\begin{mycell}{3.5cm} 95\% \end{mycell}\\
 			
 			%
@@ -674,7 +681,7 @@ Following to the formatted evaluation as in Table~\ref{tb:model_eval}, Table~\re
 			\begin{mycell}{1.9cm} Thresholding \\ or DVS \end{mycell}& % preprocessing 
 			\begin{mycell}{3.5cm} Simple (Gabor), \\Complex (MAX) \\and Tempotron  \end{mycell}& % network
 			\begin{mycell}{3.5cm} Tempotron, supervised \end{mycell}& % training
-			\begin{mycell}{3.5cm} Thresholding \\ 91.3\%, 11~s per test \\ DVS \\ 88.1\%, 2~s per test\end{mycell}\\ % recognition
+			\begin{mycell}{3.5cm} 91.3\%(Thresholding)\\ 11~s per test \\ 88.1\%(DVS),\\ 2~s per test\end{mycell}\\ % recognition
 			
 			%
 			\begin{mycell}{2.5cm} % %\cite{Stromatias2015scalable} \\ 
@@ -801,7 +808,7 @@ Real-time implementation is an essential requirement for robotic systems because
 Running faster than real time is attractive for large and long simulations.
 %Finer time resolution plays an important role in precision-sensitive neural models or in sub-millisecond tasks~\citep{lagorce2015breaking}.
 %Qian Liu done
-It is interesting to comparing the performance of each platform in terms of energy requirements, especially if the platform targets mobile applications and robotics.
+It is interesting to compare the performance of each platform in terms of energy requirements, especially if the platform targets mobile applications and robotics.
 Some researchers have suggested the use of energy per synaptic event (J/SE)~\citep{sharp2012power,stromatias2013power} as an energy metric because the large fan in and out of a neuron means that synaptic processing tends to dominate the total energy dissipation during a simulation.
 \cite{merolla2014million} proposed the number of synaptic operations per second per Watt (Sops/W).
 These two measures are equivalent, since J/SE$\times$Sops/W = 1.
@@ -867,7 +874,7 @@ The model is described with PyNN and the code is published in
 the Github repository with the dataset.
 As a potential benchmark, this system is composed of simple neural models, trained with standard learning rules and written in a standard SNN description language. These characteristics allow the same network to be tested on various simulators, both software- and hardware-based.
 
-Both training and testing exploit the Poissonian subset of the NE15-MNIST dataset.
+Both training and testing use the Poissonian subset of the NE15-MNIST dataset.
 This makes performance evaluation on different simulators possible with the unified spike source array provided by the dataset. 
 In terms of this case study, the performance of the model was evaluated with both software simulation [on NEST~\citep{gewaltig2007nest}] and hardware implementation (on SpiNNaker).
 
@@ -945,7 +952,7 @@ After training the weights of the plastic synapses are set to static, keeping th
 %The negative connections reduced the output firing rates while keeping a good classification ability.
 However, during training the synaptic plasticity holds a hard limit of 0 on the weight strength, thus excitatory synapses cannot change into inhibitory.
 To investigate how inhibitory connections influence the classification performance, the weak weights were set to negative with identical strengths.
-Results has that inhibitory synapses significantly reduced the output firing rates while keeping a good classification ability.
+Results show that inhibitory synapses significantly reduced the output firing rates while keeping a good classification ability.
 Thus the strategy of replacing weak weights to same negative values was used throughout the case study.
 The feed-forward testing network is shown in Figure~\ref{fig:model}(b) where Poisson spike trains are generated the same way as in the training with a total firing rate of $2,000$~Hz per image.
 The input neurons convey the same spike trains to every decision neuron through its responding trained synaptic weights. 
@@ -1016,10 +1023,10 @@ Although the variations in the Sopbs climbs to around 8~kHz, it is not obvious i
 %		\label{fig:eve_rate}
 %		\includegraphics[width=0.25\textwidth]{images/rate-event}
 %	}
-	\includegraphics[width=0.8\textwidth]{fig7_m}
+	\includegraphics[width=0.8\textwidth]{fig7}
 	\caption{Accuracy, response time (latency) and synaptic event rate (Sopbs) change over test time and input firing rate per test image.
 	The test time is the duration of the presence of a single test image, and the input firing rate is the summation of all the input neurons.
-	Original trained weights are used (circles in blue) as well as the scaled up ($\times10$) weights (triangles in black). }
+	Original trained weights are used (up-pointing triangles with solid line) as well as the scaled up ($\times10$) weights (down-pointing triangles with dashed line). }
 	\label{fig:assess}
 \end{figure}
 
