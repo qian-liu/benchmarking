@@ -23,7 +23,6 @@
 \usepackage{mathptmx}
 \usepackage{amsmath}
 \usepackage{footnote}
-
 \linenumbers
 %define some own functions
 \newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}} 
@@ -128,7 +127,7 @@ We propose that a large dataset of spike-based visual stimuli is needed to provi
 In this paper we first propose an initial NE (Neuromorphic Engineering) dataset that is based on standard computer vision benchmarks and uses digits from the MNIST database. This dataset is compatible with the state of current research on spike-based image recognition.
 The corresponding spike trains are produced using a range of techniques: rate-based Poisson spike generation, rank order encoding, and recorded output from a silicon retina with both flashing and oscillating input stimuli.
 In addition, a complementary evaluation methodology is presented to assess both model-level and hardware-level performance.
-Finally, we demonstrate the use of the dataset and the evaluation methodology using two SNN models to validate the performance of the models and their hardware implementations.
+Finally, we demonstrate the use of the dataset and the evaluation methodology using two SNN models to validate their classification capabilities and the performance of their hardware implementations.
 
 With this dataset we hope to (1) promote meaningful comparison between algorithms in the field of neural computation, (2) allow comparison with conventional image recognition methods, (3) provide an assessment of the state of the art in spike-based visual recognition, and (4) help researchers identify future directions and advance the field.
 
@@ -141,7 +140,7 @@ With this dataset we hope to (1) promote meaningful comparison between algorithm
 %\subsection{What Is the Problem}
 Researchers are using the capabilities created by rapid developments in neuromorphic engineering to address the dual aims of understanding brain functions and building brain-like machines~\citep{furber2007neural}.
 Neuromorphic engineering has delivered biologically-inspired sensors such as DVS~(Dynamic Vision Sensor) silicon retinas~\citep{serrano2013128, delbruck2008frame, yang2015dynamic, posch2014retinomorphic}, which offer the prospect of low-cost visual processing thanks to their event-driven and redundancy-reducing style of information representation.
-Moreover, SNN simulation tools~\citep{davison2008pynn, gewaltig2007nest, goodman2008brian} and neuromorphic hardware platforms~\citep{furber2014spinnaker,  schemmel2010wafer,benjamin2014neurogrid,merolla2014million} have been developed to allow exploration of the brain by mimicking its functions and developing large-scale practical applications~\citep{eliasmith2012large}.
+Moreover, SNN simulation tools~\citep{davison2008pynn, gewaltig2007nest, goodman2008brian} and neuromorphic hardware platforms~\citep{furber2014spinnaker,  schemmel2010wafer, merolla2014million} have been developed to allow exploration of the brain by mimicking its functions and developing large-scale practical applications~\citep{eliasmith2012large}.
 In the case of visual processing, the central visual system consists of several cortical areas which, according to anatomical experiments, are placed in a hierarchical structure ~\citep{felleman1991distributed}.
 Fast object recognition takes place in the feed-forward hierarchy of one of the two central visual pathways, the ventral pathway, which mainly handles the ``What'' tasks.
 Biological studies have revealed that the information is unfolded along the ventral stream to the IT (Inferior Temporal) cortex~\citep{dicarlo2012does}.
@@ -153,9 +152,6 @@ Recently~\cite{fu2012spiking} reported that their SNN implementation was capable
 They employed simple integrate-and-fire neurons with rank order coding (ROC) where the earliest pre-synaptic spikes have the strongest impact on the post-synaptic potentials.
 According to~\cite{vanrullen2002surfing}, the first wave of spikes carry explicit information through the ventral stream and in each stage meaningful information is extracted and spikes are regenerated. 
 Using one spike per neuron,~\cite{delorme2001face} reported 100\% and 97.5\% accuracies on the face identification task over changing  contrast and luminance training (40 individuals $\times$ 8 images) and testing data (40 individuals $\times$ 2 images) respectively.
-In terms of vision recognition on neuromorphic hardware, TrueNorth~\citep{merolla2014million} has been used to detect and recognise five classes of object in the video clips of the Neovision2 Tower dataset.
-\cite{Qiao2015re} presented an analogue on-line learning neuromorphic classification system which responds selectively to images of cars and motorbikes selected from the Caltech 101 dataset.
-Generic training algorithms for pattern recognition~\citep{schmuker2014neuromorphic} and regression/classification tasks~\citep{thakur2016low} have been implemented on neuromorphic platforms.
 
 The Convolutional Neural Network (CNN), also known as the \textit{ConvNet}, developed by~\cite{lecun1998gradient}, is a widely-used model based on a cortex-like framework.
 An early Convolutional Spiking Neural Network (CSNN) model identified the faces of 35 persons with a CA of 98.3\% exploiting simple integrate and fire neurons~\citep{matsugu2002convolutional}.
@@ -174,13 +170,13 @@ The network was initially implemented on an FPGA and achieved a CA of 92.0\%~\ci
 Recent advances have contributed to better translation by using modified units in a ConvNet~\citep{cao2015spiking} and tuning the weights and thresholds~\citep{Diehl2015fast}.
 The latter paper claims a state-of-the-art performance (99.1\% on the MNIST dataset) compared to the original ConvNet.
 The current trend towards training Spiking DNNs on line using biologically-plausible learning methods is also promising.
-An event-driven Contrastive Divergence (CD) training algorithm for Restricted Boltzmann Machines (RBMs) was proposed for Deep Belief Networks (DBNs) using LIF neurons with Spike-Timing-Dependent Plasticity (STDP) synapses and verified on MNIST with a CA of 91.9\%~\citep{neftci2013event}.
+An event driven Contrastive Divergence (CD) training algorithm for Restricted Boltzmann Machines (RBMs) was proposed for Deep Belief Networks (DBNs) using LIF neurons with Spike-Timing-Dependent Plasticity (STDP) synapses and verified on MNIST with a CA of 91.9\%~\citep{neftci2013event}.
 
 STDP as a biological learning process has been applied to vision tasks.
 \cite{bichler2012extraction} demonstrated an unsupervised STDP learning model to classify car trajectories captured with a DVS retina. 
 A similar model was tested on a Poissonian spike presentation of the MNIST dataset achieving a performance of 95.0\%~\citep{diehl2015unsupervised}.
-Theoretical analysis~\citep{nessler2013bayesian} showed that unsupervised STDP was able to approximate a stochastic version of Expectation Maximisation, a powerful learning algorithm in machine learning.
-A computer simulation achieved a 93.3\% CA on MNIST and had the potential to be implemented using memristors~\citep{bill2014compound}. 
+Theoretical analysis~\citep{nessler2013bayesian} showed that unsupervised STDP was able to approximate a stochastic version of Expectation Maximization, a powerful learning algorithm in machine learning.
+A computer simulation achieved~93.3\% CA on MNIST and had the potential to be implemented using memristors~\citep{bill2014compound}. 
 
 Despite the promising research on SNN-based vision recognition, there is no commonly-used database in the format of spike stimuli.
 In the studies listed above, all of the vision data used are in one of the following formats:
@@ -267,7 +263,7 @@ The NE database we propose here is a developing and evolving dataset consisting 
 The spikes are either generated from spike encoding methods which convert images or frames of videos into spike trains, or recorded from DVS silicon retinas.
 The spike trains are in the format of Address-Event Representation~(AER)~\citep{mahowald1992vlsi} data, which are suitable for both event-driven computer simulations and neuromorphic systems.
 AER was originally proposed as a time-multiplexed spike communication protocol where each time a neuron produces a spike an event is generated that codes the spiking neuron's address on a fast time-multiplexed digital bus.
-The recorded AER data consists of a list of events, each one containing the time stamp of a spike and the address of the neuron which generated the spike.
+The recorded AER data contains consists of a list of events, each one containing the time stamp of a spike and the address of the neuron which generated the spike.
 With the NE dataset we hope:
 \begin{itemize}
 	\item \textit{to promote meaningful comparisons of algorithms in the field of spiking neural computation.}
@@ -298,13 +294,24 @@ NE15-MNIST is the spiking version of an original non-spiking dataset which was d
 	\item \textit{FoCal~(Filter Overlap Correction ALgorithm)},
 	to promote the study of spatio-temporal algorithms applied to recognition tasks using small numbers of input spikes.
 	\item \textit{DVS recorded flashing input},
-	to encourage research into fast recognition methods to mimic the rapid and accurate ``core recognition'' in the primate ventral visual pathway~\citep{dicarlo2012does}.
+	to encourage research into fast recognition methods based on, for example, the primate visual pathway.
 	\item \textit{DVS recorded moving input},
 	to trigger the study of algorithms targeting continuous input from real-world sensors for implementation, for example, on mobile neuromorphic robots.
 \end{itemize}
-The dataset can be found in the GitHub repository at: https://github.com/NEvision/NE15.
+The dataset can be found in the GitHub repository at: https://github.com/qian-liu/benchmarking.
 \subsection{Data Description}
-\begin{figure}[bt!]
+
+Two file formats are supported in the dataset: the jAER format~\citep{delbruck2008frame} (.dat or .aedat), and binary files in NumPy~\citep{numpyPython} (.npy) format.
+%The AER interface has been widely used in neuromorphic systems, especially for vision sensors.
+%The spikes are encoded as time events with corresponding addresses to convey information.
+The spikes in jAER format, whether recorded from a DVS retina or artificially generated, can be displayed by the jAER software.
+Figure~\ref{fig:zero}(a) is a snapshot of the software displaying a .aedat file which was recorded from a DVS retina~\citep{serrano2013128}.
+The resolution of the DVS recorded data is 128$\times$128.
+The second spike-based format used is a list of spike source arrays in PyNN~\citep{davison2008pynn}, a description language for building spiking neuronal network models.
+Python code is provide for converting from either file format to the other.
+The duration of the artificially-generated data can be configured using the Python code provided, while the recorded data varies in duration: 1~s for the flashing input, and 3.2 to 3.4~s for the moving input.
+
+\begin{figure}[hbt]
 	\centering
 %	\subfloat[A snapshot of jAER playing the DVS recorded spikes.]{
 %		\label{Fig:jaer}
@@ -318,24 +325,13 @@ The dataset can be found in the GitHub repository at: https://github.com/NEvisio
 %		\label{Fig:raster}
 %		\includegraphics[width=0.48\textwidth]{zero}
 %	}
-	\includegraphics[width=0.75\textwidth]{fig1}
+	\includegraphics[width=0.48\textwidth]{fig1}
 	\caption{
 		Snapshots of the jAER software displaying spike-encoded videos.
 		The same image of digit ``0'' is transformed into spikes by (a) DVS recording and (b) Poisson generation.
 		(c) A raster plot of the Poisson spike trains.}
 	\label{fig:zero}
 \end{figure}
-Two file formats are supported in the dataset: the jAER format~\citep{delbruck2008frame} (.dat or .aedat), and binary files in NumPy~\citep{numpyPython} (.npy) format.
-%The AER interface has been widely used in neuromorphic systems, especially for vision sensors.
-%The spikes are encoded as time events with corresponding addresses to convey information.
-The spikes in jAER format, whether recorded from a DVS retina or artificially generated, can be displayed by the jAER software.
-Figure~\ref{fig:zero}(a) is a snapshot of the software displaying a .aedat file which was recorded from a DVS retina~\citep{serrano2013128}.
-The resolution of the DVS recorded data is 128$\times$128.
-The second spike-based format used is a list of spike source arrays in PyNN~\citep{davison2008pynn}, a description language for building spiking neuronal network models.
-Python code is provided for converting from either file format to the other.
-The duration of the artificially-generated data can be configured using the Python code provided, while the recorded data varies in duration: 1~s for the flashing input, and 3.2 to 3.4~s for the moving input.
-
-
 
 %\subsubsection{Data Description}	
 \subsubsection{Poissonian}
@@ -359,10 +355,10 @@ A raster plot of the Poisson spike trains is shown in Figure~\ref{fig:zero}(c).
 
 
 \subsubsection{Rank-Order-Encoding}
-A different way of encoding spikes is to use a rank-order code; this means
+A different way of encoding spikes is using a rank-order code; this means
 keeping just the order in which the spikes fired and disregarding their exact timing. Rank-ordered spike trains have been used in vision tasks under a biological plausibility constraint, making them a viable way of encoding images for neural applications~\citep{van2001rate,sen2009evaluating,masmoudi2010novel}.
 
-Rank-ordered coding can be performed using an algorithm known as the
+Rank-ordered encoding can be performed using an algorithm known as the
 {FoCal algorithm~\citep{sen2009evaluating}}.
 This algorithm models the foveal pit region, the highest resolution area of the retina, with four ganglion cell layers each with a different scale of centre-surround receptive field~\citep{kolb2003retina}. In order to simulate these layers two steps are required: the first consists of four discrete 2D convolutions; the second removes redundant information produced in the first step. During the first step, the centre-surround behaviour of the ganglion cells is modelled using Difference of Gaussians~(DoG) kernel for convolution. 
 \begin{equation}
@@ -374,9 +370,8 @@ where $\sigma_{w,c}$ and $\sigma_{w,s}$ are the standard deviation of the
 centre and surround components of the DoG at layer $w$. The signs 
 will be ($-$,$+$) if the ganglion cell has an OFF-centre behaviour and 
 ($+$,$-$) if it has an ON-centre one. Table~\ref{tab-kernel-specs} 
-shows the parameters (described in~\citealp{sen2009evaluating}) used to compute the convolution kernels at each 
+describes the parameters used to compute the convolution kernels at each 
 scale $w$.
-
 
 \begin{table}[htb]
 	\caption{Simulation parameters for FoCal ganglion cells}
@@ -449,12 +444,12 @@ is inversely proportional to the spike emission time relative to the presentatio
 %		\label{pic-lena-P-ON}
 %		\includegraphics[width=0.15\textwidth]{filtered-21-0-layer-3}
 %	}
-	\includegraphics[width=0.6\textwidth]{fig2}
+	\includegraphics[width=0.48\textwidth]{fig2}
 	\caption{Results of convolving the image spikes with the simulated ganglion cell layers using the FoCal algorithm before correcting for filter overlap. (a) The original image. (b-e) the result of convolving the image with the layer 1 (smallest) OFF-centre to layer 4 (largest) ON-centre kernels respectively.}
 	\label{fig-convolution-results}
 \end{figure}
 
-Since DoGs are used as the means to encode the image, and they do not form an orthogonal set of basis functions, the algorithm also performs a redundancy correction step.
+Since DoGs are used as a means to encode the image, and they do not form an orthogonal set of basis functions, the algorithm also performs a redundancy correction step.
 It does so by adjusting the convolved images' pixel values according to the correlation between convolution kernels (Alg.~\ref{code-focal-corr}).
 
 \begin{algorithm}[h]
@@ -468,7 +463,7 @@ It does so by adjusting the convolved images' pixel values according to the corr
 		\State $M \leftarrow M \cup m$\Comment{Add maximum to $M$}
 		\State $C \leftarrow C \setminus m$\Comment{Remove maximum from $C$}
 		\ForAll{$ c \in C$} \Comment{Adjust all remaining $c$}
-		\If{$Q(m, c) \neq 0$} \Comment{Adjust only spatially near coefficients}
+		\If{$Q(m, c) \neq 0$} \Comment{Adjust only near}
 		\State $c \leftarrow c - m \times Q(m, c)$
 		\EndIf
 		\EndFor
@@ -505,7 +500,7 @@ Figure~\ref{fig-reconstruction-results} shows the reconstruction results for the
 %		\label{pic-lena-reconstructed-focal}
 %		\includegraphics[width=0.15\textwidth]{reconstructed_21-0_100pc}
 %	}
-	\includegraphics[width=0.6\textwidth]{fig4}
+	\includegraphics[width=0.48\textwidth]{fig4}
 	\caption{Reconstruction result comparison. (a) The original image. (b) Reconstruction without overlap correction. (c) Reconstruction with overlap correction.}
 	\label{fig-reconstruction-results}
 \end{figure}
@@ -514,7 +509,7 @@ The source Python scripts to transform images to ROC spike trains, and to conver
 
 \subsubsection{DVS Sensor Output with Flashing Input}
 \label{subsec_flash}
-The purpose of including the subset with DVS-recorded flashing digits is to promote research into rapid and accurate ``core recognition'', thus to encourage applying non-rate-based algorithms, for example ROC, to short DVS output spike trains.
+The purpose of including the subset with DVS-recorded flashing digits is to promote the application of Rank-Order-Coding to DVS output, and to accelerate fast on-set recognition by using just the early 30\% part of the spike train.
 
 Each digit was shown alternating with a blank image and each display lasted one second.
 The digits were displayed on an LCD monitor in front of the DVS retina~\citep{serrano2013128} and were placed in the centre of the visual field of the camera.
@@ -522,7 +517,7 @@ Since there are two spike polarities - `ON' indicating an increase in the intens
 In Figure~\ref{fig:flash}, the burstiness of the spikes is illustrated where most of the spikes occur in a 30~ms time slot. 
 In total, this subset of the database contains 2$\times$$60,000$ recordings for training and 2$\times$$10,000$ for testing.
 
-\begin{figure}[hb!]
+\begin{figure}[b!]
 	\centering
 %	\subfloat[Spikes recorded in the order of neuron ID during 1s of time.]{
 %		\label{fig:flash_all}
@@ -533,15 +528,8 @@ In total, this subset of the database contains 2$\times$$60,000$ recordings for 
 %		\label{fig:flash_a}
 %		\includegraphics[width=0.48\textwidth]{flash_full_order}
 %	}
-	\includegraphics[width=0.6\textwidth]{fig5}	
-	\caption{DVS sensor with flashing input.
-	Blue is used for `ON' events and green for `OFF' events.
-	(a) The raster plot shows spikes generated by individual neurons over time.
-	It is hard to recognise the total number of spikes due to the large number of neurons involved in the figure.
-	Thus all the spikes are ordered in time, and displayed in the figure below.
-	(b) The raster plot shows ordered spike sequence over time.
-	The total number of spikes are around $7,000$ for both `ON' and `OFF' events.
-	The bursty nature of the resulting spikes is illustrated, where most of the spikes occur in a 30~ms time slot.}
+	\includegraphics[width=0.48\textwidth]{fig5}	
+	\caption{DVS sensor with flashing input. The bursty nature of the resulting spikes is illustrated, where most of the spikes occur in a 30~ms time slot. Blue is used for `ON' events and green for `OFF' events.}
 	\label{fig:flash}
 \end{figure}
 
@@ -551,7 +539,7 @@ The subset with DVS recorded moving digits is presented to address the challenge
 
 MNIST digits were scaled to three different sizes, using smooth interpolation algorithms to increase their size from the original 28x28 pixels, and displayed on the monitor with slow motion. 
 The same DVS~\citep{serrano2013128} used in Section~\ref{subsec_flash} captured the movements of the digits and generated spike trains for each pixel in its 128$\times$128 resolution.
-A total of $30,000$ recordings were made: 10 digits, at 3 different scales, $1,000$ different handwritten samples for each.
+A total of 30,000 recordings were made: 10 digits, at 3 different scales, 1,000 different handwritten samples for each.
 
 \subsection{Performance Evaluation}
 \label{sec:eval}
@@ -560,12 +548,82 @@ Therefore we propose corresponding evaluation metrics and suggest a sufficient d
 Once a model is implemented on a neuromorphic platform, the hardware performance can be evaluated by running the particular model.
 This model-specific assessment provides more robust comparisons between hardware platforms thanks to using the same network topology, neuron and synaptic models, and learning rules. 
 A complementary evaluation methodology is essential to provide common metrics and assess both the model-level and hardware-level performance.
-
+\begin{table*}[hbt!]
+	\caption{Model-level comparison}
+	\begin{center}
+		\bgroup
+		\def\arraystretch{1.5}
+		\begin{tabular}{ l c c c c }
+			$ $ &
+			\begin{mycell}{1.9cm} Input\end{mycell} & 
+			\begin{mycell}{3.5cm} Network\end{mycell} & 
+			\begin{mycell}{3.5cm} Training \end{mycell} & 
+			\begin{mycell}{3.5cm} Recognition \end{mycell} \\
+			\hline
+			
+			%
+			\begin{mycell}{2.5cm}~\cite{brader2007learning} \end{mycell} & 
+			\begin{mycell}{1.9cm} Normalization \end{mycell} & % preprocessing
+			\begin{mycell}{3.5cm} Two layer, LIF neurons\end{mycell}&  % network
+			\begin{mycell}{3.5cm} Semi-supervised, STDP, calcium LTP/LTD\end{mycell}&  % training
+			\begin{mycell}{3.5cm} 96.5\% \end{mycell} \\% recognition
+			
+			%
+			\begin{mycell}{2.5cm}~\cite{beyeler2013categorization} \end{mycell} & 
+			\begin{mycell}{1.9cm} Scaling, V1 (edge),\\ Poisson\end{mycell} & % preprocessing
+			\begin{mycell}{3.5cm} V2 (orientation),\\ and competitive decision, Izhikevich neurons\end{mycell}&  % network
+			\begin{mycell}{3.5cm} Semi-supervised, STDP, \\ calcium LTP/LTD \end{mycell} &  % training
+			\begin{mycell}{3.5cm} 91.6\% \\ 300~ms per test \end{mycell} \\% recognition
+			
+			%
+			\begin{mycell}{2.5cm}~\cite{neftci2013event} \end{mycell} & 
+			\begin{mycell}{1.9cm} Thresholding,\\ Synaptic current\end{mycell} & % preprocessing
+			\begin{mycell}{3.5cm} Two layer RBM, \\ LIF neurons \end{mycell}&  % network
+			\begin{mycell}{3.5cm} Event-driven contrastive divergence, supervised \end{mycell}&  % training
+			\begin{mycell}{3.5cm} 91.9\% \\ 1~s per test\end{mycell} \\% recognition
+			
+			%
+			\begin{mycell}{2.5cm}~\cite{diehl2015unsupervised} \end{mycell} & 
+			\centering Poisson &
+			\begin{mycell}{3.5cm} Two layers, LIF neurons, inhibitory feedback  \end{mycell}& 
+			\begin{mycell}{3.5cm} Unsupervised, exp. STDP, %adaptive membrane potential, 
+				$3,000,000$~s of training\\ $200,000$~s per iteration\end{mycell} & 
+			\begin{mycell}{3.5cm} 95\% \end{mycell}\\
+			
+			%
+			\begin{mycell}{2.5cm}~\cite{Diehl2015fast}\end{mycell}  & 
+			\begin{mycell}{1.9cm} Poisson \end{mycell} & % preprocessing
+			\begin{mycell}{3.5cm} ConvNet or \\Fully connected,\\ LIF neurons \end{mycell}& % network
+			\begin{mycell}{3.5cm} Off-line trained with ReLU, weight normalization \end{mycell}&   % training
+			\begin{mycell}{3.5cm} 99.1\% (ConvNet), \\ 98.6\% (Fully connected);\\0.5~s per test\end{mycell}\\ % recognition    
+			%
+			\begin{mycell}{2.5cm}~\cite{zhao2014feedforward}\end{mycell}  & 
+			\begin{mycell}{1.9cm} Thresholding \\ or DVS \end{mycell}& % preprocessing 
+			\begin{mycell}{3.5cm} Simple (Gabor), \\Complex (MAX) \\and Tempotron  \end{mycell}& % network
+			\begin{mycell}{3.5cm} Tempotron, supervised \end{mycell}& % training
+			\begin{mycell}{3.5cm} Thresholding \\ 91.3\%, 11~s per test \\ DVS \\ 88.1\%, 2~s per test\end{mycell}\\ % recognition
+			
+			%
+			\begin{mycell}{2.5cm} % %\cite{Stromatias2015scalable} \\ 
+				This paper \end{mycell} & 
+			\begin{mycell}{1.9cm} Poisson \end{mycell} & % preprocessing
+			\begin{mycell}{3.5cm} Four layer RBM, \\ LIF neurons \end{mycell}&  % network
+			\begin{mycell}{3.5cm} Off-line trained, unsupervised \end{mycell}&  % training
+			\begin{mycell}{3.5cm} 94.94\%\\16 ms latency \\ 1.44M Sopbs\end{mycell} \\% recognition
+			%
+			\begin{mycell}{2.5cm} This paper \end{mycell}  & 
+			\begin{mycell}{1.9cm} Poisson \end{mycell}& % preprocessing 
+			\begin{mycell}{3.5cm} Fully connected decision layer, \\ LIF neurons \end{mycell}& % network
+			\begin{mycell}{3.5cm} K-means clusters,\\Supervised STDP\\$18,000$~s of training \end{mycell}& % training
+			\begin{mycell}{3.5cm} 92.99\%\\1~s per test\\200~ms silence \\13.82~ms latency\\$4.17$M Sopbs\end{mycell}\\ % recognition
+		\end{tabular}
+		\egroup
+	\end{center}
+	\label{tb:software_comparison}
+\end{table*}
 
 \subsubsection{Model-Level Evaluation}
 \label{subsec:model}
-
-A suggested description of an SNN model is shown in Table~\ref{tb:model_eval} where the performance evaluation metrics are in bold and the SNN specific description is in italics.
 
 Because SNNs introduce the time dimension and spike-based processing, additional performance metrics become relevant in addition to classification accuracy: these are recognition latency and the number of synaptic events.
 %Both of the metrics are proposed according to the biological aspects.
@@ -576,7 +634,36 @@ The latency is measured as the time difference between the first spike generated
 A small total number of synaptic events generated by a recognition task indicates the efficiency of the SNN model.
 A spike event is a synaptic operation evoked when one action potential is transmitted through one synapse~\citep{sharp2012power}.
 Fewer spike events implies lower overall neural activity and lower energy consumption.
-The number of synaptic events can be measured as ``Sopbs'', synaptic operations per biological second.
+The number of synaptic events can be measured as `Sopbs', synaptic operations per biological second.
+
+Alongside the SNN evaluation metrics, a sufficient description of a network model is required so that other researchers can reproduce it and compare it with other models.
+First of all, the input of an SNN should be specified.
+The description includes the transformation method for converting raw images to spike trains, and the preprocessing either to images or spikes.
+Filtering the raw image may ease the classification/recognition task while adding noise may require more robustness in the model.
+Secondly, as with the evaluation of conventional artificial neural networks, a description of the network characteristics should be provided since it is the basis for the overall performance evaluation.
+Sharing the designs not only makes the model reproducible but also inspires fellow scientists to bring new points of view to the problem, generating a positive feedback loop where everybody wins.
+The main characteristics include the topology, and the neural and synaptic models.
+The network topology defines the number of neurons used for each layer, and the connections between layers and neurons.
+It is essential to state the types of neural and synaptic model (e.g. current-based LIF neuron) utilised in the network and the parameters configuring them, because neural activities differ greatly between configurations.
+Any non-neural classifier, sometimes added to aid the design, sometimes to enhance the output of the network, must also be specified.
+
+Thirdly, the training procedure determines the recognition capability of a network model.
+A clear distinction should be made between supervised, semi-supervised and unsupervised learning.
+A detailed description of new spike-based learning rules will be a great contribution to the field due to the present lack of spatio-temporal learning algorithms.
+Most publications reflect the use of adaptations to existing learning rules; details on these modifications should be clear and unambiguous.
+In conventional computer vision, the number of iterations of training images presented to the network play an important role.
+Similarly, the biological training time determines the amount of information provided for training an SNN.
+Finally in the testing phase, as well as the performance evaluation metrics stated above, specific configurations of the input spikes are also essential.
+This should include details of the way samples were presented: spiking rates, and biological time per testing sample.
+The combination of these two factors determines how much information is presented to the network.
+%An important performance metric is the response time (latency) of an SNN model.
+%A faster model is more suitable for real-time recognition systems such as neuromorphic robotics.
+%A commonly reported characteristic is the accuracy of the network, perhaps adding remarks on how these scores are obtained could help to unify criteria and ease comparison.
+
+In summary, the description of an SNN model is suggested as shown in Table~\ref{tb:model_eval} where the specific description for SNNs is written in italics and the performance evaluation metrics are in bold.
+Some work on SNN-based classifications of MNIST is listed in Table~\ref{tb:software_comparison}.
+Most of these reports did not provide sufficiently detailed descriptions of the networks and the models were not completely evaluated in the way that we propose.
+
 \begin{table*}[hbt!]
 	\caption{SNN descriptions at the model level}
 	\begin{center}
@@ -597,110 +684,6 @@ The number of synaptic events can be measured as ``Sopbs'', synaptic operations 
 		\egroup
 	\end{center}
 	\label{tb:model_eval}
-\end{table*}
-
-Alongside the SNN evaluation metrics, a sufficient description of a network model is required so that other researchers can reproduce it and compare it with other models.
-First of all, the input of an SNN model is specified.
-The description includes the transformation method for converting raw images to spike trains, and the preprocessing either to images or spikes.
-Filtering the raw image may ease the classification/recognition task while adding noise may require more robustness in the model.
-Secondly, as with the evaluation of conventional artificial neural networks, a description of the network characteristics provides the basis for the overall performance evaluation.
-Sharing the designs not only makes the model reproducible but also inspires fellow scientists to bring new points of view to the problem, generating a positive feedback loop where everybody wins.
-The main characteristics include the topology and the neural and synaptic models.
-The network topology defines the number of neurons used for each layer and the connections between layers and neurons.
-It is essential to state the types of neural and synaptic model (e.g. current-based LIF neuron) utilised in the network and the parameters configuring them, because neural activities differ greatly between configurations.
-Any non-neural classifier, sometimes added to aid the design enhance the output of the network, must also be specified.
-Thirdly, the training procedure determines the recognition capability of a network model.
-%A clear distinction should be made between supervised, semi-supervised and unsupervised learning.
-Specifying the learning algorithm with its mechanism (supervised, semi-supervised and unsupervised) helps the reader undersdand the core features of the model.
-A detailed description of new spike-based learning rules will be a great contribution to the field due to the present lack of spatio-temporal learning algorithms.
-Most publications reflect the use of adaptations to existing learning rules; details on these modifications should be clear and unambiguous.
-In conventional computer vision, the number of iterations of training images presented to the network play an important role.
-Similarly, the biological training time determines the amount of information provided for training an SNN.
-Finally in the testing phase, as well as the performance evaluation metrics stated above, specific configurations of the input spikes are also essential.
-This includes details of the way samples were presented: spiking rates, and biological time per test sample.
-The combination of these two factors determines how much information is presented to the network.
-%Some work on SNN-based classifications of MNIST is listed in Table~\ref{tb:software_comparison}.
-Following to the formatted evaluation as in Table~\ref{tb:model_eval}, Table~\ref{tb:software_comparison} lists a few SNN models of MNIST classification, although some detailed description is missing. 
-%Most of these reports did not provide sufficiently detailed descriptions of the networks and the models were not completely evaluated in the way that we propose.
-\begin{table*}[hbt!]
-	\caption{Model-level comparison}
-	\begin{center}
-		\bgroup
-		\def\arraystretch{1.5}
-		\begin{tabular}{ l c c c c }
-			$ $ &
-			\begin{mycell}{1.9cm} Input\end{mycell} & 
-			\begin{mycell}{3.5cm} Network\end{mycell} & 
-			\begin{mycell}{3.5cm} Training \end{mycell} & 
-			\begin{mycell}{3.5cm} Recognition \end{mycell} \\
-			\hline
-			
-			%
-			\begin{mycell}{2.5cm}~\cite{brader2007learning} \end{mycell} & 
-			\begin{mycell}{1.9cm} Normalisation \end{mycell} & % preprocessing
-			\begin{mycell}{3.5cm} Two layer, LIF neurons\end{mycell}&  % network
-			\begin{mycell}{3.5cm} Semi-supervised, STDP, calcium LTP/LTD\end{mycell}&  % training
-			\begin{mycell}{3.5cm} 96.5\% \end{mycell} \\% recognition
-			
-			%
-			\begin{mycell}{2.5cm}~\cite{beyeler2013categorization} \end{mycell} & 
-			\begin{mycell}{1.9cm} Scaling, V1 (edge),\\ Poisson\end{mycell} & % preprocessing
-			\begin{mycell}{3.5cm} V2 (orientation),\\ and competitive decision, Izhikevich neurons\end{mycell}&  % network
-			\begin{mycell}{3.5cm} Semi-supervised, STDP, \\ calcium LTP/LTD \end{mycell} &  % training
-			\begin{mycell}{3.5cm} 91.6\% \\ 300~ms per test \end{mycell} \\% recognition
-			
-			%
-			\begin{mycell}{2.5cm}~\cite{neftci2013event} \end{mycell} & 
-			\begin{mycell}{1.9cm} Thresholding,\\ Synaptic current\end{mycell} & % preprocessing
-			\begin{mycell}{3.5cm} Two layer RBM, \\ LIF neurons \end{mycell}&  % network
-			\begin{mycell}{3.5cm} Event-driven contrastive divergence (eCD), unsupervised \end{mycell}&  % training
-			\begin{mycell}{3.5cm} 91.9\% \\ 1~s per test\end{mycell} \\% recognition
-
-			\begin{mycell}{2.5cm}~\cite{neftci2016stochastic} \end{mycell} & 
-			\begin{mycell}{1.9cm} Thresholding,\\ Synaptic current\end{mycell} & % preprocessing
-			\begin{mycell}{3.5cm} Two layer RBM, \\ LIF neurons \end{mycell}&  % network
-			\begin{mycell}{3.5cm} Synaptic Sampling Machine + eCD, unsupervised \end{mycell}&  % training
-			\begin{mycell}{3.5cm} 95.8\% \\ 250~ms per test\end{mycell} \\% recognition
-			
-			%
-			\begin{mycell}{2.5cm}~\cite{diehl2015unsupervised} \end{mycell} & 
-			\centering Poisson &
-			\begin{mycell}{3.5cm} Two layers, LIF neurons, inhibitory feedback  \end{mycell}& 
-			\begin{mycell}{3.5cm} Unsupervised, STDP,\\ %adaptive membrane potential, 
-%				$3,000,000$~s of training\\ 
-			$200,000$~s per iteration\\ 15 iterations\end{mycell} & 
-			\begin{mycell}{3.5cm} 95\% \end{mycell}\\
-			
-			%
-			\begin{mycell}{2.5cm}~\cite{Diehl2015fast}\end{mycell}  & 
-			\begin{mycell}{1.9cm} Poisson \end{mycell} & % preprocessing
-			\begin{mycell}{3.5cm} ConvNet or \\Fully connected,\\ LIF neurons \end{mycell}& % network
-			\begin{mycell}{3.5cm} Off-line trained with ReLU, weight normalisation \end{mycell}&   % training
-			\begin{mycell}{3.5cm} 99.1\% (ConvNet), \\ 98.6\% (Fully connected);\\0.5~s per test\end{mycell}\\ % recognition    
-			%
-			\begin{mycell}{2.5cm}~\cite{zhao2014feedforward}\end{mycell}  & 
-			\begin{mycell}{1.9cm} Thresholding \\ or DVS \end{mycell}& % preprocessing 
-			\begin{mycell}{3.5cm} Simple (Gabor), \\Complex (MAX) \\and Tempotron  \end{mycell}& % network
-			\begin{mycell}{3.5cm} Tempotron, supervised \end{mycell}& % training
-			\begin{mycell}{3.5cm} 91.3\%(Thresholding)\\ 11~s per test \\ 88.1\%(DVS),\\ 2~s per test\end{mycell}\\ % recognition
-			
-			%
-			\begin{mycell}{2.5cm} % %\cite{Stromatias2015scalable} \\ 
-				This paper \end{mycell} & 
-			\begin{mycell}{1.9cm} Poisson \end{mycell} & % preprocessing
-			\begin{mycell}{3.5cm} Four layer RBM, \\ LIF neurons \end{mycell}&  % network
-			\begin{mycell}{3.5cm} Off-line trained, unsupervised \end{mycell}&  % training
-			\begin{mycell}{3.5cm} 94.94\%\\16 ms latency \\ 1.44M Sopbs\end{mycell} \\% recognition
-			%
-			\begin{mycell}{2.5cm} This paper \end{mycell}  & 
-			\begin{mycell}{1.9cm} Poisson \end{mycell}& % preprocessing 
-			\begin{mycell}{3.5cm} Fully connected decision layer, \\ LIF neurons \end{mycell}& % network
-			\begin{mycell}{3.5cm} K-means clusters,\\Supervised STDP\\$18,000$~s of training \end{mycell}& % training
-			\begin{mycell}{3.5cm} 92.99\%\\1~s per test\\200~ms silence \\13.82~ms latency\\$4.17$M Sopbs\end{mycell}\\ % recognition
-		\end{tabular}
-		\egroup
-	\end{center}
-	\label{tb:software_comparison}
 \end{table*}
 
 \subsubsection{Hardware-Level Evaluation}
@@ -747,7 +730,7 @@ Following to the formatted evaluation as in Table~\ref{tb:model_eval}, Table~\re
   			\begin{mycell}{2.0cm}No plasticity\end{mycell}& 
   			\begin{mycell}{2.2cm}122 bits \\params \& states,
   				%       	 per neuron
-  				\\4-bit/\\4 values\\synapse 
+  				\\ 4-bit synapse 
   				%\\(4 signed int + on/off state)
           \footnote[1]{We consider them 4-bit synapses because it is only possible to choose between 4 different signed integers and whether the synapse is active or not.}
   			\end{mycell}& 
@@ -766,7 +749,7 @@ Following to the formatted evaluation as in Table~\ref{tb:model_eval}, Table~\re
   			\begin{mycell}{1.8cm} HI-CANN \citep{schemmel2010wafer}  \end{mycell} & \begin{mycell}{2.0cm}Mixed-mode,\\Scalable\end{mycell} &
   			\begin{mycell}{2.0cm}Fixed models,\\Config params\end{mycell}& 
   			\begin{mycell}{2.0cm}Fixed rule\end{mycell}& 
-  			\begin{mycell}{2.0cm}4-bit/\\16 values\\synapses\end{mycell}& 
+  			\begin{mycell}{2.0cm}4-bit synapses\end{mycell}& 
   			\begin{mycell}{2.0cm}Faster than\\ real-time
                              \footnote[2]{A maximum speed-up of up to $10^5$ times real time has been reported.}
         \end{mycell}&
@@ -794,8 +777,6 @@ Following to the formatted evaluation as in Table~\ref{tb:model_eval}, Table~\re
 Neuromorphic systems can be categorised as analogue, digital, or mixed-mode analogue/digital, depending on how neurons, synapses and spike transmission are implemented. %VLSI circuits. 
 Some analogue implementations exploit sub-threshold transistor dynamics to emulate neurons and synapses directly in hardware~\citep{indiveri2011neuromorphic} and are more energy-efficient while requiring less area than their digital counterparts~\citep{joubert2012hardware}. However, the behaviour of analogue circuits is hard to control through the fabrication process due to transistor mismatch~\citep{indiveri2011neuromorphic,pedram2006thermal,linares2003compact}, and achievable wiring densities render direct point-to-point connections impractical for large-scale systems. The majority of mixed-mode analogue/digital neuromorphic platforms, such as the High Input Count Analog Neural Network (HI-CANN)~\citep{schemmel2010wafer}, Neurogrid~\citep{benjamin2014neurogrid}, HiAER-IFAT~\citep{yu201265k}, use analogue circuits to emulate neurons and digital packet-based technology to communicate spikes as AER events. This enables reconfigurable connectivity patterns, while spike timing is expressed implicitly since typically a spike reaches its destination in less than a millisecond, thus fulfilling the real-time requirement. Digital neuromorphic platforms such as TrueNorth~\citep{merolla2014million} use digital circuits with finite precision to simulate neurons in an event-driven manner to minimise the active power dissipation. Such systems suffer from limited model flexibility, since neurons and synapses are fabricated directly in hardware with only a small subset of parameters under the control of the researcher. 
 The SpiNNaker many-core neuromorphic architecture~\citep{furber2014spinnaker} uses low-power programmable cores and scalable event-driven communications hardware allowing neural and synaptic models to be implemented in software.
-While software modelling provides great flexibility, digital platforms generally have reduced precision (due to the inherent discretisation) and higher energy consumption when compared to analogue platforms. Furthermore, the processing cores used in SpiNNaker chips perform better when using integer or fixed-point arithmetic~\citep{Hopkins2015Accuracy}.
-And the requirement for the models to run in real time leads to constraints a the complexity of model that can be supported.
 
 A direct comparison between neuromorphic platforms is a non-trivial task due to the different hardware implementation technologies as mentioned above.
 %Qian Liu modified
@@ -807,41 +788,23 @@ The classification accuracy of an SNN running on a hardware system can be differ
 Simulation time is another important measure when running large-scale networks on hardware.
 Real-time implementation is an essential requirement for robotic systems because of the real-time input from the neuromorphic sensors.
 Running faster than real time is attractive for large and long simulations.
-%Finer time resolution plays an important role in precision-sensitive neural models or in sub-millisecond tasks~\citep{lagorce2015breaking}.
+Finer time resolution plays an important role in precision-sensitive neural models or in sub-millisecond tasks~\citep{lagorce2015breaking}.
 %Qian Liu done
-It is interesting to compare the performance of each platform in terms of energy requirements, especially if the platform targets mobile applications and robotics.
+It is interesting to comparing the performance of each platform in terms of energy requirements, especially if the platform targets mobile applications and robotics.
 Some researchers have suggested the use of energy per synaptic event (J/SE)~\citep{sharp2012power,stromatias2013power} as an energy metric because the large fan in and out of a neuron means that synaptic processing tends to dominate the total energy dissipation during a simulation.
-\cite{merolla2014million} proposed the number of synaptic operations per second per Watt (Sops/W).
+Merolla et al. proposed the number of synaptic operations per second per Watt (Sops/W)~\citep{merolla2014million}.
 These two measures are equivalent, since J/SE$\times$Sops/W = 1.
-To investigate the power usage in detail, \cite{Diamond2016comparing} included the power drawn by the attached workstations.
-This work indicated the power variation by each task over time.
 
 %Qian Liu modified
 However, the typical reported simulation time and energy use for the various platforms is under different SNN models, making the comparisons problematic.
 Model-specific hardware metrics would provide robust comparisons between platforms and expose how different networks influence the metrics on particular hardware.
-The proposed evaluation metrics (see Table~\ref{tb:hw_eval}) consist of the feasibility, classification accuracy, simulation time and energy use.
+The proposed evaluation metrics consist of the feasibility, classification accuracy, simulation time and energy use.
 A particular SNN model is feasible to run on a particular hardware platform only when the network size is under the platform's limit, the neural and synaptic models are supported, and the learning rule is implemented.
 CA also plays a role in hardware evaluation because of the precision limits that may be imposed by the platform.
 Due to the limited hardware resources, simulation time may, likewise, accelerate or slow down according to the network topology and spike dynamics.
 Similarly, energy costs vary with different networks and neural and synaptic models.
 %The system performance will be assessed on the accuracy, simulation time and energy use running the network. 
 %Table~\ref{tb:hardware_comparison} aims to summarise the aforementioned hardware comparison metrics.
-\begin{table*}[hbt!]
-	\caption{Hardware level evaluation of model specific SNN simulation}
-	\begin{center}
-		\bgroup
-		\def\arraystretch{1.5}
-		\begin{tabular}{ l l l l }
-			\begin{mycell}{5cm} Hardware Description \end{mycell} & 
-			\begin{mycell}{5cm} Evaluation Metrics \end{mycell} \\
-			\hline
-			\begin{leftcell}{5cm} - Digital/Analogue \\- Scalability\\- Neuron models supported\\- Synapse models supported\\- Synaptic plasticity \\- Precision \end{leftcell}&  % training
-			\begin{leftcell}{5cm} - feasibility\\- classification accuracy \\- simulation time \\- energy use \end{leftcell}% recognition
-		\end{tabular}
-		\egroup
-	\end{center}
-	\label{tb:hw_eval}
-\end{table*}
 
 \section{Results}
 \label{sec:test}
@@ -853,7 +816,7 @@ As tentative benchmarks the models are implemented on SpiNNaker to assess the ha
 Presenting proper benchmarks for vision recognition systems is still under investigation; the case studies only make a first attempt.
 
 \subsection{Case Study I}
-The first case study is a simple two-layer network where the input neurons receive Poisson spike trains from the dataset and form a fully connected network with the decision neurons.
+The first case study is a simple two-layer network where the input neurons receive Poissonian spike trains from the dataset and form a fully connected network with the decision neurons.
 There is at least one decision neuron per digit to classify a test input.
 The neuron with highest output firing rate classifies a test image as the digit it represents.
 The model utilises LIF neurons, and the parameters are all biologically valid, see the listed values in Table~\ref{tbl:pynnSetting}.
@@ -875,7 +838,7 @@ The model is described with PyNN and the code is published in
 the Github repository with the dataset.
 As a potential benchmark, this system is composed of simple neural models, trained with standard learning rules and written in a standard SNN description language. These characteristics allow the same network to be tested on various simulators, both software- and hardware-based.
 
-Both training and testing use the Poissonian subset of the NE15-MNIST dataset.
+Both training and testing exploit the Poissonian subset of the NE15-MNIST dataset.
 This makes performance evaluation on different simulators possible with the unified spike source array provided by the dataset. 
 In terms of this case study, the performance of the model was evaluated with both software simulation [on NEST~\citep{gewaltig2007nest}] and hardware implementation (on SpiNNaker).
 
@@ -940,7 +903,7 @@ The trained weights are plotted in accordance with the positions of the decision
 %		\label{Fig:test}
 %		\includegraphics[width=0.48\textwidth]{testing}
 %	}
-	\includegraphics[width=0.6\textwidth]{fig6}
+	\includegraphics[width=0.48\textwidth]{fig6}
 	\caption{The (a) training and (b) testing model of the two-layered spiking neural network.}
 	\label{fig:model}
 \end{figure} 
@@ -949,27 +912,19 @@ The trained weights are plotted in accordance with the positions of the decision
 
 \subsubsection{Testing}
 After training the weights of the plastic synapses are set to static, keeping the state of the weights at the last moment of training.
-%The weak weights were set to inhibitory connections with identical strengths in testing.
-%The negative connections reduced the output firing rates while keeping a good classification ability.
-However, during training the synaptic plasticity holds a hard limit of 0 on the weight strength, thus excitatory synapses cannot change into inhibitory.
-To investigate how inhibitory connections influence the classification performance, the weak weights were set to negative with identical strengths.
-Results show that inhibitory synapses significantly reduced the output firing rates while keeping a good classification ability.
-Thus the strategy of replacing weak weights to same negative values was used throughout the case study.
+The weak weights were set to inhibitory connections with identical strengths.
 The feed-forward testing network is shown in Figure~\ref{fig:model}(b) where Poisson spike trains are generated the same way as in the training with a total firing rate of $2,000$~Hz per image.
 The input neurons convey the same spike trains to every decision neuron through its responding trained synaptic weights. 
-Every test image ($10,000$ images in total) is presented once and lasts 1~s with a silence of 200~ms between consecutive images.
-The output neuron with the highest firing rate determines which digit was recognised.
+Every testing image ($10,000$ images in total) is presented once and lasts 1~s with a silence of 200~ms between consecutive images.
+The output neuron with the highest firing rate determines which digit was recognized.
 Taking the trained weights from the NEST simulation, the accuracy of the recognition on NEST reaches 90.03\% with the standard configuration, while the result drops slightly to 89.97\% using SpiNNaker.
 When both trained and tested on SpiNNaker the recognition accuracy is 87.41\%, and with these weights used in NEST the result is 87.25\%. 
-The CA drops less than $0.06\%$ on SpiNNaker compared to NEST due to the limited fast memory and the necessity for fixed-point arithmetic on SpiNNaker to ensure real-time operation.
-It is inevitable that numerical precision will be below IEEE double precision at various points in the processing chain from synaptic input to membrane potential.
-The main bottleneck is currently in the ring buffer where the total precision for accumulated spike inputs is 16-bit, meaning that individual spikes are realistically going to be limited to 11- to 14-bit depending upon the probabilistic headroom calculated as necessary from the network configuration and spike throughput~\citep{Hopkins2015Accuracy}.
 
 \subsubsection{Evaluation}
 Evaluation starts from the model-level, focusing on the spike-based recognition analysis.
 As mentioned in Section~\ref{subsec:model}, CA, response time (latency) and the total number of synaptic events are the main concerns when assessing the recognition performance.
 In our experiment, two sets of weights were applied: the original STDP trained weights, and scaled-up weights which are 10 times stronger.
-The spike rates of the test samples were also modified, ranging from 10 to $5,000$~Hz.
+The spike rates of the testing samples were also modified, ranging from 10 to $5,000$~Hz.
 
 We found that accuracy depends largely on the time each sample is exposed to the network and the sample spike rate (Figure~\ref{fig:assess}).
 %Furthermore, the latency of the output of the decision neurons is affected by both the spiking rate and connection weights.
@@ -981,7 +936,7 @@ With stronger weights, the accuracy is much higher when the input firing rate is
 
 
 The latency of an SNN model is the result of the input firing rates and the synaptic weights.
-We measured the latency of each test by getting the time difference of the first spike generated by any decision neuron in the output layer and the first spike of the input layer.
+%We calculate the latency of each test by getting the time difference of the first spike generated by the output layer and the first spike of the input layer.
 As the input firing rates grow, there are more spikes arriving at the decision neurons, triggering them to spike sooner.
 A similar idea applies to the influence of synaptic weights.
 If stronger weights are taken, then the membrane potential of a neuron reaches its threshold earlier.
@@ -993,7 +948,7 @@ As the default configuration of the SNN model, each input neuron connects to all
 Thus the synaptic events happening in the inter-layer connections are 200 times the total input firing rate.
 Figure~\ref{fig:assess}(e) shows the stable Sopbs of the entire network when the input firing rate is held at 2000~Hz and the test time increases.
 The firing rates of the output layer are relatively small, and are 0.1\% and 1.5\% of the total Sopbs using original and scaled-up weights respectively.
-The variations in the total Sopbs lie in the firing rate of the output layers only, and the stronger connections lead to the higher firing rates.
+The variations in the total Sopbs ly in the firing rate of the output layers only, and the stronger connections lead to the higher firing rates.
 Likewise, the output neurons are more active with stronger connection weights, and the gap widens as the input firing rate increases, see Figure~\ref{fig:assess}(f).
 Although the variations in the Sopbs climbs to around 8~kHz, it is not obvious in the figure because the output firing rates are relatively low and therefore so are the differences.
 \begin{figure}[htb!]
@@ -1024,10 +979,10 @@ Although the variations in the Sopbs climbs to around 8~kHz, it is not obvious i
 %		\label{fig:eve_rate}
 %		\includegraphics[width=0.25\textwidth]{images/rate-event}
 %	}
-	\includegraphics[width=0.8\textwidth]{fig7}
+	\includegraphics[width=0.48\textwidth]{fig7}
 	\caption{Accuracy, response time (latency) and synaptic event rate (Sopbs) change over test time and input firing rate per test image.
 	The test time is the duration of the presence of a single test image, and the input firing rate is the summation of all the input neurons.
-	Original trained weights are used (up-pointing triangles with solid line) as well as the scaled up ($\times10$) weights (down-pointing triangles with dashed line). }
+	Original trained weights are used (circles in blue) as well as the scaled up ($\times10$) weights (triangles in black). }
 	\label{fig:assess}
 \end{figure}
 
@@ -1036,33 +991,22 @@ For the purpose of comparing the accuracy, simulation time, number of synaptic e
 The same experiment was run 4~times with different random seeds; the average performance estimation is listed in Table~\ref{tbl:compare}.
 The input rates in all of the tests are $5,000$~Hz, and each image is presented for 1~s with 0.2~s silence in between.
 The configurations only differ in the number of templates (subclasses/clusters) per digit.
-%Thus the network size varies according to the number of neurons in the decision layer where each neuron represents a subclass of a digit and the template is embedded in the synaptic weights connecting from the input layer to the decision neuron.
-
-A complete SNN simulation contains three main stages: pre-processing (such as network building and input data generation), simulation and post-processing (for example, extracting recorded data).
-\citet{Diamond2016comparing} compared the power usage and simulation time on three hardware platforms in detail regarding to all the stages while this paper focuses on the simulation part only.
+Thus the network size varies according to the number of neurons in the decision layer where each neuron represents a subclass of a digit and the template is embedded in the synaptic weights connecting from the input layer to the decision neuron.
+The CA drops less than $0.06\%$ on SpiNNaker compared to NEST due to the limited fast memory and the necessity for fixed-point arithmetic on SpiNNaker to ensure real-time operation.
+It is inevitable that numerical precision will be below IEEE double precision at various points in the processing chain from synaptic input to membrane potential.
+The main bottleneck is currently in the ring buffer where the total precision for accumulated spike inputs is 16-bit, meaning that individual spikes are realistically going to be limited to 11- to 14-bit depending upon the probabilistic headroom calculated as necessary from the network configuration and spike throughput~\citep{Hopkins2015Accuracy}.
 As the network size grows there are more decision neurons and synapses connecting to them, thus the simulation time on NEST increases.
-On the other hand, SpiNNaker works in real (biologically real) time and the simulation time becomes shorter than the NEST simulation when $1,000$ patterns per digit ($1,000$ decision neurons per digit) are used.
-%The Thermal Design Power (TDP) usage of all four processors of i5-4570 actively operating at base frequency is 84~W\footnote{\url{http://ark.intel.com/products/75043/Intel-Core-i5-4570-Processor-6M-Cache-up-to-3_60-GHz}}.
+On the other hand, SpiNNaker works in real (biologically real) time and the simulation time becomes shorter than the NEST simulation when $1,000$ patterns per digit are used.
+The Thermal Design Power (TDP) usage of all four processors of i5-4570 actively operating at base frequency is 84~W\footnote{\url{http://ark.intel.com/products/75043/Intel-Core-i5-4570-Processor-6M-Cache-up-to-3_60-GHz}}.
 %NEST was run fully active on a single core, and only OS related operations were on the other cores.
-%The power usage is estimated by subtracting the power usage of idle OS operation from the usage running the simulation.
-%A complete SNN simulation contains three main stages: pre-processing (such as network building and input data generation), simulation and post-processing (for example, extracting recorded data).
-%\citet{Diamond2016comparing} compared the power usage on three hardware platform in detail of all the stages while this paper focuses on the simulation part.
-%Thanks to PyNN we can accurately get the start and the end of the simulation slot thus to measure the simulation time and its energy use.
-The NEST simulation was run on a desktop PC, and the power use was measured by a meter socket and estimated by subtracting the usage of idle OS operation from the usage running the simulation.
-In doing so, the power consumption of the resources needed to run the simulation is better approximated.
-The SpiNNaker test was run on a Spin4 board which has 48 chips and exposed pins to measure electrical quantities.
-A built-in Anduino board read out the power usage of the chips.
-For the same goal of estimating just the required resources, only the active chips were measured.
-%The energy use is calculated as the product of the simulation time and the power use.
+The power usage is estimated by subtracting the power usage of idle OS operation from the usage running the simulation.
+The energy use is calculated as the product of the simulation time and the power use.
 Even with the smallest network, SpiNNaker wins in the energy cost comparison, see Figure~\ref{fig:energy}.
-Among different network configurations, the model with 500 decision neurons (50 clusters per digit) reaches the highest recognition rate of 92.99\% on average having a latency of 13.82~ms mean and 2.96~ms standard deviation.
-And there are standard deviations of 2.57\% on CA and of 1.17~ms on the latency over 10 testing digits.
-%Except for the model latency which measures the time difference between the first input spike and the first spike of any decision neuron, we also estimated the time difference for every digit.
-%The average of each digit's mean latency is 15.55~ms with a 0.39~ms standard deviation over digits.
+Among different network configurations, the model with 500 decision neurons (50 clusters per digit) reaches the highest recognition rate of 92.99\% on average having a latency of about 13.82~ms.
 The total number of synaptic events is around $4.17$M Sopbs, where only 7K spikes are generated in the output layer. 
-The NEST simulation costs 767.67~s on average for the entire $12,000$~s biological-time test, 20~W in power use on the PC and $15.35$~KJ of energy, while SpiNNaker works in real time using $4.92$~KJ of energy at a power of 0.41~W (see Table~\ref{tbl:compare}).
-%Providing the number of synaptic events (Sopbs) respectively for all the configurations and the simulation time, the energy per synaptic event on a hardware platform can be calculated (see Table~\ref{tbl:compare}): 
-%306~nJ/SE running NEST on a PC, and 98~nJ/SE on SpiNNaker.
+The NEST simulation costs 767.67~s on average for the entire $12,000$~s biological-time test, 20~W in power use on the PC and $15.35$~KJ of energy, while SpiNNaker works in real time using $4.92$~KJ of energy at a power of 0.41~W.
+Providing the number of synaptic events (Sopbs) respectively for all the configurations and the simulation time, the energy per synaptic event on a hardware platform can be calculated (see Table~\ref{tbl:compare}): 
+306~nJ/SE running NEST on a PC, and 98~nJ/SE on SpiNNaker.
 The result provides a baseline for comparison with other SNN models and neuromorphic hardwares, and no optimisation is applied.
 \begin{table}[h]
 	\caption{Comparisons of NEST (N) on a PC and SpiNNaker (S) performance averaged over 10 trials.}
@@ -1123,7 +1067,7 @@ The result provides a baseline for comparison with other SNN models and neuromor
 		& 503.21
 		& 767.67
 		& $1,131.09$
-		& $12,027.75$
+		& $120,27.75$
 		\\
 		time (s)
 		& S
@@ -1151,36 +1095,20 @@ The result provides a baseline for comparison with other SNN models and neuromor
     & &\multicolumn{5}{c}{\vspace*{-4mm}}\\
 		Energy
 		& N 
-		& 8.90
-		& 10.06
-		& 15.34
-		& 21.50
-		& 208.25
+		& $8,864$
+		& $1,004$
+		& 306
+		& 215
+		& 204
 		\\
-		(KJ) %cost 
+		(nJ/SE) %cost 
 		& S
-		& 4.56
-		& 4.56
-		& 4.92
-		& 5.28
-		& 18.00
+		& $4540$
+		& $ 455 $
+		& $ 98 $
+		& $ 53 $
+		& $ 18 $
 		\\
-%		Energy
-%		& N 
-%		& $8,864$
-%		& $1,004$
-%		& 306
-%		& 215
-%		& 204
-%		\\
-%		(nJ/SE) %cost 
-%		& S
-%		& $4540$
-%		& $ 455 $
-%		& $ 98 $
-%		& $ 53 $
-%		& $ 18 $
-%		\\
 			
 %		\begin{tabular} {r|c|c|c|c|c|c|c|c|c|c}
 %			Subclasses
@@ -1215,18 +1143,13 @@ The result provides a baseline for comparison with other SNN models and neuromor
 \end{figure}
 \subsection{Case Study II}
 % brief intro about dbn
-This section aims to review and reinterpret results from previously published studies  \citep{Stromatias2015LiveDemo,Stromatias2015scalable,stromatias2015robustness}, which utilised the identical off-line trained\footnote{\url{https://github.com/dannyneil/edbn/}} spiking DBN as presented by \citet{o2013real}.
-
 Deep learning architectures and, in particular, Convolutional Networks~\citep{lecun1998gradient} and Deep Belief Networks (DBNs)~\citep{hinton2006fast} have been characterised as one of the breakthrough technologies of the decade~\citep{MIT_TechReview}. One of the advantages of these type of network is that their performance can be increased by adding more layers~\citep{hinton2006fast}.
 
 However, state-of-the-art deep networks comprise a large number of layers, neurons and connections resulting in high energy demands, communication overheads, and high response latencies. This is a problem for mobile and robotic platforms which may have limited computational and power resources but require fast system responses. 
 
 
 % about oneils model 
-\citet{o2013real} proposed a method to map off-line trained DBNs into a spiking neural network and take advantage of the real-time performance and energy efficiency of neuromorphic platforms. This led initially to an implementation on an event-driven Field-Programmable Gate Array (FPGA) called Minitaur~\citep{neil2014minitaur} and then on the SpiNNaker platform~\citep{Stromatias2015scalable}.
-%This section aims to review and reinterpret results from previously published studies  \citep{Stromatias2015LiveDemo,Stromatias2015scalable,stromatias2015robustness}, which utilised the identical off-line trained\footnote{\url{https://github.com/dannyneil/edbn/}} spiking DBN as presented by \citet{o2013real}.
-This particular DBN comprises 784 neurons for the input layer, two hidden layers with 500 neurons each, and an output layer with 10 neurons. This is abbreviated as a 784-500-500-10 architecture.
-Simulations take place on a software spiking neural network simulator [Brian~\citep{goodman2008brian}] and results are verified on the SpiNNaker platform.
+\citet{o2013real} proposed a method to map off-line trained DBNs into a spiking neural network and take advantage of the real-time performance and energy efficiency of neuromorphic platforms. This led initially to an implementation on an event-driven Field-Programmable Gate Array (FPGA) called Minitaur~\citep{neil2014minitaur} and then on the SpiNNaker platform~\citep{Stromatias2015scalable}. For this work we used the identical off-line trained\footnote{\url{https://github.com/dannyneil/edbn/}} spiking DBN as presented by \citet{o2013real}, which comprises 784 neurons for the input layer, two hidden layers with 500 neurons each, and an output layer with 10 neurons. This is abbreviated as a 784-500-500-10 architecture. Simulations take place on a software spiking neural network simulator [Brian~\citep{goodman2008brian}] and results are verified on the SpiNNaker platform.
 
 \subsubsection{Training}
 
@@ -1234,9 +1157,6 @@ DBNs consist of stacked Restricted Boltzmann Machines (RBMs), which are fully co
 
 \subsubsection{Testing}
 After the training process the learnt synaptic weights can be used in a spiking neural network which consists of LIF neurons with delta-current synapses. Table~\ref{Tab:NeuralParams} shows the LIF parameters used in the simulations.
-These parameters were chosen by~\cite{o2013real} to train this spiking DBN network. 
-%Later,~\cite{neil2014minitaur} used the identical offline trained network to map it on an event-driven FPGA implementation called Minitaur.
-Using the same network and parameters allowed us to have a direct comparison between the power requirements and numerical precision, for different software and hardware platforms (Matlab, Brian, Minitaur, SpiNNaker).
 
 \begin{table}[hbbp]
 	\centering
@@ -1271,11 +1191,11 @@ Figure~\ref{Fig:brianCAfiringrate} shows the effect of reduced weight bit precis
 %To validate the results of the software simulator simulations ran on SpiNNaker for a weight resolution of Q3.8.
 Using the same weight precision of Q3.8, SpiNNaker achieved a CA of 94.94\% when $1,500$~Hz was used for the input population~\citep{Stromatias2015scalable}. With the same firing rates and weight precision, Brian achieved a CA of 94.955\%. Results are summarised in Table~\ref{tab:casimulators}.
 The slightly lower CA of the SpiNNaker simulation indicates that not only the weight precision but also the precision of the membrane potential affects the overall classification performance.    
-\citet{stromatias2015robustness} showed that spiking DBNs are capable of maintaining a high CA even for weight precisions down to Q3.3, while they are also remarkably robust to high levels of input noise regardless of the weight precision. 
+
 \begin{figure}[hbt!]
 	\centering
 	\includegraphics[width=0.48\textwidth]{fig9}
-	\caption{DBN classification accuracy (CA) as a function of the weight bit precision for different input firing rates \citep{stromatias2015robustness}.}
+	\caption{DBN classification accuracy (CA) as a function of the weight bit precision for different input firing rates.}
 	\label{Fig:brianCAfiringrate}
 \end{figure} 
 
@@ -1299,6 +1219,8 @@ The slightly lower CA of the SpiNNaker simulation indicates that not only the we
 	\end{center}
 \end{table}
 
+\citet{stromatias2015robustness} showed that spiking DBNs are capable of maintaining a high CA even for weight precisions down to Q3.3, while they are also remarkably robust to high levels of input noise regardless of the weight precision. 
+
 A similar experiment to the one presented for Case Study I was performed; its purpose was to establish the relation that input spike rates hold with latency and classification accuracy.
 The input rates were varied from 500~Hz to $2,000$~Hz and the results are summarised in Figure~\ref{Fig:brianLatency}. Simulations ran in Brian for all $10,000$ MNIST digits of the testing set and for 4 trials. Figure~\ref{Fig:spinnLatency1500hz} shows a histogram of the classification latencies on SpiNNaker when the input rates are $1,500$~Hz. The mean classification latency for the particular spiking DBN on SpiNNaker is 16~ms which is identical to the Brian simulation seen in Figure~\ref{Fig:brianLatency}.
 
@@ -1306,7 +1228,7 @@ The input rates were varied from 500~Hz to $2,000$~Hz and the results are summar
 \begin{figure}[hbt!]
 	\centering
 	\includegraphics[width=0.48\textwidth]{fig10}
-	\caption{Mean classification latency (black) and classification accuracy (blue) as a function of the input firing rate for the spiking DBN. Results are averaged over 4 trials, error bars show standard deviations \citep{Stromatias2015scalable}.}
+	\caption{Mean classification latency (black) and classification accuracy (blue) as a function of the input firing rate for the spiking DBN. Results are averaged over 4 trials, error bars show standard deviations.}
 	\label{Fig:brianLatency}
 \end{figure} 
 
@@ -1315,18 +1237,17 @@ The input rates were varied from 500~Hz to $2,000$~Hz and the results are summar
 \begin{figure}[hbt!]
 	\centering
 	\includegraphics[width=0.48\textwidth]{fig11}
-	\caption{Histogram of the classification latencies for the MNIST digits of the testing set when the input rates are set to $1,500$~Hz. The mean classification latency of the spiking DBN on SpiNNaker is 16 ms \citep{Stromatias2015scalable}.}
+	\caption{Histogram of the classification latencies for the MNIST digits of the testing set when the input rates are set to $1,500$~Hz. The mean classification latency of the spiking DBN on SpiNNaker is 16 ms.}
 	\label{Fig:spinnLatency1500hz}
 \end{figure} 
 
-Finally, this particular spiking DBN ran on a single SpiNNaker chip (16 ARM9 cores) and dissipated about 0.3~W when $1,500$ spikes per second per digit were used.
-The number of generated synaptic events was $1.88$M~Sopbs and less than 2.97~KJ of energy was consumed running the whole testing set over $10,000$~s, as seen in Figure~\ref{Fig:spinnchipPower}. The identical network executed on Minitaur~\citep{neil2014minitaur}, an event-driven FPGA implementation, dissipated 1.5~W when $1,000$ spikes per image were used, and achieved a CA of 92.0\%.
+Finally, this particular spiking DBN ran on a single SpiNNaker chip (16 ARM9 cores) and dissipated less than 0.3~W when $2,000$ spikes per second per digit were used, $1,441,723$~Sopbs were generated and 214~nJ/SE of energy was dissipated, as seen in Figure~\ref{Fig:spinnchipPower}. The identical network ran on Minitaur~\citep{neil2014minitaur}, an event-driven FPGA implementation, and consumed 1.5~W when $1,000$ spikes per image were used.  
+
 
 \begin{figure}[hbt!]
 	\centering
-	\includegraphics[width=0.48\textwidth]{fig12_m}
-	\caption{
-	Total energy consumption and number of SE per second of a spiking DBN running on a single SpiNNaker chip as a function of the total input firing rate.}
+	\includegraphics[width=0.48\textwidth]{fig12new}
+	\caption{Power dissipation and energy per synaptic event of a spiking DBN running on a single SpiNNaker chip as a function of the total input firing rate.}
 	\label{Fig:spinnchipPower}
 \end{figure} 
 
@@ -1344,9 +1265,6 @@ The Poissonian subset is intended for benchmarking existing rate-based recogniti
 The rank-order-encoded subset, FoCal, encourages research into spatio-temporal algorithms on recognition applications using only small numbers of input spikes.
 Fast recognition can be verified on the DVS recorded flashing input subset, since just 30~ms of useful spike trains are recorded for each image.
 Looking forward, the continuous spike trains captured from the DVS recorded moving input can be used to test mobile neuromorphic robots.
-\cite{orchard2015convert} have presented a neuromorphic dataset using a similar approach, but the spike trains were obtained with micro-saccades.
-This dataset aims to convert static images to neuromorphic vision input, while the recordings of moving input in this paper are intended to promote position-invariant recognition.
-Therefore, the datasets complement each other..
 
 The complementary evaluation methodology is essential to assess both the model-level and hardware-level performance of SNNs.
 In addition to classification accuracy, response latency and the number of synaptic events are specific evaluation metrics for spike-based processing.
@@ -1363,13 +1281,12 @@ Classification accuracy (CA) is also a useful metric for hardware evaluation bec
 Although spike-based algorithms have not surpassed their non-spiking counterparts in terms of recognition accuracy, they have shown great performance in response time and energy efficiency.
 This dataset makes the comparison of SNNs with conventional recognition methods possible by using converted spike representations of the same vision databases.
 As far as we know, this is the first attempt at benchmarking neuromorphic vision recognition by providing public a spike-based dataset and evaluation metrics.
-In accordance with the suggestions from~\cite{tan2015bench}, the evaluation metrics highlight the strengths of spike-based vision tasks and the dataset design also promotes the research into rapid and low energy recognition (e.g. flashing digits).
 Two benchmark systems were evaluated using the Poissonian subset of the NE15-MNIST dataset.
 %The models were described and their performance on accuracy, network latency, simulation time and energy usage were presented.
 These example benchmarking systems demonstrated a recommended way of using the dataset, describing the SNN models and evaluating the system performance.
 %They provide a baseline for comparisons and encourage improved algorithms and models to make use of the dataset.
 The case studies provide baselines for robust comparisons between SNN models and their hardware implementations.
-%As the dataset grows, it will allow new problems to be investigated by researchers, which should allow the identification of future directions and, in consequence, advance the field.
+As the dataset grows, it will allow new problems to be investigated by researchers, which should allow the identification of future directions and, in consequence, advance the field.
 
 %\subsection{The future direction of a developing database}
 \subsection{The future direction of an evolving database}

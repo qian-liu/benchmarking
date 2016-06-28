@@ -99,7 +99,28 @@
 \def\corrEmail{qianl.liu-3@manchester.ac.uk}
 
 % \color{FrontiersColor} Is the color used in the Journal name, in the title, and the names of the sections
-
+\RequirePackage[normalem]{ulem} %DIF PREAMBLE
+\RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1} %DIF PREAMBLE
+\providecommand{\DIFaddtex}[1]{{\protect\color{blue}\uwave{#1}}} %DIF PREAMBLE
+\providecommand{\DIFdeltex}[1]{{\protect\color{red}\sout{#1}}}                      %DIF PREAMBLE
+%DIF SAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddbegin}{} %DIF PREAMBLE
+\providecommand{\DIFaddend}{} %DIF PREAMBLE
+\providecommand{\DIFdelbegin}{} %DIF PREAMBLE
+\providecommand{\DIFdelend}{} %DIF PREAMBLE
+%DIF FLOATSAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddFL}[1]{\DIFadd{#1}} %DIF PREAMBLE
+\providecommand{\DIFdelFL}[1]{\DIFdel{#1}} %DIF PREAMBLE
+\providecommand{\DIFaddbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFaddendFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelendFL}{} %DIF PREAMBLE
+%DIF END PREAMBLE EXTENSION ADDED BY LATEXDIFF
+%DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
+%DIF HYPERREF PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFadd}[1]{\texorpdfstring{\DIFaddtex{#1}}{#1}} %DIF PREAMBLE
+\providecommand{\DIFdel}[1]{\texorpdfstring{\DIFdeltex{#1}}{}} %DIF PREAMBLE
+%DIF END PREAMBLE EXTENSION ADDED BY LATEXDIFF
 
 \begin{document}
 \onecolumn
@@ -362,7 +383,7 @@ A raster plot of the Poisson spike trains is shown in Figure~\ref{fig:zero}(c).
 A different way of encoding spikes is to use a rank-order code; this means
 keeping just the order in which the spikes fired and disregarding their exact timing. Rank-ordered spike trains have been used in vision tasks under a biological plausibility constraint, making them a viable way of encoding images for neural applications~\citep{van2001rate,sen2009evaluating,masmoudi2010novel}.
 
-Rank-ordered coding can be performed using an algorithm known as the
+Rank-ordered encoding can be performed using an algorithm known as the
 {FoCal algorithm~\citep{sen2009evaluating}}.
 This algorithm models the foveal pit region, the highest resolution area of the retina, with four ganglion cell layers each with a different scale of centre-surround receptive field~\citep{kolb2003retina}. In order to simulate these layers two steps are required: the first consists of four discrete 2D convolutions; the second removes redundant information produced in the first step. During the first step, the centre-surround behaviour of the ganglion cells is modelled using Difference of Gaussians~(DoG) kernel for convolution. 
 \begin{equation}
@@ -374,9 +395,8 @@ where $\sigma_{w,c}$ and $\sigma_{w,s}$ are the standard deviation of the
 centre and surround components of the DoG at layer $w$. The signs 
 will be ($-$,$+$) if the ganglion cell has an OFF-centre behaviour and 
 ($+$,$-$) if it has an ON-centre one. Table~\ref{tab-kernel-specs} 
-shows the parameters (described in~\citealp{sen2009evaluating}) used to compute the convolution kernels at each 
+describes the parameters used to compute the convolution kernels at each 
 scale $w$.
-
 
 \begin{table}[htb]
 	\caption{Simulation parameters for FoCal ganglion cells}
@@ -653,22 +673,15 @@ Following to the formatted evaluation as in Table~\ref{tb:model_eval}, Table~\re
 			\begin{mycell}{2.5cm}~\cite{neftci2013event} \end{mycell} & 
 			\begin{mycell}{1.9cm} Thresholding,\\ Synaptic current\end{mycell} & % preprocessing
 			\begin{mycell}{3.5cm} Two layer RBM, \\ LIF neurons \end{mycell}&  % network
-			\begin{mycell}{3.5cm} Event-driven contrastive divergence (eCD), unsupervised \end{mycell}&  % training
+			\begin{mycell}{3.5cm} Event-driven contrastive divergence, supervised \end{mycell}&  % training
 			\begin{mycell}{3.5cm} 91.9\% \\ 1~s per test\end{mycell} \\% recognition
-
-			\begin{mycell}{2.5cm}~\cite{neftci2016stochastic} \end{mycell} & 
-			\begin{mycell}{1.9cm} Thresholding,\\ Synaptic current\end{mycell} & % preprocessing
-			\begin{mycell}{3.5cm} Two layer RBM, \\ LIF neurons \end{mycell}&  % network
-			\begin{mycell}{3.5cm} Synaptic Sampling Machine + eCD, unsupervised \end{mycell}&  % training
-			\begin{mycell}{3.5cm} 95.8\% \\ 250~ms per test\end{mycell} \\% recognition
 			
 			%
 			\begin{mycell}{2.5cm}~\cite{diehl2015unsupervised} \end{mycell} & 
 			\centering Poisson &
 			\begin{mycell}{3.5cm} Two layers, LIF neurons, inhibitory feedback  \end{mycell}& 
-			\begin{mycell}{3.5cm} Unsupervised, STDP,\\ %adaptive membrane potential, 
-%				$3,000,000$~s of training\\ 
-			$200,000$~s per iteration\\ 15 iterations\end{mycell} & 
+			\begin{mycell}{3.5cm} Unsupervised, exp. STDP, %adaptive membrane potential, 
+				$3,000,000$~s of training\\ $200,000$~s per iteration\end{mycell} & 
 			\begin{mycell}{3.5cm} 95\% \end{mycell}\\
 			
 			%
@@ -682,7 +695,7 @@ Following to the formatted evaluation as in Table~\ref{tb:model_eval}, Table~\re
 			\begin{mycell}{1.9cm} Thresholding \\ or DVS \end{mycell}& % preprocessing 
 			\begin{mycell}{3.5cm} Simple (Gabor), \\Complex (MAX) \\and Tempotron  \end{mycell}& % network
 			\begin{mycell}{3.5cm} Tempotron, supervised \end{mycell}& % training
-			\begin{mycell}{3.5cm} 91.3\%(Thresholding)\\ 11~s per test \\ 88.1\%(DVS),\\ 2~s per test\end{mycell}\\ % recognition
+			\begin{mycell}{3.5cm} Thresholding \\ 91.3\%, 11~s per test \\ DVS \\ 88.1\%, 2~s per test\end{mycell}\\ % recognition
 			
 			%
 			\begin{mycell}{2.5cm} % %\cite{Stromatias2015scalable} \\ 
@@ -809,7 +822,7 @@ Real-time implementation is an essential requirement for robotic systems because
 Running faster than real time is attractive for large and long simulations.
 %Finer time resolution plays an important role in precision-sensitive neural models or in sub-millisecond tasks~\citep{lagorce2015breaking}.
 %Qian Liu done
-It is interesting to compare the performance of each platform in terms of energy requirements, especially if the platform targets mobile applications and robotics.
+It is interesting to comparing the performance of each platform in terms of energy requirements, especially if the platform targets mobile applications and robotics.
 Some researchers have suggested the use of energy per synaptic event (J/SE)~\citep{sharp2012power,stromatias2013power} as an energy metric because the large fan in and out of a neuron means that synaptic processing tends to dominate the total energy dissipation during a simulation.
 \cite{merolla2014million} proposed the number of synaptic operations per second per Watt (Sops/W).
 These two measures are equivalent, since J/SE$\times$Sops/W = 1.
@@ -875,7 +888,7 @@ The model is described with PyNN and the code is published in
 the Github repository with the dataset.
 As a potential benchmark, this system is composed of simple neural models, trained with standard learning rules and written in a standard SNN description language. These characteristics allow the same network to be tested on various simulators, both software- and hardware-based.
 
-Both training and testing use the Poissonian subset of the NE15-MNIST dataset.
+Both training and testing exploit the Poissonian subset of the NE15-MNIST dataset.
 This makes performance evaluation on different simulators possible with the unified spike source array provided by the dataset. 
 In terms of this case study, the performance of the model was evaluated with both software simulation [on NEST~\citep{gewaltig2007nest}] and hardware implementation (on SpiNNaker).
 
@@ -949,12 +962,12 @@ The trained weights are plotted in accordance with the positions of the decision
 
 \subsubsection{Testing}
 After training the weights of the plastic synapses are set to static, keeping the state of the weights at the last moment of training.
-%The weak weights were set to inhibitory connections with identical strengths in testing.
-%The negative connections reduced the output firing rates while keeping a good classification ability.
-However, during training the synaptic plasticity holds a hard limit of 0 on the weight strength, thus excitatory synapses cannot change into inhibitory.
+\DIFdelbegin \DIFdel{The weak weights were set to inhibitory connections with identical strengths in testing.
+The negative connections reduced the output firing rates while keeping a good classification ability.}\DIFdelend
+\DIFaddbegin \DIFadd{However, during training the synaptic plasticity holds a hard limit of 0 on the weight strength, thus excitatory synapses cannot change into inhibitory.
 To investigate how inhibitory connections influence the classification performance, the weak weights were set to negative with identical strengths.
-Results show that inhibitory synapses significantly reduced the output firing rates while keeping a good classification ability.
-Thus the strategy of replacing weak weights to same negative values was used throughout the case study.
+Results has that inhibitory synapses significantly reduced the output firing rates while keeping a good classification ability.
+Thus the strategy of replacing weak weights to same negative values was used throughout the case study. }\DIFaddend
 The feed-forward testing network is shown in Figure~\ref{fig:model}(b) where Poisson spike trains are generated the same way as in the training with a total firing rate of $2,000$~Hz per image.
 The input neurons convey the same spike trains to every decision neuron through its responding trained synaptic weights. 
 Every test image ($10,000$ images in total) is presented once and lasts 1~s with a silence of 200~ms between consecutive images.
@@ -1024,10 +1037,10 @@ Although the variations in the Sopbs climbs to around 8~kHz, it is not obvious i
 %		\label{fig:eve_rate}
 %		\includegraphics[width=0.25\textwidth]{images/rate-event}
 %	}
-	\includegraphics[width=0.8\textwidth]{fig7}
+	\includegraphics[width=0.8\textwidth]{fig7_m}
 	\caption{Accuracy, response time (latency) and synaptic event rate (Sopbs) change over test time and input firing rate per test image.
 	The test time is the duration of the presence of a single test image, and the input firing rate is the summation of all the input neurons.
-	Original trained weights are used (up-pointing triangles with solid line) as well as the scaled up ($\times10$) weights (down-pointing triangles with dashed line). }
+	Original trained weights are used (circles in blue) as well as the scaled up ($\times10$) weights (triangles in black). }
 	\label{fig:assess}
 \end{figure}
 
@@ -1038,22 +1051,21 @@ The input rates in all of the tests are $5,000$~Hz, and each image is presented 
 The configurations only differ in the number of templates (subclasses/clusters) per digit.
 %Thus the network size varies according to the number of neurons in the decision layer where each neuron represents a subclass of a digit and the template is embedded in the synaptic weights connecting from the input layer to the decision neuron.
 
-A complete SNN simulation contains three main stages: pre-processing (such as network building and input data generation), simulation and post-processing (for example, extracting recorded data).
-\citet{Diamond2016comparing} compared the power usage and simulation time on three hardware platforms in detail regarding to all the stages while this paper focuses on the simulation part only.
+\DIFaddbegin \DIFadd{A complete SNN simulation contains three main stages: pre-processing (such as network building and input data generation), simulation and post-processing (for example, extracting recorded data).
+\mbox{\citet{Diamond2016comparing}} compared the power usage and simulation time on three hardware platforms in detail regarding to all the stages while this paper focuses on the simulation part only. }\DIFaddend 
 As the network size grows there are more decision neurons and synapses connecting to them, thus the simulation time on NEST increases.
 On the other hand, SpiNNaker works in real (biologically real) time and the simulation time becomes shorter than the NEST simulation when $1,000$ patterns per digit ($1,000$ decision neurons per digit) are used.
 %The Thermal Design Power (TDP) usage of all four processors of i5-4570 actively operating at base frequency is 84~W\footnote{\url{http://ark.intel.com/products/75043/Intel-Core-i5-4570-Processor-6M-Cache-up-to-3_60-GHz}}.
 %NEST was run fully active on a single core, and only OS related operations were on the other cores.
-%The power usage is estimated by subtracting the power usage of idle OS operation from the usage running the simulation.
-%A complete SNN simulation contains three main stages: pre-processing (such as network building and input data generation), simulation and post-processing (for example, extracting recorded data).
-%\citet{Diamond2016comparing} compared the power usage on three hardware platform in detail of all the stages while this paper focuses on the simulation part.
+\DIFdelbegin \DIFdel{The power usage is estimated by subtracting the power usage of idle OS operation from the usage running the simulation.
+A complete SNN simulation contains three main stages: pre-processing (such as network building and input data generation), simulation and post-processing (for example, extracting recorded data).
+\mbox{\citet{Diamond2016comparing}} compared the power usage on three hardware platform in detail of all the stages while this paper focuses on the simulation part. }\DIFdelend
 %Thanks to PyNN we can accurately get the start and the end of the simulation slot thus to measure the simulation time and its energy use.
-The NEST simulation was run on a desktop PC, and the power use was measured by a meter socket and estimated by subtracting the usage of idle OS operation from the usage running the simulation.
-In doing so, the power consumption of the resources needed to run the simulation is better approximated.
+\DIFaddbegin \DIFadd{The NEST simulation was run on a desktop PC, and the power use was measured by a meter socket and estimated by subtracting the usage of idle OS operation from the usage running the simulation.
+In doing so, the power consumption of the resources needed to run the simulation was better approximated.
 The SpiNNaker test was run on a Spin4 board which has 48 chips and exposed pins to measure electrical quantities.
 A built-in Anduino board read out the power usage of the chips.
-For the same goal of estimating just the required resources, only the active chips were measured.
-%The energy use is calculated as the product of the simulation time and the power use.
+For the same goal of estimating just the required resources, only the active chips were measured. }\DIFaddend
 Even with the smallest network, SpiNNaker wins in the energy cost comparison, see Figure~\ref{fig:energy}.
 Among different network configurations, the model with 500 decision neurons (50 clusters per digit) reaches the highest recognition rate of 92.99\% on average having a latency of 13.82~ms mean and 2.96~ms standard deviation.
 And there are standard deviations of 2.57\% on CA and of 1.17~ms on the latency over 10 testing digits.
@@ -1215,7 +1227,7 @@ The result provides a baseline for comparison with other SNN models and neuromor
 \end{figure}
 \subsection{Case Study II}
 % brief intro about dbn
-This section aims to review and reinterpret results from previously published studies  \citep{Stromatias2015LiveDemo,Stromatias2015scalable,stromatias2015robustness}, which utilised the identical off-line trained\footnote{\url{https://github.com/dannyneil/edbn/}} spiking DBN as presented by \citet{o2013real}.
+\DIFaddbegin \DIFadd{This section aims to review and reinterpret results from previously published studies  \mbox{\citep{Stromatias2015LiveDemo,Stromatias2015scalable,stromatias2015robustness}}, which utilised the identical off-line trained\mbox{\footnote{\url{https://github.com/dannyneil/edbn/}}} spiking DBN as presented by \mbox{\citet{o2013real}}. }\DIFaddend 
 
 Deep learning architectures and, in particular, Convolutional Networks~\citep{lecun1998gradient} and Deep Belief Networks (DBNs)~\citep{hinton2006fast} have been characterised as one of the breakthrough technologies of the decade~\citep{MIT_TechReview}. One of the advantages of these type of network is that their performance can be increased by adding more layers~\citep{hinton2006fast}.
 
@@ -1224,7 +1236,7 @@ However, state-of-the-art deep networks comprise a large number of layers, neuro
 
 % about oneils model 
 \citet{o2013real} proposed a method to map off-line trained DBNs into a spiking neural network and take advantage of the real-time performance and energy efficiency of neuromorphic platforms. This led initially to an implementation on an event-driven Field-Programmable Gate Array (FPGA) called Minitaur~\citep{neil2014minitaur} and then on the SpiNNaker platform~\citep{Stromatias2015scalable}.
-%This section aims to review and reinterpret results from previously published studies  \citep{Stromatias2015LiveDemo,Stromatias2015scalable,stromatias2015robustness}, which utilised the identical off-line trained\footnote{\url{https://github.com/dannyneil/edbn/}} spiking DBN as presented by \citet{o2013real}.
+\DIFdelbegin \DIFdel{This section aims to review and reinterpret results from previously published studies  \mbox{\citep{Stromatias2015LiveDemo,Stromatias2015scalable,stromatias2015robustness}}, which utilised the identical off-line trained\mbox{\footnote{\url{https://github.com/dannyneil/edbn/}}} spiking DBN as presented by \mbox{\citet{o2013real}}. }\DIFdelend 
 This particular DBN comprises 784 neurons for the input layer, two hidden layers with 500 neurons each, and an output layer with 10 neurons. This is abbreviated as a 784-500-500-10 architecture.
 Simulations take place on a software spiking neural network simulator [Brian~\citep{goodman2008brian}] and results are verified on the SpiNNaker platform.
 
@@ -1234,9 +1246,9 @@ DBNs consist of stacked Restricted Boltzmann Machines (RBMs), which are fully co
 
 \subsubsection{Testing}
 After the training process the learnt synaptic weights can be used in a spiking neural network which consists of LIF neurons with delta-current synapses. Table~\ref{Tab:NeuralParams} shows the LIF parameters used in the simulations.
-These parameters were chosen by~\cite{o2013real} to train this spiking DBN network. 
+\DIFaddbegin \DIFadd{These parameters were chosen by~\mbox{\cite{o2013real}} to train this spiking DBN network. 
 %Later,~\cite{neil2014minitaur} used the identical offline trained network to map it on an event-driven FPGA implementation called Minitaur.
-Using the same network and parameters allowed us to have a direct comparison between the power requirements and numerical precision, for different software and hardware platforms (Matlab, Brian, Minitaur, SpiNNaker).
+Using the same network and parameters allowed us to have a direct comparison between the power requirements and numerical precision, for different software and hardware platforms (Matlab, Brian, Minitaur, SpiNNaker). }\DIFaddend 
 
 \begin{table}[hbbp]
 	\centering

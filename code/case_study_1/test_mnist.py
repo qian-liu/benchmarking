@@ -171,25 +171,13 @@ pop_output.record()
 p.run(num_test*(dur_test+silence))
 spikes = pop_output.getSpikes(compatible_output=True)
 
-
-
 spike_count = list()
 for i in range(num_output):
     index_i = np.where(spikes[:,0] == i)
     spike_train = spikes[index_i, 1]
     temp = np.histogram(spike_train, bins=range(0, (dur_test+silence)*num_test+1,dur_test+silence))[0]
     spike_count.append(temp)
-'''
-# sum instead of max
-spike_group = list()
-for i in range(num_digit):
-    for j in range(num_cluster):
-        if j == 0:
-            temp = spike_count[i*num_cluster]
-        else:
-            temp = temp + spike_count[i*num_cluster+j]
-    spike_group.append(temp)
-'''
+
 result_file_max = 'predict_%d_%s_%s_max.npy'%(num_cluster, sim_train, sim_test)
 #result_file_sum = 'predict_%d_%s_%s_sum.npy'%(num_cluster, sim_train, sim_test)
 respond_file = 'respond_%d_%s_%s_rate%d_dur%d.npy'%(num_cluster, sim_train, sim_test, SUM_rate, dur_test)
@@ -222,4 +210,5 @@ for i in range(num_test):
 np.save(result_file_max,predict_max)
 #np.save(result_file_sum,predict_sum)
 np.save(respond_file,respond_time)
+
 p.end()
