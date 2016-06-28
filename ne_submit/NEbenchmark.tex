@@ -358,7 +358,7 @@ A raster plot of the Poisson spike trains is shown in Figure~\ref{fig:zero}(c).
 A different way of encoding spikes is to use a rank-order code; this means
 keeping just the order in which the spikes fired and disregarding their exact timing. Rank-ordered spike trains have been used in vision tasks under a biological plausibility constraint, making them a viable way of encoding images for neural applications~\citep{van2001rate,sen2009evaluating,masmoudi2010novel}.
 
-Rank-ordered encoding can be performed using an algorithm known as the
+Rank-ordered coding can be performed using an algorithm known as the
 {FoCal algorithm~\citep{sen2009evaluating}}.
 This algorithm models the foveal pit region, the highest resolution area of the retina, with four ganglion cell layers each with a different scale of centre-surround receptive field~\citep{kolb2003retina}. In order to simulate these layers two steps are required: the first consists of four discrete 2D convolutions; the second removes redundant information produced in the first step. During the first step, the centre-surround behaviour of the ganglion cells is modelled using Difference of Gaussians~(DoG) kernel for convolution. 
 \begin{equation}
@@ -370,8 +370,9 @@ where $\sigma_{w,c}$ and $\sigma_{w,s}$ are the standard deviation of the
 centre and surround components of the DoG at layer $w$. The signs 
 will be ($-$,$+$) if the ganglion cell has an OFF-centre behaviour and 
 ($+$,$-$) if it has an ON-centre one. Table~\ref{tab-kernel-specs} 
-describes the parameters used to compute the convolution kernels at each 
+shows the parameters (described in~\citealp{sen2009evaluating}) used to compute the convolution kernels at each 
 scale $w$.
+
 
 \begin{table}[htb]
 	\caption{Simulation parameters for FoCal ganglion cells}
