@@ -818,29 +818,29 @@ This work indicated the power variation by each task over time.
 %Qian Liu modified
 However, the typical reported simulation time and energy use for the various platforms is under different SNN models, making the comparisons problematic.
 Model-specific hardware metrics would provide robust comparisons between platforms and expose how different networks influence the metrics on particular hardware.
-The proposed evaluation metrics (see Table~\ref{tb:hw_eval}) consist of the feasibility, classification accuracy, simulation time and energy use.
+The proposed evaluation metrics consist of the \textbf{feasibility}, \textbf{classification accuracy}, \textbf{simulation time} and \textbf{energy use}.
 A particular SNN model is feasible to run on a particular hardware platform only when the network size is under the platform's limit, the neural and synaptic models are supported, and the learning rule is implemented.
 CA also plays a role in hardware evaluation because of the precision limits that may be imposed by the platform.
 Due to the limited hardware resources, simulation time may, likewise, accelerate or slow down according to the network topology and spike dynamics.
 Similarly, energy costs vary with different networks and neural and synaptic models.
 %The system performance will be assessed on the accuracy, simulation time and energy use running the network. 
 %Table~\ref{tb:hardware_comparison} aims to summarise the aforementioned hardware comparison metrics.
-\begin{table*}[hbt!]
-	\caption{Hardware level evaluation of model specific SNN simulation}
-	\begin{center}
-		\bgroup
-		\def\arraystretch{1.5}
-		\begin{tabular}{ l l l l }
-			\begin{mycell}{5cm} Hardware Description \end{mycell} & 
-			\begin{mycell}{5cm} Evaluation Metrics \end{mycell} \\
-			\hline
-			\begin{leftcell}{5cm} - Digital/Analogue \\- Scalability\\- Neuron models supported\\- Synapse models supported\\- Synaptic plasticity \\- Precision \end{leftcell}&  % training
-			\begin{leftcell}{5cm} - feasibility\\- classification accuracy \\- simulation time \\- energy use \end{leftcell}% recognition
-		\end{tabular}
-		\egroup
-	\end{center}
-	\label{tb:hw_eval}
-\end{table*}
+%\begin{table*}[hbt!]
+%	\caption{Hardware level evaluation of model specific SNN simulation}
+%	\begin{center}
+%		\bgroup
+%		\def\arraystretch{1.5}
+%		\begin{tabular}{ l l l l }
+%			\begin{mycell}{5cm} Hardware Description \end{mycell} & 
+%			\begin{mycell}{5cm} Evaluation Metrics \end{mycell} \\
+%			\hline
+%			\begin{leftcell}{5cm} - Digital/Analogue \\- Scalability\\- Neuron models supported\\- Synapse models supported\\- Synaptic plasticity \\- Precision \end{leftcell}&  % training
+%			\begin{leftcell}{5cm} - feasibility\\- classification accuracy \\- simulation time \\- energy use \end{leftcell}% recognition
+%		\end{tabular}
+%		\egroup
+%	\end{center}
+%	\label{tb:hw_eval}
+%\end{table*}
 
 \section{Results}
 \label{sec:test}
