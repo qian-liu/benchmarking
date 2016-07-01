@@ -143,18 +143,23 @@ Researchers are using the capabilities created by rapid developments in neuromor
 Neuromorphic engineering has delivered biologically-inspired sensors such as DVS~(Dynamic Vision Sensor) silicon retinas~\citep{serrano2013128, delbruck2008frame, yang2015dynamic, posch2014retinomorphic}, which offer the prospect of low-cost visual processing thanks to their event-driven and redundancy-reducing style of information representation.
 Moreover, SNN simulation tools~\citep{davison2008pynn, gewaltig2007nest, goodman2008brian} and neuromorphic hardware platforms~\citep{furber2014spinnaker,  schemmel2010wafer,benjamin2014neurogrid,merolla2014million} have been developed to allow exploration of the brain by mimicking its functions and developing large-scale practical applications~\citep{eliasmith2012large}.
 %TODO Vision Recognition on SNNs. Aims: brain like -> feed_forward structure, accuracy, latency and energy efficiency.
+Achieving the brain's energy efficiency motivates the development of neuromorphic hardware, since the brain only consumes about 20~W of power~\citep{drubach2000brain}.
+In the case of visual processing, the brain can accurately recognise objects remarkably quickly, e.g. 200~ms in monkeys~\citep{fabre1998rapid} and the images are presented sequentially in spikes less than 100~ms~\citep{keysers2001speed}.
+Such rapid and highly accurate recognition are the targets of modelling spike-based visual recognition.
+
+
 %In the case of visual processing, the central visual system consists of several cortical areas which, according to anatomical experiments, are placed in a hierarchical structure ~\citep{felleman1991distributed}.
 %Fast object recognition takes place in the feed-forward hierarchy of one of the two central visual pathways, the ventral pathway, which mainly handles the ``What'' tasks.
 %Biological studies have revealed that the information is unfolded along the ventral stream to the IT (Inferior Temporal) cortex~\citep{dicarlo2012does}.
 %Inspired by these results, SNN models have successfully been adapted to computer vision tasks.  
 
-%TODO Bioligical inspiration
+%Bioligical inspiration
 Inspired by biological studies on the visual ventral pathway, SNN models have successfully been adapted to computer vision recognition. \cite{riesenhuber1999hierarchical} proposed a quantitative modelling framework for object recognition with position-, scale- and view-invariance.
 Their cortex-like model has been analysed on several datasets~\citep{serre2007robust}.
 Recently~\cite{fu2012spiking} reported that their SNN implementation was capable of recognising facial expressions with a classification accuracy (CA) of 97.35\% on the JAFFE dataset~\citep{lyons1998coding} which contains 213 images of 7 facial expressions posed by 10 individuals.
 %They employed simple integrate-and-fire neurons with rank order coding (ROC) where the earliest pre-synaptic spikes have the strongest impact on the post-synaptic potentials.
 According to~\cite{vanrullen2002surfing}, the first wave of spikes carry explicit information through the ventral stream and in each stage meaningful information is extracted and spikes are regenerated. 
-Using one spike per neuron, a similar approach to biology,~\cite{delorme2001face} reported 100\% and 97.5\% accuracies on the face identification task over
+Using one spike per neuron, similar to the first spiking wave in biology,~\cite{delorme2001face} reported 100\% and 97.5\% accuracies on the face identification task over
 %changing  contrast and luminance 
 training (40 individuals $\times$ 8 images) and testing data (40 individuals $\times$ 2 images).
 %TODO move the two examples to algorithms part.
@@ -177,7 +182,7 @@ A similar model was tested on a Poissonian spike presentation of the MNIST datas
 Theoretical analysis~\citep{nessler2013bayesian} showed that unsupervised STDP was able to approximate a stochastic version of Expectation Maximisation, a powerful learning algorithm in machine learning.
 A computer simulation achieved a 93.3\% CA on MNIST and had the potential to be implemented using memristors~\citep{bill2014compound}. 
 
-Deep Neural Networks (DNNs) have exceeded human-level performance on image classification tasks~\cite{he2015delving}, but mainstream DNN research is focussed on continuous rather than spiking neural networks.
+Deep Neural Networks (DNNs) have exceeded human-level performance on image classification tasks~\citep{he2015delving}, but mainstream DNN research is focussed on continuous rather than spiking neural networks.
 The spiking deep network has great potential to combine remarkable performance with energy-efficient training and operation.
 Early research into spiking deep networks focussed on converting off-line trained deep network into SNNs~\citep{o2013real}.
 The network was initially implemented on an FPGA and achieved a CA of 92.0\%~\citep{neil2014minitaur}, while a later implementation on SpiNNaker scored 95.0\%~\citep{Stromatias2015scalable}.
@@ -204,13 +209,13 @@ However, in the field of conventional non-spiking computer vision, there are a n
 %here the main challenge is in the massive variations due to the moving camera, background clutter, viewing angles, variable illumination and so on.
 In consequence, a new set of spike-based vision datasets is now needed to quantitatively measure progress within this rapidly advancing field and to provide resources to support fair competition between researchers.
 
-Apart from using spikes instead of the frame-based data used in conventional computer vision, new concerns arise when evaluating neuromorphic vision in addition to recognition accuracy.
-The concerns of recognition latency and energy cost naturally derive from the goal of neuromorphic engineering: mimicking the fast recognition on low-energy processing in the brain. 
+Apart from using spikes instead of the frame-based data used in conventional computer vision, new concerns on the latency and energy cost arise when evaluating neuromorphic vision in addition to recognition accuracy.
+These concerns naturally derive from the goal of spike-based visual recognition: mimicking the fast recognition with low-energy processing in the brain. 
 %TODO better word to describe: what are the metrics and why needed
-Therefore a set of common metrics for performance evaluation in spike-based vision is required to assess algorithms and models, including evaluating
-trade-offs between simulation time, accuracy and power consumption.
+Therefore a set of common metrics for performance evaluation in spike-based vision is required to assess SNN models and their hardware implementations.
+%, including evaluating trade-offs between simulation time, accuracy and power consumption.
 %Benchmarking neuromorphic hardware with various network models will reveal the advantages and disadvantages of different platforms.
-Running various SNN benchmarks demonstrates the capability of a hardware platform to support model-specific configurations such as network size, topology, neural and synaptic models, learning algorithms and so on.
+%Running various SNN benchmarks demonstrates the capability of a hardware platform to support model-specific configurations such as network size, topology, neural and synaptic models, learning algorithms and so on.
 In this paper we propose a large dataset of spike-based visual stimuli and a complementary evaluation methodology.
 Just as research in this field is an expanding and evolving activity, the dataset will be adapted and extended to fit new requirements presented by advances in the field.
 
