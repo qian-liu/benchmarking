@@ -288,9 +288,12 @@ With the NE dataset we hope:
 	\item \textit{to allow comparison with conventional image recognition methods.}
 	We expect the dataset to support this comparison using spiking versions of existing vision datasets.
 	Thus, conversion methods are required to transform datasets of images and frame-based videos into spike stimuli.
-	With the growing understanding of biological vision, new methodologies and algorithms that can convert these conventional datasets into spikes in more biologically-accurate ways are welcome.
+	More biologically-accurate and better information preserving schemes are welcome.
+%	With the growing understanding of biological vision, new methodologies and algorithms that can convert these conventional datasets into spikes in more biologically-accurate ways are welcome.
+%	Other spike representation schemes may do a better job of preserving information from the original stimuli.
+	
 	\item \textit{to provide an assessment of the state of the art in spike-based visual recognition on neuromorphic hardware.}
-	In order to reveal the advantages of neuromorphic engineering, we need not only a spike-based dataset but also an appropriate evaluation methodology.
+	In order to reveal the advantages of neuromorphic engineering: high-accurate, rapid, energy-efficient recognition, we need not only a spike-based dataset but also an appropriate evaluation methodology.
 	The evaluation methodology will be constantly improving along with the evolution of the dataset.
 	\item \textit{to help researchers identify future directions and advance the field.}
 	The development of the dataset and its evaluation methodology will introduce new challenges for the neuromorphic engineering community.
@@ -303,7 +306,10 @@ With the NE dataset we hope:
 \label{sec:data}
 %Experiment setup/ collection method/ properties of each class/ etc.
 The first proposed dataset in the benchmarking system is NE15-MNIST (Neuromorphic Engineering 2015 on MNIST).
-NE15-MNIST is the spiking version of an original non-spiking dataset which was downloaded from the MNIST Database of Handwritten Digits~\citep{lecun1998gradient}  website\footnote{http://yann.lecun.com/exdb/mnist/}. The converted set consists of four subsets which were generated for different purposes:
+NE15-MNIST is the spiking version of an original non-spiking dataset which was downloaded from the MNIST Database of Handwritten Digits~\citep{lecun1998gradient}  website\footnote{http://yann.lecun.com/exdb/mnist/}.
+Due to its straightforward target of classifying real-world images, the plain format of the binary data and simple patterns, MNIST has been one of the most popular datasets in computer vision for over 20 years.
+While in neuromorphic vision, MNIST is still an unsolved problem but a popular task among the research community as stated in Section~\ref{sec:intro}.
+The converted MNIST dataset consists of four subsets which were generated for different purposes:
 \begin{itemize}
 	\item \textit{Poissonian},
 	which encodes each pixel as a Poisson spike train and is intended for benchmarking existing rate-based SNN models.
@@ -1372,7 +1378,7 @@ Therefore running an identical SNN model on different neuromorphic hardware expo
 If the model runs smoothly on a hardware platform, it then can be used to benchmark the performance of the hardware simulator in terms of simulation time and energy usage.
 Classification accuracy (CA) is also a useful metric for hardware evaluation because of the limited precision of the membrane potential and synaptic weights.
 
-Although spike-based algorithms have not surpassed their non-spiking counterparts in terms of recognition accuracy, they have shown great performance in response time and energy efficiency.
+%Although spike-based algorithms have not surpassed their non-spiking counterparts in terms of recognition accuracy, they have shown great performance in response time and energy efficiency.
 This dataset makes the comparison of SNNs with conventional recognition methods possible by using converted spike representations of the same vision databases.
 As far as we know, this is the first attempt at benchmarking neuromorphic vision recognition by providing public a spike-based dataset and evaluation metrics.
 In accordance with the suggestions from~\cite{tan2015bench}, the evaluation metrics highlight the strengths of spike-based vision tasks and the dataset design also promotes the research into rapid and low energy recognition (e.g. flashing digits).
