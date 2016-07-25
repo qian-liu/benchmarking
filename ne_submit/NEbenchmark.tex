@@ -376,8 +376,8 @@ A raster plot of the Poisson spike trains is shown in Figure~\ref{fig:zero}(c).
 
 
 
-\subsubsection{Rank-Order-Encoding}
-A different way of encoding spikes is to use a rank-order code; this means
+\subsubsection{Rank Order Encoding}
+A different way of encoding spikes is to use a rank order code; this means
 keeping just the order in which the spikes fired and disregarding their exact timing. Rank-ordered spike trains have been used in vision tasks under a biological plausibility constraint, making them a viable way of encoding images for neural applications~\citep{van2001rate,sen2009evaluating,masmoudi2010novel}.
 
 Rank order coding (ROC) can be performed using an algorithm known as the
@@ -756,7 +756,7 @@ Following to the formatted evaluation as in Table~\ref{tb:model_eval}, Table~\re
   			\begin{mycell}{2.0cm} Digital, \\Scalable \end{mycell} & 
   			\begin{mycell}{2.1cm}Programmable\\Neuron and Synapse,\\Axonal delay \end{mycell}& 
   			\begin{mycell}{2.1cm}Programmable\\learning rule\end{mycell}& 
-  			\begin{mycell}{2.0cm}11- to 14-bit synapses\end{mycell} & 
+  			\begin{mycell}{2.0cm}11- to 14-bit synapse\end{mycell} & 
   			\begin{mycell}{2.0cm} Real-time \\ Flexible time resolution \end{mycell}  &
   			\begin{mycell}{2.5cm} 8~nJ/SE \end{mycell} \\
   			%
@@ -767,7 +767,7 @@ Following to the formatted evaluation as in Table~\ref{tb:model_eval}, Table~\re
   				%       	 per neuron
   				\\4-bit/\\4 values\\synapse 
   				%\\(4 signed int + on/off state)
-          \footnote[1]{We consider them 4-bit synapses because it is only possible to choose between 4 different signed integers and whether the synapse is active or not.}
+          \footnote[1]{We consider them 4-bit synapse because it is only possible to choose between 4 different signed integers and whether the synapse is active or not.}
   			\end{mycell}& 
   			\begin{mycell}{2.0cm}Real-time\end{mycell}& 
   			\begin{mycell}{2.0cm}26 pJ/SE\end{mycell} \\
@@ -777,14 +777,14 @@ Following to the formatted evaluation as in Table~\ref{tb:model_eval}, Table~\re
   			\begin{mycell}{2.0cm}Mixed-mode,\\Scalable\end{mycell} & 
   			\begin{mycell}{2.0cm}Fixed models,\\Config params\end{mycell} & 
   			\begin{mycell}{2.0cm}Fixed rule\end{mycell} & 
-  			\begin{mycell}{2.0cm}13-bit shared \\ synapses\end{mycell} &
+  			\begin{mycell}{2.0cm}13-bit shared \\ synapse\end{mycell} &
   			\begin{mycell}{2.0cm}Real-time\end{mycell} &
   			\begin{mycell}{2.0cm}941 pJ/SE\end{mycell} \\
   			%
   			\begin{mycell}{1.8cm} HI-CANN \citep{schemmel2010wafer}  \end{mycell} & \begin{mycell}{2.0cm}Mixed-mode,\\Scalable\end{mycell} &
   			\begin{mycell}{2.0cm}Fixed models,\\Config params\end{mycell}& 
   			\begin{mycell}{2.0cm}Fixed rule\end{mycell}& 
-  			\begin{mycell}{2.0cm}4-bit/\\16 values\\synapses\end{mycell}& 
+  			\begin{mycell}{2.0cm}4-bit/\\16 values\\synapse\end{mycell}& 
   			\begin{mycell}{2.0cm}Faster than\\ real-time
                              \footnote[2]{A maximum speed-up of up to $10^5$ times real time has been reported.}
         \end{mycell}&
@@ -813,7 +813,7 @@ Neuromorphic systems can be categorised as analogue, digital, or mixed-mode anal
 Some analogue implementations exploit sub-threshold transistor dynamics to emulate neurons and synapses directly in hardware~\citep{indiveri2011neuromorphic} and are more energy-efficient while requiring less area than their digital counterparts~\citep{joubert2012hardware}. However, the behaviour of analogue circuits is hard to control through the fabrication process due to transistor mismatch~\citep{indiveri2011neuromorphic,pedram2006thermal,linares2003compact}, and achievable wiring densities render direct point-to-point connections impractical for large-scale systems. The majority of mixed-mode analogue/digital neuromorphic platforms, such as the High Input Count Analog Neural Network (HI-CANN)~\citep{schemmel2010wafer}, Neurogrid~\citep{benjamin2014neurogrid}, HiAER-IFAT~\citep{yu201265k}, use analogue circuits to emulate neurons and digital packet-based technology to communicate spikes as AER events. This enables reconfigurable connectivity patterns, while spike timing is expressed implicitly since typically a spike reaches its destination in less than a millisecond, thus fulfilling the real-time requirement. Digital neuromorphic platforms such as TrueNorth~\citep{merolla2014million} use digital circuits with finite precision to simulate neurons in an event-driven manner to minimise the active power dissipation. Such systems suffer from limited model flexibility, since neurons and synapses are fabricated directly in hardware with only a small subset of parameters under the control of the researcher. 
 The SpiNNaker many-core neuromorphic architecture~\citep{furber2014spinnaker} uses low-power programmable cores and scalable event-driven communications hardware allowing neural and synaptic models to be implemented in software.
 While software modelling provides great flexibility, digital platforms generally have reduced precision (due to the inherent discretisation) and higher energy consumption when compared to analogue platforms. Furthermore, the processing cores used in SpiNNaker chips perform better when using integer or fixed-point arithmetic~\citep{Hopkins2015Accuracy}.
-And the requirement for the models to run in real time leads to constraints a the complexity of model that can be supported.
+And the requirement for the models to run in real time leads to constraints on the complexity of model that can be supported.
 
 A direct comparison between neuromorphic platforms is a non-trivial task due to the different hardware implementation technologies as mentioned above.
 %Qian Liu modified
@@ -1359,11 +1359,11 @@ The dataset aims to provide unified spike-based vision benchmarks and complement
 
 The first version of the dataset is published as NE15-MNIST, which contains four different spike representations of the MNIST stationary hand-written digit database.
 The Poissonian subset is intended for benchmarking existing rate-based recognition methods.
-The rank-order-encoded subset, FoCal, encourages research into spatio-temporal algorithms on recognition applications using only small numbers of input spikes.
+The rank-order coded subset, FoCal, encourages research into spatio-temporal algorithms on recognition applications using only small numbers of input spikes.
 Fast recognition can be verified on the DVS recorded flashing input subset, since just 30~ms of useful spike trains are recorded for each image.
 Looking forward, the continuous spike trains captured from the DVS recorded moving input can be used to test mobile neuromorphic robots.
 \cite{orchard2015convert} have presented a neuromorphic dataset using a similar approach, but the spike trains were obtained with micro-saccades.
-This dataset aims to convert static images to neuromorphic vision input, while the recordings of moving input in this paper are intended to promote position-invariant recognition.
+This dataset aims to convert static images to neuromorphic vision input, while the recordings of moving input in our paper are intended to promote position-invariant recognition.
 Therefore, the datasets complement each other..
 
 The complementary evaluation methodology is essential to assess both the model-level and hardware-level performance of SNNs.
