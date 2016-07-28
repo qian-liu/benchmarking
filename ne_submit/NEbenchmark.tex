@@ -116,16 +116,15 @@
 \maketitle
 \begin{abstract}
 
-Today increasing attention is being paid to research into spike-based neural computation in order both to gain a better understanding of the brain and also to explore biologically-inspired computation.
-Within this field, the primate visual pathway and its hierarchical organisation have been extensively studied, and
-Spiking Neural Networks (SNNs) inspired by the understanding of observed biological structure and function have been successfully applied to visual recognition and classification tasks.
+Today, increasing attention is being paid to research into spike-based neural computation both to gain a better understanding of the brain and to explore biologically-inspired computation.
+Within this field, the primate visual pathway and its hierarchical organisation have been extensively studied and Spiking Neural Networks (SNNs), inspired by the understanding of observed biological structure and function, have been successfully applied to visual recognition and classification tasks.
 In addition, implementations on neuromorphic hardware have enabled large-scale networks to run in (or even faster than) real time, making spike-based neural vision processing accessible on mobile robots.
 Neuromorphic sensors such as silicon retinas are able to feed such a mobile system with real-time visual stimuli.
 
 A new set of vision benchmarks for spike-based neural processing are now needed to measure progress quantitatively within this rapidly advancing field.
 We propose that a large dataset of spike-based visual stimuli is needed to provide meaningful comparisons between different systems, and a corresponding evaluation methodology is also required to measure the performance of SNN models and their hardware implementations.
 
-In this paper we first propose an initial NE (Neuromorphic Engineering) dataset that is based on standard computer vision benchmarks and uses digits from the MNIST database. This dataset is compatible with the state of current research on spike-based image recognition.
+In this paper we first propose an initial NE (Neuromorphic Engineering) dataset based on standard computer vision benchmarks and uses digits from the MNIST database. This dataset is compatible with the state of current research on spike-based image recognition.
 The corresponding spike trains are produced using a range of techniques: rate-based Poisson spike generation, rank order encoding, and recorded output from a silicon retina with both flashing and oscillating input stimuli.
 In addition, a complementary evaluation methodology is presented to assess both model-level and hardware-level performance.
 Finally, we demonstrate the use of the dataset and the evaluation methodology using two SNN models to validate the performance of the models and their hardware implementations.
@@ -143,9 +142,9 @@ Researchers are using the capabilities created by rapid developments in neuromor
 Neuromorphic engineering has delivered biologically-inspired sensors such as DVS~(Dynamic Vision Sensor) silicon retinas~\citep{serrano2013128, delbruck2008frame, yang2015dynamic, posch2014retinomorphic}, which offer the prospect of low-cost visual processing thanks to their event-driven and redundancy-reducing style of information representation.
 Moreover, SNN simulation tools~\citep{davison2008pynn, gewaltig2007nest, goodman2008brian} and neuromorphic hardware platforms~\citep{furber2014spinnaker,  schemmel2010wafer,benjamin2014neurogrid,merolla2014million} have been developed to allow exploration of the brain by mimicking its functions and developing large-scale practical applications~\citep{eliasmith2012large}.
 %TODO Vision Recognition on SNNs. Aims: brain like -> feed_forward structure, accuracy, latency and energy efficiency.
-Achieving the brain's energy efficiency motivates the development of neuromorphic hardware, since the brain consumes only about 20~W of power~\citep{drubach2000brain}.
+Achieving the brain's energy efficiency motivates the development of neuromorphic hardware, since the human brain consumes only about 20~W of power~\citep{drubach2000brain}.
 In the case of visual processing, the brain can accurately recognise objects remarkably quickly, e.g. in 200~ms in monkeys~\citep{fabre1998rapid}, even with short appearance (less than 100~ms) of the target objects~\citep{keysers2001speed}.
-Such rapid and highly accurate recognition is the targets of modelling spike-based visual recognition.
+Such rapid and highly accurate recognition is the target of modelling spike-based visual recognition.
 
 
 %In the case of visual processing, the central visual system consists of several cortical areas which, according to anatomical experiments, are placed in a hierarchical structure ~\citep{felleman1991distributed}.
@@ -293,7 +292,7 @@ With the NE dataset we hope:
 %	Other spike representation schemes may do a better job of preserving information from the original stimuli.
 	
 	\item \textit{to provide an assessment of the state of the art in spike-based visual recognition on neuromorphic hardware.}
-	In order to reveal the advantages of neuromorphic engineering: highly 	accurate, rapid, energy-efficient recognition, we need not only a spike-based dataset but also an appropriate evaluation methodology.
+	To reveal the advantages of neuromorphic engineering: highly 	accurate, rapid, energy-efficient recognition, we need not only a spike-based dataset but also an appropriate evaluation methodology.
 	The evaluation methodology will be constantly improving along with the evolution of the dataset.
 	\item \textit{to help researchers identify future directions and advance the field.}
 	The development of the dataset and its evaluation methodology will introduce new challenges for the neuromorphic engineering community.
@@ -382,7 +381,7 @@ keeping just the order in which the spikes fired and disregarding their exact ti
 
 Rank order coding (ROC) can be performed using an algorithm known as the
 {FoCal algorithm~\citep{sen2009evaluating}}.
-This algorithm models the foveal pit region, the highest resolution area of the retina, with four ganglion cell layers each with a different scale of centre-surround receptive field~\citep{kolb2003retina}. In order to simulate these layers two steps are required: the first consists of four discrete 2D convolutions; the second removes redundant information produced in the first step. During the first step, the centre-surround behaviour of the ganglion cells is modelled using Difference of Gaussians~(DoG) kernel for convolution. 
+This algorithm models the foveal pit region, the highest resolution area of the retina, with four ganglion cell layers each with a different scale of centre-surround receptive field~\citep{kolb2003retina}. To simulate these layers two steps are required: the first consists of four discrete 2D convolutions; the second removes redundant information produced in the first step. During the first step, the centre-surround behaviour of the ganglion cells is modelled using Difference of Gaussians~(DoG) kernel for convolution. 
 \begin{equation}
 \label{eq-dog}
 DoG_w(x,y) = \pm\frac{1}{2\pi\sigma_{w,c}^2}e^{\frac{-(x^2 + y^2)}{2\sigma_{w,c}^2}}
@@ -576,7 +575,7 @@ A total of $30,000$ recordings were made: 10 digits, at 3 different scales, $1,0
 As a result of the spike-based processing used in SNN models, new concerns on the latency and energy cost arise over performance assessment.
 Therefore we propose corresponding evaluation metrics and suggest a sufficient description of SNN models in this section.
 Once a model is implemented on a neuromorphic platform, the hardware performance can be evaluated by running the particular model.
-This model-specific assessment provides more robust comparisons between hardware platforms thanks to using the same network topology, neuron and synaptic models, and learning rules. 
+This model-specific assessment provides more robust comparisons between hardware platforms by using the same network topology, neuron and synaptic models, and learning rules. 
 A complementary evaluation methodology is essential to provide common metrics and assess both the model-level and hardware-level performance.
 
 
