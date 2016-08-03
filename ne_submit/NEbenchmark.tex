@@ -119,12 +119,12 @@
 Today, increasing attention is being paid to research into spike-based neural computation both to gain a better understanding of the brain and to explore biologically-inspired computation.
 Within this field, the primate visual pathway and its hierarchical organisation have been extensively studied and Spiking Neural Networks (SNNs), inspired by the understanding of observed biological structure and function, have been successfully applied to visual recognition and classification tasks.
 In addition, implementations on neuromorphic hardware have enabled large-scale networks to run in (or even faster than) real time, making spike-based neural vision processing accessible on mobile robots.
-Neuromorphic sensors such as silicon retinas are able to feed such a mobile system with real-time visual stimuli.
+Neuromorphic sensors such as silicon retinas are able to feed such mobile systems with real-time visual stimuli.
 
 A new set of vision benchmarks for spike-based neural processing are now needed to measure progress quantitatively within this rapidly advancing field.
 We propose that a large dataset of spike-based visual stimuli is needed to provide meaningful comparisons between different systems, and a corresponding evaluation methodology is also required to measure the performance of SNN models and their hardware implementations.
 
-In this paper we first propose an initial NE (Neuromorphic Engineering) dataset based on standard computer vision benchmarks and uses digits from the MNIST database. This dataset is compatible with the state of current research on spike-based image recognition.
+In this paper we first propose an initial NE (Neuromorphic Engineering) dataset based on standard computer vision benchmarks and that uses digits from the MNIST database. This dataset is compatible with the state of current research on spike-based image recognition.
 The corresponding spike trains are produced using a range of techniques: rate-based Poisson spike generation, rank order encoding, and recorded output from a silicon retina with both flashing and oscillating input stimuli.
 In addition, a complementary evaluation methodology is presented to assess both model-level and hardware-level performance.
 Finally, we demonstrate the use of the dataset and the evaluation methodology using two SNN models to validate the performance of the models and their hardware implementations.
@@ -143,7 +143,7 @@ Neuromorphic engineering has delivered biologically-inspired sensors such as DVS
 Moreover, SNN simulation tools~\citep{davison2008pynn, gewaltig2007nest, goodman2008brian} and neuromorphic hardware platforms~\citep{furber2014spinnaker,  schemmel2010wafer,benjamin2014neurogrid,merolla2014million} have been developed to allow exploration of the brain by mimicking its functions and developing large-scale practical applications~\citep{eliasmith2012large}.
 %TODO Vision Recognition on SNNs. Aims: brain like -> feed_forward structure, accuracy, latency and energy efficiency.
 Achieving the brain's energy efficiency motivates the development of neuromorphic hardware, since the human brain consumes only about 20~W of power~\citep{drubach2000brain}.
-In the case of visual processing, the brain can accurately recognise objects remarkably quickly, e.g. in 200~ms in monkeys~\citep{fabre1998rapid}, even with short appearance (less than 100~ms) of the target objects~\citep{keysers2001speed}.
+In the case of visual processing, the brain can accurately recognise objects remarkably quickly, e.g. in 200~ms in monkeys~\citep{fabre1998rapid}, even with short presentations (less than 100~ms) of the target objects~\citep{keysers2001speed}.
 Such rapid and highly accurate recognition is the target of modelling spike-based visual recognition.
 
 
@@ -292,11 +292,11 @@ With the NE dataset we hope:
 %	Other spike representation schemes may do a better job of preserving information from the original stimuli.
 	
 	\item \textit{to provide an assessment of the state of the art in spike-based visual recognition on neuromorphic hardware.}
-	To reveal the advantages of neuromorphic engineering: highly 	accurate, rapid, energy-efficient recognition, we need not only a spike-based dataset but also an appropriate evaluation methodology.
+	To reveal the accuracy, speed, and energy-efficient recognition of neuromorphic approaches, we need not only a spike-based dataset but also an appropriate evaluation methodology.
 	The evaluation methodology will be constantly improving along with the evolution of the dataset.
 	\item \textit{to help researchers identify future directions and advance the field.}
 	The development of the dataset and its evaluation methodology will introduce new challenges for the neuromorphic engineering community.
-	However, these must represent an appropriate degree of challenge: a too-easily-solved problem turns into a tuning competition, while a problem that is too difficult will not yield meaningful assessment.
+	However, these must represent an appropriate degree of difficulty: a too-easily-solved problem turns into a tuning competition, while a problem that is too difficult will not yield meaningful assessment.
 	So suitable problems should continuously be added to promote future research.  
 \end{itemize}
 
@@ -381,7 +381,7 @@ keeping just the order in which the spikes fired and disregarding their exact ti
 
 Rank order coding (ROC) can be performed using an algorithm known as the
 {FoCal algorithm~\citep{sen2009evaluating}}.
-This algorithm models the foveal pit region, the highest resolution area of the retina, with four ganglion cell layers each with a different scale of centre-surround receptive field~\citep{kolb2003retina}. To simulate these layers two steps are required: the first consists of four discrete 2D convolutions; the second removes redundant information produced in the first step. During the first step, the centre-surround behaviour of the ganglion cells is modelled using Difference of Gaussians~(DoG) kernel for convolution. 
+This algorithm models the foveola, the highest resolution area of the retina, with four ganglion cell layers each with a different scale of centre-surround receptive field~\citep{kolb2003retina}. To simulate these layers two steps are required: the first consists of four discrete 2D convolutions; the second removes redundant information produced in the first step. During the first step, the centre-surround behaviour of the ganglion cells is modelled using Difference of Gaussians~(DoG) kernel for convolution. 
 \begin{equation}
 \label{eq-dog}
 DoG_w(x,y) = \pm\frac{1}{2\pi\sigma_{w,c}^2}e^{\frac{-(x^2 + y^2)}{2\sigma_{w,c}^2}}
@@ -572,7 +572,7 @@ A total of $30,000$ recordings were made: 10 digits, at 3 different scales, $1,0
 
 \subsection{Performance Evaluation}
 \label{sec:eval}
-As a result of the spike-based processing used in SNN models, new concerns on the latency and energy cost arise over performance assessment.
+As a result of the spike-based processing used in SNN models, new concerns about the latency and energy cost arise over performance assessment.
 Therefore we propose corresponding evaluation metrics and suggest a sufficient description of SNN models in this section.
 Once a model is implemented on a neuromorphic platform, the hardware performance can be evaluated by running the particular model.
 This model-specific assessment provides more robust comparisons between hardware platforms by using the same network topology, neuron and synaptic models, and learning rules. 
@@ -584,7 +584,7 @@ A complementary evaluation methodology is essential to provide common metrics an
 
 A suggested description of an SNN model is shown in Table~\ref{tb:model_eval} where the performance evaluation metrics are in bold and the SNN specific description is in italics.
 
-Because SNNs introduce the time dimension and spike-based processing, additional performance metrics become relevant in addition to classification accuracy: these are recognition latency and the number of synaptic events.
+Because SNNs introduce the time dimension and spike-based processing, additional performance metrics become relevant in addition to classification accuracy: recognition latency and the number of synaptic events.
 %Both of the metrics are proposed according to the biological aspects.
 Recognition latency measures how fast spikes are conveyed through the layers of network to trigger the recognition neurons.
 \cite{dicarlo2012does} considers the rapid ($<$200~ms) and accurate vision recognition in the brain as the essential problem of object recognition.
@@ -592,7 +592,7 @@ For real-time systems with live visual inputs, such as robotic systems, a short 
 The latency is measured as the time difference between the first spike generated by the output layer and the first spike from the input layer.
 A small total number of synaptic events generated by a recognition task indicates the efficiency of the SNN model.
 A spike event is a synaptic operation evoked when one action potential is transmitted through one synapse~\citep{sharp2012power}.
-Fewer spike events implies lower overall neural activity and lower energy consumption.
+Fewer spike events imply lower overall neural activity and lower energy consumption.
 The number of synaptic events can be measured as ``Sopbs'', synaptic operations per biological second.
 \begin{table*}[hbt!]
 	\caption{SNN descriptions at the model level}
@@ -625,19 +625,19 @@ Sharing the designs not only makes the model reproducible but also inspires fell
 The main characteristics include the topology and the neural and synaptic models.
 The network topology defines the number of neurons used for each layer and the connections between layers and neurons.
 It is essential to state the types of neural and synaptic model (e.g. current-based LIF neuron) utilised in the network and the parameters configuring them, because neural activities differ greatly between configurations.
-Any non-neural classifier, sometimes added to aid the design enhance the output of the network, must also be specified.
+Any non-neural classifier, sometimes added to aid the design or enhance the output of the network, must also be specified.
 Thirdly, the training procedure determines the recognition capability of a network model.
 %A clear distinction should be made between supervised, semi-supervised and unsupervised learning.
-Specifying the learning algorithm with its mechanism (supervised, semi-supervised and unsupervised) helps the reader undersdand the core features of the model.
-A detailed description of new spike-based learning rules will be a great contribution to the field due to the present lack of spatio-temporal learning algorithms.
+Specifying the learning algorithm with its mechanism (supervised, semi-supervised and unsupervised) helps the reader understand the core features of the model.
+A detailed description of new spike-based learning rules will be a great contribution to the field due to the present short of spatio-temporal learning algorithms.
 Most publications reflect the use of adaptations to existing learning rules; details on these modifications should be clear and unambiguous.
 In conventional computer vision, the number of iterations of training images presented to the network play an important role.
 Similarly, the biological training time determines the amount of information provided for training an SNN.
 Finally in the testing phase, as well as the performance evaluation metrics stated above, specific configurations of the input spikes are also essential.
-This includes details of the way samples were presented: spiking rates, and biological time per test sample.
+This includes details of the way samples are presented: spiking rates, and biological time per test sample.
 The combination of these two factors determines how much information is presented to the network.
 %Some work on SNN-based classifications of MNIST is listed in Table~\ref{tb:software_comparison}.
-Following to the formatted evaluation as in Table~\ref{tb:model_eval}, Table~\ref{tb:software_comparison} lists a few SNN models of MNIST classification, although some detailed description is missing. 
+Following to the formatted evaluation as in Table~\ref{tb:model_eval}, Table~\ref{tb:software_comparison} lists a few SNN models of MNIST classification, although some details are missing. 
 %Most of these reports did not provide sufficiently detailed descriptions of the networks and the models were not completely evaluated in the way that we propose.
 \begin{table*}[hbt!]
 	\caption{Model-level comparison}
@@ -755,7 +755,7 @@ Following to the formatted evaluation as in Table~\ref{tb:model_eval}, Table~\re
   			\begin{mycell}{2.0cm} Digital, \\Scalable \end{mycell} & 
   			\begin{mycell}{2.1cm}Programmable\\Neuron and Synapse,\\Axonal delay \end{mycell}& 
   			\begin{mycell}{2.1cm}Programmable\\learning rule\end{mycell}& 
-  			\begin{mycell}{2.0cm}11- to 14-bit synapse\end{mycell} & 
+  			\begin{mycell}{2.0cm}11- to 14-bit synapses\end{mycell} & 
   			\begin{mycell}{2.0cm} Real-time \\ Flexible time resolution \end{mycell}  &
   			\begin{mycell}{2.5cm} 8~nJ/SE \end{mycell} \\
   			%
@@ -764,9 +764,9 @@ Following to the formatted evaluation as in Table~\ref{tb:model_eval}, Table~\re
   			\begin{mycell}{2.0cm}No plasticity\end{mycell}& 
   			\begin{mycell}{2.2cm}122 bits \\params \& states,
   				%       	 per neuron
-  				\\4-bit/\\4 values\\synapse 
+  				\\4-bit/\\4 values\\synapses 
   				%\\(4 signed int + on/off state)
-          \footnote[1]{We consider them 4-bit synapse because it is only possible to choose between 4 different signed integers and whether the synapse is active or not.}
+          \footnote[1]{We consider them 4-bit synapses because it is only possible to choose between 4 different signed integers and whether the synapse is active or not.}
   			\end{mycell}& 
   			\begin{mycell}{2.0cm}Real-time\end{mycell}& 
   			\begin{mycell}{2.0cm}26 pJ/SE\end{mycell} \\
@@ -776,14 +776,14 @@ Following to the formatted evaluation as in Table~\ref{tb:model_eval}, Table~\re
   			\begin{mycell}{2.0cm}Mixed-mode,\\Scalable\end{mycell} & 
   			\begin{mycell}{2.0cm}Fixed models,\\Config params\end{mycell} & 
   			\begin{mycell}{2.0cm}Fixed rule\end{mycell} & 
-  			\begin{mycell}{2.0cm}13-bit shared \\ synapse\end{mycell} &
+  			\begin{mycell}{2.0cm}13-bit shared \\ synapses\end{mycell} &
   			\begin{mycell}{2.0cm}Real-time\end{mycell} &
   			\begin{mycell}{2.0cm}941 pJ/SE\end{mycell} \\
   			%
   			\begin{mycell}{1.8cm} HI-CANN \citep{schemmel2010wafer}  \end{mycell} & \begin{mycell}{2.0cm}Mixed-mode,\\Scalable\end{mycell} &
   			\begin{mycell}{2.0cm}Fixed models,\\Config params\end{mycell}& 
   			\begin{mycell}{2.0cm}Fixed rule\end{mycell}& 
-  			\begin{mycell}{2.0cm}4-bit/\\16 values\\synapse\end{mycell}& 
+  			\begin{mycell}{2.0cm}4-bit/\\16 values\\synapses\end{mycell}& 
   			\begin{mycell}{2.0cm}Faster than\\ real-time
                              \footnote[2]{A maximum speed-up of up to $10^5$ times real time has been reported.}
         \end{mycell}&
@@ -819,7 +819,7 @@ A direct comparison between neuromorphic platforms is a non-trivial task due to 
 Table~\ref{tb:hardware_comparison} attempts to describe the neuromorphic hardware platforms with reference to different aspects of SNN simulation.
 The scalability of a hardware platform determines the network size limit of a neural application running on it.
 Considering the various neural and synaptic models, plasticity learning rules and lengths of axonal delays, a programmable platform offers flexibility to support diverse SNNs while a hard-wired system supporting only specific models wins for its energy-efficiency and simpler design and implementation.
-The classification accuracy of an SNN running on a hardware system can be different from the software simulation, since hardware implementations may impose limits on the precision used for the membrane potential of neurons (for the digital platforms) and the synaptic weights.
+The classification accuracy of an SNN running on a hardware system can be different from the software simulation, since hardware implementations may impose limits on the precision used for the membrane potentials of neurons (for the digital platforms) and the synaptic weights.
 %Thus comparison metrics is supposed to include precision as a major assessment of the system performance.
 Simulation time is another important measure when running large-scale networks on hardware.
 Real-time implementation is an essential requirement for robotic systems because of the real-time input from the neuromorphic sensors.
@@ -1068,7 +1068,7 @@ On the other hand, SpiNNaker works in real (biologically real) time and the simu
 The NEST simulation was run on a desktop PC, and the power use was measured by a meter socket and estimated by subtracting the usage of idle OS operation from the usage running the simulation.
 In doing so, the power consumption of the resources needed to run the simulation is better approximated.
 The SpiNNaker test was run on a Spin4 board which has 48 chips and exposed pins to measure electrical quantities.
-A built-in Anduino board read out the power usage of the chips.
+A built-in Arduino board read out the power usage of the chips.
 For the same goal of estimating just the required resources, only the active chips were measured.
 %The energy use is calculated as the product of the simulation time and the power use.
 Even with the smallest network, SpiNNaker wins in the energy cost comparison, see Figure~\ref{fig:energy}.
