@@ -1,4 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%DIF LATEXDIFF DIFFERENCE FILE
+%DIF DEL b0.tex            Mon Aug  8 15:43:13 2016
+%DIF ADD NEbenchmark.tex   Mon Aug  8 18:30:01 2016
 % This is just a template to use when submitting manuscripts to Frontiers, it is not mandatory to use frontiers.cls nor frontiers.tex  %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -99,7 +102,30 @@
 \def\corrEmail{qianl.liu-3@manchester.ac.uk}
 
 % \color{FrontiersColor} Is the color used in the Journal name, in the title, and the names of the sections
-
+%DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
+%DIF UNDERLINE PREAMBLE %DIF PREAMBLE
+\RequirePackage[normalem]{ulem} %DIF PREAMBLE
+\RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1} %DIF PREAMBLE
+\providecommand{\DIFaddtex}[1]{{\protect\color{blue}\uwave{#1}}} %DIF PREAMBLE
+\providecommand{\DIFdeltex}[1]{{\protect\color{red}\sout{#1}}}                      %DIF PREAMBLE
+%DIF SAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddbegin}{} %DIF PREAMBLE
+\providecommand{\DIFaddend}{} %DIF PREAMBLE
+\providecommand{\DIFdelbegin}{} %DIF PREAMBLE
+\providecommand{\DIFdelend}{} %DIF PREAMBLE
+%DIF FLOATSAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddFL}[1]{\DIFadd{#1}} %DIF PREAMBLE
+\providecommand{\DIFdelFL}[1]{\DIFdel{#1}} %DIF PREAMBLE
+\providecommand{\DIFaddbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFaddendFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelendFL}{} %DIF PREAMBLE
+%DIF END PREAMBLE EXTENSION ADDED BY LATEXDIFF
+%DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
+%DIF HYPERREF PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFadd}[1]{\texorpdfstring{\DIFaddtex{#1}}{#1}} %DIF PREAMBLE
+\providecommand{\DIFdel}[1]{\texorpdfstring{\DIFdeltex{#1}}{}} %DIF PREAMBLE
+%DIF END PREAMBLE EXTENSION ADDED BY LATEXDIFF
 
 \begin{document}
 \onecolumn
@@ -292,7 +318,7 @@ With the NE dataset we hope:
 	More biologically-accurate and better information preserving schemes are welcome.
 %	With the growing understanding of biological vision, new methodologies and algorithms that can convert these conventional datasets into spikes in more biologically-accurate ways are welcome.
 %	Other spike representation schemes may do a better job of preserving information from the original stimuli.
-	
+
 	\item \textit{to provide an assessment of the state of the art in spike-based visual recognition on neuromorphic hardware.}
 	To reveal the accuracy, speed, and energy-efficient recognition of neuromorphic approaches, we need not only a spike-based dataset but also an appropriate evaluation methodology.
 	The evaluation methodology will be constantly improving along with the evolution of the dataset.
@@ -400,11 +426,11 @@ scale $w$.
 \begin{table}[htb]
 	\caption{Simulation parameters for FoCal ganglion cells}
 	\begin{center}
-		
+
 		
 %		\bgroup
 %		\def\arraystretch{0.1}
-		
+
 		\begin{tabular}{c c c c c c}
 			\begin{mycellS}{0.8cm}\centering Layer \end{mycellS}& 
 			\begin{mycellS}{1.1cm}\centering Centre type\end{mycellS}& 
@@ -607,7 +633,7 @@ The number of synaptic events can be measured as ``Sopbs'', synaptic operations 
 			\begin{mycell}{3.5cm} Training \end{mycell} & 
 			\begin{mycell}{5cm} Recognition \end{mycell} \\
 			\hline
-			
+
 			\begin{leftcell}{3.7cm} - \textit{converting methods}\\- preprocessing \end{leftcell} & % preprocessing
 			\begin{leftcell}{2.5cm} - topology\\- \textit{neuron and synaptic type} \end{leftcell}&  % network
 			\begin{leftcell}{4cm} - supervised or not\\- \textit{learning rule} \\ - \textit{biological training time}\end{leftcell}&  % training
@@ -631,7 +657,7 @@ Any non-neural classifier, sometimes added to aid the design or enhance the outp
 Thirdly, the training procedure determines the recognition capability of a network model.
 %A clear distinction should be made between supervised, semi-supervised and unsupervised learning.
 Specifying the learning algorithm with its mechanism (supervised, semi-supervised and unsupervised) helps the reader understand the core features of the model.
-A detailed description of new spike-based learning rules will be a great contribution to the field due to the present paucity of spatio-temporal learning algorithms.
+A detailed description of new spike-based learning rules will be a great contribution to the field due to the present \DIFdelbegin \DIFdel{short }\DIFdelend \DIFaddbegin \DIFadd{paucity }\DIFaddend of spatio-temporal learning algorithms.
 Most publications reflect the use of adaptations to existing learning rules; details on these modifications should be clear and unambiguous.
 In conventional computer vision, the number of iterations of training images presented to the network play an important role.
 Similarly, the biological training time determines the amount of information provided for training an SNN.
@@ -653,21 +679,21 @@ Following to the formatted evaluation as in Table~\ref{tb:model_eval}, Table~\re
 			\begin{mycell}{3.5cm} Training \end{mycell} & 
 			\begin{mycell}{3.5cm} Recognition \end{mycell} \\
 			\hline
-			
+
 			%
 			\begin{mycell}{2.5cm}~\cite{brader2007learning} \end{mycell} & 
 			\begin{mycell}{1.9cm} Normalisation \end{mycell} & % preprocessing
 			\begin{mycell}{3.5cm} Two layer, LIF neurons\end{mycell}&  % network
 			\begin{mycell}{3.5cm} Semi-supervised, STDP, calcium LTP/LTD\end{mycell}&  % training
 			\begin{mycell}{3.5cm} 96.5\% \end{mycell} \\% recognition
-			
+
 			%
 			\begin{mycell}{2.5cm}~\cite{beyeler2013categorization} \end{mycell} & 
 			\begin{mycell}{1.9cm} Scaling, V1 (edge),\\ Poisson\end{mycell} & % preprocessing
 			\begin{mycell}{3.5cm} V2 (orientation),\\ and competitive decision, Izhikevich neurons\end{mycell}&  % network
 			\begin{mycell}{3.5cm} Semi-supervised, STDP, \\ calcium LTP/LTD \end{mycell} &  % training
 			\begin{mycell}{3.5cm} 91.6\% \\ 300~ms per test \end{mycell} \\% recognition
-			
+
 			%
 			\begin{mycell}{2.5cm}~\cite{neftci2013event} \end{mycell} & 
 			\begin{mycell}{1.9cm} Thresholding,\\ Synaptic current\end{mycell} & % preprocessing
@@ -680,7 +706,7 @@ Following to the formatted evaluation as in Table~\ref{tb:model_eval}, Table~\re
 			\begin{mycell}{3.5cm} Two layer RBM, \\ LIF neurons \end{mycell}&  % network
 			\begin{mycell}{3.5cm} Synaptic Sampling Machine + eCD, unsupervised \end{mycell}&  % training
 			\begin{mycell}{3.5cm} 95.8\% \\ 250~ms per test\end{mycell} \\% recognition
-			
+
 			%
 			\begin{mycell}{2.5cm}~\cite{diehl2015unsupervised} \end{mycell} & 
 			\centering Poisson &
@@ -689,7 +715,7 @@ Following to the formatted evaluation as in Table~\ref{tb:model_eval}, Table~\re
 %				$3,000,000$~s of training\\ 
 			$200,000$~s per iteration\\ 15 iterations\end{mycell} & 
 			\begin{mycell}{3.5cm} 95\% \end{mycell}\\
-			
+
 			%
 			\begin{mycell}{2.5cm}~\cite{Diehl2015fast}\end{mycell}  & 
 			\begin{mycell}{1.9cm} Poisson \end{mycell} & % preprocessing
@@ -702,7 +728,7 @@ Following to the formatted evaluation as in Table~\ref{tb:model_eval}, Table~\re
 			\begin{mycell}{3.5cm} Simple (Gabor), \\Complex (MAX) \\and Tempotron  \end{mycell}& % network
 			\begin{mycell}{3.5cm} Tempotron, supervised \end{mycell}& % training
 			\begin{mycell}{3.5cm} 91.3\%(Thresholding)\\ 11~s per test \\ 88.1\%(DVS),\\ 2~s per test\end{mycell}\\ % recognition
-			
+
 			%
 			\begin{mycell}{2.5cm} % %\cite{Stromatias2015scalable} \\ 
 				This paper \end{mycell} & 
@@ -715,7 +741,7 @@ Following to the formatted evaluation as in Table~\ref{tb:model_eval}, Table~\re
 			\begin{mycell}{1.9cm} Poisson \end{mycell}& % preprocessing 
 			\begin{mycell}{3.5cm} Fully connected decision layer, \\ LIF neurons \end{mycell}& % network
 			\begin{mycell}{3.5cm} K-means clusters,\\Supervised STDP\\$18,000$~s of training \end{mycell}& % training
-			\begin{mycell}{3.5cm} 92.99\%\\1~s per test\\0.2~s blank \\13.82~ms latency\\$4.17$M Sopbs\end{mycell}\\ % recognition
+			\begin{mycell}{3.5cm} 92.99\%\\1~s per test\\\DIFdelbeginFL \DIFdelFL{200~ms silence }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{0.2~s blank }\DIFaddendFL \\13.82~ms latency\\$4.17$M Sopbs\end{mycell}\\ % recognition
 		\end{tabular}
 		\egroup
 	\end{center}
@@ -729,7 +755,7 @@ Following to the formatted evaluation as in Table~\ref{tb:model_eval}, Table~\re
   	\caption{Hardware-level comparison}
   	\begin{center}
       \begin{minipage}{\textwidth}
-        
+
         \begin{savenotes}
   		\bgroup
   		\def\arraystretch{1.4}
@@ -737,7 +763,7 @@ Following to the formatted evaluation as in Table~\ref{tb:model_eval}, Table~\re
   			$ $ & 
   			\begin{mycell}{2.0cm} System \end{mycell} & 
   			%       \begin{minipage}{1.3cm}\centering Simulation type \end{minipage} & 
-  			
+
   			\begin{mycell}{2.0cm} Neuron Model \end{mycell} & 
   			\begin{mycell}{2.0cm}Synaptic\\Plasticity\end{mycell} &
   			%       \begin{minipage}{1cm}\centering Axonal delays \end{minipage} & 
@@ -752,7 +778,7 @@ Following to the formatted evaluation as in Table~\ref{tb:model_eval}, Table~\re
   			\\
   			\hline
   			% contents!
-  			
+
   			\begin{mycell}{1.8cm} SpiNNaker \citep{stromatias2013power} \end{mycell} &
   			\begin{mycell}{2.0cm} Digital, \\Scalable \end{mycell} & 
   			\begin{mycell}{2.1cm}Programmable\\Neuron and Synapse,\\Axonal delay \end{mycell}& 
@@ -772,7 +798,7 @@ Following to the formatted evaluation as in Table~\ref{tb:model_eval}, Table~\re
   			\end{mycell}& 
   			\begin{mycell}{2.0cm}Real-time\end{mycell}& 
   			\begin{mycell}{2.0cm}26 pJ/SE\end{mycell} \\
-  			
+
   			%
   			\begin{mycell}{1.8cm} Neurogrid \citep{benjamin2014neurogrid}\end{mycell} &
   			\begin{mycell}{2.0cm}Mixed-mode,\\Scalable\end{mycell} & 
@@ -798,7 +824,7 @@ Following to the formatted evaluation as in Table~\ref{tb:model_eval}, Table~\re
   			\begin{mycell}{2.0cm}Analogue neuron/synapse\end{mycell} & 
   			Real-time&
   			\begin{mycell}{2.0cm}22-pJ/SE\\\citep{park201465k}\end{mycell}
-  			
+
   			%dummy update text
   		\end{tabular}
   		\egroup
@@ -976,11 +1002,12 @@ Results show that inhibitory synapses significantly reduced the output firing ra
 Thus the strategy of replacing weak weights to same negative values was used throughout the case study.
 The feed-forward testing network is shown in Figure~\ref{fig:model}(b) where Poisson spike trains are generated the same way as in the training with a total firing rate of $2,000$~Hz per image.
 The input neurons convey the same spike trains to every decision neuron through its responding trained synaptic weights. 
-One test trial contains $10,000$ images in total and each image is presented once and lasts 1~s with a 0.2~s blank period between consecutive images.
+One test trial contains $10,000$ images in total and each image is presented once and lasts 1~s with a \DIFdelbegin \DIFdel{silence of 200~ms }\DIFdelend \DIFaddbegin \DIFadd{0.2~s blank period }\DIFaddend between consecutive images.
 The output neuron with the highest firing rate determines which digit was recognised.
-Taking the trained weights from the NEST simulation, the accuracy of the recognition on NEST reaches 90.03\% with the standard configuration, and SpiNNaker achieves the same result. % while the result drops slightly to 89.97\% using SpiNNaker.
-When both trained and tested on SpiNNaker the recognition accuracy is 87.41\%, and with these weights used in NEST the result is 87.25\%. 
-The CA differs on SpiNNaker compared to NEST due to the limited fast memory and the necessity for fixed-point arithmetic on SpiNNaker to ensure real-time operation.
+Taking the trained weights from the NEST simulation, the accuracy of the recognition on NEST reaches 90.03\% with the standard configuration, \DIFdelbegin \DIFdel{while the result drops slightly to 89.97}%DIFDELCMD < \% %%%
+\DIFdel{using SpiNNaker. }\DIFdelend \DIFaddbegin \DIFadd{and SpiNNaker achieves the same result. %DIF >  while the result drops slightly to 89.97\% using SpiNNaker.
+}\DIFaddend When both trained and tested on SpiNNaker the recognition accuracy is 87.41\%, and with these weights used in NEST the result is 87.25\%. 
+The CA \DIFdelbegin \DIFdel{drops less than $0.06\%$ }\DIFdelend \DIFaddbegin \DIFadd{differs }\DIFaddend on SpiNNaker compared to NEST due to the limited fast memory and the necessity for fixed-point arithmetic on SpiNNaker to ensure real-time operation.
 It is inevitable that numerical precision will be below IEEE double precision at various points in the processing chain from synaptic input to membrane potential.
 The main bottleneck is currently in the ring buffer where the total precision for accumulated spike inputs is 16-bit, meaning that individual spikes are realistically going to be limited to 11- to 14-bit depending upon the probabilistic headroom calculated as necessary from the network configuration and spike throughput~\citep{Hopkins2015Accuracy}.
 
@@ -1053,7 +1080,7 @@ Although the variations in the Sopbs climbs to around 8~kHz, it is not obvious i
 The network size not only influences the accuracy of a model but also the time taken for simulation on specific platforms, thus impacting the energy usage on the hardware.
 For the purpose of comparing the accuracy, simulation time, number of synaptic events and energy usage, different configurations have been tested on NEST (working on a PC with CPU: i5-4570 and 8G memory) and on SpiNNaker.
 The same experiment was run 4~times with different random seeds; the average performance estimation is listed in Table~\ref{tbl:compare}.
-The input rates in all of the tests are $5,000$~Hz, and each image is presented for 1~s with a 0.2~s blank period between consecutive images during which the model receives no input.
+The input rates in all of the tests are $5,000$~Hz, and each image is presented for 1~s with \DIFaddbegin \DIFadd{a }\DIFaddend 0.2~s \DIFdelbegin \DIFdel{silence in between }\DIFdelend \DIFaddbegin \DIFadd{blank period between consecutive images during which the model receives no input}\DIFaddend .
 The configurations only differ in the number of templates (subclasses/clusters) per digit.
 %Thus the network size varies according to the number of neurons in the decision layer where each neuron represents a subclass of a digit and the template is embedded in the synaptic weights connecting from the input layer to the decision neuron.
 
@@ -1200,7 +1227,7 @@ This result provides a baseline for comparison with other SNN models and neuromo
 %		& $ 53 $
 %		& $ 18 $
 %		\\
-			
+
 %		\begin{tabular} {r|c|c|c|c|c|c|c|c|c|c}
 %			Subclasses
 %			& Response
