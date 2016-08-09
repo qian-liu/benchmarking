@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL b0.tex            Mon Aug  8 15:43:13 2016
-%DIF ADD NEbenchmark.tex   Mon Aug  8 18:30:01 2016
+%DIF ADD NEbenchmark.tex   Tue Aug  9 15:14:05 2016
 % This is just a template to use when submitting manuscripts to Frontiers, it is not mandatory to use frontiers.cls nor frontiers.tex  %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1003,11 +1003,15 @@ Thus the strategy of replacing weak weights to same negative values was used thr
 The feed-forward testing network is shown in Figure~\ref{fig:model}(b) where Poisson spike trains are generated the same way as in the training with a total firing rate of $2,000$~Hz per image.
 The input neurons convey the same spike trains to every decision neuron through its responding trained synaptic weights. 
 One test trial contains $10,000$ images in total and each image is presented once and lasts 1~s with a \DIFdelbegin \DIFdel{silence of 200~ms }\DIFdelend \DIFaddbegin \DIFadd{0.2~s blank period }\DIFaddend between consecutive images.
-The output neuron with the highest firing rate determines which digit was recognised.
-Taking the trained weights from the NEST simulation, the accuracy of the recognition on NEST reaches 90.03\% with the standard configuration, \DIFdelbegin \DIFdel{while the result drops slightly to 89.97}%DIFDELCMD < \% %%%
-\DIFdel{using SpiNNaker. }\DIFdelend \DIFaddbegin \DIFadd{and SpiNNaker achieves the same result. %DIF >  while the result drops slightly to 89.97\% using SpiNNaker.
-}\DIFaddend When both trained and tested on SpiNNaker the recognition accuracy is 87.41\%, and with these weights used in NEST the result is 87.25\%. 
-The CA \DIFdelbegin \DIFdel{drops less than $0.06\%$ }\DIFdelend \DIFaddbegin \DIFadd{differs }\DIFaddend on SpiNNaker compared to NEST due to the limited fast memory and the necessity for fixed-point arithmetic on SpiNNaker to ensure real-time operation.
+The output neuron with the highest firing rate determines which digit \DIFdelbegin \DIFdel{was recognised.
+Taking }\DIFdelend \DIFaddbegin \DIFadd{is recognised.
+With the standard training configuration, we compared the CA of different simulations of the same SNN model.
+Using }\DIFaddend the trained weights from the NEST simulation, the accuracy of the recognition on NEST \DIFdelbegin \DIFdel{reaches }\DIFdelend \DIFaddbegin \DIFadd{reached }\DIFaddend 90.03\%\DIFdelbegin \DIFdel{with the standard configuration, while the result drops slightly to 89.97}%DIFDELCMD < \% %%%
+\DIFdel{using }\DIFdelend \DIFaddbegin \DIFadd{, and this accuracy was also achieved on }\DIFaddend SpiNNaker.
+When \DIFaddbegin \DIFadd{the network was }\DIFaddend both trained and tested on SpiNNaker the recognition accuracy \DIFdelbegin \DIFdel{is }\DIFdelend \DIFaddbegin \DIFadd{was }\DIFaddend 87.41\%\DIFdelbegin \DIFdel{, and with these weights used in NEST the result is }\DIFdelend \DIFaddbegin \DIFadd{.
+Using these weights in NEST yielded a similar result (}\DIFaddend 87.25\%\DIFdelbegin \DIFdel{. 
+The CA drops less than $0.06\%$ on SpiNNaker compared to NEST due to }\DIFdelend \DIFaddbegin \DIFadd{). 
+The reduction in CA using the SpiNNaker trained weights was due to precision loss caused by }\DIFaddend the limited fast memory and the necessity for fixed-point arithmetic \DIFdelbegin \DIFdel{on SpiNNaker }\DIFdelend to ensure real-time operation.
 It is inevitable that numerical precision will be below IEEE double precision at various points in the processing chain from synaptic input to membrane potential.
 The main bottleneck is currently in the ring buffer where the total precision for accumulated spike inputs is 16-bit, meaning that individual spikes are realistically going to be limited to 11- to 14-bit depending upon the probabilistic headroom calculated as necessary from the network configuration and spike throughput~\citep{Hopkins2015Accuracy}.
 
